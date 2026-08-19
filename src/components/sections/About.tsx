@@ -87,7 +87,7 @@ function StatCard({
   delay: number;
 }) {
   const reduceMotion = useReducedMotion();
-  const ref = useRef<HTMLArticleElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.45 });
   const counted = useCountUp(value, Boolean(inView && !reduceMotion));
   const display = reduceMotion ? value : counted;
