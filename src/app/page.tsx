@@ -21,8 +21,8 @@ export default function Home() {
         <ProjectShowcase />
         <Process />
         <Services />
-        <Work />
-        <WhyUs />
+        {/* <Work /> */}
+        {/* <WhyUs /> */}
         <TechStack />
         <Testimonials />
         <ContactCTA />

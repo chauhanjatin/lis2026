@@ -21,7 +21,7 @@ export function Header() {
   return (
     <header className="fixed inset-x-0 top-4 z-40">
       <Container className="max-w-[1120px] px-4 sm:px-6">
-        <div className="flex h-14 items-center rounded-full bg-[#090a0c] px-3 shadow-[0_12px_30px_rgba(12,14,18,0.16)] sm:px-4">
+        <div className="flex h-14 items-center rounded-[16px] bg-[#0000003D] backdrop-blur-sm px-3 shadow-[0_12px_30px_rgba(12,14,18,0.16)] sm:px-4">
           <Link href="/" className="flex shrink-0 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#090a0c]">
             <Image src="/lis-logo.svg" alt="LIS" width={151} height={51} priority className="h-auto w-[4.4rem] brightness-0 invert" />
           </Link>
