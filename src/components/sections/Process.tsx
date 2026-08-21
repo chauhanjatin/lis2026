@@ -83,15 +83,26 @@ export function Process() {
                 {step.description}
               </p>
               {index < steps.length - 1 && (
-                <svg
-                  className="process-flow-arrow"
-                  viewBox="0 0 120 72"
-                  fill="none"
+                <span
+                  className={`process-flow-arrow ${
+                    index % 2 === 0
+                      ? "process-flow-arrow--bottom"
+                      : "process-flow-arrow--top"
+                  }`}
                   aria-hidden="true"
                 >
-                  <path d="M6 14C34 62 78 62 104 24" />
-                  <path className="process-flow-arrowhead" d="m96 25 9-1-2 9" />
-                </svg>
+                  <Image
+                    src={
+                      index % 2 === 0
+                        ? "/arrow-bottom.png"
+                        : "/arrow-top.png"
+                    }
+                    alt=""
+                    width={160}
+                    height={96}
+                    className="process-flow-arrow-img"
+                  />
+                </span>
               )}
             </motion.li>
           ))}

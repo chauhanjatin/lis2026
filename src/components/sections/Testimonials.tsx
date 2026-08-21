@@ -88,7 +88,7 @@ export function Testimonials() {
   return (
     <>
       {/* ============ TESTIMONIALS — START ============ */}
-      <Section id="testimonials" className="mb-[15rem]">
+      <Section id="testimonials" className="mb-[10rem]">
         <Eyebrow>What clients say</Eyebrow>
         <Heading size="lg" className="max-w-2xl">
           Social proof.

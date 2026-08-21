@@ -107,12 +107,12 @@ export function ProjectShowcase() {
                       src={project.image}
                       alt={project.title}
                       fill
-                      sizes="(max-width: 767px) 88vw, 70vw"
+                      sizes="(max-width: 767px) 88vw, 68vw"
                       className="object-cover"
                       priority={index === 0}
                     />
                   </div>
-                  <div className="mt-4 flex items-center justify-between gap-4 px-0.5">
+                  <div className="showcase-meta">
                     <h3 className="text-sm font-semibold tracking-[-0.01em] text-[#151618]">
                       {project.title}
                     </h3>
