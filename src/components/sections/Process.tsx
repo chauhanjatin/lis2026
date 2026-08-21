@@ -50,10 +50,10 @@ export function Process() {
             <span className="h-2 w-2 rounded-full bg-[#a9f66f] shadow-[0_0_12px_#a9f66f]" />{" "}
             Workflow
           </p>
-          <h2 className="font-display mt-7 text-balance text-6xl font-medium leading-[.88] tracking-[-0.055em] sm:text-7xl md:text-8xl lg:text-[6rem]">
+          <h2 className="font-Sora mt-7 text-balance text-6xl font-medium leading-[.88] tracking-[-0.055em] sm:text-7xl md:text-8xl lg:text-[6rem]">
             Our Simple &amp; Fast
             <br />
-            <span className="text-[#858685]">Design Process.</span>
+            <span className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">Design Process.</span>
           </h2>
         </motion.div>
 

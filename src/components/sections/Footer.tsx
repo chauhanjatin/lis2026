@@ -30,10 +30,10 @@ export function Footer() {
       <Container className="studio-footer-frame">
         <div className="studio-footer-marquee" aria-label="libertyinfoscience">
           <div className="studio-footer-marquee-track">
-            <p>libertyinfoscience</p>
-            <p aria-hidden="true">libertyinfoscience</p>
-            <p aria-hidden="true">libertyinfoscience</p>
-            <p aria-hidden="true">libertyinfoscience</p>
+            <p className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">libertyinfoscience</p>
+            <p aria-hidden="true" className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">libertyinfoscience</p>
+            <p aria-hidden="true" className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">libertyinfoscience</p>
+            <p aria-hidden="true" className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">libertyinfoscience</p>
           </div>
         </div>
         <div className="studio-footer-content">

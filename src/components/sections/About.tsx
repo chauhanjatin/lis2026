@@ -33,7 +33,7 @@ const stats = [
 
 function AccentIcon({ type }: { type: "arrow" | "sparkle" }) {
   const Icon = type === "arrow" ? ArrowDown : Sparkles;
-  const color = type === "arrow" ? "bg-[#dce5d7]" : "bg-[#e8ddcf]";
+  const color = type === "arrow" ? "bg-[#dce5d7]" : "bg-[]";
 
   return (
     <span
@@ -100,19 +100,19 @@ function StatCard({
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] }}
       className={`relative overflow-hidden rounded-[1.35rem] p-7 shadow-[0_10px_28px_rgba(24,30,36,0.07)] sm:p-8 ${
-        featured ? "bg-[#e8ddcf] lg:min-h-[15.5rem]" : "bg-white"
+          featured ? "bg-gradient-to-r from-[#42BFA5] to-[#0D4FB8] lg:min-h-[15.5rem]" : "bg-white"
       }`}
     >
-      {featured ? (
+      {/* {featured ? (
         <span
           aria-hidden="true"
           className="pointer-events-none absolute right-0 top-0 h-full w-[46%] bg-[radial-gradient(circle,_rgba(255,255,255,0.55)_1.15px,_transparent_1.4px)] bg-[length:14px_14px] opacity-80"
         />
-      ) : null}
+      ) : null} */}
 
       <div className="relative z-[1] flex h-full min-h-[11.5rem] flex-col">
         <h3 className="text-[0.95rem] font-semibold tracking-[-0.02em] text-[#111111]">{label}</h3>
-        <p className="mt-3 font-display text-[clamp(3.4rem,6vw,4.75rem)] font-semibold leading-none tracking-[-0.07em] text-[#111111]">
+        <p className="mt-3 font-Sora text-[clamp(3.4rem,6vw,4.75rem)] font-semibold leading-none tracking-[-0.07em] text-[#111111]">
           <span>{display}</span>
           <span>{suffix}</span>
         </p>
@@ -138,12 +138,12 @@ export function About() {
             About us
           </p>
 
-          <h2 className="font-display text-balance text-[clamp(2rem,4.1vw,4.25rem)] font-medium leading-[1.04] tracking-[-0.065em] text-[#101010]">
+          <h2 className="font-Sora text-balance text-[clamp(2rem,4.1vw,4.25rem)] font-medium leading-[1.04] tracking-[-0.065em] text-[#101010]">
             <span className="block">A global consulting partner</span>
             <span className="block">
-              dedicated to building <AccentIcon type="arrow" /> smarter
+              <span className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">dedicated to building</span> <AccentIcon type="arrow" /> <span >smarter</span>
             </span>
-            <span className="block text-[#858585]">
+            <span className="block">
               and <AccentIcon type="sparkle" /> more adaptive
             </span>
           </h2>

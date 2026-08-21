@@ -68,7 +68,7 @@ export function Hero() {
     <section id="hero" className="overflow-hidden pt-36 pb-16 md:pt-48 md:pb-24 lg:pt-52">
       <Container>
         <div className="mx-auto max-w-4xl text-center">
-          <h1 className="font-display text-balance text-5xl font-semibold leading-[1.12] tracking-[-0.055em] text-foreground sm:text-6xl md:text-7xl lg:text-[4.7rem]">
+          <h1 className="font-Sora text-balance text-5xl font-semibold leading-[1.12] tracking-[-0.055em] text-foreground sm:text-6xl md:text-7xl lg:text-[4.7rem]">
             Transforming Ideas<br />Into Powerful Digital<br />Experiences
           </h1>
           <p className="mx-auto mt-8 max-w-3xl text-pretty text-base leading-relaxed text-muted md:text-lg">

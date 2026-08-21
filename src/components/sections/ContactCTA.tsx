@@ -32,7 +32,7 @@ export function ContactCTA() {
           >
             Ready when you are
           </motion.p> */}
-          <h2 className="font-display mt-5 text-balance text-4xl font-medium leading-[.94] tracking-[-.05em] text-white sm:text-5xl lg:text-[50px]">
+          <h2 className="font-Sora mt-5 text-balance text-4xl font-medium leading-[.94] tracking-[-.05em] text-white sm:text-5xl lg:text-[50px]">
             Let’s  make  something
             <span className="cta-panel-accent"><br/>  amazing together.</span>
           </h2>

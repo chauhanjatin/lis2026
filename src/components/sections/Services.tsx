@@ -88,8 +88,10 @@ export function Services() {
             <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[.13em] text-[#676d70]">
               <span className="h-2 w-2 rounded-full bg-[#73ce64]" /> Our services
             </p>
-            <h2 className="font-display mt-7 max-w-xl text-5xl font-medium leading-[.92] tracking-[-.055em] sm:text-6xl lg:text-7xl">
-              Inspiring digital <span className="text-[#8a8d90]">experiences.</span>
+            <h2 className="font-Sora mt-7 max-w-xl text-5xl font-medium leading-[.92] tracking-[-.055em] sm:text-6xl lg:text-7xl">
+              Inspiring digital <span className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">
+  experiences.
+</span>
             </h2>
             <p className="mt-8 max-w-md text-lg leading-relaxed text-[#65696d]">
               Strategy, design, and technology aligned around the people using your product.
@@ -142,7 +144,7 @@ export function Services() {
                   <div className="relative z-[1] flex w-full items-start justify-between gap-6 p-6 sm:p-8">
                     <motion.span
                       layout
-                      className="font-display max-w-[85%] text-2xl font-medium tracking-[-.045em] sm:text-3xl lg:text-4xl"
+                      className="font-Sora max-w-[85%] text-2xl font-medium tracking-[-.045em] sm:text-3xl lg:text-4xl"
                       animate={{
                         opacity: isActive ? 1 : isPast ? 0.75 : 1,
                       }}

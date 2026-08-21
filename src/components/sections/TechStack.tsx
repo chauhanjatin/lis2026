@@ -37,7 +37,7 @@ export function TechStack() {
       <Container>
         <motion.div initial={{ opacity: 0, y: 22 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.35 }} transition={{ duration: 0.6 }} className="mx-auto max-w-4xl text-center">
           <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#202224]"><span className="h-2 w-2 rounded-full bg-[#16181a]" /> Technologies</p>
-          <h2 className="mt-7 font-display text-balance text-5xl font-medium leading-[1.02] tracking-[-0.055em] text-[#151618] sm:text-6xl md:text-7xl">Works with the tools<br />you already use.</h2>
+          <h2 className="mt-7 font-Sora text-balance text-5xl font-medium leading-[1.02] tracking-[-0.055em] text-[#151618] sm:text-6xl md:text-7xl">Works with the tools<br />you already use.</h2>
           <p className="mx-auto mt-6 max-w-3xl text-pretty text-base leading-relaxed text-[#55585b] sm:text-lg">We bring your existing tools together—from design and development to deployment—so your digital product stays connected, scalable, and ready to grow.</p>
         </motion.div>
 
