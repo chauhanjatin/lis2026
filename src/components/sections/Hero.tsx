@@ -2,10 +2,15 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 
 const projectImages = [
-  { src: "/dts-splint.png", alt: "DTS Splint project" },
-  { src: "/integrative-dermatology.png", alt: "Integrative Dermatology project" },
-  { src: "/learnbudai.png", alt: "LearnBud AI project" },
-  { src: "/uniqlearn.png", alt: "UniqLearn project" },
+  { src: "/project1.png", alt: "DTS Splint project" },
+  { src: "/project2.png", alt: "Integrative Dermatology project" },
+  { src: "/project3.png", alt: "LearnBud AI project" },
+  { src: "/project4.png", alt: "UniqLearn project" },
+  { src: "/project5.png", alt: "UniqLearn project" },
+  { src: "/project6.png", alt: "UniqLearn project" },
+  { src: "/project7.png", alt: "UniqLearn project" },
+  { src: "/project8.png", alt: "UniqLearn project" },
+  { src: "/project9.png", alt: "UniqLearn project" },
 ];
 
 const columns = [
