@@ -6,6 +6,7 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa";
 import { Container } from "@/components/ui/Container";
+import { ContactCTA } from "./ContactCTA";
 
 const navigation = [
   { href: "#hero", label: "Home" },
@@ -25,9 +26,15 @@ const socialLinks = [
 export function Footer() {
   return (
     <footer className="studio-footer">
+      <ContactCTA />
       <Container className="studio-footer-frame">
-        <div className="studio-footer-marquee" aria-label="Start a project with Design Studio">
-          <p>libertyinfoscience</p>
+        <div className="studio-footer-marquee" aria-label="libertyinfoscience">
+          <div className="studio-footer-marquee-track">
+            <p>libertyinfoscience</p>
+            <p aria-hidden="true">libertyinfoscience</p>
+            <p aria-hidden="true">libertyinfoscience</p>
+            <p aria-hidden="true">libertyinfoscience</p>
+          </div>
         </div>
         <div className="studio-footer-content">
           <div className="studio-footer-brand">

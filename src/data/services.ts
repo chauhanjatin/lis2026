@@ -9,24 +9,28 @@ export const services: Service[] = [
     id: "ui-ux-design",
     title: "UI/UX Design",
     description:
-      "Interfaces grounded in real user research, not guesswork — wireframes, prototypes, and design systems built to convert.",
+      "Our skilled designers produce the best aesthetics. Your users will be astounded by a UX/UI that is appealing, useful, and simple to use, and it will address their problems successfully..",
   },
   {
-    id: "frontend-development",
-    title: "Frontend Development",
-    description:
-      "Fast, accessible, pixel-accurate builds in modern frameworks — from your design files to production code.",
+    id: "Web-Design",
+    title: "Web Design",
+    description:"We help design custom design that drives your business to success. Our success is the result of our actionable results.",
   },
   {
-    id: "digital-marketing",
-    title: "Digital Marketing",
-    description:
-      "SEO, content, and growth strategy tuned to how people actually find and evaluate your product.",
+    id: "Web-Development",
+    title: "Web Development",
+    description:"Develop fully-scalable web solutions to ensure your company's online presence with our web development services.",
   },
   {
-    id: "backend-development",
-    title: "Backend Development",
+    id: "Mobile-Development",
+    title: "Mobile Development",
     description:
-      "APIs, databases, and infrastructure built to scale with your product from day one, not bolted on later.",
+      "We provide significant business growth with responsive mobile development to expand beyond the global horizon with an intuitive user interface and high-quality features.",
+  },
+  {
+    id: "Business-Services",
+    title: "Business Services",
+    description:
+      "We help design custom design that drives your business to success. Our success is the result of our actionable results.",
   },
 ];

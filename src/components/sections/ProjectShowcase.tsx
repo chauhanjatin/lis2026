@@ -7,58 +7,30 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
-import { Container } from "@/components/ui/Container";
+import Image from "next/image";
 
 const projects = [
-  { title: "Payroll", year: "2026", kind: "payroll", tone: "bg-[#e8ddcf]" },
-  { title: "Direct", year: "2025", kind: "direct", tone: "bg-[#dce5d7]" },
-  { title: "Serein", year: "2025", kind: "serein", tone: "bg-[#dce3ef]" },
-  { title: "Novum", year: "2024", kind: "novum", tone: "bg-[#eadfe5]" },
+  {
+    title: "UniqLearn",
+    year: "2026",
+    image: "/uniqlearn.png",
+  },
+  {
+    title: "Integrative Dermatology",
+    year: "2025",
+    image: "/integrative-dermatology.png",
+  },
+  {
+    title: "LearnBud AI",
+    year: "2025",
+    image: "/learnbudai.png",
+  },
+  {
+    title: "DTS Splint",
+    year: "2024",
+    image: "/dts-splint.png",
+  },
 ];
-
-function Artwork({ kind }: { kind: (typeof projects)[number]["kind"] }) {
-  if (kind === "payroll") {
-    return (
-      <div className="showcase-art showcase-payroll">
-        <div className="watch-strap" />
-        <div className="watch-face">
-          <span>PAYROLL</span>
-          <strong>09:41</strong>
-          <small>Made simple</small>
-        </div>
-      </div>
-    );
-  }
-  if (kind === "direct") {
-    return (
-      <div className="showcase-art showcase-direct">
-        <div className="tree" />
-        <div className="wall" />
-        <div className="sun-shadow" />
-      </div>
-    );
-  }
-  if (kind === "serein") {
-    return (
-      <div className="showcase-art showcase-serein">
-        <div className="serein-orb orb-one" />
-        <div className="serein-orb orb-two" />
-        <div className="serein-card">
-          SEREIN<span>wellness, in rhythm</span>
-        </div>
-      </div>
-    );
-  }
-  return (
-    <div className="showcase-art showcase-novum">
-      <div className="novum-circle" />
-      <div className="novum-panel">
-        N<span>Build forward.</span>
-      </div>
-    </div>
-  );
-}
 
 export function ProjectShowcase() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -115,6 +87,10 @@ export function ProjectShowcase() {
         className="showcase-scroll"
         aria-label="Featured projects"
       >
+        <p className="mb-5 text-[0.62rem] font-bold uppercase tracking-[0.24em] text-[#242424] text-center">
+            <span className="mr-2 align-[0.08em] text-[0.5em]">●</span>
+            Case Studies
+          </p>
         <div ref={viewportRef} className="showcase-sticky">
           <motion.div
             ref={trackRef}
@@ -124,17 +100,23 @@ export function ProjectShowcase() {
             {projects.map((project, index) => (
               <div key={project.title} className="showcase-step">
                 <article
-                  className={`showcase-card ${project.tone} ${index === active ? "is-active" : ""}`}
+                  className={`showcase-card ${index === active ? "is-active" : ""}`}
                 >
-                  <Artwork kind={project.kind} />
-                  <div className="mt-5 flex items-center justify-between gap-4 px-1">
-                    <h3 className="font-display text-2xl font-medium tracking-[-0.03em]">
+                  <div className="showcase-art">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      sizes="(max-width: 767px) 88vw, 70vw"
+                      className="object-cover"
+                      priority={index === 0}
+                    />
+                  </div>
+                  <div className="mt-4 flex items-center justify-between gap-4 px-0.5">
+                    <h3 className="text-sm font-semibold tracking-[-0.01em] text-[#151618]">
                       {project.title}
                     </h3>
-                    <div className="flex items-center gap-4 text-sm text-muted">
-                      <span>{project.year}</span>
-                      <ArrowUpRight size={18} aria-hidden="true" />
-                    </div>
+                    <span className="text-sm text-[#6b6e72]">{project.year}</span>
                   </div>
                 </article>
               </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { Code2, Layers3, PenTool, Server, Shapes, Sparkles } from "lucide-react";
+import { Code2, Layers3, Server, Shapes, Sparkles } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 
 const integrations = [
@@ -47,7 +47,7 @@ export function TechStack() {
               {leftRail.map((item, index) => <IntegrationCard key={`${item.name}-${index}`} item={item} />)}
             </motion.div>
           </div>
-          <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ type: "spring", stiffness: 180, damping: 16, delay: 0.2 }} className="integration-featured"><PenTool size={76} strokeWidth={1.45} aria-hidden="true" /><span>Studio</span></motion.div>
+          <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ type: "spring", stiffness: 180, damping: 16, delay: 0.2 }} className="integration-featured"><img src="/technologies-logo.svg" alt="" width={76} height={76} aria-hidden="true" /></motion.div>
           <div className="integration-rail integration-rail-right">
             <motion.div className="integration-rail-track" animate={reduceMotion ? undefined : { x: ["0%", "-34%"] }} transition={{ duration: 26, repeat: Infinity, ease: "linear" }}>
               {rightRail.map((item, index) => <IntegrationCard key={`${item.name}-${index}`} item={item} />)}
