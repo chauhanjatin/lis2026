@@ -65,6 +65,108 @@ body {
   font-family: "Clash Display", sans-serif;
 }
 
+.hero-marquee {
+  position: relative;
+  height: clamp(28rem, 58vw, 42rem);
+  overflow: hidden;
+  border-radius: 1.5rem;
+  background: #121314;
+  box-shadow: 0 18px 55px rgba(26, 41, 55, 0.12);
+  isolation: isolate;
+}
+.hero-marquee::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 45%, transparent 35%, rgba(8, 9, 10, 0.55) 100%),
+    linear-gradient(180deg, rgba(8, 9, 10, 0.55), transparent 18%, transparent 82%, rgba(8, 9, 10, 0.55));
+}
+.hero-marquee-stage {
+  position: absolute;
+  inset: -28% -12%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1.15rem;
+  transform: rotate(-12deg) scale(1.08);
+  transform-origin: center center;
+}
+.hero-marquee-col {
+  overflow: hidden;
+  height: 100%;
+  flex: none;
+}
+.hero-marquee-track {
+  display: flex;
+  flex-direction: column;
+  width: clamp(16rem, 30vw, 24rem);
+  gap: 1.15rem;
+  will-change: transform;
+}
+.hero-marquee-track--down {
+  animation: hero-marquee-down linear infinite;
+}
+.hero-marquee-track--up {
+  animation: hero-marquee-up linear infinite;
+}
+.hero-marquee-card {
+  position: relative;
+  flex: none;
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  background: #1c1d1f;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.38);
+}
+.hero-marquee-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+@keyframes hero-marquee-down {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, -33.333%, 0);
+  }
+}
+@keyframes hero-marquee-up {
+  from {
+    transform: translate3d(0, -33.333%, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+@media (min-width: 768px) {
+  .hero-marquee {
+    border-radius: 1.875rem;
+  }
+  .hero-marquee-stage {
+    gap: 1.4rem;
+    inset: -32% -14%;
+  }
+  .hero-marquee-track {
+    gap: 1.4rem;
+    width: clamp(18rem, 28vw, 26rem);
+  }
+  .hero-marquee-card {
+    border-radius: 1.5rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-marquee-track--down,
+  .hero-marquee-track--up {
+    animation: none;
+  }
+}
+
 .showcase-scroll {
   height: 400vh;
 }
