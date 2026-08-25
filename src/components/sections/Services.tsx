@@ -73,7 +73,9 @@ export function Services() {
       id="services"
       ref={sectionRef}
       className="relative bg-white text-[#101116]"
-      style={{ height: reduceMotion ? "auto" : `${services.length * 85 + 40}vh` }}
+      style={{
+        height: reduceMotion ? "auto" : `${services.length * 85 + 40}vh`,
+      }}
     >
       <div className="sticky top-0 flex min-h-screen items-center py-20 sm:py-28 lg:py-36">
         <Container className="grid gap-12 lg:grid-cols-[minmax(0,.9fr)_minmax(0,1.1fr)] lg:gap-20">
@@ -86,15 +88,18 @@ export function Services() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
             <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[.13em] text-[#676d70]">
-              <span className="h-2 w-2 rounded-full bg-[#73ce64]" /> Our services
+              <span className="h-2 w-2 rounded-full bg-[#73ce64]" /> Our
+              services
             </p>
             <h2 className="font-Sora mt-7 max-w-xl text-5xl font-medium leading-[.92] tracking-[-.055em] sm:text-6xl lg:text-7xl">
-              Inspiring digital <span className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">
-  experiences.
-</span>
+              Inspiring digital{" "}
+              <span className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">
+                experiences.
+              </span>
             </h2>
             <p className="mt-8 max-w-md text-lg leading-relaxed text-[#65696d]">
-              Strategy, design, and technology aligned around the people using your product.
+              Strategy, design, and technology aligned around the people using
+              your product.
             </p>
             <motion.a
               href="#contact"
@@ -109,7 +114,8 @@ export function Services() {
           <div className="flex flex-col gap-3 sm:gap-4">
             {services.map((service, index) => {
               const isActive = activeId === service.id;
-              const isPast = services.findIndex((item) => item.id === activeId) > index;
+              const isPast =
+                services.findIndex((item) => item.id === activeId) > index;
               const theme = cardThemes[index % cardThemes.length];
 
               return (
@@ -118,7 +124,11 @@ export function Services() {
                   layout
                   initial={reduceMotion ? false : { opacity: 0, y: 48 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.15, margin: "0px 0px -8% 0px" }}
+                  viewport={{
+                    once: true,
+                    amount: 0.15,
+                    margin: "0px 0px -8% 0px",
+                  }}
                   transition={{
                     duration: 0.7,
                     delay: reduceMotion ? 0 : index * 0.12,
@@ -165,46 +175,78 @@ export function Services() {
                     {isActive && (
                       <motion.div
                         key={`content-${service.id}`}
-                        initial={reduceMotion ? false : { height: 0, opacity: 0 }}
+                        initial={
+                          reduceMotion ? false : { height: 0, opacity: 0 }
+                        }
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                        transition={{
+                          duration: 0.55,
+                          ease: [0.22, 1, 0.36, 1],
+                        }}
                         className="relative z-[1] overflow-hidden"
                       >
                         <motion.div
                           initial={reduceMotion ? false : { y: 24, opacity: 0 }}
                           animate={{ y: 0, opacity: 1 }}
                           exit={{ y: 12, opacity: 0 }}
-                          transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                          transition={{
+                            duration: 0.5,
+                            delay: 0.1,
+                            ease: [0.22, 1, 0.36, 1],
+                          }}
                           className="px-6 pb-6 sm:px-8 sm:pb-8"
                         >
                           <motion.p
-                            initial={reduceMotion ? false : { y: 16, opacity: 0 }}
+                            initial={
+                              reduceMotion ? false : { y: 16, opacity: 0 }
+                            }
                             animate={{ y: 0, opacity: 1 }}
-                            transition={{ duration: 0.45, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
+                            transition={{
+                              duration: 0.45,
+                              delay: 0.18,
+                              ease: [0.22, 1, 0.36, 1],
+                            }}
                             className="max-w-2xl text-base leading-relaxed text-white/78 sm:text-lg"
                           >
                             {service.description}
                           </motion.p>
 
                           <motion.div
-                            initial={reduceMotion ? false : { y: 20, opacity: 0, scale: 0.96 }}
+                            initial={
+                              reduceMotion
+                                ? false
+                                : { y: 20, opacity: 0, scale: 0.96 }
+                            }
                             animate={{ y: 0, opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.5, delay: 0.26, ease: [0.22, 1, 0.36, 1] }}
+                            transition={{
+                              duration: 0.5,
+                              delay: 0.26,
+                              ease: [0.22, 1, 0.36, 1],
+                            }}
                             className="mt-6 max-w-xs"
                           >
                             <ServiceArtwork index={index} />
                           </motion.div>
 
                           <div className="mt-5 flex flex-wrap gap-2">
-                            {["Discovery", "Strategy", "Design", "Development"].map((tag, tagIndex) => (
+                            {[
+                              "Discovery",
+                              "Strategy",
+                              "Design",
+                              "Development",
+                            ].map((tag, tagIndex) => (
                               <motion.span
                                 key={tag}
-                                initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+                                initial={
+                                  reduceMotion ? false : { opacity: 0, y: 12 }
+                                }
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{
                                   duration: 0.4,
-                                  delay: reduceMotion ? 0 : 0.34 + tagIndex * 0.07,
+                                  delay: reduceMotion
+                                    ? 0
+                                    : 0.34 + tagIndex * 0.07,
                                   ease: [0.22, 1, 0.36, 1],
                                 }}
                                 className="rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-medium text-white/85"

@@ -8,27 +8,33 @@ import {
   useTransform,
 } from "framer-motion";
 import Image from "next/image";
+import { FaFigma } from "react-icons/fa";
+import { HiOutlineGlobeAlt } from "react-icons/hi2";
 
 const projects = [
   {
     title: "UniqLearn",
-    year: "2026",
     image: "/uniqlearn.png",
+    figmaUrl: "https://www.figma.com/design/uniqlearn",
+    websiteUrl: "https://uniqlearn.example.com",
   },
   {
     title: "Integrative Dermatology",
-    year: "2025",
     image: "/integrative-dermatology.png",
+    figmaUrl: "https://www.figma.com/design/integrative-dermatology",
+    websiteUrl: "https://integrativedermatology.example.com",
   },
   {
     title: "LearnBud AI",
-    year: "2025",
     image: "/learnbudai.png",
+    figmaUrl: "https://www.figma.com/design/learnbud-ai",
+    websiteUrl: "https://learnbudai.example.com",
   },
   {
     title: "DTS Splint",
-    year: "2024",
     image: "/dts-splint.png",
+    figmaUrl: "https://www.figma.com/design/dts-splint",
+    websiteUrl: "https://dtssplint.example.com",
   },
 ];
 
@@ -88,9 +94,9 @@ export function ProjectShowcase() {
         aria-label="Featured projects"
       >
         <p className="mb-5 text-[0.62rem] font-bold uppercase tracking-[0.24em] text-[#242424] text-center">
-            <span className="mr-2 align-[0.08em] text-[0.5em]">●</span>
-            Case Studies
-          </p>
+          <span className="mr-2 align-[0.08em] text-[0.5em]">●</span>
+          Case Studies
+        </p>
         <div ref={viewportRef} className="showcase-sticky">
           <motion.div
             ref={trackRef}
@@ -116,7 +122,32 @@ export function ProjectShowcase() {
                     <h3 className="text-sm font-semibold tracking-[-0.01em] text-[#151618]">
                       {project.title}
                     </h3>
-                    <span className="text-sm text-[#6b6e72]">{project.year}</span>
+                    <div className="showcase-actions">
+                      <a
+                        href={project.figmaUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="showcase-link"
+                      >
+                        <span className="showcase-link-icon showcase-link-icon--figma">
+                          <FaFigma aria-hidden />
+                        </span>
+                        <span className="showcase-link-label">View Design</span>
+                      </a>
+                      <a
+                        href={project.websiteUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="showcase-link"
+                      >
+                        <span className="showcase-link-icon showcase-link-icon--web">
+                          <HiOutlineGlobeAlt aria-hidden />
+                        </span>
+                        <span className="showcase-link-label">
+                          Visit Website
+                        </span>
+                      </a>
+                    </div>
                   </div>
                 </article>
               </div>

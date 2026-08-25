@@ -6,13 +6,20 @@ import { Heading } from "@/components/ui/Heading";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { testimonials } from "@/data/testimonials";
 
-const deckPalette = ["#e9ecf5", "#dff4f0"] as const;
+const deckPalette = [
+  `linear-gradient(144.95deg, rgba(66, 191, 165, 0.5) 0.27%, rgba(13, 79, 184, 0.5) 99.68%)`,
+
+  `linear-gradient(143.46deg, rgba(13, 79, 184, 0.5) 1.16%, rgba(66, 191, 165, 0.5) 98.91%)`,
+] as const;
+
+
+
 
 type DeckSpot = { top: string; left: string; rotate: number; zIndex: number };
 
 /** Scatter (default) + tidy grid (hover) — left-only so size/align stay consistent. */
 function getDeckLayout(index: number, total: number): { scatter: DeckSpot; hover: DeckSpot } {
-  const rotations = [-9, 3, 10, -16, 14, -6, 8];
+
 
   if (total === 7) {
     const scatter: DeckSpot[] = [
@@ -45,7 +52,7 @@ function getDeckLayout(index: number, total: number): { scatter: DeckSpot; hover
       { top: "17rem", left: "18%", rotate: -20, zIndex: 4 },
       { top: "14rem", left: "52%", rotate: 18, zIndex: 3 },
     ];
-    const hover: DeckSpot[] = [
+    const hover: DeckSpot[] = [ 
       { top: "0", left: "0", rotate: 0, zIndex: 1 },
       { top: "0", left: "calc((100% - var(--deck-card-w)) / 2)", rotate: 0, zIndex: 2 },
       { top: "0", left: "calc(100% - var(--deck-card-w))", rotate: 0, zIndex: 3 },
