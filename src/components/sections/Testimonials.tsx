@@ -19,7 +19,7 @@ type DeckSpot = { top: string; left: string; rotate: number; zIndex: number };
 
 /** Scatter (default) + tidy grid (hover) — left-only so size/align stay consistent. */
 function getDeckLayout(index: number, total: number): { scatter: DeckSpot; hover: DeckSpot } {
-
+  const rotations = [-9, 3, 10, -16, 14, -6, 8];
 
   if (total === 7) {
     const scatter: DeckSpot[] = [
