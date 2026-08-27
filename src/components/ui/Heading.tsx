@@ -12,14 +12,14 @@ export function Heading({
   children: React.ReactNode;
 }) {
   const sizes = {
-    xl: "text-4xl sm:text-5xl md:text-7xl lg:text-8xl",
-    lg: "text-3xl sm:text-4xl md:text-5xl lg:text-6xl",
+    xl: "text-5xl sm:text-6xl md:text-7xl",
+    lg: "text-5xl sm:text-6xl md:text-7xl",
     md: "text-xl sm:text-2xl md:text-3xl lg:text-4xl",
   };
   return (
     <Tag
       className={cn(
-        "font-Sora font-medium leading-[1.1] tracking-tight text-foreground",
+        "font-Sora font-medium leading-[1.02] tracking-[-0.055em] text-foreground",
         sizes[size],
         className
       )}

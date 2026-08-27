@@ -7,18 +7,18 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { testimonials } from "@/data/testimonials";
 
 const deckPalette = [
-  `linear-gradient(144.95deg, rgba(66, 191, 165, 0.5) 0.27%, rgba(13, 79, 184, 0.5) 99.68%)`,
+  `#d8dadc`,
 
-  `linear-gradient(143.46deg, rgba(13, 79, 184, 0.5) 1.16%, rgba(66, 191, 165, 0.5) 98.91%)`,
+  `#ececee`,
 ] as const;
-
-
-
 
 type DeckSpot = { top: string; left: string; rotate: number; zIndex: number };
 
 /** Scatter (default) + tidy grid (hover) — left-only so size/align stay consistent. */
-function getDeckLayout(index: number, total: number): { scatter: DeckSpot; hover: DeckSpot } {
+function getDeckLayout(
+  index: number,
+  total: number,
+): { scatter: DeckSpot; hover: DeckSpot } {
   const rotations = [-9, 3, 10, -16, 14, -6, 8];
 
   if (total === 7) {
@@ -33,13 +33,43 @@ function getDeckLayout(index: number, total: number): { scatter: DeckSpot; hover
     ];
     const hover: DeckSpot[] = [
       { top: "0", left: "0", rotate: 0, zIndex: 1 },
-      { top: "0", left: "calc((100% - var(--deck-card-w)) / 3)", rotate: 0, zIndex: 2 },
-      { top: "0", left: "calc(2 * ((100% - var(--deck-card-w)) / 3))", rotate: 0, zIndex: 3 },
-      { top: "0", left: "calc(100% - var(--deck-card-w))", rotate: 0, zIndex: 4 },
+      {
+        top: "0",
+        left: "calc((100% - var(--deck-card-w)) / 3)",
+        rotate: 0,
+        zIndex: 2,
+      },
+      {
+        top: "0",
+        left: "calc(2 * ((100% - var(--deck-card-w)) / 3))",
+        rotate: 0,
+        zIndex: 3,
+      },
+      {
+        top: "0",
+        left: "calc(100% - var(--deck-card-w))",
+        rotate: 0,
+        zIndex: 4,
+      },
       // Same gap as top row, centered under the four cards
-      { top: "22.5rem", left: "calc((100% - var(--deck-card-w)) / 6)", rotate: 0, zIndex: 5 },
-      { top: "22.5rem", left: "calc((100% - var(--deck-card-w)) / 2)", rotate: 0, zIndex: 6 },
-      { top: "22.5rem", left: "calc(5 * (100% - var(--deck-card-w)) / 6)", rotate: 0, zIndex: 7 },
+      {
+        top: "22.5rem",
+        left: "calc((100% - var(--deck-card-w)) / 6)",
+        rotate: 0,
+        zIndex: 5,
+      },
+      {
+        top: "22.5rem",
+        left: "calc((100% - var(--deck-card-w)) / 2)",
+        rotate: 0,
+        zIndex: 6,
+      },
+      {
+        top: "22.5rem",
+        left: "calc(5 * (100% - var(--deck-card-w)) / 6)",
+        rotate: 0,
+        zIndex: 7,
+      },
     ];
     return { scatter: scatter[index], hover: hover[index] };
   }
@@ -52,12 +82,32 @@ function getDeckLayout(index: number, total: number): { scatter: DeckSpot; hover
       { top: "17rem", left: "18%", rotate: -20, zIndex: 4 },
       { top: "14rem", left: "52%", rotate: 18, zIndex: 3 },
     ];
-    const hover: DeckSpot[] = [ 
+    const hover: DeckSpot[] = [
       { top: "0", left: "0", rotate: 0, zIndex: 1 },
-      { top: "0", left: "calc((100% - var(--deck-card-w)) / 2)", rotate: 0, zIndex: 2 },
-      { top: "0", left: "calc(100% - var(--deck-card-w))", rotate: 0, zIndex: 3 },
-      { top: "22.5rem", left: "calc((100% - var(--deck-card-w)) / 4)", rotate: 0, zIndex: 4 },
-      { top: "22.5rem", left: "calc(3 * (100% - var(--deck-card-w)) / 4)", rotate: 0, zIndex: 5 },
+      {
+        top: "0",
+        left: "calc((100% - var(--deck-card-w)) / 2)",
+        rotate: 0,
+        zIndex: 2,
+      },
+      {
+        top: "0",
+        left: "calc(100% - var(--deck-card-w))",
+        rotate: 0,
+        zIndex: 3,
+      },
+      {
+        top: "22.5rem",
+        left: "calc((100% - var(--deck-card-w)) / 4)",
+        rotate: 0,
+        zIndex: 4,
+      },
+      {
+        top: "22.5rem",
+        left: "calc(3 * (100% - var(--deck-card-w)) / 4)",
+        rotate: 0,
+        zIndex: 5,
+      },
     ];
     return { scatter: scatter[index], hover: hover[index] };
   }
@@ -68,8 +118,10 @@ function getDeckLayout(index: number, total: number): { scatter: DeckSpot; hover
   const step = cols === 1 ? 0 : 75 / (cols - 1);
   const hoverLeft = col * step;
   const scatterLeft = hoverLeft + (row % 2 === 0 ? 2 : 6);
-  const itemsInRow = row === Math.floor((total - 1) / cols) ? total - row * cols : cols;
-  const hoverOffset = cols === itemsInRow ? 0 : ((cols - itemsInRow) * step) / 2;
+  const itemsInRow =
+    row === Math.floor((total - 1) / cols) ? total - row * cols : cols;
+  const hoverOffset =
+    cols === itemsInRow ? 0 : ((cols - itemsInRow) * step) / 2;
 
   return {
     scatter: {
@@ -95,7 +147,7 @@ export function Testimonials() {
   return (
     <>
       {/* ============ TESTIMONIALS — START ============ */}
-      <Section id="testimonials" className="mb-[10rem]">
+      <Section id="testimonials">
         <Eyebrow>What clients say</Eyebrow>
         <Heading size="lg" className="max-w-2xl">
           Social proof.

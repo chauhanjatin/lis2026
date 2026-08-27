@@ -23,7 +23,7 @@ export const services: Service[] = [
   },
   {
     id: "Mobile-Development",
-    title: "Mobile Development",
+    title: "Mobile Design",
     description:
       "We provide significant business growth with responsive mobile development to expand beyond the global horizon with an intuitive user interface and high-quality features.",
   },

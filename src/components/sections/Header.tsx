@@ -40,7 +40,7 @@ export function Header() {
             </ul>
           </nav>
 
-          <a href="#contact" className="ml-auto hidden rounded-full bg-white px-6 py-2.5 text-sm font-medium text-[#101116] transition-transform hover:scale-[1.03] lg:inline-flex">
+          <a href="#contact" className=" hidden rounded-full bg-white px-6 py-2.5 text-sm font-medium text-[#101116] transition-transform hover:scale-[1.03] lg:inline-flex">
             Send CV
           </a>
 

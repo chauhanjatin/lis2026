@@ -10,6 +10,7 @@ import {
 import Image from "next/image";
 import { FaFigma } from "react-icons/fa";
 import { HiOutlineGlobeAlt } from "react-icons/hi2";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 const projects = [
   {
@@ -93,10 +94,16 @@ export function ProjectShowcase() {
         className="showcase-scroll"
         aria-label="Featured projects"
       >
-        <p className="mb-5 text-[0.62rem] font-bold uppercase tracking-[0.24em] text-[#242424] text-center">
-          <span className="mr-2 align-[0.08em] text-[0.5em]">●</span>
-          Case Studies
-        </p>
+        <ScrollReveal className="mx-auto mb-10 max-w-4xl text-center md:mb-14">
+          <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#202224]">
+            <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5]" /> Case Studies
+          </p>
+          <h2 className="mt-7 font-Sora text-balance text-5xl font-medium leading-[1.02] tracking-[-0.055em] text-[#151618] sm:text-6xl md:text-7xl">
+            Featured projects
+            <br />
+            we&apos;re <span className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">proud of.</span>
+          </h2>
+        </ScrollReveal>
         <div ref={viewportRef} className="showcase-sticky">
           <motion.div
             ref={trackRef}

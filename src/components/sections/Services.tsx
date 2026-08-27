@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Image from "next/image";
 import {
   AnimatePresence,
   motion,
@@ -10,6 +11,7 @@ import {
 } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
+import { ScrollReveal, fadeUp } from "@/components/ui/ScrollReveal";
 import { services } from "@/data/services";
 
 const cardThemes = [
@@ -19,30 +21,32 @@ const cardThemes = [
   { active: "bg-[#0a0a0a] text-white", idle: "bg-[#ececee] text-[#1a1a1a]" },
 ];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0 },
+const serviceImages: Record<string, string> = {
+  "ui-ux-design": "/uxdesign.png",
+  "Web-Design": "/webdesign.png",
+  "Web-Development": "/saaswebapp.png",
+  "Mobile-Development": "/mobiledevelopment.png",
+  "Business-Services": "/businessservices.png",
 };
 
-function ServiceArtwork({ index }: { index: number }) {
-  const artwork = [
-    <>
-      <span className="absolute inset-0 bg-[radial-gradient(circle_at_25%_70%,#68d4e1,transparent_23%),linear-gradient(135deg,#15243a,#6284a1)]" />
-      <span className="absolute bottom-0 left-[34%] h-[72%] w-[27%] rounded-t-[2rem] bg-[#d9f7f5]/90 shadow-[0_0_45px_#caf6ff]" />
-    </>,
-    <>
-      <span className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,#f8f6dc,transparent_18%),linear-gradient(150deg,#151927,#647796)]" />
-      <span className="absolute bottom-[18%] left-[22%] h-[38%] w-[56%] rounded-[50%] border border-white/60 bg-[#161b2d] shadow-[0_-14px_30px_rgba(255,255,255,.32)]" />
-    </>,
-    <>
-      <span className="absolute inset-0 bg-[linear-gradient(135deg,#e7be94,#92655c_50%,#2f2631)]" />
-      <span className="absolute inset-x-[27%] bottom-0 h-[78%] rounded-t-[5rem] bg-[linear-gradient(90deg,#8b5e48,#f3d2a0,#7b483c)] opacity-85" />
-    </>,
-  ][index % 3];
+function ServiceArtwork({
+  serviceId,
+  title,
+}: {
+  serviceId: string;
+  title: string;
+}) {
+  const src = serviceImages[serviceId] ?? "/uxdesign.png";
 
   return (
     <div className="relative aspect-[1.15] overflow-hidden rounded-2xl border border-white/10">
-      {artwork}
+      <Image
+        src={src}
+        alt={title}
+        fill
+        sizes="(max-width: 640px) 70vw, 20rem"
+        className="object-cover"
+      />
     </div>
   );
 }
@@ -79,19 +83,16 @@ export function Services() {
     >
       <div className="sticky top-0 flex min-h-screen items-center py-20 sm:py-28 lg:py-36">
         <Container className="grid gap-12 lg:grid-cols-[minmax(0,.9fr)_minmax(0,1.1fr)] lg:gap-20">
-          <motion.div
+          <ScrollReveal
             className="lg:sticky lg:top-28 lg:h-fit"
-            initial={reduceMotion ? false : "hidden"}
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.35 }}
+            amount={0.35}
             variants={fadeUp}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
             <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[.13em] text-[#676d70]">
-              <span className="h-2 w-2 rounded-full bg-[#73ce64]" /> Our
+              <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5]" /> Our
               services
             </p>
-            <h2 className="font-Sora mt-7 max-w-xl text-5xl font-medium leading-[.92] tracking-[-.055em] sm:text-6xl lg:text-7xl">
+            <h2 className="font-Sora mt-7 max-w-xl text-5xl font-medium leading-[1.02] tracking-[-0.055em] sm:text-6xl md:text-7xl">
               Inspiring digital{" "}
               <span className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">
                 experiences.
@@ -109,7 +110,7 @@ export function Services() {
             >
               Start your project <ArrowUpRight size={17} aria-hidden="true" />
             </motion.a>
-          </motion.div>
+          </ScrollReveal>
 
           <div className="flex flex-col gap-3 sm:gap-4">
             {services.map((service, index) => {
@@ -226,7 +227,10 @@ export function Services() {
                             }}
                             className="mt-6 max-w-xs"
                           >
-                            <ServiceArtwork index={index} />
+                            <ServiceArtwork
+                              serviceId={service.id}
+                              title={service.title}
+                            />
                           </motion.div>
 
                           <div className="mt-5 flex flex-wrap gap-2">

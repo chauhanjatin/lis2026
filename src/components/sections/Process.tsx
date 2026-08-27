@@ -1,8 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
+import { ScrollReveal, fadeUp } from "@/components/ui/ScrollReveal";
+
+const ease = [0.22, 1, 0.36, 1] as const;
 
 const steps = [
   {
@@ -36,35 +39,45 @@ const steps = [
 ];
 
 export function Process() {
+  const reduceMotion = useReducedMotion();
+
   return (
-    <section id="process" className="bg-[#0a0b0b] py-20 text-[#f4f2ed] sm:py-28 lg:py-36">
+    <section
+      id="process"
+      className="bg-[#0a0b0b] py-20 text-[#f4f2ed] sm:py-28 lg:py-36"
+    >
       <Container className="max-w-[1360px]">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.65 }}
-          className="max-w-5xl"
-        >
+        <ScrollReveal className="max-w-5xl" amount={0.4}>
           <p className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.12em] text-[#b7b8b5]">
-            <span className="h-2 w-2 rounded-full bg-[#a9f66f] shadow-[0_0_12px_#a9f66f]" />{" "}
+            <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] shadow-[0_0_12px_#a9f66f]" />{" "}
             Workflow
           </p>
-          <h2 className="font-Sora mt-7 text-balance text-6xl font-medium leading-[.88] tracking-[-0.055em] sm:text-7xl md:text-8xl lg:text-[6rem]">
+          <h2 className="font-Sora mt-7 text-balance text-5xl font-medium leading-[1.02] tracking-[-0.055em] sm:text-6xl md:text-7xl">
             Our Simple &amp; Fast
             <br />
-            <span className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">Design Process.</span>
+            <span className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">
+              Design Process.
+            </span>
           </h2>
-        </motion.div>
+        </ScrollReveal>
 
-        <ol className="process-flow mt-14 md:mt-20">
+        <motion.ol
+          className="process-flow mt-14 md:mt-20"
+          initial={reduceMotion ? false : "hidden"}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: { staggerChildren: 0.14, delayChildren: 0.08 },
+            },
+          }}
+        >
           {steps.map((step, index) => (
             <motion.li
               key={step.number}
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              variants={reduceMotion ? undefined : fadeUp}
+              transition={{ duration: 0.65, ease }}
               className="process-flow-card"
             >
               <div className="workflow-preview">
@@ -93,9 +106,7 @@ export function Process() {
                 >
                   <Image
                     src={
-                      index % 2 === 0
-                        ? "/arrow-bottom.png"
-                        : "/arrow-top.png"
+                      index % 2 === 0 ? "/arrow-bottom.png" : "/arrow-top.png"
                     }
                     alt=""
                     width={160}
@@ -106,7 +117,7 @@ export function Process() {
               )}
             </motion.li>
           ))}
-        </ol>
+        </motion.ol>
       </Container>
     </section>
   );
