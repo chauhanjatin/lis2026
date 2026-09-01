@@ -131,7 +131,6 @@ export function Hero() {
       id="hero"
       className="overflow-hidden pt-36 pb-16 md:pt-48 md:pb-24 lg:pt-52  relative"
     >
-
       <div className="hero-gradient"></div>
 
       <Container>
@@ -154,10 +153,7 @@ export function Hero() {
               <>
                 Transforming Ideas
                 <br />
-                Into{" "}
-                <span className="text-[#3391B1]">
-                  Powerful Digital
-                </span>
+                Into <span className="text-[#3391B1]">Powerful Digital</span>
                 <br />
                 Experiences
               </>

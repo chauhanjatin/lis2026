@@ -11,6 +11,7 @@ import Image from "next/image";
 import { FaFigma } from "react-icons/fa";
 import { HiOutlineGlobeAlt } from "react-icons/hi2";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { GradientText, SectionHero } from "@/components/ui/SectionHero";
 
 const projects = [
   {
@@ -94,15 +95,12 @@ export function ProjectShowcase() {
         className="showcase-scroll"
         aria-label="Featured projects"
       >
-        <ScrollReveal className="mx-auto mb-10 max-w-4xl text-center md:mb-14">
-          <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#202224]">
-            <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5]" /> Case Studies
-          </p>
-          <h2 className="mt-7 font-Sora text-balance text-5xl font-medium leading-[1.02] tracking-[-0.055em] text-[#151618] sm:text-6xl md:text-7xl">
+        <ScrollReveal className="mb-10 md:mb-14">
+          <SectionHero eyebrow="Case Studies" as="h2">
             Featured projects
             <br />
-            we&apos;re <span className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">proud of.</span>
-          </h2>
+            we&apos;re <GradientText>proud of.</GradientText>
+          </SectionHero>
         </ScrollReveal>
         <div ref={viewportRef} className="showcase-sticky">
           <motion.div

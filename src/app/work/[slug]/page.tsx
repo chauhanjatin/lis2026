@@ -2,8 +2,7 @@ import { notFound } from "next/navigation";
 import { Header } from "@/components/sections/Header";
 import { Footer } from "@/components/sections/Footer";
 import { Section } from "@/components/ui/Section";
-import { Heading } from "@/components/ui/Heading";
-import { Eyebrow } from "@/components/ui/Eyebrow";
+import { SectionHero } from "@/components/ui/SectionHero";
 import { Image } from "@/components/ui/Image";
 import { projects } from "@/data/projects";
 
@@ -27,10 +26,9 @@ export default async function CaseStudyPage({
       <main id="main">
         {/* ============ CASE-STUDY — START ============ */}
         <Section id="case-study" divider={false} className="pt-32 md:pt-40">
-          <Eyebrow>{project.category}</Eyebrow>
-          <Heading as="h1" size="xl" className="max-w-3xl">
+          <SectionHero eyebrow={project.category} align="left">
             {project.title}
-          </Heading>
+          </SectionHero>
           <p className="mt-6 max-w-2xl text-lg text-muted leading-relaxed">
             {project.summary}
           </p>
