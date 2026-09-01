@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowDown, Sparkles } from "lucide-react";
 import { useInView, useReducedMotion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
+import { cn } from "@/components/lib/cn";
 import {
   ScrollReveal,
   ScrollStagger,
@@ -25,7 +26,8 @@ const stats = [
     label: "Expert Team",
     value: 15,
     suffix: "+",
-    description: "Designers, researchers, and engineers working as one adaptive studio team.",
+    description:
+      "Designers, researchers, and engineers working as one adaptive studio team.",
     featured: true,
   },
   {
@@ -128,31 +130,32 @@ function StatCard({
   );
 }
 
-export function About() {
+export function About({ hideHeader = false }: { hideHeader?: boolean }) {
   return (
     <section id="company" className="bg-white py-20 sm:py-24 lg:py-28">
       <Container>
-        <ScrollReveal className="mx-auto max-w-5xl text-center" amount={0.35}>
-          <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#202224]">
-            <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5]" />
-            About us
-          </p>
+        {!hideHeader && (
+          <ScrollReveal className="mx-auto max-w-5xl text-center" amount={0.35}>
+            <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#202224]">
+              <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5]" />
+              About us
+            </p>
 
-          <h2 className="font-Sora text-balance text-5xl font-medium leading-[1.02] tracking-[-0.055em] text-[#101010] sm:text-6xl md:text-7xl mt-7">
-            <span className="block">A global consulting partner</span>
-            <span className="block">
+            <h2 className="font-Sora text-balance text-5xl font-medium leading-[1.02] tracking-[-0.055em] text-[#101010] sm:text-6xl md:text-7xl mt-7">
+              Smarter consulting for
+              <br />
               <span className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">
-                dedicated to building
-              </span>{" "}
-              <AccentIcon type="arrow" /> <span>smarter</span>
-            </span>
-            <span className="block">
-              and <AccentIcon type="sparkle" /> more adaptive
-            </span>
-          </h2>
-        </ScrollReveal>
+                adaptive </span> businesses.
+            </h2>
+          </ScrollReveal>
+        )}
 
-        <ScrollStagger className="mt-14 grid grid-cols-1 gap-4 sm:mt-16 sm:grid-cols-2 lg:mt-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.7fr)_minmax(0,1fr)] lg:gap-5">
+        <ScrollStagger
+          className={cn(
+            "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.7fr)_minmax(0,1fr)] lg:gap-5",
+            hideHeader ? "mt-0" : "mt-14 sm:mt-16 lg:mt-20",
+          )}
+        >
           {stats.map((stat) => (
             <StatCard key={stat.label} {...stat} />
           ))}
