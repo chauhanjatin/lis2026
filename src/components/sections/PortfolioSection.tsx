@@ -37,8 +37,6 @@ export function PortfolioSection() {
     <section className="portfolio-section pb-16 md:pb-24">
       <Container className="relative z-[1]">
         <div className="flex lg:flex-row lg:items-start lg:justify-center lg:gap-16 justify-center items-center mt-20">
-         
-
           <motion.div
             initial={reduceMotion ? false : { opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
@@ -49,7 +47,6 @@ export function PortfolioSection() {
           >
             {portfolioFilters.map((filter) => {
               const isActive = activeFilter === filter.id;
-
               return (
                 <button
                   key={filter.id}
@@ -62,8 +59,7 @@ export function PortfolioSection() {
                     isActive
                       ? "text-[#151618]"
                       : "text-[#8f9194] hover:text-[#606468]",
-                  )}
-                >
+                  )}>
                   {filter.label}
                   {isActive && (
                     <motion.span
