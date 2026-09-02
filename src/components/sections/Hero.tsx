@@ -35,7 +35,7 @@ const columns = [
     items: [...projectImages].reverse(),
     direction: "up" as const,
     duration: "46s",
-  },
+  },    
 ];
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -49,7 +49,7 @@ function BlurLetters({
   className?: string;
   startIndex?: number;
 }) {
-  return (
+  return (  
     <>
       {text.split("").map((char, index) => (
         <motion.span
