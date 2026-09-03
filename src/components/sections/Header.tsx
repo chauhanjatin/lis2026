@@ -15,6 +15,7 @@ import {
   Smartphone,
   X,
 } from "lucide-react";
+import { useLenis } from "lenis/react";
 import { Container } from "@/components/ui/Container";
 import { cn } from "@/components/lib/cn";
 import {
@@ -132,8 +133,7 @@ function NavDropdown({
         aria-expanded={isOpen}
         aria-haspopup="true"
         onClick={() => (isOpen ? onClose() : onOpen())}
-        className="inline-flex items-center gap-1 text-sm font-medium text-white transition-opacity hover:opacity-65"
-      >
+        className="inline-flex items-center gap-1 text-sm font-medium text-white transition-opacity hover:opacity-65">
         {label}
         <ChevronDown
           size={13}
@@ -142,8 +142,7 @@ function NavDropdown({
           className={cn(
             "transition-transform duration-200",
             isOpen && "rotate-180",
-          )}
-        />
+          )}/>
       </button>
       {isOpen && menu === "company" && <CompanyDropdown onClose={onClose} />}
       {isOpen && menu === "services" && <ServicesDropdown onClose={onClose} />}
@@ -155,7 +154,12 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<OpenMenu>(null);
   const [mobileSubmenu, setMobileSubmenu] = useState<OpenMenu>(null);
+  const [scrolled, setScrolled] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
+
+  useLenis(({ scroll }) => {
+    setScrolled(scroll > 8);
+  });
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -182,7 +186,12 @@ export function Header() {
   return (
     <header ref={headerRef} className="fixed inset-x-0 top-4 z-40">
       <Container className="max-w-[1120px] px-4 sm:px-6">
-        <div className="mx-auto flex h-14 w-[1000px] items-center rounded-full bg-[#0000009c] px-3  backdrop-blur-sm sm:px-4">
+        <div
+          className={cn(
+            "mx-auto flex h-14 w-[1000px] items-center rounded-full px-3 backdrop-blur-sm transition-colors duration-300 sm:px-4",
+            scrolled ? "bg-[#0000006e]" : "bg-[#0000009c]",
+          )}
+        >
           <Link
             href="/"
             className="flex shrink-0 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#090a0c]"

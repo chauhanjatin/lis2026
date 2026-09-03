@@ -102,7 +102,7 @@ function MarqueeColumn({
             />
           </article>
         ))}
-      </div>
+      </div>  
     </div>
   );
 }
