@@ -90,7 +90,8 @@ export function ContactSection() {
 
             <div
               className="mt-10 flex items-center gap-3"
-              aria-label="Social links">
+              aria-label="Social links"
+            >
               {socialLinks.map(({ label, icon: Icon, href }) => (
                 <a
                   key={label}
@@ -102,7 +103,6 @@ export function ContactSection() {
                 </a>
               ))}
             </div>
-
           </div>
 
           <div className="rounded-[1.75rem] bg-white p-6 shadow-[0_16px_48px_rgba(12,14,18,0.06)] sm:p-8 lg:p-10">
@@ -180,9 +180,8 @@ export function ContactSection() {
               </button>
             </form>
           </div>
-          
         </div>
       </Container>
     </section>
   );
-} 
+}

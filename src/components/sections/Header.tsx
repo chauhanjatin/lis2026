@@ -34,7 +34,7 @@ function DropdownPointer() {
   return (
     <span
       aria-hidden="true"
-      className="absolute -top-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 bg-white"
+      className="absolute -top-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 bg-[#0000006e]"
     />
   );
 }
@@ -74,11 +74,11 @@ function DropdownItem({
 function CompanyDropdown({ onClose }: { onClose: () => void }) {
   return (
     <div className="absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3">
-      <div className="relative rounded-[1.25rem] bg-white px-4 py-4 shadow-[0_20px_50px_rgba(12,14,18,0.14)]">
+      <div className="relative rounded-[1.25rem] backdrop-blur transition-colors duration-300 sm:px-4 bg-[#0000006e] px-4 py-4 shadow-[0_20px_50px_rgba(12,14,18,0.14)]">
         <DropdownPointer />
         <div className="flex items-center gap-2">
           {companyMenuItems.map((item, index) => (
-            <div key={item.href} onClick={onClose}>
+            <div key={item.href} onClick={onClose} className="text-white">
               <DropdownItem item={item} icon={companyIcons[index]!} />
             </div>
           ))}
@@ -91,11 +91,11 @@ function CompanyDropdown({ onClose }: { onClose: () => void }) {
 function ServicesDropdown({ onClose }: { onClose: () => void }) {
   return (
     <div className="absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3">
-      <div className="relative w-[22rem] rounded-[1.25rem] bg-white p-4 shadow-[0_20px_50px_rgba(12,14,18,0.14)] sm:w-[28rem]">
+      <div className="relative w-[22rem] rounded-[1.25rem] backdrop-blur transition-colors duration-300 sm:px-4 bg-[#0000006e] p-4 shadow-[0_20px_50px_rgba(12,14,18,0.14)] sm:w-[28rem]">
         <DropdownPointer />
         <div className="grid grid-cols-2 gap-1">
           {servicesMenuItems.map((item, index) => (
-            <div key={item.href} onClick={onClose}>
+            <div key={item.href} onClick={onClose} className="text-white">
               <DropdownItem item={item} icon={serviceIcons[index]!} />
             </div>
           ))}
@@ -190,12 +190,10 @@ export function Header() {
           className={cn(
             "mx-auto flex h-14 w-[1000px] items-center rounded-full px-3 backdrop-blur-sm transition-colors duration-300 sm:px-4",
             scrolled ? "bg-[#0000006e]" : "bg-[#0000009c]",
-          )}
-        >
+          )}>
           <Link
             href="/"
-            className="flex shrink-0 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#090a0c]"
-          >
+            className="flex shrink-0 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#090a0c]">
             <Image
               src="/lis-logo.svg"
               alt="LIS"
@@ -245,7 +243,7 @@ export function Header() {
                 ),
               )}
             </ul>
-          </nav>
+          </nav>  
 
           <Link
             href="/career"
@@ -379,6 +377,7 @@ export function Header() {
             </li>
           </ul>
         </nav>
+        
       </Container>
     </header>
   );

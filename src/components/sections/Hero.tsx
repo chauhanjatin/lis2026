@@ -35,7 +35,7 @@ const columns = [
     items: [...projectImages].reverse(),
     direction: "up" as const,
     duration: "46s",
-  },    
+  },
 ];
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -85,8 +85,7 @@ function MarqueeColumn({
 
   return (
     <div className="hero-marquee-col">
-      <div
-        className={`hero-marquee-track hero-marquee-track--${direction}`}
+      <div className={`hero-marquee-track hero-marquee-track--${direction}`}
         style={{ animationDuration: duration }}
       >
         {loop.map((item, index) => (
@@ -182,6 +181,7 @@ export function Hero() {
             design, scalable software solutions, and strategic digital
             innovation tailored for the future.
           </motion.p>
+          
         </motion.div>
 
         <ScrollReveal
@@ -208,6 +208,7 @@ export function Hero() {
             </div>
           </motion.div>
         </ScrollReveal>
+
       </Container>
     </section>
   );

@@ -13,14 +13,20 @@ export function SitePage({
   children: React.ReactNode;
   hideHero?: boolean;
 }) {
+  const isAboutPage =
+    slug === "company" || slug === "about" || slug === "about-us";
+  const shouldHideHero = hideHero || isAboutPage;
+
   return (
     <>
       <Header />
       <main id="main" className="bg-background">
-        {!hideHero && (
-          <Container className="pt-28 md:pt-36">
-            <PageHeroTitle slug={slug} />
-          </Container>
+        {!shouldHideHero && (
+          <div className={isAboutPage ? "bg-white" : undefined}>
+            <Container className="pt-28 md:pt-36">
+              <PageHeroTitle slug={slug} />
+            </Container>
+          </div>
         )}
         {children}
       </main>

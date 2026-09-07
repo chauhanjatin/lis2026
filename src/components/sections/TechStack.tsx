@@ -100,7 +100,7 @@ export function TechStack() {
             }}
             className="integration-featured"
           >
-            <img
+            <Image
               src="/technologies-logo.svg"
               alt=""
               width={76}

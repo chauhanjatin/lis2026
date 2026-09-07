@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ArrowDown, Sparkles } from "lucide-react";
 import { useInView, useReducedMotion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { cn } from "@/components/lib/cn";
@@ -21,7 +20,6 @@ const stats = [
       "Products, platforms, and brand systems shipped from discovery through launch.",
     featured: false,
   },
-
   {
     label: "Expert Team",
     value: 15,
@@ -40,28 +38,11 @@ const stats = [
   },
 ] as const;
 
-function AccentIcon({ type }: { type: "arrow" | "sparkle" }) {
-  const Icon = type === "arrow" ? ArrowDown : Sparkles;
-  const color = type === "arrow" ? "bg-[#dce5d7]" : "bg-[]";
-
-  return (
-    <span
-      aria-hidden="true"
-      className={`inline-grid size-[0.9em] translate-y-[-0.03em] place-items-center rounded-full ${color} text-[#101010]`}
-    >
-      <Icon className="size-[0.48em]" strokeWidth={3} />
-    </span>
-  );
-}
-
 function useCountUp(target: number, active: boolean, duration = 1400) {
   const [value, setValue] = useState(0);
 
   useEffect(() => {
-    if (!active) {
-      setValue(0);
-      return;
-    }
+    if (!active) return;
 
     let frame = 0;
     const start = performance.now();
@@ -77,7 +58,7 @@ function useCountUp(target: number, active: boolean, duration = 1400) {
     return () => cancelAnimationFrame(frame);
   }, [active, duration, target]);
 
-  return value;
+  return active ? value : 0;
 }
 
 function StatCard({
@@ -103,11 +84,12 @@ function StatCard({
     <ScrollItem variants={fadeUp}>
       <article
         ref={ref}
-        className={`relative overflow-hidden rounded-[1.35rem] p-7 shadow-[0_10px_28px_rgba(24,30,36,0.07)] sm:p-8 ${
+        className={cn(
+          "relative overflow-hidden rounded-[1.35rem] p-7 shadow-[0_10px_28px_rgba(24,30,36,0.07)] sm:p-8",
           featured
             ? "bg-gradient-to-r from-[#42BFA5] to-[#0D4FB8] lg:min-h-[15.5rem]"
-            : "bg-white"
-        }`}
+            : "bg-white",
+        )}
       >
         <div className="relative z-[1] flex h-full min-h-[11.5rem] flex-col">
           <h3 className="text-[0.95rem] font-semibold tracking-[-0.02em] text-[#111111]">
@@ -118,9 +100,10 @@ function StatCard({
             <span>{suffix}</span>
           </p>
           <p
-            className={`mt-auto max-w-[22rem] pt-8 text-[0.92rem] leading-relaxed ${
-              featured ? "text-[#1a1a1a]" : "text-[#6f7378]"
-            }`}
+            className={cn(
+              "mt-auto max-w-[22rem] pt-8 text-[0.92rem] leading-relaxed",
+              featured ? "text-[#1a1a1a]" : "text-[#6f7378]",
+            )}
           >
             {description}
           </p>
@@ -132,8 +115,13 @@ function StatCard({
 
 export function About({ hideHeader = false }: { hideHeader?: boolean }) {
   return (
-    <section id="company" className="bg-white py-20 sm:py-24 lg:py-28">
-      <Container>
+    <section
+      id="company"
+      className={cn(
+        "bg-white",
+        hideHeader ? "pb-20 pt-14 sm:pb-24 sm:pt-16 lg:pb-28 lg:pt-20" : "py-20 sm:py-24 lg:py-28",
+      )}
+    >      <Container>
         {!hideHeader && (
           <ScrollReveal className="mx-auto max-w-5xl text-center" amount={0.35}>
             <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#202224]">
@@ -141,19 +129,21 @@ export function About({ hideHeader = false }: { hideHeader?: boolean }) {
               About us
             </p>
 
-            <h2 className="font-Sora text-balance text-5xl font-medium leading-[1.02] tracking-[-0.055em] text-[#101010] sm:text-6xl md:text-7xl mt-7">
-              Smarter consulting for
+            <h2 className="mt-7 font-Sora text-balance text-5xl font-medium leading-[1.02] tracking-[-0.055em] text-[#101010] sm:text-6xl md:text-7xl">
+              Your partner for
               <br />
+              smarter{" "}
               <span className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">
-                adaptive </span> businesses.
+                growth.
+              </span>
             </h2>
           </ScrollReveal>
         )}
 
         <ScrollStagger
           className={cn(
-            "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.7fr)_minmax(0,1fr)] lg:gap-5",
-            hideHeader ? "mt-0" : "mt-14 sm:mt-16 lg:mt-20",
+            "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5",
+            hideHeader ? "mt-10 sm:mt-12 lg:mt-14" : "mt-14 sm:mt-16 lg:mt-20",
           )}
         >
           {stats.map((stat) => (

@@ -4,12 +4,13 @@ import type { PageSlug } from "@/data/navigation";
 export function PageHeroTitle({ slug }: { slug: PageSlug }) {
   switch (slug) {
     case "company":
+    case "about":
+    case "about-us":
       return (
         <SectionHero eyebrow="About us">
-          A global consulting partner
-          <br />
-          <GradientText>dedicated to building</GradientText> smarter and more
-          adaptive businesses.
+          Your partner for
+          <br /> smarter
+          <GradientText> growth.</GradientText>
         </SectionHero>
       );
     case "services":

@@ -1,4 +1,11 @@
-import { About } from "@/components/sections/About";
+import {
+  AboutHero,
+  AboutCoreValues,
+  AboutStatsSection,
+  AboutStorySection,
+  AboutFAQSection,
+  AboutCTASection,
+} from "@/components/sections/about-page";
 import { Services } from "@/components/sections/Services";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { PortfolioSection } from "@/components/sections/PortfolioSection";
@@ -29,7 +36,18 @@ const openings = [
 export function PageContent({ slug }: { slug: PageSlug }) {
   switch (slug) {
     case "company":
-      return <About hideHeader />;
+    case "about":
+    case "about-us":
+      return (
+        <>
+          <AboutHero />
+          <AboutStatsSection />
+          <AboutCoreValues />
+          <AboutStorySection />
+          {/* <AboutFAQSection />
+          <AboutCTASection /> */}
+        </>
+      );
     case "services":
       return <Services hideHeader />;
     case "career":

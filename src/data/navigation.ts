@@ -61,10 +61,19 @@ export const navLinks: NavLink[] = [
   { href: "/contact", label: "Contact Us" },
 ];
 
-export type PageSlug = "company" | "services" | "career" | "contact" | "projects";
+export type PageSlug =
+  | "company"
+  | "about"
+  | "about-us"
+  | "services"
+  | "career"
+  | "contact"
+  | "projects";
 
 export const pageSlugs: PageSlug[] = [
   "company",
+  "about",
+  "about-us",
   "services",
   "career",
   "contact",
@@ -77,6 +86,18 @@ export const pageMeta: Record<
 > = {
   company: {
     title: "Company — Design Studio",
+    description:
+      "Learn about our global consulting studio dedicated to building smarter, more adaptive digital products.",
+    eyebrow: "About us",
+  },
+  about: {
+    title: "About Us — Design Studio",
+    description:
+      "Learn about our global consulting studio dedicated to building smarter, more adaptive digital products.",
+    eyebrow: "About us",
+  },
+  "about-us": {
+    title: "About Us — Design Studio",
     description:
       "Learn about our global consulting studio dedicated to building smarter, more adaptive digital products.",
     eyebrow: "About us",
