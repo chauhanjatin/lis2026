@@ -144,10 +144,8 @@ export function Hero() {
             },
           }}
         >
-          <h1
-            aria-label="Transforming Ideas Into Powerful Digital Experiences"
-            className="font-Sora text-balance text-5xl font-bold leading-[1.30] tracking-[-0.025em] text-foreground sm:text-6xl md:text-7xl"
-          >
+          <h1 aria-label="Transforming Ideas Into Powerful Digital Experiences"
+            className="font-Sora text-balance text-5xl font-bold leading-[1.30] tracking-[-0.025em] text-foreground sm:text-6xl md:text-7xl">
             {reduceMotion ? (
               <>
                 Transforming Ideas
@@ -173,7 +171,7 @@ export function Hero() {
           </h1>
 
           <motion.p
-            variants={fadeUp}
+              variants={fadeUp}
             transition={{ duration: 0.75, ease }}
             className="mx-auto mt-8 max-w-3xl text-pretty text-base leading-relaxed text-muted md:text-lg"
           >
@@ -188,8 +186,7 @@ export function Hero() {
           className="mt-16 md:mt-24"
           delay={0.2}
           duration={0.9}
-          amount={0.15}
-        >
+          amount={0.15}>
           <motion.div
             ref={marqueeRef}
             className="hero-marquee"

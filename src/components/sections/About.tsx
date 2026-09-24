@@ -10,6 +10,7 @@ import {
   ScrollItem,
   fadeUp,
 } from "@/components/ui/ScrollReveal";
+import { line } from "framer-motion/client";
 
 const stats = [
   {
