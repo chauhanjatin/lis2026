@@ -42,6 +42,7 @@ function DropdownPointer() {
 function DropdownItem({
   item,
   icon: Icon,
+  onClick,
 }: {
   item: NavDropdownItem;
   icon: React.ComponentType<{
@@ -49,11 +50,13 @@ function DropdownItem({
     strokeWidth?: number;
     className?: string;
   }>;
+  onClick?: () => void;
 }) {
   return (
     <Link
       href={item.href}
-      className="group flex min-w-[9.5rem] items-center gap-3 rounded-xl p-2 transition-colors hover:bg-[#f7f7f8]"
+      onClick={onClick}
+      className="group flex min-w-[9.5rem] items-center gap-3 rounded-xl p-2 transition-colors hover:bg-white/10"
     >
       <span
         className={cn(
@@ -64,7 +67,7 @@ function DropdownItem({
       >
         <Icon size={18} strokeWidth={1.8} aria-hidden="true" />
       </span>
-      <span className="text-sm font-medium tracking-[-0.01em] text-[#151618]">
+      <span className="text-sm font-medium tracking-[-0.01em] text-white">
         {item.label}
       </span>
     </Link>
@@ -74,13 +77,16 @@ function DropdownItem({
 function CompanyDropdown({ onClose }: { onClose: () => void }) {
   return (
     <div className="absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3">
-      <div className="relative rounded-[1.25rem] backdrop-blur transition-colors duration-300 sm:px-4 bg-[#0000006e] px-4 py-4 shadow-[0_20px_50px_rgba(12,14,18,0.14)]">
+      <div className="relative rounded-[1.25rem] backdrop-blur-md transition-colors duration-300 bg-[#090a0c]/95 border border-white/15 px-3 sm:px-4 py-3 sm:py-4 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
         <DropdownPointer />
         <div className="flex items-center gap-2">
           {companyMenuItems.map((item, index) => (
-            <div key={item.href} onClick={onClose} className="text-white">
-              <DropdownItem item={item} icon={companyIcons[index]!} />
-            </div>
+            <DropdownItem
+              key={item.href}
+              item={item}
+              icon={companyIcons[index]!}
+              onClick={onClose}
+            />
           ))}
         </div>
       </div>
@@ -91,19 +97,22 @@ function CompanyDropdown({ onClose }: { onClose: () => void }) {
 function ServicesDropdown({ onClose }: { onClose: () => void }) {
   return (
     <div className="absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3">
-      <div className="relative w-[22rem] rounded-[1.25rem] backdrop-blur transition-colors duration-300 sm:px-4 bg-[#0000006e] p-4 shadow-[0_20px_50px_rgba(12,14,18,0.14)] sm:w-[28rem]">
+      <div className="relative w-[22rem] rounded-[1.25rem] backdrop-blur-md transition-colors duration-300 bg-[#090a0c]/95 border border-white/15 p-4 shadow-[0_20px_50px_rgba(0,0,0,0.5)] sm:w-[28rem]">
         <DropdownPointer />
         <div className="grid grid-cols-2 gap-1">
           {servicesMenuItems.map((item, index) => (
-            <div key={item.href} onClick={onClose} className="text-white">
-              <DropdownItem item={item} icon={serviceIcons[index]!} />
-            </div>
+            <DropdownItem
+              key={item.href}
+              item={item}
+              icon={serviceIcons[index]!}
+              onClick={onClose}
+            />
           ))}
         </div>
         <Link
           href="/services"
           onClick={onClose}
-          className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl bg-[#f1f2f4] px-4 py-3 text-sm font-semibold text-[#151618] transition-colors hover:bg-[#e8e9eb]"
+          className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl bg-white/10 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/20"
         >
           View all services
           <ArrowRight size={15} strokeWidth={2} aria-hidden="true" />

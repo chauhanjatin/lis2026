@@ -82,28 +82,50 @@ export function AboutHero({
           </motion.div>
         </motion.div>
 
-        {/* Partner Logos Row */}
+        {/* Partner Logos Marquee */}
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75, delay: 0.35, ease }}
           className="mt-16 sm:mt-20 md:mt-24"
         >
-          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-7 sm:gap-x-16 md:gap-x-20 lg:gap-x-14">
-            {partners.map((partner) => (
-              <div
-                key={partner.src}
-                className="opacity-80 transition-all duration-300 hover:opacity-100 hover:scale-105"
-              >
-                <Image
-                  src={partner.src}
-                  alt={partner.alt}
-                  width={partner.width}
-                  height={partner.height}
-                  className="h-7 w-auto object-contain sm:h-8"
-                />
+          <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+            <div className="animate-logo-marquee flex w-max items-center py-2">
+              <div className="flex shrink-0 items-center justify-around gap-10 pr-10 sm:gap-14 sm:pr-14 md:gap-16 md:pr-16 lg:gap-20 lg:pr-20">
+                {partners.map((partner, index) => (
+                  <div
+                    key={`partner-a-${partner.src}-${index}`}
+                    className="flex shrink-0 items-center justify-center opacity-75 transition-all duration-300 hover:opacity-100 hover:scale-105"
+                  >
+                    <Image
+                      src={partner.src}
+                      alt={partner.alt}
+                      width={partner.width}
+                      height={partner.height}
+                      className="w-[200px] h-auto object-contain"
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
+              <div
+                className="flex shrink-0 items-center justify-around gap-10 pr-10 sm:gap-14 sm:pr-14 md:gap-16 md:pr-16 lg:gap-20 lg:pr-20"
+                aria-hidden="true"
+              >
+                {partners.map((partner, index) => (
+                  <div
+                    key={`partner-b-${partner.src}-${index}`}
+                    className="flex shrink-0 items-center justify-center opacity-75 transition-all duration-300 hover:opacity-100 hover:scale-105">
+                    <Image
+                      src={partner.src}
+                      alt={partner.alt}
+                      width={partner.width}
+                      height={partner.height}
+                      className="w-[200px] h-auto object-contain"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </motion.div>
       </Container>

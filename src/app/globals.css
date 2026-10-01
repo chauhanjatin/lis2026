@@ -23,6 +23,7 @@
   opacity: 0.75;
   transform: rotate(10deg);
   animation: cta-glow-drift 9s ease-in-out infinite alternate;
+
 }
 .cta-panel-glow-left {
   left: -14%;
@@ -1032,4 +1033,30 @@ body {
 .portfolio-card {
   position: relative;
   z-index: 1;
+}
+
+@keyframes logo-marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-logo-marquee {
+  display: flex;
+  width: max-content;
+  animation: logo-marquee 35s linear infinite;
+  will-change: transform;
+}
+
+.animate-logo-marquee:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-logo-marquee {
+    animation: none;
+  }
 }

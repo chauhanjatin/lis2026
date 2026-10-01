@@ -1,13 +1,34 @@
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { Header } from "@/components/sections/Header";
 import { Footer } from "@/components/sections/Footer";
-import { Section } from "@/components/ui/Section";
-import { SectionHero } from "@/components/ui/SectionHero";
-import { Image } from "@/components/ui/Image";
+import { CaseStudyView } from "@/components/case-study/CaseStudyView";
 import { projects } from "@/data/projects";
+import { caseStudies, defaultCaseStudy } from "@/data/caseStudies";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
+  const study = caseStudies[slug] || defaultCaseStudy;
+
+  if (!project && !caseStudies[slug]) {
+    return {
+      title: "Case Study — Design Studio",
+    };
+  }
+
+  return {
+    title: `${study.title} — Case Study`,
+    description: study.projectDescription.lead,
+  };
 }
 
 export default async function CaseStudyPage({
@@ -18,33 +39,25 @@ export default async function CaseStudyPage({
   const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
 
-  if (!project) notFound();
+  if (!project && !caseStudies[slug]) {
+    notFound();
+  }
+
+  const caseStudyData = caseStudies[slug] || {
+    ...defaultCaseStudy,
+    slug,
+    title: project ? project.title : defaultCaseStudy.title,
+    eyebrow: project ? project.category.toUpperCase() : defaultCaseStudy.eyebrow,
+  };
 
   return (
     <>
       <Header />
       <main id="main">
-        {/* ============ CASE-STUDY — START ============ */}
-        <Section id="case-study" divider={false} className="pt-32 md:pt-40">
-          <SectionHero eyebrow={project.category} align="left">
-            {project.title}
-          </SectionHero>
-          <p className="mt-6 max-w-2xl text-lg text-muted leading-relaxed">
-            {project.summary}
-          </p>
-          <div className="mt-10 overflow-hidden bg-surface border border-border">
-            <Image
-              src={project.image}
-              alt={project.alt}
-              width={1200}
-              height={800}
-              className="w-full h-auto object-cover"
-            />
-          </div>
-        </Section>
-        {/* ============ CASE-STUDY — END ============ */}
+        <CaseStudyView data={caseStudyData} />
       </main>
       <Footer />
     </>
   );
 }
+

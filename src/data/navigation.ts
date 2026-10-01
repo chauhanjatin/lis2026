@@ -19,7 +19,7 @@ export const companyMenuItems: NavDropdownItem[] = [
     iconColor: "text-[#5b4d9a]",
   },
   {
-    href: "/projects",
+    href: "/work/ai-scheduling",
     label: "Case Studies",
     iconBg: "bg-[#e3f0fa]",
     iconColor: "text-[#2563a8]",

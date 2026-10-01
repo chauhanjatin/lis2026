@@ -21,6 +21,18 @@ export const portfolioFilters: { id: PortfolioFilter; label: string }[] = [
 
 export const projects: Project[] = [
   {
+    slug: "ai-scheduling",
+    title: "AI-Powered Scheduling",
+    category: "UI/UX Design",
+    summary:
+      "World's first AI-powered scheduling app optimizing daily schedules, prioritizing tasks, and integrating seamlessly with Google Calendar and Outlook.",
+    image: "/project2.png",
+    alt: "World's first AI-powered scheduling app interface",
+    tags: ["ui-ux", "web-design"],
+    figmaUrl: "https://www.figma.com/design/ai-scheduling",
+    websiteUrl: "https://wifter.example.com",
+  },
+  {
     slug: "fintech-dashboard",
     title: "Lumen Collective",
     category: "Web Design",
