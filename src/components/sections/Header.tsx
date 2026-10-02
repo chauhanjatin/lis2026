@@ -193,12 +193,12 @@ export function Header() {
   }, []);
 
   return (
-    <header ref={headerRef} className="fixed inset-x-0 top-4 z-40">
-      <Container className="max-w-[1120px] px-4 sm:px-6">
+    <header ref={headerRef} className="fixed inset-x-0 top-3 sm:top-4 z-40">
+      <Container className="max-w-[1120px] px-3 sm:px-6">
         <div
           className={cn(
-            "mx-auto flex h-14 w-[1000px] items-center rounded-full px-3 backdrop-blur-sm transition-colors duration-300 sm:px-4",
-            scrolled ? "bg-[#0000006e]" : "bg-[#0000009c]",
+            "mx-auto flex h-14 w-full max-w-[1000px] items-center justify-between rounded-full px-3.5 backdrop-blur-md transition-colors duration-300 sm:px-5",
+            scrolled ? "bg-[#00000080]" : "bg-[#0000009c]",
           )}>
           <Link
             href="/"
@@ -209,12 +209,12 @@ export function Header() {
               width={151}
               height={51}
               priority
-              className="h-auto w-[4.4rem] brightness-0 invert"
+              className="h-auto w-[4.2rem] sm:w-[4.4rem] brightness-0 invert"
             />
           </Link>
 
           <nav aria-label="Primary" className="mx-auto hidden lg:block">
-            <ul className="flex items-center gap-7 xl:gap-9">
+            <ul className="flex items-center gap-6 xl:gap-8">
               <li>
                 <Link
                   href="/"
@@ -256,22 +256,22 @@ export function Header() {
 
           <Link
             href="/career"
-            className="hidden rounded-full bg-white px-6 py-2.5 text-sm font-medium text-[#101116] transition-transform hover:scale-[1.03] lg:inline-flex">
+            className="hidden rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#101116] transition-transform hover:scale-[1.03] active:scale-[0.98] lg:inline-flex">
             Send CV
           </Link>
 
           <button
             type="button"
-            className="ml-auto inline-flex h-10 w-10 items-center justify-center rounded-full text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white lg:hidden"
+            className="ml-auto inline-flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full text-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? "Close menu" : "Open menu"}
             onClick={() => setOpen((value) => !value)}
           >
             {open ? (
-              <X size={21} aria-hidden="true" />
+              <X size={20} aria-hidden="true" />
             ) : (
-              <Menu size={21} aria-hidden="true" />
+              <Menu size={20} aria-hidden="true" />
             )}
           </button>
         </div>
@@ -280,8 +280,8 @@ export function Header() {
           id="mobile-nav"
           aria-label="Primary"
           className={cn(
-            "mt-2 overflow-hidden rounded-[1.4rem] bg-[#090a0c] text-white transition-[max-height,opacity] duration-300 lg:hidden",
-            open ? "max-h-[40rem] opacity-100" : "max-h-0 opacity-0",
+            "mt-2 overflow-hidden rounded-[1.4rem] bg-[#090a0c]/95 backdrop-blur-xl border border-white/10 text-white transition-[max-height,opacity] duration-300 lg:hidden shadow-2xl",
+            open ? "max-h-[85vh] opacity-100 overflow-y-auto" : "max-h-0 opacity-0 pointer-events-none",
           )}
         >
           <ul className="px-6 py-5">

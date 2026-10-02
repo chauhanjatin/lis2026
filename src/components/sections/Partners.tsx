@@ -22,13 +22,15 @@ export function Partners() {
           <ScrollStagger className="flex flex-wrap items-center justify-center gap-x-12 gap-y-8 sm:gap-x-16 md:gap-x-20 lg:gap-x-24">
             {partners.map((partner) => (
               <ScrollItem key={partner.src} variants={fadeUp}>
-                <Image
-                  src={partner.src}
-                  alt={partner.alt}
-                  width={partner.width}
-                  height={partner.height}
-                  className="h-8 w-auto opacity-90 sm:h-9"
-                />
+                <div className="flex items-center justify-center grayscale opacity-60 transition-all duration-300 hover:grayscale-0 hover:opacity-100 hover:scale-105">
+                  <Image
+                    src={partner.src}
+                    alt={partner.alt}
+                    width={partner.width}
+                    height={partner.height}
+                    className="h-8 w-auto transition-all duration-300 sm:h-9"
+                  />
+                </div>
               </ScrollItem>
             ))}
           </ScrollStagger>

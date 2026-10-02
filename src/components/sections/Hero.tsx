@@ -145,7 +145,7 @@ export function Hero() {
           }}
         >
           <h1 aria-label="Transforming Ideas Into Powerful Digital Experiences"
-            className="font-Sora text-balance text-5xl font-bold leading-[1.30] tracking-[-0.025em] text-foreground sm:text-6xl md:text-7xl">
+            className="font-Sora text-balance text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.22] sm:leading-[1.28] tracking-[-0.03em] text-foreground">
             {reduceMotion ? (
               <>
                 Transforming Ideas

@@ -4,10 +4,13 @@ import { Header } from "@/components/sections/Header";
 import { Footer } from "@/components/sections/Footer";
 import { CaseStudyView } from "@/components/case-study/CaseStudyView";
 import { projects } from "@/data/projects";
-import { caseStudies, defaultCaseStudy } from "@/data/caseStudies";
+import { caseStudies, caseStudiesList, defaultCaseStudy } from "@/data/caseStudies";
 
 export function generateStaticParams() {
-  return projects.map((project) => ({ slug: project.slug }));
+  const projectSlugs = projects.map((project) => project.slug);
+  const caseStudySlugs = caseStudiesList.map((study) => study.slug);
+  const allSlugs = Array.from(new Set([...projectSlugs, ...caseStudySlugs]));
+  return allSlugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({

@@ -1,6 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { useInView, useReducedMotion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { cn } from "@/components/lib/cn";
@@ -10,7 +13,6 @@ import {
   ScrollItem,
   fadeUp,
 } from "@/components/ui/ScrollReveal";
-import { line } from "framer-motion/client";
 
 const stats = [
   {
@@ -120,31 +122,68 @@ export function About({ hideHeader = false }: { hideHeader?: boolean }) {
       id="company"
       className={cn(
         "bg-white",
-        hideHeader ? "pb-20 pt-14 sm:pb-24 sm:pt-16 lg:pb-28 lg:pt-20" : "py-20 sm:py-24 lg:py-28",
+        hideHeader
+          ? "pb-20 pt-14 sm:pb-24 sm:pt-16 lg:pb-28 lg:pt-20"
+          : "py-20 sm:py-24 lg:py-28",
       )}
-    >      <Container>
+    >
+      <Container>
         {!hideHeader && (
-          <ScrollReveal className="mx-auto max-w-5xl text-center" amount={0.35}>
-            <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#202224]">
-              <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5]" />
-              About us
-            </p>
+          <ScrollReveal className="w-full" amount={0.3}>
+            {/* Tag / Badge */}
+            <div>
+              <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#202224]">
+                <span
+                  aria-hidden="true"
+                  className="h-2 w-2 rounded-full bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5]"
+                ></span>{" "}
+                About us
+              </p>
+            </div>
 
-            <h2 className="mt-7 font-Sora text-balance text-5xl font-medium leading-[1.02] tracking-[-0.055em] text-[#101010] sm:text-6xl md:text-7xl">
-              Your partner for
-              <br />
-              smarter{" "}
-              <span className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">
-                growth.
-              </span>
-            </h2>
+            {/* Headline and Right Paragraph & Link */}
+            <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12 lg:items-end">
+              {/* Left Column: Headline with inline team image and italic text */}
+              <div className="lg:col-span-8">
+                <h2 className="font-Sora text-3xl font-medium leading-[1.22] tracking-[-0.035em] text-[#101116] sm:text-4xl md:text-5xl lg:text-[3.25rem]">
+                  We help brands grow through creative strategy, thoughtful
+                  design, and{" "}                  
+                  impactful digital experiences that inspire{" "}
+                  <span className="font-serif italic font-normal text-[#101116]">
+                    connections and lasting value.
+                  </span>
+                </h2>
+              </div>
+
+              {/* Right Column: Paragraph and Link */}
+              <div className="flex flex-col justify-end space-y-4 lg:col-span-4 lg:pb-2">
+                <p className="text-sm leading-relaxed text-[#606468] sm:text-[0.95rem]">
+                  We deliver innovative creative solutions, combining design,
+                  strategy, and technology to elevate brands and drive
+                  meaningful business growth.
+                </p>
+                <div>
+                  <Link
+                    href="/contact"
+                    className="group inline-flex items-center gap-1.5 text-sm font-semibold text-[#101116] underline underline-offset-4 decoration-1 transition-colors hover:text-[#0D4FB8]"
+                  >
+                    <span>Get Quick Answer</span>
+                    <ArrowRight
+                      size={15}
+                      strokeWidth={2.2}
+                      className="transition-transform duration-200 group-hover:translate-x-1"
+                    />
+                  </Link>
+                </div>
+              </div>
+            </div>
           </ScrollReveal>
         )}
 
         <ScrollStagger
           className={cn(
             "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5",
-            hideHeader ? "mt-10 sm:mt-12 lg:mt-14" : "mt-14 sm:mt-16 lg:mt-20",
+            hideHeader ? "mt-10 sm:mt-12 lg:mt-14" : "mt-12 sm:mt-16 lg:mt-20",
           )}
         >
           {stats.map((stat) => (

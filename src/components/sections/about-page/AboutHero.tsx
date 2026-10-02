@@ -33,7 +33,7 @@ export function AboutHero({
           className="mx-auto max-w-4xl text-center"
         >
           {/* Main Headline with Inline Badges */}
-          <h1 className="font-Sora text-balance text-4xl font-bold tracking-[-0.035em] text-[#101116] sm:text-5xl md:text-6xl lg:text-[4.25rem] lg:leading-[1.12]">
+          <h1 className="font-Sora text-balance text-3xl font-bold tracking-[-0.035em] text-[#101116] sm:text-5xl md:text-6xl lg:text-[4.25rem] lg:leading-[1.12]">
             {/* Line 1 */}
             <span className="inline-flex flex-wrap items-center justify-center gap-x-2.5 sm:gap-x-3.5">
               <span>{data.prefix} {data.brand}</span>
@@ -46,7 +46,6 @@ export function AboutHero({
             {/* Line 2 */}
             <span className="mt-1.5 inline-flex flex-wrap items-center justify-center gap-x-2.5 sm:gap-x-3.5 sm:mt-2">
               <span>{data.line2Prefix}</span>
-            
               <span className="text-[#101116]">{data.line2Suffix}</span>
             </span>
           </h1>
@@ -95,14 +94,14 @@ export function AboutHero({
                 {partners.map((partner, index) => (
                   <div
                     key={`partner-a-${partner.src}-${index}`}
-                    className="flex shrink-0 items-center justify-center opacity-75 transition-all duration-300 hover:opacity-100 hover:scale-105"
+                    className="flex shrink-0 items-center justify-center grayscale opacity-60 transition-all duration-300 hover:grayscale-0 hover:opacity-100 hover:scale-105"
                   >
                     <Image
                       src={partner.src}
                       alt={partner.alt}
                       width={partner.width}
                       height={partner.height}
-                      className="w-[200px] h-auto object-contain"
+                      className="w-[200px] h-auto object-contain transition-all duration-300"
                     />
                   </div>
                 ))}
@@ -114,13 +113,14 @@ export function AboutHero({
                 {partners.map((partner, index) => (
                   <div
                     key={`partner-b-${partner.src}-${index}`}
-                    className="flex shrink-0 items-center justify-center opacity-75 transition-all duration-300 hover:opacity-100 hover:scale-105">
+                    className="flex shrink-0 items-center justify-center grayscale opacity-60 transition-all duration-300 hover:grayscale-0 hover:opacity-100 hover:scale-105"
+                  >
                     <Image
                       src={partner.src}
                       alt={partner.alt}
                       width={partner.width}
                       height={partner.height}
-                      className="w-[200px] h-auto object-contain"
+                      className="w-[200px] h-auto object-contain transition-all duration-300"
                     />
                   </div>
                 ))}
