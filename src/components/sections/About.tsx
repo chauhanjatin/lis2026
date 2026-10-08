@@ -132,23 +132,21 @@ export function About({ hideHeader = false }: { hideHeader?: boolean }) {
           <ScrollReveal className="w-full" amount={0.3}>
             {/* Tag / Badge */}
             <div>
-              <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#202224]">
+              <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#202224]">
                 <span
                   aria-hidden="true"
-                  className="h-2 w-2 rounded-full bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5]"
-                ></span>{" "}
+                  className="h-2 w-2 rounded-full bg-[#0D4FB8]"
+                />
                 About us
               </p>
             </div>
 
             {/* Headline and Right Paragraph & Link */}
             <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12 lg:items-end">
-              {/* Left Column: Headline with inline team image and italic text */}
+              {/* Left Column: Headline with formatted line breaks and italic serif emphasis */}
               <div className="lg:col-span-8">
-                <h2 className="font-Sora text-3xl font-medium leading-[1.22] tracking-[-0.035em] text-[#101116] sm:text-4xl md:text-5xl lg:text-[3.25rem]">
-                  We help brands grow through creative strategy, thoughtful
-                  design, and{" "}                  
-                  impactful digital experiences that inspire{" "}
+                <h2 className="font-Sora text-3xl font-medium leading-[1.2] tracking-[-0.035em] text-[#101116] sm:text-4xl md:text-5xl lg:text-[3.25rem] max-w-3xl">
+                  We help brands grow through creative strategy, thoughtful design, and impactful digital experiences that inspire{" "}
                   <span className="font-serif italic font-normal text-[#101116]">
                     connections and lasting value.
                   </span>
@@ -156,8 +154,8 @@ export function About({ hideHeader = false }: { hideHeader?: boolean }) {
               </div>
 
               {/* Right Column: Paragraph and Link */}
-              <div className="flex flex-col justify-end space-y-4 lg:col-span-4 lg:pb-2">
-                <p className="text-sm leading-relaxed text-[#606468] sm:text-[0.95rem]">
+              <div className="flex flex-col justify-end space-y-5 lg:col-span-4 lg:pb-1">
+                <p className="text-sm leading-relaxed text-[#606468] sm:text-[0.95rem] max-w-[22rem]">
                   We deliver innovative creative solutions, combining design,
                   strategy, and technology to elevate brands and drive
                   meaningful business growth.

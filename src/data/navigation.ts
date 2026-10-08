@@ -28,25 +28,25 @@ export const companyMenuItems: NavDropdownItem[] = [
 
 export const servicesMenuItems: NavDropdownItem[] = [
   {
-    href: "/services#ui-ux-design",
+    href: "/services/ui-ux-design",
     label: "UI/UX Design",
     iconBg: "bg-[#f8e8ef]",
     iconColor: "text-[#9b4d72]",
   },
   {
-    href: "/services#web-development",
+    href: "/services/web-development",
     label: "Web Development",
     iconBg: "bg-[#faf0df]",
     iconColor: "text-[#b8860b]",
   },
   {
-    href: "/services#mobile-development",
+    href: "/services/mobile-development",
     label: "Mobile Development",
     iconBg: "bg-[#e3f0fa]",
     iconColor: "text-[#2563a8]",
   },
   {
-    href: "/services#business-services",
+    href: "/services/business-services",
     label: "Business Services",
     iconBg: "bg-[#ede8f7]",
     iconColor: "text-[#5b4d9a]",

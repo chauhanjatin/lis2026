@@ -7,6 +7,7 @@ import {
   AboutCTASection,
 } from "@/components/sections/about-page";
 import { Services } from "@/components/sections/Services";
+import { ServicesStacking } from "@/components/sections/ServicesStacking";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { PortfolioSection } from "@/components/sections/PortfolioSection";
 import { Container } from "@/components/ui/Container";
@@ -49,7 +50,7 @@ export function PageContent({ slug }: { slug: PageSlug }) {
         </>
       );
     case "services":
-      return <Services hideHeader />;
+      return <ServicesStacking />;
     case "career":
       return (
         <Container className="pb-16 md:pb-20">

@@ -740,10 +740,10 @@ body {
 .studio-footer-frame {
   position: relative;
   min-height: 43rem;
-  border-right: 1px solid rgba(244, 245, 239, 0.1);
-  border-left: 1px solid rgba(244, 245, 239, 0.1);
+  /* border-right: 1px solid rgba(244, 245, 239, 0.1); */
+  /* border-left: 1px solid rgba(244, 245, 239, 0.1); */
 }
-.studio-footer-frame::before,
+/* .studio-footer-frame::before,
 .studio-footer-frame::after {
   position: absolute;
   top: 0;
@@ -758,7 +758,7 @@ body {
 }
 .studio-footer-frame::after {
   right: 39%;
-}
+} */
 .studio-footer-marquee {
   padding: 3rem;
   overflow: hidden;

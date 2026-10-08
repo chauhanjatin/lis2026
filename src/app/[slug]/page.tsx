@@ -37,7 +37,10 @@ export default async function DynamicPage({
   }
 
   return (
-    <SitePage slug={slug as PageSlug} hideHero={slug === "contact"}>
+    <SitePage
+      slug={slug as PageSlug}
+      hideHero={slug === "contact" || slug === "services"}
+    >
       <PageContent slug={slug as PageSlug} />
     </SitePage>
   );
