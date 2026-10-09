@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { use } from "react";
 import Link from "next/link";
-import { ArrowUpRight, ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
+import { ArrowUpRight, ArrowLeft, ArrowRight, Sparkles, Power } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { PhoneMockup } from "./PhoneMockup";
@@ -41,8 +41,7 @@ export function CaseStudyView({ data }: CaseStudyViewProps) {
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, ease }}
-        >
+          transition={{ duration: 0.65, ease }}>
           <span className="text-xs sm:text-[13px] font-semibold tracking-wider text-[#606468] uppercase">
             {data.eyebrow}
           </span>

@@ -4,7 +4,12 @@ import React, { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useReducedMotion,
+} from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { detailedServices, type ServiceItem } from "@/data/services";
 
@@ -120,7 +125,11 @@ function ServiceCard({
   );
 }
 
-export function ServicesStacking({ hideHeader = false }: { hideHeader?: boolean }) {
+export function ServicesStacking({
+  hideHeader = false,
+}: {
+  hideHeader?: boolean;
+}) {
   return (
     <section
       id="services-stacking"
@@ -141,7 +150,8 @@ export function ServicesStacking({ hideHeader = false }: { hideHeader?: boolean 
               </span>
             </h1>
             <p className="mt-4 text-sm sm:text-base text-[#606468] max-w-xl mx-auto leading-relaxed">
-              From mobile design to high-converting websites and scalable software architecture, we engineer intuitive digital experiences.
+              From mobile design to high-converting websites and scalable
+              software architecture, we engineer intuitive digital experiences.
             </p>
           </div>
         )}

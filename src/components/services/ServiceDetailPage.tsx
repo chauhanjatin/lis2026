@@ -43,7 +43,11 @@ function ProcessCard({
       initial={reduceMotion ? false : { opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+      transition={{
+        duration: 0.5,
+        delay: index * 0.1,
+        ease: [0.22, 1, 0.36, 1],
+      }}
       className="group relative flex flex-col justify-between rounded-2xl border border-[#ECEEF2] bg-[#FAFBFD] p-6 sm:p-7 transition-all duration-300 hover:border-[#101116]/20 hover:bg-white hover:shadow-[0_12px_32px_rgba(0,0,0,0.06)]"
     >
       <div>
@@ -68,13 +72,8 @@ function ProcessCard({
   );
 }
 
-export function ServiceDetailPage({
-  service,
-}: {
-  service: ServiceDetail;
-}) {
+export function ServiceDetailPage({ service }: { service: ServiceDetail }) {
   const reduceMotion = useReducedMotion();
-
   return (
     <div className="relative bg-white text-[#101116] pt-28 pb-24 sm:pt-36 sm:pb-32">
       <Container className="max-w-6xl">
@@ -99,7 +98,8 @@ export function ServiceDetailPage({
             {service.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-[#E5E7EB] bg-[#FAFBFD] px-4 py-1.5 text-xs font-medium text-[#606468] transition-colors hover:border-[#101116] hover:text-[#101116]">
+                className="rounded-full border border-[#E5E7EB] bg-[#FAFBFD] px-4 py-1.5 text-xs font-medium text-[#606468] transition-colors hover:border-[#101116] hover:text-[#101116]"
+              >
                 {tag}
               </span>
             ))}
@@ -234,8 +234,6 @@ export function ServiceDetailPage({
               {service.conclusionDescription}
             </p>
           </motion.section>
-
-     
         </div>
       </Container>
     </div>
