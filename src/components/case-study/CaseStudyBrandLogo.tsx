@@ -6,10 +6,70 @@ export function CaseStudyBrandLogo({
   type,
   className = "",
 }: {
-  type: "orion" | "meridian" | "apex" | "brightpath" | "skyline" | "wifter";
+  type: "orion" | "meridian" | "apex" | "brightpath" | "skyline" | "wifter" | "uniqlearn" | "learnbud";
   className?: string;
 }) {
   switch (type) {
+    case "uniqlearn":
+      return (
+        <div
+          className={`flex items-center gap-3 text-[#101116] transition-colors duration-300 group-hover:text-white select-none ${className}`}
+        >
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-tr from-[#FF5516] to-[#FFA84A] text-white shadow-md">
+            <svg
+              className="h-6 w-6"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+              <path d="M6 12v5c3 3 9 3 12 0v-5" />
+            </svg>
+          </div>
+          <div className="flex flex-col text-left">
+            <span className="font-Sora text-2xl font-bold tracking-tight">
+              Uniq<span className="text-[#FF5516] group-hover:text-white transition-colors">Learn</span>
+            </span>
+            <span className="text-[9.5px] font-bold tracking-[0.2em] uppercase opacity-65 group-hover:opacity-90">
+              CLASSROOM OS
+            </span>
+          </div>
+        </div>
+      );
+
+    case "learnbud":
+      return (
+        <div
+          className={`flex items-center gap-3 text-[#101116] transition-colors duration-300 group-hover:text-white select-none ${className}`}
+        >
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-tr from-[#00B2FE] to-[#2D8CFF] text-white shadow-md">
+            <svg
+              className="h-6 w-6"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M12 2a8 8 0 0 0-8 8c0 3.3 2 6.1 4.9 7.3.3.1.5.4.5.7v1.5a1.5 1.5 0 0 0 1.5 1.5h2.2a1.5 1.5 0 0 0 1.5-1.5v-1.5c0-.3.2-.6.5-.7A8 8 0 0 0 20 10a8 8 0 0 0-8-8z" />
+              <path d="M9 22h6" />
+            </svg>
+          </div>
+          <div className="flex flex-col text-left">
+            <span className="font-Sora text-2xl font-bold tracking-tight">
+              LearnBud <span className="bg-gradient-to-r from-[#00B2FE] to-[#2D8CFF] bg-clip-text text-transparent group-hover:text-white transition-colors">AI</span>
+            </span>
+            <span className="text-[9.5px] font-bold tracking-[0.2em] uppercase opacity-65 group-hover:opacity-90">
+              SMART TUTOR
+            </span>
+          </div>
+        </div>
+      );
+
     case "orion":
       return (
         <div
@@ -31,7 +91,6 @@ export function CaseStudyBrandLogo({
         <div
           className={`flex flex-col items-center justify-center text-[#101116] transition-colors duration-300 group-hover:text-white select-none ${className}`}
         >
-          {/* Healthcare Crest Icon */}
           <div className="mb-1 flex items-center justify-center">
             <svg
               className="h-7 w-7 text-current"
@@ -60,7 +119,6 @@ export function CaseStudyBrandLogo({
         <div
           className={`flex items-center gap-2.5 text-[#101116] transition-colors duration-300 group-hover:text-white select-none ${className}`}
         >
-          {/* Dynamic Geometric Delta Icon */}
           <div className="relative flex h-8 w-8 items-center justify-center">
             <svg
               className="h-8 w-8 text-current"
@@ -82,7 +140,6 @@ export function CaseStudyBrandLogo({
         <div
           className={`flex items-center gap-3 text-[#101116] transition-colors duration-300 group-hover:text-white select-none ${className}`}
         >
-          {/* Connected Ribbon Mark */}
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-current text-white group-hover:text-black group-hover:bg-white p-1.5 transition-colors duration-300">
             <svg
               className="h-full w-full"
@@ -101,8 +158,8 @@ export function CaseStudyBrandLogo({
             <span className="font-Sora text-lg sm:text-xl font-bold leading-tight tracking-tight">
               BrightPath
             </span>
-            <span className="text-[10px] font-semibold tracking-wider opacity-70 group-hover:opacity-90">
-              Consulting
+            <span className="text-[9px] font-bold tracking-[0.2em] uppercase opacity-70 group-hover:opacity-90">
+              CONSULTING
             </span>
           </div>
         </div>
@@ -113,10 +170,9 @@ export function CaseStudyBrandLogo({
         <div
           className={`flex items-center gap-2.5 text-[#101116] transition-colors duration-300 group-hover:text-white select-none ${className}`}
         >
-          {/* Intersecting Nodes Icon */}
-          <div className="flex items-center justify-center">
+          <div className="flex h-8 w-8 items-center justify-center rounded-md bg-current text-white group-hover:text-black group-hover:bg-white p-1 transition-colors duration-300">
             <svg
-              className="h-7 w-7 text-current"
+              className="h-full w-full"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"

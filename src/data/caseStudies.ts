@@ -16,7 +16,7 @@ export type CaseStudyItem = {
   slug: string;
   cardCategory: string;
   cardTitle: string;
-  logoType: "orion" | "meridian" | "apex" | "brightpath" | "skyline" | "wifter";
+  logoType: "orion" | "meridian" | "apex" | "brightpath" | "skyline" | "wifter" | "uniqlearn" | "learnbud";
   image?: string;
   eyebrow: string;
   title: string;
@@ -52,6 +52,140 @@ export type CaseStudyItem = {
 export type CaseStudyData = CaseStudyItem;
 
 export const caseStudiesList: CaseStudyItem[] = [
+  {
+    slug: "uniqlearn",
+    cardCategory: "EDTECH • WEB PLATFORM",
+    cardTitle: "UniqLearn: Classroom management platform connecting teachers & students.",
+    logoType: "uniqlearn",
+    image: "/uniqlearn.png",
+    eyebrow: "EDTECH & CLASSROOM MANAGEMENT",
+    title: "UniqLearn: Interactive Workspace for Teachers & Students",
+    meta: {
+      company: {
+        name: "UniqLearn",
+        url: "https://uniqlearn.example.com",
+      },
+      role: "Lead Product Designer & UX Architect",
+      expertise: "Web Application & Design Systems",
+      year: "2024",
+    },
+    heroScreens: ["dashboard", "schedule", "calendar"],
+    projectDescription: {
+      lead: "UniqLearn is a web-based classroom management platform that connects teachers and students in one shared workspace.",
+      items: [
+        {
+          label: "Classroom OS",
+          content: "Automated student gradebooks, curriculum scheduling, and centralized assignment tracking.",
+        },
+        {
+          label: "Engagement",
+          content: "Clean spatial hierarchy that eliminates clutter and promotes focused student learning.",
+        },
+      ],
+    },
+    process: {
+      lead: "We audited modern school LMS software to eradicate friction points between faculty workflows and student assignment visibility.",
+      items: [
+        {
+          label: "Research",
+          content: "Surveyed 120+ educators to uncover dashboard clutter and lost grading hours.",
+        },
+      ],
+    },
+    solution: {
+      lead: "Crafted a centralized classroom web platform featuring clean spatial hierarchy, responsive visual components, and intuitive navigation flows.",
+      items: [
+        {
+          label: "Unified Workspace",
+          content: "Centralized tracking for attendance, grades, and course modules.",
+        },
+      ],
+    },
+    solutionSlides: [
+      {
+        tag: "CLASSROOM WORKSPACE",
+        title: "All-in-One Dashboard",
+        description: "Centralized tracking for attendance, grades, and course modules.",
+        screenType: "dashboard",
+      },
+    ],
+    results: {
+      lead: "Over 80% decrease in grading turnaround time and 94% student deadline adherence.",
+      items: [
+        {
+          label: "Efficiency",
+          content: "Teachers saved 12+ hours weekly on grading and assignment distributions.",
+        },
+      ],
+    },
+  },
+  {
+    slug: "learnbud-ai",
+    cardCategory: "AI & MOBILE APP • EDTECH",
+    cardTitle: "LearnBud AI: Smart AI mobile learning companion & personalized tutor.",
+    logoType: "learnbud",
+    image: "/learnbudai.png",
+    eyebrow: "AI COMPANION & MOBILE LEARNING",
+    title: "LearnBud AI: 24/7 AI-Powered Personalized Student Tutor",
+    meta: {
+      company: {
+        name: "LearnBud AI",
+        url: "https://learnbudai.example.com",
+      },
+      role: "Mobile Product Designer & AI Interaction Lead",
+      expertise: "iOS / Android Mobile App & AI UX",
+      year: "2024",
+    },
+    heroScreens: ["dashboard", "schedule", "personalization"],
+    projectDescription: {
+      lead: "LearnBud AI is a mobile learning companion that connects students with live, AI-powered tutors. An all-in-one platform for high-school & college students to summarize complex study materials, convert audio/PDFs into structured notes, create interactive flashcards, and get 24/7 AI-guided explanations tailored to their learning level.",
+      items: [
+        {
+          label: "AI Notes",
+          content: "Turns audio lectures, PDFs, and links into structured notes automatically.",
+        },
+        {
+          label: "Personalized",
+          content: "Onboarding and adaptive placement personalizes the tutor level.",
+        },
+      ],
+    },
+    process: {
+      lead: "Developed human-centered AI chat interfaces that clarify difficult STEM concepts without overwhelming learners.",
+      items: [
+        {
+          label: "Prototyping",
+          content: "Iterated through 30+ dark mode mobile UI screens with tactile feedback.",
+        },
+      ],
+    },
+    solution: {
+      lead: "One smart mobile learning ecosystem powering retention, focus, and clarity.",
+      items: [
+        {
+          label: "Live AI Tutor",
+          content: "24/7 contextual answers, step-by-step math breakdowns, and quiz practice.",
+        },
+      ],
+    },
+    solutionSlides: [
+      {
+        tag: "SMART TUTOR",
+        title: "Adaptive Learning Engine",
+        description: "Personalized study pacing based on mastery streaks and quiz accuracy.",
+        screenType: "personalization",
+      },
+    ],
+    results: {
+      lead: "4.9-star App Store rating with over 50,000 active students in initial beta semester.",
+      items: [
+        {
+          label: "Retention",
+          content: "3.2x increase in daily study streak completion over traditional study tools.",
+        },
+      ],
+    },
+  },
   {
     slug: "orion-ventures",
     cardCategory: "VENTURE CAPITAL • ENTERPRISE",
