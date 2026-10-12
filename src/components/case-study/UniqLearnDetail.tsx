@@ -177,7 +177,7 @@ export function UniqLearnDetail() {
           </div>
         </motion.div>
 
-        {/* 3. Colors */}
+        {/* 3. Colors - Custom Designed Swatch Cards matching Figma */}
         <SectionPill label="Colors" />
 
         <motion.div
@@ -185,45 +185,53 @@ export function UniqLearnDetail() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, ease }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
+          className="max-w-3xl mx-auto py-2 sm:py-6"
         >
-          {/* Left Solid Color Swatches */}
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center justify-between rounded-2xl bg-[#FF5516] p-5 text-white shadow-md">
-              <span className="font-bold text-base">Vibrant Primary Orange</span>
-              <span className="font-mono text-sm tracking-wider font-semibold">#FF5516</span>
-            </div>
-            <div className="flex items-center justify-between rounded-2xl bg-[#F8F9FA] border border-black/10 p-5 text-[#222] shadow-sm">
-              <span className="font-bold text-base">Clean Surface White</span>
-              <span className="font-mono text-sm tracking-wider font-semibold text-[#555]">#F8F9FA</span>
-            </div>
-            <div className="flex items-center justify-between rounded-2xl bg-[#544741] p-5 text-white shadow-md">
-              <span className="font-bold text-base">Deep Taupe Gray</span>
-              <span className="font-mono text-sm tracking-wider font-semibold">#544741</span>
-            </div>
-            <div className="flex items-center justify-between rounded-2xl bg-[#111111] p-5 text-white shadow-md">
-              <span className="font-bold text-base">Rich Dark Black</span>
-              <span className="font-mono text-sm tracking-wider font-semibold">#111111</span>
-            </div>
-          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-8 md:gap-10">
+            {/* Left Stack: 4 Solid Swatches with Centered Hex Codes */}
+            <div className="flex flex-col gap-3.5 sm:gap-4">
+              {/* Card 1: #FF5916 */}
+              <div className="relative h-16 sm:h-18 md:h-20 rounded-[1.3rem] sm:rounded-[1.6rem] bg-[#FF5916] text-white shadow-md flex items-center justify-center transform -rotate-1.5 hover:rotate-0 hover:scale-[1.03] hover:shadow-xl transition-all duration-300 cursor-pointer">
+                <span className="font-extrabold text-sm sm:text-base tracking-wider font-sans">
+                  #FF5916
+                </span>
+              </div>
 
-          {/* Right Gradient Palettes */}
-          <div className="flex flex-col gap-3.5">
-            <div className="h-14 rounded-2xl bg-gradient-to-r from-[#FFAACF] to-[#FF6E40] shadow-sm flex items-center justify-between px-6 text-white font-semibold text-sm">
-              <span>Sunset Accent</span>
-              <span className="font-mono text-xs opacity-90">Pink → Orange</span>
+              {/* Card 2: #FFFFFF */}
+              <div className="relative h-16 sm:h-18 md:h-20 rounded-[1.3rem] sm:rounded-[1.6rem] bg-white text-[#111] shadow-[0_8px_24px_rgba(0,0,0,0.08)] border border-black/5 flex items-center justify-center transform rotate-1 hover:rotate-0 hover:scale-[1.03] hover:shadow-xl transition-all duration-300 cursor-pointer">
+                <span className="font-extrabold text-sm sm:text-base tracking-wider font-sans">
+                  #FFFFFF
+                </span>
+              </div>
+
+              {/* Card 3: #544741 */}
+              <div className="relative h-16 sm:h-18 md:h-20 rounded-[1.3rem] sm:rounded-[1.6rem] bg-[#544741] text-white shadow-md flex items-center justify-center transform -rotate-1 hover:rotate-0 hover:scale-[1.03] hover:shadow-xl transition-all duration-300 cursor-pointer">
+                <span className="font-extrabold text-sm sm:text-base tracking-wider font-sans">
+                  #544741
+                </span>
+              </div>
+
+              {/* Card 4: #111111 */}
+              <div className="relative h-16 sm:h-18 md:h-20 rounded-[1.3rem] sm:rounded-[1.6rem] bg-[#111111] text-white shadow-md flex items-center justify-center transform rotate-1.5 hover:rotate-0 hover:scale-[1.03] hover:shadow-xl transition-all duration-300 cursor-pointer">
+                <span className="font-extrabold text-sm sm:text-base tracking-wider font-sans">
+                  #111111
+                </span>
+              </div>
             </div>
-            <div className="h-14 rounded-2xl bg-gradient-to-r from-[#FF5516] to-[#FFA834] shadow-sm flex items-center justify-between px-6 text-white font-semibold text-sm">
-              <span>Warm Energy</span>
-              <span className="font-mono text-xs opacity-90">Orange → Amber</span>
-            </div>
-            <div className="h-14 rounded-2xl bg-gradient-to-r from-[#FCD3C1] to-[#BEE5B7] shadow-sm flex items-center justify-between px-6 text-[#2D2A26] font-semibold text-sm">
-              <span>Classroom Harmony</span>
-              <span className="font-mono text-xs opacity-80">Peach → Sage</span>
-            </div>
-            <div className="h-14 rounded-2xl bg-gradient-to-r from-[#4FBDF8] to-[#1D71F2] shadow-sm flex items-center justify-between px-6 text-white font-semibold text-sm">
-              <span>Analytics Wave</span>
-              <span className="font-mono text-xs opacity-90">Sky → Cobalt</span>
+
+            {/* Right Stack: 4 Gradient Swatches */}
+            <div className="flex flex-col gap-3.5 sm:gap-4">
+              {/* Card 1: Pastel Pink to Lavender/Blue */}
+              <div className="relative h-16 sm:h-18 md:h-20 rounded-[1.3rem] sm:rounded-[1.6rem] bg-gradient-to-r from-[#FFCCE1] via-[#FEDDC8] to-[#ADC0F7] shadow-sm transform -rotate-1.5 hover:rotate-0 hover:scale-[1.03] hover:shadow-xl transition-all duration-300 cursor-pointer" />
+
+              {/* Card 2: Fiery Warm Orange to Amber */}
+              <div className="relative h-16 sm:h-18 md:h-20 rounded-[1.3rem] sm:rounded-[1.6rem] bg-gradient-to-r from-[#FF4E18] via-[#FF7A1A] to-[#FFA726] shadow-sm transform rotate-1.5 hover:rotate-0 hover:scale-[1.03] hover:shadow-xl transition-all duration-300 cursor-pointer" />
+
+              {/* Card 3: Soft Peach to Mint Pastel */}
+              <div className="relative h-16 sm:h-18 md:h-20 rounded-[1.3rem] sm:rounded-[1.6rem] bg-gradient-to-r from-[#FEDAC5] via-[#FEEDBA] to-[#BEE5B6] shadow-sm transform -rotate-1 hover:rotate-0 hover:scale-[1.03] hover:shadow-xl transition-all duration-300 cursor-pointer" />
+
+              {/* Card 4: Royal Electric Blue */}
+              <div className="relative h-16 sm:h-18 md:h-20 rounded-[1.3rem] sm:rounded-[1.6rem] bg-gradient-to-r from-[#298EEA] via-[#1E88E5] to-[#1976D2] shadow-sm transform rotate-1.5 hover:rotate-0 hover:scale-[1.03] hover:shadow-xl transition-all duration-300 cursor-pointer" />
             </div>
           </div>
         </motion.div>

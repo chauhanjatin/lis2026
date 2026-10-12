@@ -76,9 +76,9 @@ export function LearnBudDetail() {
           </motion.p>
         </div>
 
-        {/* 2. Typography */}
+        {/* 2. Typography - Exact Figma Blueprint Construction */}
         <div className="mt-14 sm:mt-20 md:mt-24">
-          <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#101116] mb-6">
+          <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#101116] mb-8 sm:mb-12">
             Typography
           </h2>
 
@@ -87,94 +87,153 @@ export function LearnBudDetail() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, ease }}
-            className="relative rounded-3xl border border-black/10 bg-[#FAFAFC] p-10 sm:p-14 text-center overflow-hidden shadow-sm"
+            className="w-full flex flex-col items-center justify-center pt-2 sm:pt-4 pb-4"
           >
-            {/* Blueprint Grid Lines */}
-            <div
-              className="absolute inset-0 opacity-30 pointer-events-none"
-              style={{
-                backgroundImage: "linear-gradient(#00B2FE 1px, transparent 1px), linear-gradient(90deg, #00B2FE 1px, transparent 1px)",
-                backgroundSize: "32px 32px",
-              }}
-            />
+            {/* Wordmark Center Display with Blueprint Construction Lines */}
+            <div className="relative w-full max-w-xl mx-auto flex items-center justify-center py-4 sm:py-8">
+              <svg
+                viewBox="0 0 540 180"
+                className="w-full max-w-[440px] sm:max-w-[500px] md:max-w-[540px] h-auto overflow-visible select-none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                {/* Horizontal Construction Guidelines */}
+                {/* x-height line (top of lowercase letters) */}
+                <line
+                  x1="30"
+                  y1="72"
+                  x2="510"
+                  y2="72"
+                  stroke="#CBD5E1"
+                  strokeWidth="1.5"
+                  strokeDasharray="4 4"
+                />
+                {/* baseline line */}
+                <line
+                  x1="30"
+                  y1="126"
+                  x2="510"
+                  y2="126"
+                  stroke="#CBD5E1"
+                  strokeWidth="1.5"
+                  strokeDasharray="4 4"
+                />
 
-            {/* Wordmark Center Display */}
-            <div className="relative z-10 py-6 sm:py-10">
-              <span className="font-['Nunito'] text-6xl sm:text-8xl md:text-9xl font-extrabold tracking-tight text-[#00B2FE] drop-shadow-sm">
-                Nunito
-              </span>
+                {/* Vertical Construction Guidelines */}
+                <line
+                  x1="74"
+                  y1="18"
+                  x2="74"
+                  y2="152"
+                  stroke="#CBD5E1"
+                  strokeWidth="1.5"
+                  strokeDasharray="4 4"
+                />
+                <line
+                  x1="108"
+                  y1="18"
+                  x2="108"
+                  y2="152"
+                  stroke="#CBD5E1"
+                  strokeWidth="1.5"
+                  strokeDasharray="4 4"
+                />
+                <line
+                  x1="284"
+                  y1="18"
+                  x2="284"
+                  y2="152"
+                  stroke="#CBD5E1"
+                  strokeWidth="1.5"
+                  strokeDasharray="4 4"
+                />
+                <line
+                  x1="434"
+                  y1="18"
+                  x2="434"
+                  y2="152"
+                  stroke="#CBD5E1"
+                  strokeWidth="1.5"
+                  strokeDasharray="4 4"
+                />
+                <line
+                  x1="468"
+                  y1="18"
+                  x2="468"
+                  y2="152"
+                  stroke="#CBD5E1"
+                  strokeWidth="1.5"
+                  strokeDasharray="4 4"
+                />
+
+                {/* Wordmark "Nunito" */}
+                <text
+                  x="110"
+                  y="126"
+                  fill="#00B2FE"
+                  fontFamily="'Nunito', sans-serif"
+                  fontSize="96"
+                  fontWeight="700"
+                  letterSpacing="-0.01em"
+                >
+                  Nunito
+                </text>
+              </svg>
             </div>
 
             {/* Font Weight Scale */}
-            <div className="relative z-10 pt-6 border-t border-black/10 flex flex-wrap items-center justify-center gap-6 sm:gap-12 text-[#222]">
-              <span className="font-light text-sm sm:text-base">Light</span>
-              <span className="font-normal text-sm sm:text-base">Regular</span>
-              <span className="font-medium text-sm sm:text-base">Medium</span>
-              <span className="font-semibold text-sm sm:text-base">SemiBold</span>
-              <span className="font-bold text-sm sm:text-base">Bold</span>
+            <div className="w-full max-w-3xl mt-6 sm:mt-10 flex items-center justify-between text-[#111] text-xs sm:text-sm md:text-base px-2 sm:px-6">
+              <span className="font-light hover:text-[#00B2FE] transition-colors cursor-default">Light</span>
+              <span className="font-normal hover:text-[#00B2FE] transition-colors cursor-default">Regular</span>
+              <span className="font-medium hover:text-[#00B2FE] transition-colors cursor-default">Medium</span>
+              <span className="font-semibold hover:text-[#00B2FE] transition-colors cursor-default">Semibold</span>
+              <span className="font-bold hover:text-[#00B2FE] transition-colors cursor-default">Bold</span>
             </div>
           </motion.div>
         </div>
 
-        {/* 3. Colors */}
+        {/* 3. Colors - Pure HTML/CSS/SVG matching Image 2 */}
         <div className="mt-14 sm:mt-20 md:mt-24">
-          <div className="rounded-3xl border border-black/10 bg-white p-6 sm:p-10 md:p-14 shadow-sm relative overflow-hidden">
-            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#101116] mb-8 sm:mb-12">
-              Colors
-            </h2>
+          <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#101116] mb-8 sm:mb-12">
+            Colors
+          </h2>
 
-            {/* Fanned / Overlapping Paint Swatches Deck matching Figma */}
-            <motion.div
-              initial={reduceMotion ? false : { opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.65, ease }}
-              className="flex items-end justify-center pt-6 pb-6 overflow-x-auto scrollbar-none"
-            >
-              <div className="flex items-end justify-center min-w-max px-6 gap-6 sm:gap-10 md:gap-14">
-                {/* Left Swatch Pair (#737B81, #FFFFFF) */}
-                <div className="flex items-end">
-                  {/* 1. Slate Gray #737B81 */}
-                  <div className="relative group w-28 sm:w-36 md:w-44 h-56 sm:h-72 md:h-80 rounded-[1.75rem] sm:rounded-[2.25rem] bg-[#737B81] shadow-xl -rotate-4 transform hover:-translate-y-4 hover:scale-105 transition-all duration-300 z-20 flex flex-col justify-end p-4 sm:p-6 shrink-0 cursor-pointer">
-                    <span className="font-extrabold text-xs sm:text-sm md:text-base text-[#111] tracking-tight">
-                      #737B81
-                    </span>
-                  </div>
-
-                  {/* 2. Pure White #FFFFFF */}
-                  <div className="relative group w-28 sm:w-36 md:w-44 h-56 sm:h-72 md:h-80 rounded-[1.75rem] sm:rounded-[2.25rem] bg-white border border-black/15 shadow-xl -ml-12 sm:-ml-16 md:-ml-20 -rotate-1 transform hover:-translate-y-4 hover:scale-105 transition-all duration-300 z-10 flex flex-col justify-end p-4 sm:p-6 shrink-0 cursor-pointer">
-                    <span className="font-extrabold text-xs sm:text-sm md:text-base text-[#111] tracking-tight ml-auto">
-                      #FFFFFF
-                    </span>
-                  </div>
+          <motion.div
+            initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.65, ease }}
+            className="flex items-end justify-center pt-4 pb-8 overflow-x-auto scrollbar-none"
+          >
+            <div className="flex items-end justify-center min-w-max px-4 gap-8 sm:gap-14 md:gap-20">
+              {/* Left Group: #737B81 Curved Swatch and #FFFFFF text */}
+        
+              {/* Right Group: Linear, #00111C, #2196E3 (Overlapping Fanned Swatches) */}
+              <div className="flex items-end">
+                {/* 3. Linear Gradient Swatch */}
+              
+                <div className="relative group w-28 sm:w-36 md:w-44 h-56 sm:h-72 md:h-80 rounded-[1.8rem] sm:rounded-[2.4rem] bg-gradient-to-b from-[#00D2FF] via-[#00B4FE] to-[#008AFF] shadow-xl rotate-0 z-10 flex flex-col justify-end p-4 sm:p-6 shrink-0 transition-transform duration-300 hover:-translate-y-3 hover:scale-105 hover:z-40 cursor-pointer">
+                  <span className="font-extrabold text-xs sm:text-sm md:text-base text-[#111] tracking-tight font-sans">
+                    Linear
+                  </span>
+                </div>
+            
+                {/* 4. Deep Navy #00111C Swatch (overlaps Linear) */}
+                <div className="relative group w-28 sm:w-36 md:w-44 h-56 sm:h-72 md:h-80 rounded-[1.8rem] sm:rounded-[2.4rem] bg-[#00111C] shadow-2xl -ml-8 sm:-ml-12 md:-ml-14 rotate-0 z-20 flex flex-col justify-end p-4 sm:p-6 shrink-0 transition-transform duration-300 hover:-translate-y-3 hover:scale-105 hover:z-40 cursor-pointer">
+                  <span className="font-extrabold text-xs sm:text-sm md:text-base text-white tracking-tight font-sans">
+                    #00111C
+                  </span>
                 </div>
 
-                {/* Right Swatch Cluster (Linear, #00111C, #2196E3) */}
-                <div className="flex items-end">
-                  {/* 3. Linear Gradient */}
-                  <div className="relative group w-28 sm:w-36 md:w-44 h-56 sm:h-72 md:h-80 rounded-[1.75rem] sm:rounded-[2.25rem] bg-gradient-to-b from-[#00C2FF] via-[#00A3FF] to-[#0084FF] shadow-2xl rotate-0 transform hover:-translate-y-4 hover:scale-105 transition-all duration-300 z-10 flex flex-col justify-end p-4 sm:p-6 shrink-0 cursor-pointer">
-                    <span className="font-extrabold text-xs sm:text-sm md:text-base text-[#111] tracking-tight">
-                      Linear
-                    </span>
-                  </div>
-
-                  {/* 4. Deep Navy #00111C */}
-                  <div className="relative group w-28 sm:w-36 md:w-44 h-56 sm:h-72 md:h-80 rounded-[1.75rem] sm:rounded-[2.25rem] bg-[#00111C] shadow-2xl rotate-1 -ml-10 sm:-ml-14 md:-ml-16 transform hover:-translate-y-4 hover:scale-105 transition-all duration-300 z-20 flex flex-col justify-end p-4 sm:p-6 shrink-0 cursor-pointer">
-                    <span className="font-extrabold text-xs sm:text-sm md:text-base text-white tracking-tight">
-                      #00111C
-                    </span>
-                  </div>
-
-                  {/* 5. Electric Blue #2196E3 */}
-                  <div className="relative group w-28 sm:w-36 md:w-44 h-56 sm:h-72 md:h-80 rounded-[1.75rem] sm:rounded-[2.25rem] bg-[#2196E3] shadow-2xl rotate-5 -ml-10 sm:-ml-14 md:-ml-16 transform hover:-translate-y-4 hover:scale-105 transition-all duration-300 z-30 flex flex-col justify-end p-4 sm:p-6 shrink-0 cursor-pointer">
-                    <span className="font-extrabold text-xs sm:text-sm md:text-base text-[#111] tracking-tight">
-                      #2196E3
-                    </span>
-                  </div>
+                {/* 5. Electric Sky Blue #2196E3 Swatch (overlaps #00111C, tilted +6deg) */}
+                <div className="relative group w-28 sm:w-36 md:w-44 h-56 sm:h-72 md:h-80 rounded-[1.8rem] sm:rounded-[2.4rem] bg-[#2196E3] shadow-2xl -ml-8 sm:-ml-12 md:-ml-14 rotate-6 z-30 flex flex-col justify-end p-4 sm:p-6 shrink-0 transition-transform duration-300 hover:-translate-y-3 hover:scale-105 hover:z-40 cursor-pointer">
+                  <span className="font-extrabold text-xs sm:text-sm md:text-base text-[#111] tracking-tight font-sans">
+                    #2196E3
+                  </span>
                 </div>
+                
               </div>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </div>
 
         {/* 4. Screens Showcase - Exact User Image */}
@@ -210,6 +269,7 @@ export function LearnBudDetail() {
             transition={{ duration: 0.6, ease }}
             className="grid grid-cols-1 md:grid-cols-2 gap-8"
           >
+            
             {/* Card 1: The Problem */}
             <div className="relative rounded-3xl border border-white/10 bg-[#0B1A28] p-7 sm:p-9 shadow-xl overflow-hidden text-white flex flex-col justify-between">
               {/* Soft Red/Blue Glow Accent */}
@@ -283,6 +343,7 @@ export function LearnBudDetail() {
                 </div>
               </div>
             </div>
+
           </motion.div>
         </div>
 
