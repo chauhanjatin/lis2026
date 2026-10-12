@@ -21,7 +21,8 @@ function IntegrationCard({
 }) {
   return (
     <motion.div
-      whileHover={{ y: -8, scale: 1.05 }}
+      whileHover={{ y: -6, scale: 1.05 }}
+      whileTap={{ scale: 0.96 }}
       className="integration-card"
       title={item.name}
     >
@@ -30,7 +31,7 @@ function IntegrationCard({
         alt={item.name}
         width={48}
         height={48}
-        className="h-[55%] w-[55%] object-contain"
+        className="h-[52%] w-[52%] object-contain"
       />
     </motion.div>
   );
@@ -47,7 +48,7 @@ export function TechStack() {
   return (
     <section
       id="tech-stack"
-      className="integration-section overflow-hidden py-20 sm:py-28 lg:py-36"
+      className="integration-section overflow-hidden py-14 sm:py-20 md:py-28 lg:py-36"
     >
       <Container>
         <ScrollReveal className="mx-auto max-w-4xl text-center" amount={0.35}>
@@ -55,15 +56,15 @@ export function TechStack() {
             <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5]" />{" "}
             Technologies
           </p>
-          <h2 className="mt-7 font-Sora text-balance text-5xl font-medium leading-[1.02] tracking-[-0.055em] text-[#151618] sm:text-6xl md:text-7xl">
+          <h2 className="mt-4 sm:mt-7 font-Sora text-balance text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-medium leading-[1.1] sm:leading-[1.02] tracking-[-0.035em] sm:tracking-[-0.055em] text-[#151618]">
             Works with the{" "}
             <span className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">
               tools
             </span>
-            <br />
+            <br className="hidden sm:inline" />{" "}
             you already use.
           </h2>
-          <p className="mx-auto mt-6 max-w-3xl text-pretty text-base leading-relaxed text-[#55585b] sm:text-lg">
+          <p className="mx-auto mt-4 sm:mt-6 max-w-3xl text-pretty text-sm sm:text-base md:text-lg leading-relaxed text-[#55585b]">
             We bring your existing tools together—from design and development to
             deployment—so your digital product stays connected, scalable, and
             ready to grow.
@@ -71,7 +72,7 @@ export function TechStack() {
         </ScrollReveal>
 
         <ScrollReveal
-          className="integration-network mx-auto mt-14 max-w-[1440px] sm:mt-20"
+          className="integration-network mx-auto mt-10 sm:mt-16 md:mt-20 max-w-[1440px]"
           variants={scaleIn}
           delay={0.1}
           amount={0.2}
@@ -79,8 +80,8 @@ export function TechStack() {
           <div className="integration-rail integration-rail-left">
             <motion.div
               className="integration-rail-track"
-              animate={reduceMotion ? undefined : { x: ["-34%", "0%"] }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              animate={reduceMotion ? undefined : { x: ["-33.33%", "0%"] }}
+              transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
             >
               {leftRail.map((item, index) => (
                 <IntegrationCard key={`left-${item.id}-${index}`} item={item} />
@@ -92,6 +93,7 @@ export function TechStack() {
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
+            whileHover={reduceMotion ? undefined : { scale: 1.04 }}
             transition={{
               type: "spring",
               stiffness: 180,
@@ -102,18 +104,19 @@ export function TechStack() {
           >
             <Image
               src="/technologies-logo.svg"
-              alt=""
-              width={76}
-              height={76}
-              aria-hidden="true"
+              alt="Liberty Info Science"
+              width={114}
+              height={164}
+              priority
+              className="h-[62%] w-auto max-w-[68%] object-contain"
             />
           </motion.div>
 
           <div className="integration-rail integration-rail-right">
             <motion.div
               className="integration-rail-track"
-              animate={reduceMotion ? undefined : { x: ["0%", "-34%"] }}
-              transition={{ duration: 26, repeat: Infinity, ease: "linear" }}
+              animate={reduceMotion ? undefined : { x: ["0%", "-33.33%"] }}
+              transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
             >
               {rightRail.map((item, index) => (
                 <IntegrationCard

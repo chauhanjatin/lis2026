@@ -3,6 +3,7 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
 import { SkipLink } from "@/components/ui/SkipLink";
+import { Preloader } from "@/components/ui/Preloader";
 import "lenis/dist/lenis.css";
 import "./globals.css";
 
@@ -20,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body className="font-sans antialiased">
+        <Preloader />
         <SmoothScroll>
           <SkipLink />
           {children}

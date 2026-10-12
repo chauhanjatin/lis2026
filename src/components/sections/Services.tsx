@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import {
   AnimatePresence,
   motion,
@@ -9,16 +10,17 @@ import {
   useReducedMotion,
   useScroll,
 } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Plus } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { cn } from "@/components/lib/cn";
 import { ScrollReveal, fadeUp } from "@/components/ui/ScrollReveal";
 import { homeServices as services } from "@/data/services";
 
 const cardThemes = [
-  { active: "bg-[#0a0a0a] text-white", idle: "bg-[#8f9194] text-white/90" },
-  { active: "bg-[#0a0a0a] text-white", idle: "bg-[#b8babd] text-[#2a2a2a]" },
-  { active: "bg-[#0a0a0a] text-white", idle: "bg-[#d8dadc] text-[#1a1a1a]" },
+  { active: "bg-[#0a0a0a] text-white", idle: "bg-[#8f9194] text-white/95" },
+  { active: "bg-[#0a0a0a] text-white", idle: "bg-[#a5a7aa] text-[#1a1a1a]" },
+  { active: "bg-[#0a0a0a] text-white", idle: "bg-[#bebfc2] text-[#1a1a1a]" },
+  { active: "bg-[#0a0a0a] text-white", idle: "bg-[#d6d7d9] text-[#1a1a1a]" },
   { active: "bg-[#0a0a0a] text-white", idle: "bg-[#ececee] text-[#1a1a1a]" },
 ];
 
@@ -28,6 +30,22 @@ const serviceImages: Record<string, string> = {
   "Web-Development": "/saaswebapp.png",
   "Mobile-Development": "/mobiledevelopment.png",
   "Business-Services": "/businessservices.png",
+};
+
+const serviceHrefMap: Record<string, string> = {
+  "ui-ux-design": "/services/ui-ux-design",
+  "Web-Design": "/services/web-development",
+  "Web-Development": "/services/web-development",
+  "Mobile-Development": "/services/mobile-development",
+  "Business-Services": "/services/business-services",
+};
+
+const serviceTagsMap: Record<string, string[]> = {
+  "ui-ux-design": ["User Research", "Wireframing", "UI Design", "Design Systems"],
+  "Web-Design": ["Brand Identity", "Interactive UI", "Responsive Design", "Figma"],
+  "Web-Development": ["Next.js", "React", "TypeScript", "Scalable APIs"],
+  "Mobile-Development": ["iOS & Android", "React Native", "Mobile UI", "App Architecture"],
+  "Business-Services": ["Strategic Consulting", "Market Growth", "Brand Strategy", "Digital Roadmap"],
 };
 
 function ServiceArtwork({
@@ -40,12 +58,12 @@ function ServiceArtwork({
   const src = serviceImages[serviceId] ?? "/uxdesign.png";
 
   return (
-    <div className="relative aspect-[1.15] overflow-hidden rounded-2xl border border-white/10">
+    <div className="relative aspect-[1.25] sm:aspect-[1.15] overflow-hidden rounded-2xl border border-white/10 shadow-lg">
       <Image
         src={src}
         alt={title}
         fill
-        sizes="(max-width: 640px) 70vw, 20rem"
+        sizes="(max-width: 640px) 80vw, 20rem"
         className="object-cover"
       />
     </div>
@@ -54,8 +72,18 @@ function ServiceArtwork({
 
 export function Services({ hideHeader = false }: { hideHeader?: boolean }) {
   const sectionRef = useRef<HTMLElement>(null);
-  const [activeId, setActiveId] = useState(services[0]?.id);
+  const [activeId, setActiveId] = useState<string>(services[0]?.id ?? "");
+  const [isDesktop, setIsDesktop] = useState(false);
   const reduceMotion = useReducedMotion();
+
+  // Detect desktop viewports (>= 1024px)
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 1024px)");
+    const update = () => setIsDesktop(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -63,7 +91,7 @@ export function Services({ hideHeader = false }: { hideHeader?: boolean }) {
   });
 
   useMotionValueEvent(scrollYProgress, "change", (progress) => {
-    if (reduceMotion) return;
+    if (reduceMotion || !isDesktop) return;
 
     const index = Math.min(
       services.length - 1,
@@ -73,22 +101,31 @@ export function Services({ hideHeader = false }: { hideHeader?: boolean }) {
     setActiveId(services[index].id);
   });
 
+  const handleToggleCard = (serviceId: string) => {
+    if (!isDesktop) {
+      // Accordion toggle on mobile/tablet
+      setActiveId((current) => (current === serviceId ? "" : serviceId));
+    } else {
+      setActiveId(serviceId);
+    }
+  };
+
   return (
     <section
       id="services"
       ref={sectionRef}
       className="relative bg-white text-[#101116]"
       style={{
-        height: reduceMotion ? "auto" : `${services.length * 85 + 40}vh`,
+        height: !isDesktop || reduceMotion ? "auto" : `${services.length * 80 + 35}vh`,
       }}
     >
-      <div className="sticky top-0 flex min-h-screen items-center py-20 sm:py-28 lg:py-36">
+      <div className="relative py-14 sm:py-20 lg:sticky lg:top-0 lg:flex lg:min-h-screen lg:items-center lg:py-28">
         <Container
           className={cn(
-            "grid gap-12",
+            "grid gap-10 sm:gap-12",
             hideHeader
               ? "max-w-3xl"
-              : "lg:grid-cols-[minmax(0,.9fr)_minmax(0,1.1fr)] lg:gap-20",
+              : "lg:grid-cols-[minmax(0,.9fr)_minmax(0,1.1fr)] lg:gap-16 xl:gap-20",
           )}
         >
           {!hideHeader && (
@@ -101,54 +138,46 @@ export function Services({ hideHeader = false }: { hideHeader?: boolean }) {
                 <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5]" />{" "}
                 Our services
               </p>
-              <h2 className="font-Sora mt-7 max-w-xl text-5xl font-medium leading-[1.02] tracking-[-0.055em] sm:text-6xl md:text-7xl">
+              <h2 className="font-Sora mt-4 sm:mt-6 max-w-xl text-3xl sm:text-5xl lg:text-6xl font-medium leading-[1.08] sm:leading-[1.02] tracking-[-0.04em] sm:tracking-[-0.055em]">
                 Inspiring digital{" "}
                 <span className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">
                   experiences.
                 </span>
               </h2>
-              <p className="mt-8 max-w-md text-lg leading-relaxed text-[#65696d]">
+              <p className="mt-4 sm:mt-6 max-w-md text-sm sm:text-base lg:text-lg leading-relaxed text-[#65696d]">
                 Strategy, design, and technology aligned around the people using
                 your product.
               </p>
-              <motion.a
+              <Link
                 href="/contact"
-                whileHover={reduceMotion ? undefined : { scale: 1.03 }}
-                whileTap={reduceMotion ? undefined : { scale: 0.98 }}
-                className="mt-9 inline-flex items-center gap-3 rounded-full bg-[#101116] px-6 py-3.5 text-sm font-semibold text-white"
+                className="mt-6 sm:mt-8 inline-flex items-center gap-2.5 rounded-full bg-[#101116] px-5 sm:px-6 py-3 sm:py-3.5 text-xs sm:text-sm font-semibold text-white transition-transform hover:scale-[1.03] active:scale-[0.98]"
               >
-                Start your project <ArrowUpRight size={17} aria-hidden="true" />
-              </motion.a>
+                Start your project <ArrowUpRight size={16} aria-hidden="true" />
+              </Link>
             </ScrollReveal>
           )}
 
           <div className="flex flex-col gap-3 sm:gap-4">
             {services.map((service, index) => {
               const isActive = activeId === service.id;
-              const isPast =
-                services.findIndex((item) => item.id === activeId) > index;
               const theme = cardThemes[index % cardThemes.length];
+              const tags = serviceTagsMap[service.id] ?? [
+                "Discovery",
+                "Strategy",
+                "Design",
+                "Development",
+              ];
 
               return (
-                <motion.article
+                <article
                   key={service.id}
-                  layout
-                  initial={reduceMotion ? false : { opacity: 0, y: 48 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{
-                    once: true,
-                    amount: 0.15,
-                    margin: "0px 0px -8% 0px",
-                  }}
-                  transition={{
-                    duration: 0.7,
-                    delay: reduceMotion ? 0 : index * 0.12,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  className={`relative overflow-hidden rounded-[1.35rem] transition-[background-color,color,box-shadow] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                  onClick={() => handleToggleCard(service.id)}
+                  className={`group relative overflow-hidden rounded-[1.25rem] sm:rounded-[1.35rem] cursor-pointer select-none transition-[background-color,color,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
                     isActive ? theme.active : theme.idle
-                  } ${isActive ? "shadow-[0_24px_60px_rgba(10,10,10,0.18)]" : ""} ${
-                    isPast && !isActive ? "opacity-90" : ""
+                  } ${
+                    isActive
+                      ? "shadow-[0_24px_60px_rgba(10,10,10,0.18)]"
+                      : "hover:shadow-md"
                   }`}
                 >
                   {isActive ? (
@@ -162,24 +191,30 @@ export function Services({ hideHeader = false }: { hideHeader?: boolean }) {
                     />
                   ) : null}
 
-                  <div className="relative z-[1] flex w-full items-start justify-between gap-6 p-6 sm:p-8">
-                    <motion.span
-                      layout
-                      className="font-Sora max-w-[85%] text-2xl font-medium tracking-[-.045em] sm:text-3xl lg:text-4xl"
-                      animate={{
-                        opacity: isActive ? 1 : isPast ? 0.75 : 1,
-                      }}
-                      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                    >
+                  <div className="relative z-[1] flex w-full items-center justify-between gap-4 p-5 sm:p-7 md:p-8">
+                    <span className="font-Sora max-w-[78%] text-xl font-medium tracking-[-.04em] sm:text-2xl md:text-3xl lg:text-4xl">
                       {service.title}
-                    </motion.span>
-                    <span
-                      className={`shrink-0 text-sm font-medium tabular-nums transition-colors duration-500 ${
-                        isActive ? "text-white/55" : "text-current/45"
-                      }`}
-                    >
-                      {String(index + 1).padStart(2, "0")}
                     </span>
+                    <div className="flex items-center gap-3 shrink-0">
+                      <span
+                        className={`text-xs sm:text-sm font-medium tabular-nums transition-colors duration-500 ${
+                          isActive ? "text-white/55" : "text-current/50"
+                        }`}
+                      >
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <span
+                        className={cn(
+                          "inline-grid size-7 place-items-center rounded-full transition-transform duration-300",
+                          isActive
+                            ? "bg-white/10 text-white rotate-45"
+                            : "bg-black/5 text-current/60 group-hover:bg-black/10"
+                        )}
+                        aria-hidden="true"
+                      >
+                        <Plus size={14} strokeWidth={2.5} />
+                      </span>
+                    </div>
                   </div>
 
                   <AnimatePresence initial={false} mode="wait">
@@ -192,88 +227,49 @@ export function Services({ hideHeader = false }: { hideHeader?: boolean }) {
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{
-                          duration: 0.55,
+                          duration: 0.45,
                           ease: [0.22, 1, 0.36, 1],
                         }}
                         className="relative z-[1] overflow-hidden"
                       >
-                        <motion.div
-                          initial={reduceMotion ? false : { y: 24, opacity: 0 }}
-                          animate={{ y: 0, opacity: 1 }}
-                          exit={{ y: 12, opacity: 0 }}
-                          transition={{
-                            duration: 0.5,
-                            delay: 0.1,
-                            ease: [0.22, 1, 0.36, 1],
-                          }}
-                          className="px-6 pb-6 sm:px-8 sm:pb-8"
-                        >
-                          <motion.p
-                            initial={
-                              reduceMotion ? false : { y: 16, opacity: 0 }
-                            }
-                            animate={{ y: 0, opacity: 1 }}
-                            transition={{
-                              duration: 0.45,
-                              delay: 0.18,
-                              ease: [0.22, 1, 0.36, 1],
-                            }}
-                            className="max-w-2xl text-base leading-relaxed text-white/78 sm:text-lg"
-                          >
+                        <div className="px-5 pb-5 sm:px-7 sm:pb-7 md:px-8 md:pb-8">
+                          <p className="max-w-2xl text-sm sm:text-base leading-relaxed text-white/80">
                             {service.description}
-                          </motion.p>
+                          </p>
 
-                          <motion.div
-                            initial={
-                              reduceMotion
-                                ? false
-                                : { y: 20, opacity: 0, scale: 0.96 }
-                            }
-                            animate={{ y: 0, opacity: 1, scale: 1 }}
-                            transition={{
-                              duration: 0.5,
-                              delay: 0.26,
-                              ease: [0.22, 1, 0.36, 1],
-                            }}
-                            className="mt-6 max-w-xs"
-                          >
+                          <div className="mt-5 max-w-[260px] sm:max-w-xs">
                             <ServiceArtwork
                               serviceId={service.id}
                               title={service.title}
                             />
-                          </motion.div>
+                          </div>
 
-                          <div className="mt-5 flex flex-wrap gap-2">
-                            {[
-                              "Discovery",
-                              "Strategy",
-                              "Design",
-                              "Development",
-                            ].map((tag, tagIndex) => (
-                              <motion.span
+                          <div className="mt-4 sm:mt-5 flex flex-wrap gap-1.5 sm:gap-2">
+                            {tags.map((tag) => (
+                              <span
                                 key={tag}
-                                initial={
-                                  reduceMotion ? false : { opacity: 0, y: 12 }
-                                }
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{
-                                  duration: 0.4,
-                                  delay: reduceMotion
-                                    ? 0
-                                    : 0.34 + tagIndex * 0.07,
-                                  ease: [0.22, 1, 0.36, 1],
-                                }}
-                                className="rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-medium text-white/85"
+                                className="rounded-full border border-white/15 bg-white/10 px-2.5 py-1 text-xs font-medium text-white/85"
                               >
                                 {tag}
-                              </motion.span>
+                              </span>
                             ))}
                           </div>
-                        </motion.div>
+
+                          <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between">
+                            <Link
+                              href={serviceHrefMap[service.id] ?? "/services"}
+                              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#42BFA5] hover:underline"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              Explore service{" "}
+                              <ArrowUpRight size={14} aria-hidden="true" />
+                            </Link>
+                          </div>
+                        </div>
                       </motion.div>
                     )}
                   </AnimatePresence>
-                </motion.article>
+                </article>
               );
             })}
           </div>
