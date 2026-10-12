@@ -8,6 +8,7 @@ import {
   useTransform,
 } from "framer-motion";
 import Image from "next/image";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { FaFigma } from "react-icons/fa";
 import { HiOutlineGlobeAlt } from "react-icons/hi2";
 import { Container } from "@/components/ui/Container";
@@ -104,19 +105,81 @@ export function ProjectShowcase() {
     }
   };
 
+  // Desktop navigation arrows
+  const handleDesktopPrev = () => {
+    const newIndex = Math.max(0, active - 1);
+    setActive(newIndex);
+    if (scrollRef.current) {
+      const rect = scrollRef.current.getBoundingClientRect();
+      const scrollTop = window.scrollY + rect.top;
+      const totalScroll = scrollRef.current.clientHeight - window.innerHeight;
+      const targetY = scrollTop + (newIndex / (projects.length - 1)) * totalScroll;
+      window.scrollTo({ top: targetY, behavior: "smooth" });
+    }
+  };
+
+  const handleDesktopNext = () => {
+    const newIndex = Math.min(projects.length - 1, active + 1);
+    setActive(newIndex);
+    if (scrollRef.current) {
+      const rect = scrollRef.current.getBoundingClientRect();
+      const scrollTop = window.scrollY + rect.top;
+      const totalScroll = scrollRef.current.clientHeight - window.innerHeight;
+      const targetY = scrollTop + (newIndex / (projects.length - 1)) * totalScroll;
+      window.scrollTo({ top: targetY, behavior: "smooth" });
+    }
+  };
+
+  // Mobile navigation arrows
+  const handleMobilePrev = () => {
+    if (mobileScrollRef.current) {
+      const cardWidth = mobileScrollRef.current.clientWidth * 0.85;
+      mobileScrollRef.current.scrollBy({ left: -cardWidth, behavior: "smooth" });
+    }
+  };
+
+  const handleMobileNext = () => {
+    if (mobileScrollRef.current) {
+      const cardWidth = mobileScrollRef.current.clientWidth * 0.85;
+      mobileScrollRef.current.scrollBy({ left: cardWidth, behavior: "smooth" });
+    }
+  };
+
   return (
     <section
       id="featured-work"
       className="border-t border-border bg-background py-14 sm:py-20 md:py-28"
     >
-      {/* Centered Responsive Header */}
+      {/* Centered Responsive Header with Nav Arrows */}
       <Container className="px-4 sm:px-6 mb-8 sm:mb-12 md:mb-16">
         <ScrollReveal>
-          <SectionHero eyebrow="Case Studies" as="h2">
-            Featured projects
-            <br />
-            we&apos;re <GradientText>proud of.</GradientText>
-          </SectionHero>
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
+            <SectionHero eyebrow="Case Studies" as="h2">
+              Featured projects
+              <br />
+              we&apos;re <GradientText>proud of.</GradientText>
+            </SectionHero>
+
+            {/* Carousel Navigation Arrow Buttons (Desktop & Tablet) */}
+            <div className="hidden sm:flex items-center gap-3 pb-1">
+              <button
+                onClick={handleDesktopPrev}
+                disabled={active === 0}
+                aria-label="Previous project"
+                className="group inline-grid size-12 place-items-center rounded-full border border-black/15 bg-white text-[#151618] shadow-sm transition-all hover:border-[#151618] hover:bg-[#151618] hover:text-white disabled:pointer-events-none disabled:opacity-30"
+              >
+                <ArrowLeft size={18} strokeWidth={2.4} className="transition-transform group-hover:-translate-x-0.5" />
+              </button>
+              <button
+                onClick={handleDesktopNext}
+                disabled={active === projects.length - 1}
+                aria-label="Next project"
+                className="group inline-grid size-12 place-items-center rounded-full border border-black/15 bg-white text-[#151618] shadow-sm transition-all hover:border-[#151618] hover:bg-[#151618] hover:text-white disabled:pointer-events-none disabled:opacity-30"
+              >
+                <ArrowRight size={18} strokeWidth={2.4} className="transition-transform group-hover:translate-x-0.5" />
+              </button>
+            </div>
+          </div>
         </ScrollReveal>
       </Container>
 
@@ -136,18 +199,44 @@ export function ProjectShowcase() {
               {projects.map((project, index) => (
                 <div key={project.title} className="showcase-step">
                   <article
-                    className={`showcase-card ${index === active ? "is-active" : ""}`}
+                    className={`showcase-card group ${index === active ? "is-active" : ""}`}
                   >
-                    <div className="showcase-art">
+                    {/* Clickable Image with Hover Arrow View Button */}
+                    <a
+                      href={project.websiteUrl || project.figmaUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="showcase-art group/art block relative overflow-hidden"
+                    >
                       <Image
                         src={project.image}
                         alt={project.title}
                         fill
                         sizes="68vw"
-                        className="object-cover"
+                        className="object-cover transition-transform duration-700 ease-out group-hover/art:scale-[1.04]"
                         priority={index === 0}
                       />
-                    </div>
+
+                      {/* Hover Overlay with Centered View Button + Arrow */}
+                      <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/25 opacity-0 backdrop-blur-[2px] transition-all duration-300 group-hover/art:opacity-100">
+                        <div className="flex items-center gap-2.5 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#0c0d10] shadow-[0_16px_36px_rgba(0,0,0,0.3)] transition-all duration-300 transform scale-75 group-hover/art:scale-100">
+                          <span>View Project</span>
+                          <span className="inline-grid size-6 place-items-center rounded-full bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] text-white">
+                            <ArrowUpRight size={14} strokeWidth={2.4} />
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Top-Right Corner Arrow Button */}
+                      <div className="pointer-events-none absolute top-4 right-4 z-10 size-11 rounded-full bg-white/95 text-[#0c0d10] border border-white/40 grid place-items-center opacity-0 group-hover/art:opacity-100 transform translate-y-2 group-hover/art:translate-y-0 transition-all duration-300 shadow-xl">
+                        <ArrowUpRight
+                          size={18}
+                          strokeWidth={2.4}
+                          className="transition-transform group-hover/art:translate-x-0.5 group-hover/art:-translate-y-0.5"
+                        />
+                      </div>
+                    </a>
+
                     <div className="showcase-meta">
                       <h3 className="text-base font-semibold tracking-[-0.01em] text-[#151618]">
                         {project.title}
@@ -157,18 +246,22 @@ export function ProjectShowcase() {
                           href={project.figmaUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="showcase-link"
+                          className="showcase-link group/link"
                         >
                           <span className="showcase-link-icon showcase-link-icon--figma">
                             <FaFigma aria-hidden />
                           </span>
                           <span className="showcase-link-label">View Design</span>
+                          <ArrowUpRight
+                            size={12}
+                            className="text-[#145a7a] opacity-50 transition-opacity group-hover/link:opacity-100"
+                          />
                         </a>
                         <a
                           href={project.websiteUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="showcase-link"
+                          className="showcase-link group/link"
                         >
                           <span className="showcase-link-icon showcase-link-icon--web">
                             <HiOutlineGlobeAlt aria-hidden />
@@ -176,6 +269,10 @@ export function ProjectShowcase() {
                           <span className="showcase-link-label">
                             Visit Website
                           </span>
+                          <ArrowUpRight
+                            size={12}
+                            className="text-[#145a7a] opacity-50 transition-opacity group-hover/link:opacity-100"
+                          />
                         </a>
                       </div>
                     </div>
@@ -199,17 +296,28 @@ export function ProjectShowcase() {
               key={project.title}
               className="w-[85vw] max-w-[380px] shrink-0 snap-center"
             >
-              <article className="flex flex-col rounded-2xl bg-[#cbc9c93d] p-3.5 sm:p-4 shadow-sm border border-black/5 transition-all">
-                <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#e4e4e4]">
+              <article className="group flex flex-col rounded-2xl bg-[#cbc9c93d] p-3.5 sm:p-4 shadow-sm border border-black/5 transition-all">
+                <a
+                  href={project.websiteUrl || project.figmaUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#e4e4e4] group/mobileArt block"
+                >
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
                     sizes="85vw"
-                    className="object-cover"
+                    className="object-cover transition-transform duration-500 group-hover/mobileArt:scale-[1.03]"
                     priority={index === 0}
                   />
-                </div>
+
+                  {/* Top-Right Arrow Indicator on Mobile */}
+                  <div className="absolute top-3 right-3 z-10 size-9 rounded-full bg-white/95 text-[#0c0d10] border border-white/40 grid place-items-center shadow-lg">
+                    <ArrowUpRight size={15} strokeWidth={2.4} />
+                  </div>
+                </a>
+
                 <div className="mt-3.5 flex flex-col gap-2.5 sm:flex-row sm:items-center sm:justify-between">
                   <h3 className="text-[0.95rem] font-semibold tracking-tight text-[#151618]">
                     {project.title}
@@ -227,6 +335,7 @@ export function ProjectShowcase() {
                       <span className="showcase-link-label !text-[0.75rem]">
                         View Design
                       </span>
+                      <ArrowUpRight size={11} className="text-[#145a7a] opacity-60" />
                     </a>
                     <a
                       href={project.websiteUrl}
@@ -240,6 +349,7 @@ export function ProjectShowcase() {
                       <span className="showcase-link-label !text-[0.75rem]">
                         Visit Website
                       </span>
+                      <ArrowUpRight size={11} className="text-[#145a7a] opacity-60" />
                     </a>
                   </div>
                 </div>
@@ -248,18 +358,39 @@ export function ProjectShowcase() {
           ))}
         </div>
 
-        {/* Mobile Carousel Pagination Indicators */}
-        <div className="mt-4 flex items-center justify-center gap-2">
-          {projects.map((p, idx) => (
-            <span
-              key={p.title}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                idx === mobileActive
-                  ? "w-6 bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5]"
-                  : "w-1.5 bg-[#151618]/20"
-              }`}
-            />
-          ))}
+        {/* Mobile Carousel Navigation Arrows & Indicators */}
+        <div className="mt-4 flex items-center justify-between px-6">
+          <div className="flex items-center gap-1.5">
+            {projects.map((p, idx) => (
+              <span
+                key={p.title}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  idx === mobileActive
+                    ? "w-6 bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5]"
+                    : "w-1.5 bg-[#151618]/20"
+                }`}
+              />
+            ))}
+          </div>
+
+          <div className="flex items-center gap-2">
+            <button
+              onClick={handleMobilePrev}
+              disabled={mobileActive === 0}
+              aria-label="Previous project"
+              className="inline-grid size-8 place-items-center rounded-full border border-black/10 bg-white text-[#151618] shadow-sm transition-all disabled:opacity-30"
+            >
+              <ArrowLeft size={14} strokeWidth={2.2} />
+            </button>
+            <button
+              onClick={handleMobileNext}
+              disabled={mobileActive === projects.length - 1}
+              aria-label="Next project"
+              className="inline-grid size-8 place-items-center rounded-full border border-black/10 bg-white text-[#151618] shadow-sm transition-all disabled:opacity-30"
+            >
+              <ArrowRight size={14} strokeWidth={2.2} />
+            </button>
+          </div>
         </div>
       </div>
     </section>

@@ -229,7 +229,12 @@ body {
   background: #cbc9c93d;
   transition:
     opacity 500ms ease,
-    box-shadow 500ms ease;
+    box-shadow 400ms ease,
+    transform 400ms ease;
+}
+
+.showcase-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
 }
 
 .showcase-art {
@@ -241,6 +246,8 @@ body {
   border-radius: 1.15rem;
   background: #e4e4e4;
   flex-shrink: 0;
+  display: block;
+  cursor: pointer;
 }
 
 .showcase-meta {
@@ -397,10 +404,12 @@ body {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(1.2rem, 4vw, 5rem);
 }
+
 .process-flow-card {
   position: relative;
   min-width: 0;
 }
+
 .workflow-preview {
   position: relative;
   width: 100%;
@@ -410,6 +419,7 @@ body {
   background: #1a1b1b;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35);
 }
+
 .process-flow-arrow {
   position: absolute;
   left: calc(100% + (clamp(1.2rem, 4vw, 5rem) / 2));
@@ -419,12 +429,15 @@ body {
   pointer-events: none;
   transform: translateX(-50%);
 }
+
 .process-flow-arrow--bottom {
   top: 60%;
 }
+
 .process-flow-arrow--top {
   top: -2%;
 }
+
 .process-flow-arrow-img {
   width: 100%;
   height: auto;
@@ -591,9 +604,11 @@ body {
 .about-float-one {
   animation: about-float-one 5.5s ease-in-out infinite;
 }
+
 .about-float-two {
   animation: about-float-two 6.4s ease-in-out infinite 0.5s;
 }
+
 .about-float-three {
   animation: about-float-three 5.9s ease-in-out infinite 1s;
 }
@@ -780,23 +795,28 @@ body {
   position: relative;
   overflow: hidden;
 }
+
 .studio-footer-frame {
   position: relative;
 }
+
 .studio-footer-marquee {
   padding: 2.25rem 0 1.75rem;
   overflow: hidden;
   white-space: nowrap;
 }
+
 .studio-footer-marquee-track {
   display: flex;
   width: max-content;
   gap: 0.18em;
   animation: studio-footer-marquee 28s linear infinite;
 }
+
 .studio-footer-marquee-track:hover {
   animation-play-state: paused;
 }
+
 .studio-footer-marquee p {
   flex: none;
   width: max-content;
@@ -837,20 +857,24 @@ body {
 .cta-tilt-btn:hover {
   box-shadow: 0 0 48px rgba(66, 191, 165, 0.72);
 }
+
 .studio-footer-content {
   display: grid;
   grid-template-columns: 1.4fr 1fr 1.3fr;
   gap: clamp(2rem, 5vw, 5rem);
   padding: 3.5rem 0 2.75rem;
 }
+
 .studio-footer-brand a:first-child {
   display: inline-flex;
 }
+
 .studio-footer-brand img {
   width: 9.5rem;
   height: auto;
   filter: brightness(0) invert(1);
 }
+
 .studio-footer-tagline {
   margin-top: 1rem;
   max-width: 22rem;
@@ -858,11 +882,13 @@ body {
   line-height: 1.6;
   color: rgba(244, 245, 239, 0.65);
 }
+
 .studio-footer-socials {
   display: flex;
   gap: 0.75rem;
   margin-top: 1.75rem;
 }
+
 .studio-footer-socials a {
   display: grid;
   width: 2.75rem;
@@ -877,12 +903,14 @@ body {
     border-color 200ms ease,
     transform 200ms ease;
 }
+
 .studio-footer-socials a:hover {
   background: #f4f5ef;
   color: #3391b1;
   border-color: #f4f5ef;
   transform: translateY(-2px);
 }
+
 .studio-footer-nav,
 .studio-footer-contact {
   display: grid;
@@ -890,6 +918,7 @@ body {
   gap: 1.25rem;
   font-style: normal;
 }
+
 .studio-footer-section-title {
   margin: 0;
   font-size: 0.85rem;
@@ -898,14 +927,17 @@ body {
   color: rgba(244, 245, 239, 0.45);
   text-transform: uppercase;
 }
+
 .studio-footer-nav ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
+
 .studio-footer-nav li + li {
   margin-top: 0.65rem;
 }
+
 .studio-footer-nav a,
 .studio-footer-contact a {
   color: rgba(244, 245, 239, 0.85);
@@ -914,11 +946,13 @@ body {
   font-weight: 500;
   transition: color 200ms ease, opacity 200ms ease;
 }
+
 .studio-footer-nav a:hover,
 .studio-footer-contact a:hover {
   color: #42bfa5;
   opacity: 1;
 }
+
 .studio-footer-contact div {
   display: flex;
   flex-direction: column;
@@ -926,10 +960,12 @@ body {
   font-size: 1.05rem;
   font-weight: 500;
 }
+
 .studio-footer-contact span {
   font-size: 0.95rem;
   color: rgba(244, 245, 239, 0.65);
 }
+
 .studio-footer-bottom {
   display: flex;
   justify-content: space-between;
@@ -941,9 +977,11 @@ body {
   font-size: 0.875rem;
   color: rgba(244, 245, 239, 0.6);
 }
+
 .studio-footer-bottom p {
   margin: 0;
 }
+
 .studio-footer-credit {
   letter-spacing: 0.02em;
 }
