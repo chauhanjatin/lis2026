@@ -101,7 +101,10 @@ function PassionIcon() {
       aria-hidden="true"
     >
       <path d="M24 8C24 8 28 13 28 17C28 19.2 26.2 21 24 21C21.8 21 20 19.2 20 17C20 14 22 10 24 8Z" />
-      <path d="M24 16C23 15 21.5 15.5 21.5 17C21.5 18.5 24 20 24 20C24 20 26.5 18.5 26.5 17C26.5 15.5 25 15 24 16Z" fill="currentColor" />
+      <path
+        d="M24 16C23 15 21.5 15.5 21.5 17C21.5 18.5 24 20 24 20C24 20 26.5 18.5 26.5 17C26.5 15.5 25 15 24 16Z"
+        fill="currentColor"
+      />
       <path d="M14 27C14 27 18 24 23 24C28 24 33 26 36 29C37.5 30.5 36.5 33 34.5 33H28L23 37L15 33C13 32 12 30 13 28L14 27Z" />
       <path d="M20 33L26 33" />
     </svg>
@@ -158,6 +161,7 @@ function ValuePillCard({
         className="group relative cursor-pointer overflow-hidden rounded-[1.4rem] bg-[#EDEDF0] p-5 sm:p-6 transition-all duration-300 hover:bg-[#E6E8EB] hover:shadow-[0_10px_26px_rgba(0,0,0,0.06)] active:scale-[0.99]"
       >
         {/* Card Header: Icon + Title on left, Plus button on right */}
+
         <div className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-3.5">
             <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/75 shadow-sm transition-transform duration-300 group-hover:scale-105">
@@ -250,16 +254,14 @@ export function AboutCoreValues({
       className="relative overflow-hidden bg-[#FAFAFA] py-20 sm:py-28 lg:py-32"
     >
       {/* Decorative Pastel Blue Orb (Bottom Right) */}
-   
 
       <Container className="relative z-10">
         {/* Header */}
         <ScrollReveal className="mx-auto max-w-3xl text-center" amount={0.35}>
-             <h2 className="mt-4 font-Sora text-3xl font-semibold tracking-[-0.03em] text-[#101010] sm:text-4xl md:text-5xl">
-             Our Core 
-             {" "}
+          <h2 className="mt-4 font-Sora text-3xl font-semibold tracking-[-0.03em] text-[#101010] sm:text-4xl md:text-5xl">
+            Our Core{" "}
             <span className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">
-            Values
+              Values
             </span>
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-balance text-sm leading-relaxed text-[#52575D] sm:text-base">

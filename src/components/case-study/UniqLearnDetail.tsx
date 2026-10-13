@@ -95,7 +95,7 @@ export function UniqLearnDetail() {
           </div>
         </motion.div>
 
-        {/* 2. Typography */}
+        {/* 2. Typography - Exact Figma Design */}
         <SectionPill label="Typography" />
 
         <motion.div
@@ -103,75 +103,123 @@ export function UniqLearnDetail() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, ease }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center"
         >
           {/* Left Font Identification Cards */}
-          <div className="lg:col-span-5 flex flex-col gap-5">
-            <div className="rounded-2xl border border-black/10 bg-[#FAFAFA] p-6 text-center shadow-sm">
+          <div className="lg:col-span-5 flex flex-col gap-5 sm:gap-6">
+            {/* Top Card: Plus Jakarta Sans */}
+            <div className="rounded-3xl border border-black/10 bg-white p-7 sm:p-9 text-center shadow-sm">
               <span className="text-2xl sm:text-3xl font-bold tracking-tight text-[#111]">
                 Plus Jakarta Sans
               </span>
             </div>
 
-            <div className="relative rounded-2xl border border-black/10 bg-gradient-to-br from-[#FFFBF8] to-[#FFF3EC] p-10 flex items-center justify-center overflow-hidden min-h-[220px]">
-              {/* Subtle Blueprint Grid Pattern */}
-              <div
-                className="absolute inset-0 opacity-20 pointer-events-none"
-                style={{
-                  backgroundImage: "radial-gradient(#FF5516 1px, transparent 1px)",
-                  backgroundSize: "16px 16px",
-                }}
-              />
-              <div className="relative z-10 flex items-baseline">
-                <span className="text-8xl sm:text-9xl font-black text-[#FF5516] leading-none tracking-tight">
+            {/* Bottom Card: "Aa" (Solid Orange A + Outlined Orange a) */}
+            <div className="rounded-3xl border border-black/10 bg-white p-7 sm:p-9 flex items-center justify-center shadow-sm min-h-[190px] sm:min-h-[220px]">
+              <div className="flex items-baseline select-none">
+                <span className="text-8xl sm:text-9xl font-bold text-[#FF5916] leading-none tracking-tight">
                   A
                 </span>
-                <span className="text-7xl sm:text-8xl font-black text-[#FF5516]/40 leading-none tracking-tight font-mono -ml-2">
+                <span
+                  className="text-7xl sm:text-8xl font-bold text-transparent leading-none ml-1"
+                  style={{
+                    WebkitTextStroke: "2.5px #FF5916",
+                  }}
+                >
                   a
                 </span>
               </div>
             </div>
           </div>
 
-          {/* Right Typography Scale Table */}
-          <div className="lg:col-span-7 rounded-2xl border border-black/10 bg-white p-6 sm:p-8 shadow-sm">
-            <div className="grid grid-cols-2 pb-4 mb-4 border-b border-black/10 text-xs sm:text-sm font-bold uppercase tracking-wider text-[#FF5516]">
+          {/* Right Typography Scale Table (No container, clean canvas) */}
+          <div className="lg:col-span-7 flex flex-col">
+            {/* Table Header: Name and Font Size in Orange */}
+            <div className="grid grid-cols-2 pb-2 mb-2 text-base sm:text-lg font-bold text-[#FF5916]">
               <span>Name</span>
-              <span className="text-right">Font Size</span>
+              <span>Font Size</span>
             </div>
 
-            <div className="flex flex-col divide-y divide-black/5 text-[#222]">
-              <div className="py-3 flex items-baseline justify-between">
-                <span className="text-3xl sm:text-4xl font-extrabold tracking-tight">Heading 1</span>
-                <span className="text-xl sm:text-2xl font-bold text-[#FF5516]">84 px</span>
+            {/* Typography Scale Rows */}
+            <div className="flex flex-col gap-2.5 sm:gap-3 text-[#111]">
+              {/* Row 1: Heading 1 - 84 px */}
+              <div className="grid grid-cols-2 items-baseline">
+                <span className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
+                  Heading 1
+                </span>
+                <span className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
+                  84 px
+                </span>
               </div>
-              <div className="py-3 flex items-baseline justify-between">
-                <span className="text-2xl sm:text-3xl font-bold tracking-tight">Heading 2</span>
-                <span className="text-lg sm:text-xl font-bold text-[#FF5516]">64 px</span>
+
+              {/* Row 2: Heading 2 - 64 px */}
+              <div className="grid grid-cols-2 items-baseline">
+                <span className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
+                  Heading 2
+                </span>
+                <span className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
+                  64 px
+                </span>
               </div>
-              <div className="py-3 flex items-baseline justify-between">
-                <span className="text-xl sm:text-2xl font-semibold">Heading 3</span>
-                <span className="text-base sm:text-lg font-semibold text-[#FF5516]">48 px</span>
+
+              {/* Row 3: Heading 3 - 48 px */}
+              <div className="grid grid-cols-2 items-baseline">
+                <span className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
+                  Heading 3
+                </span>
+                <span className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
+                  48 px
+                </span>
               </div>
-              <div className="py-2.5 flex items-baseline justify-between">
-                <span className="text-lg sm:text-xl font-medium">Heading 4</span>
-                <span className="text-sm sm:text-base font-semibold text-[#FF5516]">34 px</span>
+
+              {/* Row 4: Heading 4 - 34 px */}
+              <div className="grid grid-cols-2 items-baseline">
+                <span className="text-lg sm:text-xl md:text-2xl font-bold">
+                  Heading 4
+                </span>
+                <span className="text-lg sm:text-xl md:text-2xl font-bold">
+                  34 px
+                </span>
               </div>
-              <div className="py-2.5 flex items-baseline justify-between">
-                <span className="text-base font-medium">Heading 5</span>
-                <span className="text-sm font-semibold text-[#FF5516]">24 px</span>
+
+              {/* Row 5: Heading 5 - 24 px */}
+              <div className="grid grid-cols-2 items-baseline">
+                <span className="text-base sm:text-lg font-bold">
+                  Heading 5
+                </span>
+                <span className="text-base sm:text-lg font-bold">
+                  24 px
+                </span>
               </div>
-              <div className="py-2 flex items-baseline justify-between text-sm text-[#555]">
-                <span>Sub-font</span>
-                <span className="font-medium text-[#FF5516]">16 px</span>
+
+              {/* Row 6: Sub Font - 18 px */}
+              <div className="grid grid-cols-2 items-baseline">
+                <span className="text-xs sm:text-sm font-medium">
+                  Sub Font
+                </span>
+                <span className="text-xs sm:text-sm font-medium">
+                  18 px
+                </span>
               </div>
-              <div className="py-2 flex items-baseline justify-between text-xs sm:text-sm text-[#666]">
-                <span>Normal</span>
-                <span className="font-medium text-[#FF5516]">14 px</span>
+
+              {/* Row 7: Sub Font - 16 px */}
+              <div className="grid grid-cols-2 items-baseline">
+                <span className="text-[11px] sm:text-xs font-normal">
+                  Sub Font
+                </span>
+                <span className="text-[11px] sm:text-xs font-normal">
+                  16 px
+                </span>
               </div>
-              <div className="py-2 flex items-baseline justify-between text-xs text-[#888]">
-                <span>Tiny</span>
-                <span className="font-medium text-[#FF5516]">12 px</span>
+
+              {/* Row 8: Small - 14 px */}
+              <div className="grid grid-cols-2 items-baseline">
+                <span className="text-[10px] sm:text-[11px] font-normal">
+                  Small
+                </span>
+                <span className="text-[10px] sm:text-[11px] font-normal">
+                  14 px
+                </span>
               </div>
             </div>
           </div>

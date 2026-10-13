@@ -865,9 +865,6 @@ body {
   padding: 3.5rem 0 2.75rem;
 }
 
-.studio-footer-brand a:first-child {
-  display: inline-flex;
-}
 
 .studio-footer-brand img {
   width: 9.5rem;
@@ -1203,6 +1200,32 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .animate-screens-marquee {
+    animation: none;
+  }
+}
+
+@keyframes solution-marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-solution-marquee {
+  display: flex;
+  width: max-content;
+  animation: solution-marquee 30s linear infinite;
+  will-change: transform;
+}
+
+.animate-solution-marquee:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-solution-marquee {
     animation: none;
   }
 }

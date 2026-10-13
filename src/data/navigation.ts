@@ -57,7 +57,7 @@ export const navLinks: NavLink[] = [
   { href: "/company", label: "Company", submenu: true },
   { href: "/services", label: "Services", submenu: true },
   { href: "/projects", label: "Projects" },
-  { href: "/career", label: "Career" },
+  // { href: "/career", label: "Career" },
   { href: "/contact", label: "Contact Us" },
 ];
 
@@ -66,7 +66,7 @@ export type PageSlug =
   | "about"
   | "about-us"
   | "services"
-  | "career"
+  // | "career"
   | "contact"
   | "projects";
 
@@ -75,7 +75,7 @@ export const pageSlugs: PageSlug[] = [
   "about",
   "about-us",
   "services",
-  "career",
+  // "career",
   "contact",
   "projects",
 ];
@@ -108,12 +108,12 @@ export const pageMeta: Record<
       "UI/UX design, web development, and digital strategy for startups and growing companies.",
     eyebrow: "Our services",
   },
-  career: {
-    title: "Career — Design Studio",
-    description:
-      "Join our team of designers, researchers, and engineers building products that matter.",
-    eyebrow: "Careers",
-  },
+  // career: {
+  //   title: "Career — Design Studio",
+  //   description:
+  //     "Join our team of designers, researchers, and engineers building products that matter.",
+  //   eyebrow: "Careers",
+  // },
   contact: {
     title: "Contact — Design Studio",
     description:

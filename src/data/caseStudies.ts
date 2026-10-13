@@ -10,6 +10,19 @@ export type CaseStudySlide = {
   title: string;
   description: string;
   screenType: PhoneScreenType;
+  image?: {
+    src: string;
+    orientation: "landscape" | "portrait";
+    position?: string;
+  };
+};
+
+export type CaseStudyStyleGuide = {
+  fontFamily: string;
+  accent: string;
+  typeScale: { name: string; size: number }[];
+  colors: string[];
+  gradients: string[];
 };
 
 export type CaseStudyItem = {
@@ -47,7 +60,27 @@ export type CaseStudyItem = {
     lead: string;
     items: CaseStudyDetail[];
   };
+  styleGuide?: CaseStudyStyleGuide;
+  keyFindings?: string[];
 };
+
+export const defaultKeyFindings = [
+  "80% of users found the payment options confusing compared to competitors",
+  "Users needed an average of 4.2 minutes to complete a single payment",
+  "Finance teams wanted bulk payment capabilities but couldn't find the feature",
+  "The reporting dashboard lacked real-time data, forcing manual exports",
+];
+
+const defaultTypeScale = [
+  { name: "Heading 1", size: 84 },
+  { name: "Heading 2", size: 64 },
+  { name: "Heading 3", size: 48 },
+  { name: "Heading 4", size: 34 },
+  { name: "Heading 5", size: 24 },
+  { name: "Sub Font", size: 18 },
+  { name: "Sub Font", size: 16 },
+  { name: "Small", size: 14 },
+];
 
 export type CaseStudyData = CaseStudyItem;
 
@@ -69,53 +102,115 @@ export const caseStudiesList: CaseStudyItem[] = [
       expertise: "Web Application & Design Systems",
       year: "2024",
     },
-    heroScreens: ["dashboard", "schedule", "calendar"],
+    heroScreens: ["schedule", "dashboard", "calendar"],
     projectDescription: {
-      lead: "UniqLearn is a web-based classroom management platform that connects teachers and students in one shared workspace.",
+      lead: "Our team partnered with UniqLearn to design an intuitive web-based classroom management platform connecting teachers, students, and administrators in one high-engagement workspace.",
       items: [
         {
-          label: "Classroom OS",
-          content: "Automated student gradebooks, curriculum scheduling, and centralized assignment tracking.",
+          label: "Timeline",
+          content: "From conception to final design system: 8-10 weeks working collaboratively with educators and school administrators.",
         },
         {
-          label: "Engagement",
-          content: "Clean spatial hierarchy that eliminates clutter and promotes focused student learning.",
+          label: "Background",
+          content: "Schools struggled with fragmented learning management software, lost homework submissions, and slow grading feedback loops. UniqLearn consolidates curriculum scheduling, live student submissions, gradebook analytics, and real-time parent updates into one cohesive interface.",
         },
       ],
     },
     process: {
-      lead: "We audited modern school LMS software to eradicate friction points between faculty workflows and student assignment visibility.",
+      lead: "This category details the step-by-step approach taken during the project, including research, planning, design, development, testing, and optimization phases.",
       items: [
         {
-          label: "Research",
-          content: "Surveyed 120+ educators to uncover dashboard clutter and lost grading hours.",
+          label: "Research & Planning",
+          content: "Conducted ethnographic interviews with 120+ K-12 educators and students to pinpoint friction in grading and assignment handoffs. Defined core personas and high-priority feature sets.",
+        },
+        {
+          label: "Design & Prototyping",
+          content: "Engineered responsive dashboard wireframes, accessible typography hierarchies, and tactile interaction flows for fast grading. Iterated through teacher feedback sessions.",
+        },
+        {
+          label: "Development & Implementation",
+          content: "Built production-ready design tokens and React UI component libraries. Partnered with engineering to optimize real-time roster sync and calendar integrations.",
+        },
+        {
+          label: "Testing & Optimization",
+          content: "Ran closed beta trials across 18 classrooms, measuring assignment turnaround time, cognitive load, and accessibility compliance (WCAG 2.1 AA).",
         },
       ],
     },
     solution: {
-      lead: "Crafted a centralized classroom web platform featuring clean spatial hierarchy, responsive visual components, and intuitive navigation flows.",
+      lead: "The resulting UniqLearn workspace provides a fluid, unified classroom experience for teachers, students, and parents.",
       items: [
         {
-          label: "Unified Workspace",
-          content: "Centralized tracking for attendance, grades, and course modules.",
+          label: "Unified Classroom OS",
+          content: "Automated student gradebooks, curriculum scheduling, and centralized assignment tracking with zero visual clutter.",
+        },
+        {
+          label: "Intelligent Scheduling",
+          content: "Syncs teacher lesson plans directly with student deadlines and automated push reminders across devices.",
+        },
+        {
+          label: "Real-Time Feedback Hub",
+          content: "Interactive rubric-based grading and audio/text student feedback channels to foster active classroom engagement.",
         },
       ],
     },
     solutionSlides: [
       {
-        tag: "CLASSROOM WORKSPACE",
+        tag: "UNIFIED WORKSPACE",
         title: "All-in-One Dashboard",
-        description: "Centralized tracking for attendance, grades, and course modules.",
+        description: "Centralized tracking for attendance, grades, assignments, and course modules.",
         screenType: "dashboard",
+        image: { src: "/uniqlearn-screen2.png", orientation: "landscape" },
+      },
+      {
+        tag: "SMART SCHEDULING",
+        title: "Curriculum Calendar Sync",
+        description: "Seamless schedule management syncing teacher lesson plans and student project deadlines.",
+        screenType: "calendar",
+        image: { src: "/uniqlearn-screen1.png", orientation: "landscape" },
+      },
+      {
+        tag: "REAL-TIME FEEDBACK",
+        title: "Instant Grading Hub",
+        description: "Customizable rubric evaluations and automated gradebook calculations for educators.",
+        screenType: "schedule",
+        image: { src: "/uniqlearn-screen3.png", orientation: "landscape" },
+      },
+      {
+        tag: "ENGAGEMENT TRACKING",
+        title: "Student Progress Telemetry",
+        description: "Visual milestone trackers and streak incentives to boost student deadline adherence.",
+        screenType: "personalization",
+        image: { src: "/uniqlearn-screen1.png", orientation: "landscape" },
       },
     ],
     results: {
-      lead: "Over 80% decrease in grading turnaround time and 94% student deadline adherence.",
+      lead: "Here, the outcomes and achievements of the project are highlighted, including educator adoption, student engagement, and operational time savings.",
       items: [
         {
-          label: "Efficiency",
-          content: "Teachers saved 12+ hours weekly on grading and assignment distributions.",
+          label: "Increased Efficiency",
+          content: "Teachers saved over 12 hours weekly on administrative overhead and grading turnaround times.",
         },
+        {
+          label: "Positive User Feedback",
+          content: "Over 96% positive satisfaction score from school administrators and faculty in the first semester.",
+        },
+        {
+          label: "Deadline Adherence",
+          content: "Student on-time submission rate climbed to 94%, with zero reported lost homework files.",
+        },
+      ],
+    },
+    styleGuide: {
+      fontFamily: "Plus Jakarta Sans",
+      accent: "#FF5916",
+      typeScale: defaultTypeScale,
+      colors: ["#FF5916", "#FFFFFF", "#544741", "#111111"],
+      gradients: [
+        "linear-gradient(135deg, #F9B4E4 0%, #F6D2B8 45%, #A9B8F5 100%)",
+        "linear-gradient(90deg, #FF5916 0%, #FFB13B 100%)",
+        "linear-gradient(90deg, #F9C6B8 0%, #F4E3A8 50%, #B8E6B0 100%)",
+        "linear-gradient(135deg, #3B9BF0 0%, #2B6FD8 100%)",
       ],
     },
   },
@@ -136,53 +231,115 @@ export const caseStudiesList: CaseStudyItem[] = [
       expertise: "iOS / Android Mobile App & AI UX",
       year: "2024",
     },
-    heroScreens: ["dashboard", "schedule", "personalization"],
+    heroScreens: ["schedule", "dashboard", "personalization"],
     projectDescription: {
       lead: "LearnBud AI is a mobile learning companion that connects students with live, AI-powered tutors. An all-in-one platform for high-school & college students to summarize complex study materials, convert audio/PDFs into structured notes, create interactive flashcards, and get 24/7 AI-guided explanations tailored to their learning level.",
       items: [
         {
-          label: "AI Notes",
-          content: "Turns audio lectures, PDFs, and links into structured notes automatically.",
+          label: "Timeline",
+          content: "From conception to final App Store release: 6-8 weeks with rapid agile prototyping sprints.",
         },
         {
-          label: "Personalized",
-          content: "Onboarding and adaptive placement personalizes the tutor level.",
+          label: "Background",
+          content: "Students face overwhelming exam pressure and lack affordable 24/7 tutoring support. LearnBud AI leverages bespoke multimodal AI to break down complex STEM concepts, generate interactive quiz flashcards, and keep learners motivated with streak milestones.",
         },
       ],
     },
     process: {
-      lead: "Developed human-centered AI chat interfaces that clarify difficult STEM concepts without overwhelming learners.",
+      lead: "This category details the step-by-step approach taken during the project, including research, planning, design, development, testing, and optimization phases.",
       items: [
         {
-          label: "Prototyping",
-          content: "Iterated through 30+ dark mode mobile UI screens with tactile feedback.",
+          label: "Research & Planning",
+          content: "Surveyed 250+ university students to understand revision pain points, late-night study habits, and AI assistant prompt fatigue.",
+        },
+        {
+          label: "Design & Prototyping",
+          content: "Crafted over 30 dark-mode mobile screens featuring high-contrast typography, interactive formula breakdowns, and tactile flashcard gestures.",
+        },
+        {
+          label: "Development & Implementation",
+          content: "Collaborated with AI engineers to implement low-latency streaming chat responses, LaTeX math rendering, and audio transcription feeds.",
+        },
+        {
+          label: "Testing & Optimization",
+          content: "Tested onboarding comprehension and streak retention across 500 beta students, fine-tuning response tone for empathetic academic coaching.",
         },
       ],
     },
     solution: {
-      lead: "One smart mobile learning ecosystem powering retention, focus, and clarity.",
+      lead: "One smart mobile learning ecosystem powering retention, focus, and clarity for modern students worldwide.",
       items: [
         {
-          label: "Live AI Tutor",
-          content: "24/7 contextual answers, step-by-step math breakdowns, and quiz practice.",
+          label: "24/7 Live AI Tutor",
+          content: "Contextual step-by-step explanations, math formula solving, and adaptive practice quizzes tailored to learner pace.",
+        },
+        {
+          label: "Automated AI Notes",
+          content: "Converts lecture audio recordings, textbook PDFs, and web links into concise structured study guides.",
+        },
+        {
+          label: "Adaptive Study Planner",
+          content: "Customizable study schedules and spaced-repetition flashcards aligned with upcoming exam dates.",
         },
       ],
     },
     solutionSlides: [
       {
-        tag: "SMART TUTOR",
-        title: "Adaptive Learning Engine",
-        description: "Personalized study pacing based on mastery streaks and quiz accuracy.",
+        tag: "24/7 AI TUTOR",
+        title: "Conversational Problem Solver",
+        description: "Step-by-step STEM breakdowns and contextual explanations tailored to student comprehension levels.",
+        screenType: "dashboard",
+        image: { src: "/learnbud-screens.png", orientation: "portrait", position: "9% 50%" },
+      },
+      {
+        tag: "EXAM SCHEDULE",
+        title: "Automated Study Timetable",
+        description: "Synchronized study blocks with calendar integration to maximize focus and avoid last-minute cramming.",
+        screenType: "calendar",
+        image: { src: "/learnbud-screens.png", orientation: "portrait", position: "45% 50%" },
+      },
+      {
+        tag: "SMART FLASHCARDS",
+        title: "Spaced Repetition Engine",
+        description: "Algorithmically timed flashcard decks that optimize long-term memory retention and exam readiness.",
+        screenType: "schedule",
+        image: { src: "/learnbud-screens.png", orientation: "portrait", position: "82% 50%" },
+      },
+      {
+        tag: "PERSONALIZED PACING",
+        title: "Adaptive Learning Metrics",
+        description: "Visual knowledge gap heatmaps identifying weak topics before high-stakes midterm exams.",
         screenType: "personalization",
+        image: { src: "/learnbud-screens.png", orientation: "portrait", position: "100% 50%" },
       },
     ],
     results: {
-      lead: "4.9-star App Store rating with over 50,000 active students in initial beta semester.",
+      lead: "Here, the outcomes and achievements of the project are highlighted, including user feedback, adoption rates, and academic performance improvements.",
       items: [
         {
-          label: "Retention",
-          content: "3.2x increase in daily study streak completion over traditional study tools.",
+          label: "4.9 App Store Rating",
+          content: "Achieved a 4.9-star rating with over 50,000 active students within the first beta semester.",
         },
+        {
+          label: "3.2x Study Retention",
+          content: "Students maintained daily study streaks 3.2x longer compared to traditional study and flashcard apps.",
+        },
+        {
+          label: "Grade Improvements",
+          content: "87% of surveyed students reported an average letter grade increase on subsequent midterm examinations.",
+        },
+      ],
+    },
+    styleGuide: {
+      fontFamily: "Sora",
+      accent: "#1FC77E",
+      typeScale: defaultTypeScale,
+      colors: ["#1FC77E", "#FFFFFF", "#1A2B22", "#070D09"],
+      gradients: [
+        "linear-gradient(135deg, #B8F5D6 0%, #D8F0C4 45%, #9EE0F0 100%)",
+        "linear-gradient(90deg, #1FC77E 0%, #8BE38A 100%)",
+        "linear-gradient(90deg, #0F3D2A 0%, #1FC77E 100%)",
+        "linear-gradient(135deg, #34D3C0 0%, #2B8CD8 100%)",
       ],
     },
   },
@@ -736,11 +893,11 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "Timeline",
-          content: "From initial discovery to final designs in 8 weeks, while working with multiple projects at the same time.",
+          content: "From conception to final designs: 6-8 weeks with working on multiple projects at the same time",
         },
         {
           label: "Background",
-          content: "With average artificial intelligence optimize your daily schedule, ensuring maximum productivity and work-life balance. The app seamlessly integrates with your existing calendar and task management tools, using advanced algorithms to prioritize tasks, suggest optimal times for meetings, and provide smart reminders.",
+          content: "With bespoke artificial intelligence optimize your daily schedule, ensuring maximum productivity and work-life balance. The app seamlessly integrates with your existing calendar and task management tools, using advanced algorithms to prioritize tasks, suggest optimal times for meetings, and provide smart reminders.",
         },
       ],
     },
@@ -749,11 +906,11 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "Research & Planning",
-          content: "Conducted market research to identify existing scheduling challenges and user preferences. Defined target audience segments and analyzed key factors that affect smooth user interactions.",
+          content: "Conducted market research to identify existing scheduling challenges and user preferences. Defined target audience segments and outlined key features based on user needs and market trends.",
         },
         {
           label: "Design & Prototyping",
-          content: "Collaborated with design teams to create intuitive interfaces and interactive prototypes. Iteratively refined designs based on early feedback to ensure usability and visual appeal.",
+          content: "Collaborated with designers to create intuitive user interfaces and interactive prototypes. Iteratively refined designs based on user feedback to enhance usability and visual appeal.",
         },
         {
           label: "Development & Implementation",
@@ -761,7 +918,7 @@ export const caseStudiesList: CaseStudyItem[] = [
         },
         {
           label: "Testing & Optimization",
-          content: "Conducted rigorous testing across various devices and platforms to ensure compatibility and performance. Gathered user feedback through beta testing and iteratively refined the app based on usability metrics and user satisfaction.",
+          content: "Conducted rigorous testing across various devices and platforms to ensure compatibility and performance. Gathered user feedback through beta testing and iteratively optimized the app based on usability metrics and user satisfaction.",
         },
       ],
     },
@@ -774,11 +931,11 @@ export const caseStudiesList: CaseStudyItem[] = [
         },
         {
           label: "Calendar Integration",
-          content: "Seamless integration with popular calendar platforms such as Google Calendar and Outlook, ensuring synchronized scheduling across devices.",
+          content: "Seamlessly integrates with popular calendar platforms such as Google Calendar and Outlook, ensuring synchronized scheduling across devices.",
         },
         {
           label: "Personalization",
-          content: "Customizable settings allow users to tailor scheduling preferences and prioritizations to their unique needs.",
+          content: "Customizable settings allow users to tailor scheduling preferences and priorities to their unique needs.",
         },
       ],
     },
@@ -798,7 +955,13 @@ export const caseStudiesList: CaseStudyItem[] = [
       {
         tag: "PERSONALIZATION",
         title: "Tailored Focus Workflows",
-        description: "Customizable settings allow users to tailor scheduling preferences and prioritizations to their unique needs.",
+        description: "Customizable settings allow users to tailor scheduling preferences and priorities to their unique needs.",
+        screenType: "schedule",
+      },
+      {
+        tag: "AI AUTOMATION",
+        title: "Predictive Task Optimizer",
+        description: "With bespoke artificial intelligence optimize your daily schedule, ensuring maximum productivity and work-life balance.",
         screenType: "personalization",
       },
     ],
@@ -831,3 +994,11 @@ export const caseStudies: Record<string, CaseStudyData> = caseStudiesList.reduce
   },
   {} as Record<string, CaseStudyData>,
 );
+
+if (caseStudies["ai-scheduling"]) {
+  caseStudies["wifter"] = {
+    ...caseStudies["ai-scheduling"],
+    slug: "wifter",
+  };
+}
+

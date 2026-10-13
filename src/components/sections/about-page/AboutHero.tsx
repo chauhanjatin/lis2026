@@ -30,8 +30,7 @@ export function AboutHero({
           initial={reduceMotion ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75, ease }}
-          className="mx-auto max-w-4xl text-center"
-        >
+          className="mx-auto max-w-4xl text-center">
           {/* Main Headline with Inline Badges */}
           <h1 className="font-Sora text-balance text-3xl font-bold tracking-[-0.035em] text-[#101116] sm:text-5xl md:text-6xl lg:text-[4.25rem] lg:leading-[1.12]">
             {/* Line 1 */}
@@ -90,6 +89,7 @@ export function AboutHero({
         >
           <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
             <div className="animate-logo-marquee flex w-max items-center py-2">
+             
               <div className="flex shrink-0 items-center justify-around gap-10 pr-10 sm:gap-14 sm:pr-14 md:gap-16 md:pr-16 lg:gap-20 lg:pr-20">
                 {partners.map((partner, index) => (
                   <div
@@ -106,15 +106,14 @@ export function AboutHero({
                   </div>
                 ))}
               </div>
+
               <div
                 className="flex shrink-0 items-center justify-around gap-10 pr-10 sm:gap-14 sm:pr-14 md:gap-16 md:pr-16 lg:gap-20 lg:pr-20"
-                aria-hidden="true"
-              >
+                aria-hidden="true">
                 {partners.map((partner, index) => (
                   <div
                     key={`partner-b-${partner.src}-${index}`}
-                    className="flex shrink-0 items-center justify-center grayscale opacity-60 transition-all duration-300 hover:grayscale-0 hover:opacity-100 hover:scale-105"
-                  >
+                    className="flex shrink-0 items-center justify-center grayscale opacity-60 transition-all duration-300 hover:grayscale-0 hover:opacity-100 hover:scale-105">
                     <Image
                       src={partner.src}
                       alt={partner.alt}
@@ -125,6 +124,7 @@ export function AboutHero({
                   </div>
                 ))}
               </div>
+
             </div>
           </div>
         </motion.div>

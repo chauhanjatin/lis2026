@@ -255,7 +255,7 @@ export function Header() {
           </nav>  
 
           <Link
-            href="/career"
+            href="/"
             className="hidden rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#101116] transition-transform hover:scale-[1.03] active:scale-[0.98] lg:inline-flex">
             Send CV
           </Link>
@@ -377,7 +377,7 @@ export function Header() {
             )}
             <li>
               <Link
-                href="/career"
+                href="/"
                 onClick={() => setOpen(false)}
                 className="mt-5 inline-flex rounded-full bg-white px-5 py-3 text-sm font-medium text-[#101116]"
               >

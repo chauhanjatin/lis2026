@@ -51,7 +51,7 @@ export function PageContent({ slug }: { slug: PageSlug }) {
       );
     case "services":
       return <ServicesStacking />;
-    case "career":
+    // case "career":
       return (
         <Container className="pb-16 md:pb-20">
           <ul className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">

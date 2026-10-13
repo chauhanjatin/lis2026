@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import React from "react";
+import Image from "next/image";
 import { PhoneMockup } from "./PhoneMockup";
 import type { CaseStudySlide } from "@/data/caseStudies";
 
@@ -10,111 +9,82 @@ interface SolutionCarouselProps {
   slides: CaseStudySlide[];
 }
 
-export function SolutionCarousel({ slides }: SolutionCarouselProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
+function ImageSlide({ slide }: { slide: CaseStudySlide }) {
+  if (!slide.image) return null;
 
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-  };
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-  };
+  if (slide.image.orientation === "portrait") {
+    return (
+      <div className="relative h-[340px] sm:h-[420px] aspect-[42/100] shrink-0 overflow-hidden rounded-[1.75rem]">
+        <Image
+          src={slide.image.src}
+          alt={slide.title}
+          fill
+          sizes="200px"
+          draggable={false}
+          className="object-cover"
+          style={{ objectPosition: slide.image.position ?? "50% 50%" }}
+        />
+      </div>
+    );
+  }
 
   return (
-    <div className="relative my-12 sm:my-16">
-      {/* Desktop / Tablet Multi-card grid & Mobile carousel */}
-      <div className="hidden md:grid md:grid-cols-3 gap-6">
-        {slides.map((slide, idx) => (
-          <motion.div
-            key={slide.tag}
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, delay: idx * 0.12 }}
-            className="flex flex-col justify-between rounded-[2rem] bg-gradient-to-b from-[#FAF2F8] to-[#F5EBF7] p-6 lg:p-8 border border-[#F2E5F0] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(0,0,0,0.04)]"
-          >
-            <div>
-              <span className="text-[11px] font-bold tracking-wider text-[#404347] uppercase">
-                {slide.tag}
-              </span>
-              <p className="mt-3 text-xs sm:text-[13px] leading-relaxed text-[#505357]">
-                {slide.description}
-              </p>
-            </div>
+    <Image
+      src={slide.image.src}
+      alt={slide.title}
+      width={0}
+      height={0}
+      sizes="480px"
+      draggable={false}
+      className="h-[180px] sm:h-[230px] md:h-[260px] w-auto shrink-0 select-none"
+    />
+  );
+}
 
-            <div className="mt-8 flex justify-center overflow-hidden pt-4">
-              <div className="scale-[0.85] lg:scale-[0.9] origin-top transition-transform duration-500 hover:scale-[0.94]">
-                <PhoneMockup type={slide.screenType} glow={false} />
-              </div>
-            </div>
-          </motion.div>
-        ))}
+function CardSlide({ slide }: { slide: CaseStudySlide }) {
+  return (
+    <div className="relative shrink-0 w-[280px] sm:w-[320px] md:w-[350px] flex flex-col justify-between rounded-[2rem] sm:rounded-[2.4rem] bg-gradient-to-b from-[#FAF2F8] to-[#F5EBF7] p-6 sm:p-7 border border-[#F2E5F0] shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] select-none">
+      <div className="mb-6">
+        <span className="text-xs font-bold tracking-wider text-[#FF5516] uppercase block">
+          {slide.tag}
+        </span>
+        <p className="mt-2.5 text-sm sm:text-[15px] leading-relaxed text-[#505357]">
+          {slide.description}
+        </p>
       </div>
+      <div className="flex justify-center overflow-hidden pt-2">
+        <div className="scale-[0.82] sm:scale-[0.86] md:scale-[0.88] origin-top">
+          <PhoneMockup type={slide.screenType} glow={false} />
+        </div>
+      </div>
+    </div>
+  );
+}
 
-      {/* Mobile Interactive Slider */}
-      <div className="md:hidden relative">
-        <div className="overflow-hidden rounded-[2rem] bg-gradient-to-b from-[#FAF2F8] to-[#F5EBF7] p-6 border border-[#F2E5F0] min-h-[580px] flex flex-col justify-between">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.35, ease: "easeInOut" }}
-              className="flex-1 flex flex-col justify-between"
-            >
-              <div>
-                <span className="text-[11px] font-bold tracking-wider text-[#404347] uppercase">
-                  {slides[currentIndex].tag}
-                </span>
-                <p className="mt-3 text-xs leading-relaxed text-[#505357]">
-                  {slides[currentIndex].description}
-                </p>
-              </div>
+export function SolutionCarousel({ slides }: SolutionCarouselProps) {
+  // Duplicate slides to create seamless infinite loop for marquee
+  const marqueeSlides = [...slides, ...slides];
 
-              <div className="my-6 flex justify-center">
-                <div className="scale-[0.82] origin-top">
-                  <PhoneMockup type={slides[currentIndex].screenType} glow={false} />
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
+  return (
+    <div className="relative my-12 sm:my-16 overflow-hidden py-4">
+      {/* Edge Gradient Fades for seamless entry and exit */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-16 md:w-24 z-20 bg-gradient-to-r from-white via-white/80 to-transparent"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-16 md:w-24 z-20 bg-gradient-to-l from-white via-white/80 to-transparent"
+      />
 
-          {/* Navigation Controls */}
-          <div className="flex items-center justify-between pt-2 border-t border-black/5">
-            <div className="flex items-center gap-1.5">
-              {slides.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrentIndex(i)}
-                  aria-label={`Go to slide ${i + 1}`}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    currentIndex === i ? "w-6 bg-[#101116]" : "w-2 bg-[#101116]/20"
-                  }`}
-                />
-              ))}
+      {/* Infinite Horizontal Marquee Track with Auto Animation */}
+      <div className="overflow-hidden">
+        <div className="animate-solution-marquee flex items-center gap-5 sm:gap-6 w-max px-4">
+          {marqueeSlides.map((slide, idx) => (
+            <div key={`${slide.tag}-${idx}`} aria-hidden={idx >= slides.length} className="shrink-0">
+              {slide.image ? <ImageSlide slide={slide} /> : <CardSlide slide={slide} />}
             </div>
-
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={prevSlide}
-                aria-label="Previous slide"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#101116] shadow-sm transition-transform active:scale-90"
-              >
-                <ChevronLeft size={16} />
-              </button>
-              <button
-                type="button"
-                onClick={nextSlide}
-                aria-label="Next slide"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#101116] shadow-sm transition-transform active:scale-90"
-              >
-                <ChevronRight size={16} />
-              </button>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
