@@ -59,13 +59,13 @@ export function CaseStudyView({ data }: CaseStudyViewProps) {
         </motion.div>
 
         <div className="mt-8 sm:mt-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 xl:gap-10 items-start">
+          <div className="lg:col-span-8">
           {/* Hero Showcase Card with 3 Phone Mockups */}
           <motion.div
             initial={reduceMotion ? false : { opacity: 0, y: 24, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.75, delay: 0.12, ease }}
-            className="lg:col-span-8 rounded-[2rem] sm:rounded-[2.5rem] bg-gradient-to-b from-[#FAF2F8] via-[#FAF4FB] to-[#F5EBF7] p-6 sm:p-10 md:p-14 lg:px-6 lg:pt-10 lg:pb-36 border border-[#F1E4F0] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.03)] overflow-hidden relative"
-          >
+            className="rounded-[2rem] sm:rounded-[2.5rem] bg-gradient-to-b from-[#FAF2F8] via-[#FAF4FB] to-[#F5EBF7] p-6 sm:p-10 md:p-14 lg:px-6 lg:pt-10 lg:pb-36 border border-[#F1E4F0] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.03)] overflow-hidden relative">
             <div
               aria-hidden
               className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-64 sm:h-1/2 bg-gradient-to-t from-black/90 via-black/60 to-transparent"/>
@@ -104,8 +104,7 @@ export function CaseStudyView({ data }: CaseStudyViewProps) {
                   Company
                 </span>
                 {data.meta.company.url ? (
-                  <a
-                    href={data.meta.company.url}
+                  <a href={data.meta.company.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex w-fit items-center gap-1 font-Sora text-[15px] sm:text-base font-semibold leading-snug text-white hover:text-white/75 transition-colors"
@@ -139,6 +138,23 @@ export function CaseStudyView({ data }: CaseStudyViewProps) {
               ))}
             </motion.div>
           </motion.div>
+
+          <motion.div
+            initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5, ease }}
+            className="mt-4 sm:mt-5 flex flex-wrap items-center gap-2 sm:gap-2.5"
+          >
+            {(data.tags ?? data.cardCategory.split("•").map((tag) => tag.trim())).map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full border border-[#E5E7EB] bg-[#FAFBFD] px-3.5 py-1 text-xs font-medium text-[#606468] transition-colors hover:border-[#101116] hover:text-[#101116]"
+              >
+                {tag}
+              </span>
+            ))}
+          </motion.div>
+          </div>
 
           {/* Section 1: Project Description */}
           <section className="lg:col-span-4">
@@ -262,8 +278,7 @@ export function CaseStudyView({ data }: CaseStudyViewProps) {
             initial={reduceMotion ? false : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, ease }}
-          >
+            transition={{ duration: 0.6, ease }}>
             <h2 className="font-Sora text-3xl sm:text-4xl font-bold tracking-[-0.03em] text-[#101116]">
               Key Findings
             </h2>
@@ -299,7 +314,7 @@ export function CaseStudyView({ data }: CaseStudyViewProps) {
             transition={{ duration: 0.6, ease }}
           >
             <h2 className="font-Sora text-3xl sm:text-4xl font-bold tracking-[-0.03em] text-[#101116]">
-              Results
+              Result
             </h2>
             <p className="mt-4 text-base sm:text-lg leading-relaxed text-[#404347] max-w-3xl">
               {data.results.lead}

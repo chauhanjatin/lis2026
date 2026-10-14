@@ -5,6 +5,13 @@ import type { CaseStudyStyleGuide } from "@/data/caseStudies";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
+const fontVars: Record<string, string> = {
+  "Plus Jakarta Sans": "var(--font-plus-jakarta)",
+  Sora: "var(--font-sora)",
+  Manrope: "var(--font-manrope)",
+  "Instrument Sans": "var(--font-instrument-sans)",
+};
+
 const tilts = ["-rotate-[4deg]", "rotate-[3deg]", "-rotate-[3deg]", "rotate-[4deg]"];
 
 function isLight(hex: string) {
@@ -25,7 +32,9 @@ function SectionHeading({ label }: { label: string }) {
 
 export function StyleGuideSection({ guide }: { guide: CaseStudyStyleGuide }) {
   const reduceMotion = useReducedMotion();
-  const fontStyle = { fontFamily: `"${guide.fontFamily}", sans-serif` };
+  const fontStyle = {
+    fontFamily: `${fontVars[guide.fontFamily] ?? `"${guide.fontFamily}"`}, sans-serif`,
+  };
 
   const reveal = {
     initial: reduceMotion ? false : { opacity: 0, y: 20 },

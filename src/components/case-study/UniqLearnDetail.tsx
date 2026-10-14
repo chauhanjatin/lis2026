@@ -26,7 +26,7 @@ export function UniqLearnDetail() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <article className="min-h-screen bg-white text-[#111111] pt-28 sm:pt-32 md:pt-36 pb-20 sm:pb-28 overflow-hidden font-['Plus_Jakarta_Sans',sans-serif]">
+    <article className="min-h-screen bg-white text-[#111111] pt-28 sm:pt-32 md:pt-36 pb-20 sm:pb-28 overflow-hidden font-[family-name:var(--font-plus-jakarta)]">
       <Container className="max-w-6xl">
         {/* Navigation Bar */}
         <motion.div

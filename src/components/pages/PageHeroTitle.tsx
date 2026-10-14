@@ -19,14 +19,14 @@ export function PageHeroTitle({ slug }: { slug: PageSlug }) {
           Inspiring digital <GradientText>experiences.</GradientText>
         </SectionHero>
       );
-    case "career":
-      return (
-        <SectionHero eyebrow="Careers">
-          Join our team and build
-          <br />
-          what&apos;s <GradientText>next.</GradientText>
-        </SectionHero>
-      );
+    // case "career":
+    //   return (
+    //     <SectionHero eyebrow="Careers">
+    //       Join our team and build
+    //       <br />
+    //       what&apos;s <GradientText>next.</GradientText>
+    //     </SectionHero>
+    //   );
     case "contact":
       return (
         <SectionHero eyebrow="Contact">

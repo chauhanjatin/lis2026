@@ -8,6 +8,7 @@ import {
   useTransform,
 } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { FaFigma } from "react-icons/fa";
 import { HiOutlineGlobeAlt } from "react-icons/hi2";
@@ -393,6 +394,22 @@ export function ProjectShowcase() {
           </div>
         </div>
       </div>
+
+      <Container className="px-4 sm:px-6 mt-10 sm:mt-14 flex justify-center">
+        <Link
+          href="/projects"
+          className="group inline-flex items-center gap-3 rounded-full bg-[#101116] py-2.5 pl-6 pr-2.5 text-sm sm:text-[15px] font-semibold text-white shadow-[0_12px_30px_-10px_rgba(16,17,22,0.45)] transition-transform hover:scale-[1.03] active:scale-[0.98]"
+        >
+          View All Projects
+          <span className="inline-grid size-8 place-items-center rounded-full bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] text-white">
+            <ArrowUpRight
+              size={16}
+              strokeWidth={2.4}
+              className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
+          </span>
+        </Link>
+      </Container>
     </section>
   );
 }

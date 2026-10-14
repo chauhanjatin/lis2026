@@ -1,10 +1,3 @@
-@import url("https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -61,7 +54,7 @@
 body {
   background: rgb(var(--background));
   color: rgb(var(--foreground));
-  font-family: "Manrope", sans-serif;
+  font-family: var(--font-manrope), sans-serif;
 }
 
 .font-display {
@@ -69,11 +62,11 @@ body {
 }
 
 .font-Sora {
-  font-family: "Sora", sans-serif;
+  font-family: var(--font-sora), sans-serif;
 }
 
 .font-Manrope {
-  font-family: "Manrope", sans-serif;
+  font-family: var(--font-manrope), sans-serif;
 }
 
 .hero-marquee {
@@ -390,7 +383,7 @@ body {
 }
 
 .process-typeface {
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: var(--font-cormorant), Georgia, serif;
 }
 
 .process-card:hover {
@@ -526,7 +519,7 @@ body {
 }
 
 .integration-mark {
-  font-family: "Instrument Sans", sans-serif;
+  font-family: var(--font-instrument-sans), sans-serif;
   font-size: clamp(1.5rem, 3vw, 2.8rem);
   font-weight: 750;
   letter-spacing: -0.1em;
@@ -822,7 +815,7 @@ body {
   width: max-content;
   margin: 0;
   padding-right: 0.8em;
-  font-family: "Sora", sans-serif;
+  font-family: var(--font-sora), sans-serif;
   font-size: clamp(3rem, 7vw, 6.5rem);
   font-weight: 600;
   line-height: 0.9;

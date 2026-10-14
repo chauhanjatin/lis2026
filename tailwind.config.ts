@@ -13,8 +13,8 @@ export default {
         primary: "rgb(var(--primary) / <alpha-value>)",
       },
       fontFamily: {
-        sans: ["Instrument Sans", "system-ui", "sans-serif"],
-        display: ["Clash Display", "Instrument Sans", "system-ui", "sans-serif"],
+        sans: ["var(--font-instrument-sans)", "system-ui", "sans-serif"],
+        display: ["Clash Display", "var(--font-instrument-sans)", "system-ui", "sans-serif"],
         mono: ["var(--font-geist-mono)", "monospace"],
       },
       maxWidth: { studio: "1400px" },

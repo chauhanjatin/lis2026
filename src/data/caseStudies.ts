@@ -62,6 +62,7 @@ export type CaseStudyItem = {
   };
   styleGuide?: CaseStudyStyleGuide;
   keyFindings?: string[];
+  tags?: string[];
 };
 
 export const defaultKeyFindings = [
@@ -91,6 +92,7 @@ export const caseStudiesList: CaseStudyItem[] = [
     cardTitle: "UniqLearn: Classroom management platform connecting teachers & students.",
     logoType: "uniqlearn",
     image: "/uniqlearn.png",
+    tags: ["UX Research", "UI Design", "Design System", "Web App", "Prototyping", "EdTech"],
     eyebrow: "EDTECH & CLASSROOM MANAGEMENT",
     title: "UniqLearn: Interactive Workspace for Teachers & Students",
     meta: {
@@ -220,6 +222,7 @@ export const caseStudiesList: CaseStudyItem[] = [
     cardTitle: "LearnBud AI: Smart AI mobile learning companion & personalized tutor.",
     logoType: "learnbud",
     image: "/learnbudai.png",
+    tags: ["Mobile App", "AI UX", "UI Design", "iOS & Android", "Prototyping", "EdTech"],
     eyebrow: "AI COMPANION & MOBILE LEARNING",
     title: "LearnBud AI: 24/7 AI-Powered Personalized Student Tutor",
     meta: {

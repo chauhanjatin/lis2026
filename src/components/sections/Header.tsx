@@ -255,7 +255,7 @@ export function Header() {
           </nav>  
 
           <Link
-            href="/"
+            href="mailto:info@libertyinfoscience.com"
             className="hidden rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#101116] transition-transform hover:scale-[1.03] active:scale-[0.98] lg:inline-flex">
             Send CV
           </Link>

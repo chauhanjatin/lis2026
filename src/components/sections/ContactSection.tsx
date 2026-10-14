@@ -8,11 +8,18 @@ import { Container } from "@/components/ui/Container";
 import { GradientText } from "@/components/ui/SectionHero";
 import { cn } from "@/components/lib/cn";
 
+const officeAddress =
+  "424, Sumerru Business Corner, B/H Rajhans Multiplex, Pal Gam, Surat, Gujarat, India";
+
+const mapEmbedUrl = `https://maps.google.com/maps?width=100%25&height=600&hl=en&q=${encodeURIComponent(
+  officeAddress,
+)}&t=&z=14&ie=UTF8&iwloc=B&output=embed`;
+
 const contactDetails = [
   {
     icon: MapPin,
-    label: "Des Moines, Iowa, USA",
-    href: undefined,
+    label: officeAddress,
+    href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(officeAddress)}`,
   },
   {
     icon: Phone,
@@ -47,7 +54,7 @@ export function ContactSection() {
     <section className="bg-background pb-16 md:pb-24 pt-28 md:pt-36">
       <Container>
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-16 xl:gap-24">
-          <div>
+          <div className="flex flex-col items-start">
             <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#202224]">
               <span
                 aria-hidden="true"
@@ -70,20 +77,14 @@ export function ContactSection() {
             <ul className="mt-10 space-y-4">
               {contactDetails.map(({ icon: Icon, label, href }) => (
                 <li key={label}>
-                  {href ? (
-                    <a
-                      href={href}
-                      className="inline-flex items-center gap-3 text-sm font-medium text-[#151618] transition-opacity hover:opacity-70"
-                    >
-                      <Icon size={16} strokeWidth={1.8} aria-hidden="true" />
-                      {label}
-                    </a>
-                  ) : (
-                    <span className="inline-flex items-center gap-3 text-sm font-medium text-[#151618]">
-                      <Icon size={16} strokeWidth={1.8} aria-hidden="true" />
-                      {label}
-                    </span>
-                  )}
+                  <a
+                    href={href}
+                    {...(href.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
+                    className="inline-flex items-start gap-3 max-w-md text-sm font-medium leading-relaxed text-[#151618] transition-opacity hover:opacity-70"
+                  >
+                    <Icon size={16} strokeWidth={1.8} aria-hidden="true" className="mt-[3px] shrink-0" />
+                    {label}
+                  </a>
                 </li>
               ))}
             </ul>
@@ -103,10 +104,21 @@ export function ContactSection() {
                 </a>
               ))}
             </div>
+
+            <div className="relative mt-10 self-stretch min-h-[240px] sm:min-h-[280px] lg:min-h-[220px] flex-1 overflow-hidden rounded-[1.75rem] border border-black/5 bg-[#ececee] shadow-[0_16px_48px_rgba(12,14,18,0.06)]">
+              <iframe
+                title="Office location on Google Maps"
+                src={mapEmbedUrl}
+                className="absolute inset-0 h-full w-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+            </div>
           </div>
 
-          <div className="rounded-[1.75rem] bg-white p-6 shadow-[0_16px_48px_rgba(12,14,18,0.06)] sm:p-8 lg:p-10">
-            <form className="contact-form" onSubmit={handleSubmit} noValidate>
+          <div className="flex flex-col rounded-[1.75rem] bg-white p-6 shadow-[0_16px_48px_rgba(12,14,18,0.06)] sm:p-8 lg:p-10">
+            <form className="contact-form flex flex-1 flex-col" onSubmit={handleSubmit} noValidate>
               <div className="grid gap-5 sm:grid-cols-2">
                 <label className="contact-label">
                   First Name
@@ -155,13 +167,13 @@ export function ContactSection() {
                 />
               </label>
 
-              <label className="contact-label mt-5 block">
+              <label className="contact-label mt-5 !flex flex-1 flex-col">
                 Message
                 <textarea
                   name="message"
                   rows={5}
                   placeholder="Type your message here..."
-                  className={cn(fieldClass, "mt-2 resize-none")}
+                  className={cn(fieldClass, "mt-2 min-h-[140px] flex-1 resize-none")}
                   required
                 />
               </label>
