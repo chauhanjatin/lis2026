@@ -3,11 +3,16 @@
 import React from "react";
 import Image from "next/image";
 import { PhoneMockup } from "./PhoneMockup";
-import type { CaseStudySlide } from "@/data/caseStudies";
+import type { CaseStudyGallery, CaseStudySlide } from "@/data/caseStudies";
 
 interface SolutionCarouselProps {
   slides: CaseStudySlide[];
+  gallery?: CaseStudyGallery;
 }
+
+const SECONDS_PER_ITEM = 7;
+const SCROLL_PX_PER_SECOND = 65;
+const GAP_PX = 24;
 
 function ImageSlide({ slide }: { slide: CaseStudySlide }) {
   if (!slide.image) return null;
@@ -61,9 +66,23 @@ function CardSlide({ slide }: { slide: CaseStudySlide }) {
   );
 }
 
-export function SolutionCarousel({ slides }: SolutionCarouselProps) {
-  // Duplicate slides to create seamless infinite loop for marquee
+export function SolutionCarousel({ slides, gallery }: SolutionCarouselProps) {
+  const images = gallery?.images ?? [];
+  const imageWidth = gallery?.width ?? 1;
+  const imageHeight = gallery?.height ?? 1;
+  const hasGallery = images.length > 0;
+  const isPortrait = imageHeight > imageWidth;
+  const desktopHeight = isPortrait ? 380 : 260;
+  const durationSeconds = hasGallery
+    ? Math.round(
+        (images.length *
+          (desktopHeight * (imageWidth / imageHeight) + GAP_PX)) /
+          SCROLL_PX_PER_SECOND,
+      )
+    : slides.length * SECONDS_PER_ITEM;
+  // Duplicate items to create seamless infinite loop for marquee
   const marqueeSlides = [...slides, ...slides];
+  const marqueeImages = [...images, ...images];
 
   return (
     <div className="relative my-12 sm:my-16 overflow-hidden py-4">
@@ -79,12 +98,43 @@ export function SolutionCarousel({ slides }: SolutionCarouselProps) {
 
       {/* Infinite Horizontal Marquee Track with Auto Animation */}
       <div className="overflow-hidden">
-        <div className="animate-solution-marquee flex items-center gap-5 sm:gap-6 w-max px-4">
-          {marqueeSlides.map((slide, idx) => (
-            <div key={`${slide.tag}-${idx}`} aria-hidden={idx >= slides.length} className="shrink-0">
-              {slide.image ? <ImageSlide slide={slide} /> : <CardSlide slide={slide} />}
-            </div>
-          ))}
+        <div
+          className="animate-solution-marquee flex items-center gap-5 sm:gap-6 w-max px-4"
+          style={{ animationDuration: `${durationSeconds}s` }}
+        >
+          {hasGallery
+            ? marqueeImages.map((src, idx) => (
+                <Image
+                  key={`${src}-${idx}`}
+                  src={src}
+                  alt={idx < images.length ? `Project screen ${idx + 1}` : ""}
+                  aria-hidden={idx >= images.length}
+                  width={imageWidth}
+                  height={imageHeight}
+                  sizes={
+                    isPortrait ? "200px" : "(max-width: 640px) 320px, 460px"
+                  }
+                  draggable={false}
+                  className={`${
+                    isPortrait
+                      ? "h-[300px] sm:h-[340px] md:h-[380px] rounded-[1.75rem]"
+                      : "h-[180px] sm:h-[230px] md:h-[260px]"
+                  } w-auto shrink-0 select-none`}
+                />
+              ))
+            : marqueeSlides.map((slide, idx) => (
+                <div
+                  key={`${slide.tag}-${idx}`}
+                  aria-hidden={idx >= slides.length}
+                  className="shrink-0"
+                >
+                  {slide.image ? (
+                    <ImageSlide slide={slide} />
+                  ) : (
+                    <CardSlide slide={slide} />
+                  )}
+                </div>
+              ))}
         </div>
       </div>
     </div>

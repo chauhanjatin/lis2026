@@ -35,7 +35,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     subtitle:
       "We craft intuitive interfaces, thoughtful user journeys, and impactful visual design systems that connect emotionally and drive business growth.",
     tags: ["UI/UX", "User Research", "Wireframing", "Design System"],
-    heroImage: "/uxdesign.png",
+    heroImage: "/hero-uxdesign.png",
     heroImageAlt: "UI UX Design visual preview",
     processSteps: [
       {
@@ -104,7 +104,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     subtitle:
       "We build blazing-fast, scalable, and responsive web applications engineered for modern performance, reliability, and business impact.",
     tags: ["Full Stack", "Next.js", "TypeScript", "Performance"],
-    heroImage: "/webdesign.png",
+    heroImage: "/hero-webdevelopment.png",
     heroImageAlt: "Web Development interface showcase",
     processSteps: [
       {
@@ -173,7 +173,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     subtitle:
       "We design and develop high-performance iOS and Android mobile apps featuring native smoothness, fluid animations, and robust offline capabilities.",
     tags: ["iOS", "Android", "React Native", "Flutter"],
-    heroImage: "/mobiledevelopment.png",
+    heroImage: "/hero-mobiledevelopment.png",
     heroImageAlt: "Mobile App Development preview",
     processSteps: [
       {
@@ -242,7 +242,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     subtitle:
       "We provide strategic digital consulting, brand positioning, technology modernization, and growth roadmaps that elevate modern enterprises.",
     tags: ["Strategy", "Consulting", "Branding", "Growth"],
-    heroImage: "/businessservices.png",
+    heroImage: "/hero-webdesign.png",
     heroImageAlt: "Business Strategy and Consulting showcase",
     processSteps: [
       {

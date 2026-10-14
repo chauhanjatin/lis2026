@@ -25,6 +25,12 @@ export type CaseStudyStyleGuide = {
   gradients: string[];
 };
 
+export type CaseStudyGallery = {
+  images: string[];
+  width: number;
+  height: number;
+};
+
 export type CaseStudyItem = {
   slug: string;
   cardCategory: string;
@@ -63,6 +69,8 @@ export type CaseStudyItem = {
   styleGuide?: CaseStudyStyleGuide;
   keyFindings?: string[];
   tags?: string[];
+  gallery?: CaseStudyGallery;
+  heroImage?: string;
 };
 
 export const defaultKeyFindings = [
@@ -93,6 +101,12 @@ export const caseStudiesList: CaseStudyItem[] = [
     logoType: "uniqlearn",
     image: "/uniqlearn.png",
     tags: ["UX Research", "UI Design", "Design System", "Web App", "Prototyping", "EdTech"],
+    gallery: {
+      images: Array.from({ length: 9 }, (_, i) => `/uniqlearn${i + 1}.png`),
+      width: 732,
+      height: 420,
+    },
+    heroImage: "/uniqlearn.png",
     eyebrow: "EDTECH & CLASSROOM MANAGEMENT",
     title: "UniqLearn: Interactive Workspace for Teachers & Students",
     meta: {
@@ -223,6 +237,12 @@ export const caseStudiesList: CaseStudyItem[] = [
     logoType: "learnbud",
     image: "/learnbudai.png",
     tags: ["Mobile App", "AI UX", "UI Design", "iOS & Android", "Prototyping", "EdTech"],
+    gallery: {
+      images: Array.from({ length: 16 }, (_, i) => `/learnbudai${i + 1}.png`),
+      width: 322,
+      height: 650,
+    },
+    heroImage: "/learnbudai.png",
     eyebrow: "AI COMPANION & MOBILE LEARNING",
     title: "LearnBud AI: 24/7 AI-Powered Personalized Student Tutor",
     meta: {

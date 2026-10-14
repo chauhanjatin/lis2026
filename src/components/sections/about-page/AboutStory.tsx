@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { FaXTwitter, FaInstagram } from "react-icons/fa6";
 import { HiOutlineGlobeAlt } from "react-icons/hi2";
+import { SiUpwork } from "react-icons/si";
 import { Container } from "@/components/ui/Container";
 import {
   ScrollReveal,
@@ -22,7 +23,7 @@ function RotatingBadge({ text }: { text: string }) {
     <motion.div
       animate={reduceMotion ? undefined : { rotate: 360 }}
       transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
-      className="relative flex h-28 w-28 items-center justify-center rounded-full bg-[#181A1C]/90 text-white shadow-2xl backdrop-blur-md sm:h-32 sm:w-32 border border-white/20"
+      className="relative flex h-24 w-24 items-center justify-center rounded-full bg-[#181A1C]/90 text-white shadow-2xl backdrop-blur-md sm:h-28 sm:w-28 lg:h-32 lg:w-32 border border-white/20"
       aria-hidden="true"
     >
       {/* Curved circular text */}
@@ -38,54 +39,23 @@ function RotatingBadge({ text }: { text: string }) {
         </defs>
         <text
           fill="#FFFFFF"
-          fontSize="9.2"
+          fontSize="9"
           fontWeight="600"
-          letterSpacing="0.18em"
           className="uppercase select-none opacity-90"
         >
-          <textPath href="#textPathCircle" startOffset="0%">
+          <textPath
+            href="#textPathCircle"
+            startOffset="0%"
+            textLength="276"
+            lengthAdjust="spacing"
+          >
             {text}
           </textPath>
         </text>
       </svg>
 
-      {/* Concentric overlapping graphic in center */}
-      <div className="relative z-10 flex items-center justify-center">
-        <svg
-          width="36"
-          height="36"
-          viewBox="0 0 36 36"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <ellipse
-            cx="14"
-            cy="18"
-            rx="6"
-            ry="11"
-            stroke="white"
-            strokeWidth="1.5"
-            strokeOpacity="0.85"
-          />
-          <ellipse
-            cx="18"
-            cy="18"
-            rx="6"
-            ry="11"
-            stroke="white"
-            strokeWidth="1.5"
-            strokeOpacity="0.95"
-          />
-          <ellipse
-            cx="22"
-            cy="18"
-            rx="6"
-            ry="11"
-            stroke="white"
-            strokeWidth="1.5"
-            strokeOpacity="0.85"
-          />
-        </svg>
+      <div className="relative z-10 grid size-10 place-items-center rounded-full bg-gradient-to-br from-[#14A800] to-[#0E7A00] text-white shadow-lg sm:size-11">
+        <SiUpwork className="size-5 sm:size-6" />
       </div>
     </motion.div>
   );
@@ -124,7 +94,7 @@ export function AboutStorySection({
                     alt={data.image.alt}
                     fill
                     sizes="(max-width: 1024px) 100vw, 42vw"
-                    priority
+                    preload
                     className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-105"
                   />
 
@@ -135,7 +105,7 @@ export function AboutStorySection({
                   />
 
                   {/* Rotating Circular Badge (Bottom Right of Image) */}
-                  <div className="absolute -bottom-2 -right-2 z-20 sm:bottom-4 sm:right-4">
+                  <div className="absolute bottom-4 right-4 z-20 sm:bottom-5 sm:right-5">
                     <RotatingBadge text={data.image.badgeText} />
                   </div>
 

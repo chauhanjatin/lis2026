@@ -106,31 +106,6 @@ export function ProjectShowcase() {
     }
   };
 
-  // Desktop navigation arrows
-  const handleDesktopPrev = () => {
-    const newIndex = Math.max(0, active - 1);
-    setActive(newIndex);
-    if (scrollRef.current) {
-      const rect = scrollRef.current.getBoundingClientRect();
-      const scrollTop = window.scrollY + rect.top;
-      const totalScroll = scrollRef.current.clientHeight - window.innerHeight;
-      const targetY = scrollTop + (newIndex / (projects.length - 1)) * totalScroll;
-      window.scrollTo({ top: targetY, behavior: "smooth" });
-    }
-  };
-
-  const handleDesktopNext = () => {
-    const newIndex = Math.min(projects.length - 1, active + 1);
-    setActive(newIndex);
-    if (scrollRef.current) {
-      const rect = scrollRef.current.getBoundingClientRect();
-      const scrollTop = window.scrollY + rect.top;
-      const totalScroll = scrollRef.current.clientHeight - window.innerHeight;
-      const targetY = scrollTop + (newIndex / (projects.length - 1)) * totalScroll;
-      window.scrollTo({ top: targetY, behavior: "smooth" });
-    }
-  };
-
   // Mobile navigation arrows
   const handleMobilePrev = () => {
     if (mobileScrollRef.current) {
@@ -151,36 +126,13 @@ export function ProjectShowcase() {
       id="featured-work"
       className="border-t border-border bg-background py-14 sm:py-20 md:py-28"
     >
-      {/* Centered Responsive Header with Nav Arrows */}
       <Container className="px-4 sm:px-6 mb-8 sm:mb-12 md:mb-16">
         <ScrollReveal>
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
-            <SectionHero eyebrow="Case Studies" as="h2">
-              Featured projects
-              <br />
-              we&apos;re <GradientText>proud of.</GradientText>
-            </SectionHero>
-
-            {/* Carousel Navigation Arrow Buttons (Desktop & Tablet) */}
-            <div className="hidden sm:flex items-center gap-3 pb-1">
-              <button
-                onClick={handleDesktopPrev}
-                disabled={active === 0}
-                aria-label="Previous project"
-                className="group inline-grid size-12 place-items-center rounded-full border border-black/15 bg-white text-[#151618] shadow-sm transition-all hover:border-[#151618] hover:bg-[#151618] hover:text-white disabled:pointer-events-none disabled:opacity-30"
-              >
-                <ArrowLeft size={18} strokeWidth={2.4} className="transition-transform group-hover:-translate-x-0.5" />
-              </button>
-              <button
-                onClick={handleDesktopNext}
-                disabled={active === projects.length - 1}
-                aria-label="Next project"
-                className="group inline-grid size-12 place-items-center rounded-full border border-black/15 bg-white text-[#151618] shadow-sm transition-all hover:border-[#151618] hover:bg-[#151618] hover:text-white disabled:pointer-events-none disabled:opacity-30"
-              >
-                <ArrowRight size={18} strokeWidth={2.4} className="transition-transform group-hover:translate-x-0.5" />
-              </button>
-            </div>
-          </div>
+          <SectionHero eyebrow="Case Studies" as="h2">
+            Featured projects
+            <br />
+            we&apos;re <GradientText>proud of.</GradientText>
+          </SectionHero>
         </ScrollReveal>
       </Container>
 

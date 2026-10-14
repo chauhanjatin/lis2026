@@ -119,10 +119,18 @@ export function Services({ hideHeader = false }: { hideHeader?: boolean }) {
         height: !isDesktop || reduceMotion ? "auto" : `${services.length * 80 + 35}vh`,
       }}
     >
+      <svg aria-hidden width="0" height="0" className="absolute">
+        <defs>
+          <linearGradient id="services-arrow-gradient" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="#0D4FB8" />
+            <stop offset="100%" stopColor="#42BFA5" />
+          </linearGradient>
+        </defs>
+      </svg>
       <div className="relative py-14 sm:py-20 lg:sticky lg:top-0 lg:flex lg:min-h-screen lg:items-center lg:py-28">
         <Container
           className={cn(
-            "grid gap-10 sm:gap-12",
+            "grid gap-10 sm:gap-12",  
             hideHeader
               ? "max-w-3xl"
               : "lg:grid-cols-[minmax(0,.9fr)_minmax(0,1.1fr)] lg:gap-16 xl:gap-20",
@@ -161,12 +169,7 @@ export function Services({ hideHeader = false }: { hideHeader?: boolean }) {
             {services.map((service, index) => {
               const isActive = activeId === service.id;
               const theme = cardThemes[index % cardThemes.length];
-              const tags = serviceTagsMap[service.id] ?? [
-                "Discovery",
-                "Strategy",
-                "Design",
-                "Development",
-              ];
+              const tags = serviceTagsMap[service.id] ?? ["Discovery","Strategy","Design","Development",];
 
               return (
                 <article
@@ -230,9 +233,9 @@ export function Services({ hideHeader = false }: { hideHeader?: boolean }) {
                           duration: 0.45,
                           ease: [0.22, 1, 0.36, 1],
                         }}
-                        className="relative z-[1] overflow-hidden"
-                      >
+                        className="relative z-[1] overflow-hidden">
                         <div className="px-5 pb-5 sm:px-7 sm:pb-7 md:px-8 md:pb-8">
+                         
                           <p className="max-w-2xl text-sm sm:text-base leading-relaxed text-white/80">
                             {service.description}
                           </p>
@@ -251,21 +254,25 @@ export function Services({ hideHeader = false }: { hideHeader?: boolean }) {
                                 className="rounded-full border border-white/15 bg-white/10 px-2.5 py-1 text-xs font-medium text-white/85"
                               >
                                 {tag}
-                              </span>
+                              </span> 
                             ))}
                           </div>
 
                           <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between">
                             <Link
                               href={serviceHrefMap[service.id] ?? "/services"}
-                              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#42BFA5] hover:underline"
-                              onClick={(e) => e.stopPropagation()}
-                            >
+                              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent hover:underline"
+                              onClick={(e) => e.stopPropagation()}>
                               Explore service{" "}
-                              <ArrowUpRight size={14} aria-hidden="true" />
+                              <ArrowUpRight
+                                size={14}
+                                aria-hidden="true"
+                                stroke="url(#services-arrow-gradient)"
+                              />
                             </Link>
                           </div>
                         </div>
+
                       </motion.div>
                     )}
                   </AnimatePresence>

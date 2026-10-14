@@ -2,6 +2,7 @@
 
 import React, { use } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowUpRight,
   ArrowLeft,
@@ -69,6 +70,19 @@ export function CaseStudyView({ data }: CaseStudyViewProps) {
             <div
               aria-hidden
               className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-64 sm:h-1/2 bg-gradient-to-t from-black/90 via-black/60 to-transparent"/>
+            {data.heroImage ? (
+              <>
+                <Image
+                  src={data.heroImage}
+                  alt={`${data.meta.company.name} product preview`}
+                  fill
+                  preload
+                  sizes="(min-width: 1024px) 66vw, 100vw"
+                  className="z-0 object-cover object-center"
+                />
+                <div aria-hidden className="h-[300px] sm:h-[360px] lg:h-[300px] xl:h-[340px]" />
+              </>
+            ) : (
             <div className="flex flex-col md:flex-row items-center justify-center gap-6 sm:gap-8 md:gap-6 lg:gap-0 lg:[zoom:0.62] xl:[zoom:0.72]">
               {data.heroScreens.map((screen, idx) => {
                 const isCenter = idx === 1;
@@ -91,6 +105,7 @@ export function CaseStudyView({ data }: CaseStudyViewProps) {
                 );
               })}
             </div>
+            )}
 
             {/* Project Meta Info Grid (4-cols) */}
             <motion.div
@@ -270,7 +285,7 @@ export function CaseStudyView({ data }: CaseStudyViewProps) {
         </section>
         </div>
 
-        <SolutionCarousel slides={data.solutionSlides} />
+        <SolutionCarousel slides={data.solutionSlides} gallery={data.gallery} />
 
         {/* Section 4: Key Findings */}
         <section className="mt-16 sm:mt-24">

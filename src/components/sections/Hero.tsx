@@ -95,9 +95,9 @@ function MarqueeColumn({
               alt={item.alt}
               width={900}
               height={620}
-              sizes="(max-width: 768px) 80vw, 36vw"
+              sizes="(max-width: 640px) 40vw, (max-width: 768px) 30vw, 28vw"
               className="hero-marquee-img"
-              priority={index < 4}
+              preload={index < 2}
             />
           </article>
         ))}

@@ -299,9 +299,9 @@ export const aboutStoryData: AboutStory = {
   leadParagraph:
     "We partner with forward-thinking leaders to turn complex visions into world-class digital experiences that drive measurable outcomes.",
   image: {
-    src: "/about/founder.jpg",
+    src: "/ourfoundation.png",
     alt: "Creative Director & Studio Team",
-    badgeText: "AWARD WINNING STUDIO • SINCE 2020 •",
+    badgeText: "UPWORK TOP RATED  •  UPWORK TOP RATED • ",
   },
   socials: [
     { platform: "x", href: "https://x.com" },
