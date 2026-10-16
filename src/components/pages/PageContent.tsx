@@ -74,7 +74,7 @@ export function PageContent({ slug }: { slug: PageSlug }) {
           </ul>
           <div className="mt-12 text-center">
             <a
-              href="mailto:careers@designstudio.com"
+              href="mailto:info@libertyinfoscience.com"
               className="inline-flex rounded-full bg-[#101116] px-6 py-3.5 text-sm font-semibold text-white transition-transform hover:scale-[1.03]"
             >
               Send your CV

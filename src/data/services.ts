@@ -60,9 +60,9 @@ export const detailedServices: ServiceItem[] = [
     title: "Mobile App Design",
     tags: ["User Research", "UI Design", "UX Strategy", "Wireframe Design"],
     images: [
-      { src: "/project2.png", alt: "Mobile app interfaces showcase" },
-      { src: "/mobiledevelopment.png", alt: "iOS application design mockup" },
-      { src: "/saaswebapp.png", alt: "Responsive mobile experience preview" },
+      { src: "/project2.png", alt: "Parasol Virtual Services responsive website on laptop and mobile" },
+      { src: "/mobiledevelopment.png", alt: "Mobile app UI designs for LearnBud AI, Tripify, Holidayyyy and pharmacy apps" },
+      { src: "/saaswebapp.png", alt: "SaaS web app dashboards for UniqLearn, Overc360 and DTS Splint" },
     ],
     description:
       "We design simple mobile apps with clean layout, smooth flow, fast speed, and easy user friendly experience for all users.",
@@ -75,9 +75,9 @@ export const detailedServices: ServiceItem[] = [
     title: "Dashboard Design",
     tags: ["User Research", "UI Design", "UX Strategy", "Wireframe Design"],
     images: [
-      { src: "/project1.png", alt: "Analytics dashboard tablet interface" },
-      { src: "/uxdesign.png", alt: "Interactive data visualization UI" },
-      { src: "/dts-splint.png", alt: "Enterprise workflow dashboard" },
+      { src: "/project1.png", alt: "Cinema UGC ad platform creator dashboard on laptop and mobile" },
+      { src: "/uxdesign.png", alt: "UX design process map with color palette and typography design system" },
+      { src: "/dts-splint.png", alt: "DTS Splint AI dental splint design software dashboard" },
     ],
     description:
       "We design mobile apps with intuitive layouts, smooth flows, and engaging visuals for better user experience.",
@@ -90,9 +90,9 @@ export const detailedServices: ServiceItem[] = [
     title: "Full Website Design",
     tags: ["User Research", "UI Design", "UX Strategy", "Wireframe Design"],
     images: [
-      { src: "/webdesign.png", alt: "Modern laptop website mockup" },
-      { src: "/project3.png", alt: "Responsive web design showcase" },
-      { src: "/uniqlearn.png", alt: "Dark theme website layout" },
+      { src: "/webdesign.png", alt: "Responsive website designs for dermatology, dental and pet care businesses" },
+      { src: "/project3.png", alt: "Salviali Integrated Medicine website design on a laptop" },
+      { src: "/uniqlearn/uniqlearn.png", alt: "UniqLearn education platform dashboard web design" },
     ],
     description:
       "We design modern websites with clean layouts, fast performance, and smooth user experience for all devices.",
@@ -105,9 +105,9 @@ export const detailedServices: ServiceItem[] = [
     title: "Landing Page Design",
     tags: ["User Research", "UI Design", "UX Strategy", "Wireframe Design"],
     images: [
-      { src: "/project4.png", alt: "High converting marketing landing page" },
-      { src: "/integrative-dermatology.png", alt: "Conversion optimized hero section" },
-      { src: "/project5.png", alt: "Product launch landing page mockup" },
+      { src: "/project4.png", alt: "VIOC fertility care center landing page on desktop and mobile" },
+      { src: "/integrative-dermatology.png", alt: "Integrative Dermatology clinic landing page hero section" },
+      { src: "/project5.png", alt: "Prime Estate real estate landing page design" },
     ],
     description:
       "We design high converting landing pages with clear messaging, strong visuals, and smooth user experience.",
@@ -120,9 +120,9 @@ export const detailedServices: ServiceItem[] = [
     title: "Branding Design",
     tags: ["User Research", "UI Design", "UX Strategy", "Wireframe Design"],
     images: [
-      { src: "/learnbudai.png", alt: "Brand identity studio display" },
-      { src: "/project6.png", alt: "Design system and typography tokens" },
-      { src: "/businessservices.png", alt: "Brand collateral and stationery mockup" },
+      { src: "/learnbudai/learnbudai.png", alt: "LearnBud AI brand identity and mobile app design" },
+      { src: "/project6.png", alt: "Zwiggo food delivery app branding and UI design" },
+      { src: "/businessservices.png", alt: "Digital marketing services: SEO, web development, paid ads and content promotion" },
     ],
     description:
       "We create strong brand identities with consistent visuals, memorable logos, and impactful design systems.",

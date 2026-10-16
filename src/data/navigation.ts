@@ -116,8 +116,7 @@ export const pageMeta: Record<
   // },
   contact: {
     title: "Contact — Design Studio",
-    description:
-      "Start a project or say hello — we'd love to hear from you.",
+    description: "Start a project or say hello — we'd love to hear from you.",
     eyebrow: "Contact",
   },
   projects: {

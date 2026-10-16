@@ -2,13 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import {
-  FaDribbble,
-  FaFacebookF,
-  FaInstagram,
-  FaLinkedinIn,
-} from "react-icons/fa";
 import { Container } from "@/components/ui/Container";
+import { socialLinks } from "@/data/socials";
 import {
   ScrollReveal,
   ScrollStagger,
@@ -23,13 +18,6 @@ const navigation = [
   { href: "/projects", label: "Projects" },
   { href: "/services", label: "Services" },
   { href: "/contact", label: "Contact" },
-];
-
-const socialLinks = [
-  { label: "Facebook", href: "https://facebook.com", icon: FaFacebookF },
-  { label: "LinkedIn", href: "https://linkedin.com", icon: FaLinkedinIn },
-  { label: "Instagram", href: "https://instagram.com", icon: FaInstagram },
-  { label: "Portfolio", href: "https://dribbble.com", icon: FaDribbble },
 ];
 
 export function Footer() {
@@ -47,7 +35,7 @@ export function Footer() {
             <Link href="/" aria-label="Liberty Info Science home">
               <Image
                 src="/lis-logo.svg"
-                alt="Liberty Info Science"
+                alt="Liberty Info Science (LIS) logo"
                 width={151}
                 height={51}
                 priority
@@ -65,7 +53,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   aria-label={label}
                 >
-                  <Icon size={16} strokeWidth={1.8} aria-hidden="true" />
+                  <Icon size={16} aria-hidden="true" />
                 </a>
               ))}
             </div>
@@ -89,10 +77,10 @@ export function Footer() {
               <p className="studio-footer-section-title">[ Contact ]</p>
               <div>
                 <span>Available worldwide</span>
-                <a href="mailto:hello@designstudio.com">
-                  hello@designstudio.com
+                <a href="mailto:info@libertyinfoscience.com">
+                  info@libertyinfoscience.com
                 </a>
-                <a href="tel:+910000000000">+91 00000 00000</a>
+                <a href="tel:+917096364801">+91 70963 64801</a>
               </div>
             </address>
           </ScrollItem>

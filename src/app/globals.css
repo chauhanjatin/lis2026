@@ -913,9 +913,9 @@ body {
 }
 
 .studio-footer-socials a:hover {
-  background: #f4f5ef;
-  color: #3391b1;
-  border-color: #f4f5ef;
+  background: linear-gradient(90deg, #0d4fb8, #42bfa5);
+  color: #ffffff;
+  border-color: transparent;
   transform: translateY(-2px);
 }
 
@@ -948,18 +948,23 @@ body {
 
 .studio-footer-nav a,
 .studio-footer-contact a {
+  width: fit-content;
   color: rgba(244, 245, 239, 0.85);
+  -webkit-text-fill-color: rgba(244, 245, 239, 0.85);
+  background-image: linear-gradient(90deg, #0d4fb8, #42bfa5);
+  -webkit-background-clip: text;
+  background-clip: text;
   text-decoration: none;
   font-size: 1.05rem;
   font-weight: 500;
   transition:
-    color 200ms ease,
+    -webkit-text-fill-color 200ms ease,
     opacity 200ms ease;
 }
 
 .studio-footer-nav a:hover,
 .studio-footer-contact a:hover {
-  color: #42bfa5;
+  -webkit-text-fill-color: transparent;
   opacity: 1;
 }
 

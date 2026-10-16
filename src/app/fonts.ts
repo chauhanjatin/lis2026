@@ -2,6 +2,7 @@ import {
   Cormorant_Garamond,
   Instrument_Sans,
   Manrope,
+  Nunito,
   Plus_Jakarta_Sans,
   Sora,
 } from "next/font/google";
@@ -40,10 +41,18 @@ export const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
 });
 
+export const nunito = Nunito({
+  subsets: ["latin"],
+  display: "swap",
+  preload: false,
+  variable: "--font-nunito",
+});
+
 export const fontVariables = [
   manrope.variable,
   sora.variable,
   instrumentSans.variable,
   cormorantGaramond.variable,
   plusJakartaSans.variable,
+  nunito.variable,
 ].join(" ");

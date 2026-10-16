@@ -108,7 +108,7 @@ export function PageLoader() {
       <div className="relative flex flex-col items-center gap-7">
         <Image
           src="/lis-logo.svg"
-          alt="LIS"
+          alt="Liberty Info Science (LIS) logo"
           width={151}
           height={51}
           preload

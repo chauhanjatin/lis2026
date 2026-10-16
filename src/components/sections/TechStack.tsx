@@ -5,14 +5,33 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { ScrollReveal, scaleIn } from "@/components/ui/ScrollReveal";
 
-const technologies = Array.from({ length: 19 }, (_, index) => {
-  const id = index + 2;
-  return {
-    id,
-    name: `Technology ${id}`,
-    src: `/technology/technology${id}.svg`,
-  };
-});
+const technologyNames: Record<number, string> = {
+  2: "GitHub",
+  3: "JavaScript",
+  4: "Adobe Photoshop",
+  5: "Android",
+  6: "Laravel",
+  7: "Flutter",
+  8: "CodeIgniter",
+  9: "WordPress",
+  10: "iOS",
+  11: "Adobe Illustrator",
+  12: "HTML5",
+  13: "Figma",
+  14: "React",
+  15: "CSS3",
+  16: "Angular",
+  17: "MySQL",
+  18: "Node.js",
+  19: "Vue.js",
+  20: "Sketch",
+};
+
+const technologies = Object.entries(technologyNames).map(([id, name]) => ({
+  id: Number(id),
+  name,
+  src: `/technology/technology${id}.svg`,
+}));
 
 function IntegrationCard({
   item,
@@ -28,7 +47,7 @@ function IntegrationCard({
     >
       <Image
         src={item.src}
-        alt={item.name}
+        alt={`${item.name} logo`}
         width={48}
         height={48}
         className="h-[52%] w-[52%] object-contain"
@@ -104,7 +123,7 @@ export function TechStack() {
           >
             <Image
               src="/technologies-logo.svg"
-              alt="Liberty Info Science"
+              alt="Liberty Info Science (LIS) logo"
               width={114}
               height={164}
               priority

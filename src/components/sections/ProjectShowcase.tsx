@@ -19,24 +19,28 @@ import { GradientText, SectionHero } from "@/components/ui/SectionHero";
 const projects = [
   {
     title: "UniqLearn",
-    image: "/uniqlearn.png",
+    alt: "UniqLearn education dashboard – teacher analytics web app UI/UX design case study",
+    image: "/uniqlearn/uniqlearn.png",
     figmaUrl: "https://www.figma.com/design/uniqlearn",
     websiteUrl: "https://uniqlearn.example.com",
   },
   {
     title: "Integrative Dermatology",
+    alt: "Integrative Dermatology clinic website design case study – desktop and mobile",
     image: "/integrative-dermatology.png",
     figmaUrl: "https://www.figma.com/design/integrative-dermatology",
     websiteUrl: "https://integrativedermatology.example.com",
   },
   {
     title: "LearnBud AI",
-    image: "/learnbudai.png",
+    alt: "LearnBud AI tutoring mobile app UI/UX design case study",
+    image: "/learnbudai/learnbudai.png",
     figmaUrl: "https://www.figma.com/design/learnbud-ai",
     websiteUrl: "https://learnbudai.example.com",
   },
   {
     title: "DTS Splint",
+    alt: "DTS Splint AI-powered dental splint design software UI case study",
     image: "/dts-splint.png",
     figmaUrl: "https://www.figma.com/design/dts-splint",
     websiteUrl: "https://dtssplint.example.com",
@@ -110,7 +114,10 @@ export function ProjectShowcase() {
   const handleMobilePrev = () => {
     if (mobileScrollRef.current) {
       const cardWidth = mobileScrollRef.current.clientWidth * 0.85;
-      mobileScrollRef.current.scrollBy({ left: -cardWidth, behavior: "smooth" });
+      mobileScrollRef.current.scrollBy({
+        left: -cardWidth,
+        behavior: "smooth",
+      });
     }
   };
 
@@ -144,11 +151,7 @@ export function ProjectShowcase() {
           aria-label="Featured projects"
         >
           <div ref={viewportRef} className="showcase-sticky">
-            <motion.div
-              ref={trackRef}
-              className="showcase-track"
-              style={{ x }}
-            >
+            <motion.div ref={trackRef} className="showcase-track" style={{ x }}>
               {projects.map((project, index) => (
                 <div key={project.title} className="showcase-step">
                   <article
@@ -159,11 +162,10 @@ export function ProjectShowcase() {
                       href={project.websiteUrl || project.figmaUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="showcase-art group/art block relative overflow-hidden"
-                    >
+                      className="showcase-art group/art block relative overflow-hidden">
                       <Image
                         src={project.image}
-                        alt={project.title}
+                        alt={project.alt}
                         fill
                         sizes="68vw"
                         className="object-cover transition-transform duration-700 ease-out group-hover/art:scale-[1.04]"
@@ -204,12 +206,15 @@ export function ProjectShowcase() {
                           <span className="showcase-link-icon showcase-link-icon--figma">
                             <FaFigma aria-hidden />
                           </span>
-                          <span className="showcase-link-label">View Design</span>
+                          <span className="showcase-link-label">
+                            View Design
+                          </span>
                           <ArrowUpRight
                             size={12}
                             className="text-[#145a7a] opacity-50 transition-opacity group-hover/link:opacity-100"
                           />
                         </a>
+                        
                         <a
                           href={project.websiteUrl}
                           target="_blank"
@@ -242,8 +247,7 @@ export function ProjectShowcase() {
         <div
           ref={mobileScrollRef}
           onScroll={handleMobileScroll}
-          className="flex gap-4 overflow-x-auto pb-4 pt-1 snap-x snap-mandatory scrollbar-none px-4 sm:px-6"
-        >
+          className="flex gap-4 overflow-x-auto pb-4 pt-1 snap-x snap-mandatory scrollbar-none px-4 sm:px-6">
           {projects.map((project, index) => (
             <div
               key={project.title}
@@ -258,7 +262,7 @@ export function ProjectShowcase() {
                 >
                   <Image
                     src={project.image}
-                    alt={project.title}
+                    alt={project.alt}
                     fill
                     sizes="85vw"
                     className="object-cover transition-transform duration-500 group-hover/mobileArt:scale-[1.03]"
@@ -288,7 +292,10 @@ export function ProjectShowcase() {
                       <span className="showcase-link-label !text-[0.75rem]">
                         View Design
                       </span>
-                      <ArrowUpRight size={11} className="text-[#145a7a] opacity-60" />
+                      <ArrowUpRight
+                        size={11}
+                        className="text-[#145a7a] opacity-60"
+                      />
                     </a>
                     <a
                       href={project.websiteUrl}
@@ -302,7 +309,10 @@ export function ProjectShowcase() {
                       <span className="showcase-link-label !text-[0.75rem]">
                         Visit Website
                       </span>
-                      <ArrowUpRight size={11} className="text-[#145a7a] opacity-60" />
+                      <ArrowUpRight
+                        size={11}
+                        className="text-[#145a7a] opacity-60"
+                      />
                     </a>
                   </div>
                 </div>
@@ -344,14 +354,14 @@ export function ProjectShowcase() {
               <ArrowRight size={14} strokeWidth={2.2} />
             </button>
           </div>
+
         </div>
       </div>
 
       <Container className="px-4 sm:px-6 mt-10 sm:mt-14 flex justify-center">
         <Link
           href="/projects"
-          className="group inline-flex items-center gap-3 rounded-full bg-[#101116] py-2.5 pl-6 pr-2.5 text-sm sm:text-[15px] font-semibold text-white shadow-[0_12px_30px_-10px_rgba(16,17,22,0.45)] transition-transform hover:scale-[1.03] active:scale-[0.98]"
-        >
+          className="group inline-flex items-center gap-3 rounded-full bg-[#101116] py-2.5 pl-6 pr-2.5 text-sm sm:text-[15px] font-semibold text-white shadow-[0_12px_30px_-10px_rgba(16,17,22,0.45)] transition-transform hover:scale-[1.03] active:scale-[0.98]">
           View All Projects
           <span className="inline-grid size-8 place-items-center rounded-full bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] text-white">
             <ArrowUpRight
@@ -362,6 +372,7 @@ export function ProjectShowcase() {
           </span>
         </Link>
       </Container>
+
     </section>
   );
 }

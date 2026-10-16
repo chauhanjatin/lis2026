@@ -12,15 +12,15 @@ import { Container } from "@/components/ui/Container";
 import { ScrollReveal, fadeUp } from "@/components/ui/ScrollReveal";
 
 const projectImages = [
-  { src: "/project1.png", alt: "DTS Splint project" },
-  { src: "/project2.png", alt: "Integrative Dermatology project" },
-  { src: "/project3.png", alt: "LearnBud AI project" },
-  { src: "/project4.png", alt: "UniqLearn project" },
-  { src: "/project5.png", alt: "UniqLearn project" },
-  { src: "/project6.png", alt: "UniqLearn project" },
-  { src: "/project7.png", alt: "UniqLearn project" },
-  { src: "/project8.png", alt: "UniqLearn project" },
-  { src: "/project9.png", alt: "UniqLearn project" },
+  { src: "/project1.png", alt: "Cinema UGC ad platform – creator marketplace web app and mobile UI design" },
+  { src: "/project2.png", alt: "Parasol Virtual Services AI course website – responsive desktop and mobile design" },
+  { src: "/project3.png", alt: "Salviali Integrated Medicine herbal healthcare website design on a laptop" },
+  { src: "/project4.png", alt: "VIOC fertility and oncology care center responsive website design" },
+  { src: "/project5.png", alt: "Prime Estate real estate developer website UI design" },
+  { src: "/project6.png", alt: "Zwiggo smart food delivery mobile app UI design" },
+  { src: "/project7.png", alt: "Integrative Dermatology clinic website – desktop and mobile web design" },
+  { src: "/project8.png", alt: "Holidayyyy smart hotel booking web app and mobile UI design" },
+  { src: "/project9.png", alt: "Talk2Hope online counselling and mental health website design" },
 ];
 
 const columns = [
@@ -76,10 +76,12 @@ function MarqueeColumn({
   items,
   direction,
   duration,
+  decorative = false,
 }: {
   items: typeof projectImages;
   direction: "up" | "down";
   duration: string;
+  decorative?: boolean;
 }) {
   const loop = [...items, ...items, ...items];
 
@@ -92,7 +94,7 @@ function MarqueeColumn({
           <article key={`${item.src}-${index}`} className="hero-marquee-card">
             <Image
               src={item.src}
-              alt={item.alt}
+              alt={decorative || index >= items.length ? "" : item.alt}
               width={900}
               height={620}
               sizes="(max-width: 640px) 40vw, (max-width: 768px) 30vw, 28vw"
@@ -200,6 +202,7 @@ export function Hero() {
                   items={column.items}
                   direction={column.direction}
                   duration={column.duration}
+                  decorative={index > 0}
                 />
               ))}
             </div>

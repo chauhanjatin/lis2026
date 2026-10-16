@@ -69,7 +69,7 @@ export const projects: Project[] = [
     title: "Skyline Tech Labs",
     category: "B2B SaaS • Enterprise",
     summary: "How Fuse helped Skyline Labs close 6-figure enterprise deals in 11 hours.",
-    image: "/learnbudai.png",
+    image: "/learnbudai/learnbudai.png",
     alt: "Skyline Tech Labs case study showcase",
     tags: ["branding", "ui-ux"],
     figmaUrl: "https://www.figma.com/design/skyline-labs",
@@ -129,7 +129,7 @@ export const projects: Project[] = [
     category: "Web Design",
     summary:
       "An education platform with a clean learning experience designed for clarity, focus, and daily engagement.",
-    image: "/uniqlearn.png",
+    image: "/uniqlearn/uniqlearn.png",
     alt: "UniqLearn education platform interface",
     tags: ["web-design", "ui-ux"],
     figmaUrl: "https://www.figma.com/design/uniqlearn",
@@ -153,7 +153,7 @@ export const projects: Project[] = [
     category: "Branding",
     summary:
       "Brand system and product UI for an AI learning assistant built to feel approachable, smart, and human.",
-    image: "/learnbudai.png",
+    image: "/learnbudai/learnbudai.png",
     alt: "LearnBud AI brand and product design",
     tags: ["branding", "ui-ux"],
     figmaUrl: "https://www.figma.com/design/learnbud-ai",

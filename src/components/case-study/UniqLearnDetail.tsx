@@ -57,7 +57,7 @@ export function UniqLearnDetail() {
         >
           <div className="relative w-full h-full max-w-5xl rounded-2xl overflow-hidden shadow-2xl">
             <Image
-              src="/uniqlearn.png"
+              src="/uniqlearn/uniqlearn.png"
               alt="UniqLearn Web Dashboard Platform Showcase"
               fill
               priority

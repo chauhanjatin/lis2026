@@ -74,7 +74,7 @@ export function CaseStudyView({ data }: CaseStudyViewProps) {
               <>
                 <Image
                   src={data.heroImage}
-                  alt={`${data.meta.company.name} product preview`}
+                  alt={`${data.meta.company.name} case study – ${data.cardCategory.replace(/\s*•\s*/g, ", ")} by Liberty Info Science`}
                   fill
                   preload
                   sizes="(min-width: 1024px) 66vw, 100vw"
@@ -285,7 +285,11 @@ export function CaseStudyView({ data }: CaseStudyViewProps) {
         </section>
         </div>
 
-        <SolutionCarousel slides={data.solutionSlides} gallery={data.gallery} />
+        <SolutionCarousel
+          slides={data.solutionSlides}
+          gallery={data.gallery}
+          projectName={data.meta.company.name}
+        />
 
         {/* Section 4: Key Findings */}
         <section className="mt-16 sm:mt-24">

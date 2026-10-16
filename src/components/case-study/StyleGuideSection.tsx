@@ -10,6 +10,7 @@ const fontVars: Record<string, string> = {
   Sora: "var(--font-sora)",
   Manrope: "var(--font-manrope)",
   "Instrument Sans": "var(--font-instrument-sans)",
+  Nunito: "var(--font-nunito)",
 };
 
 const tilts = ["-rotate-[4deg]", "rotate-[3deg]", "-rotate-[3deg]", "rotate-[4deg]"];
@@ -114,7 +115,9 @@ export function StyleGuideSection({ guide }: { guide: CaseStudyStyleGuide }) {
             {guide.gradients.map((gradient, idx) => (
               <div
                 key={gradient}
-                className={`${tilts[(idx + 1) % tilts.length]} ${idx > 0 ? "-mt-3" : ""} relative h-16 sm:h-[4.5rem] rounded-xl shadow-[0_10px_25px_-12px_rgba(0,0,0,0.35)]`}
+                className={`${tilts[(idx + 1) % tilts.length]} ${idx > 0 ? "-mt-3" : ""} relative rounded-xl shadow-[0_10px_25px_-12px_rgba(0,0,0,0.35)] ${
+                  guide.gradients.length === 1 ? "flex-1 min-h-[12rem]" : "h-16 sm:h-[4.5rem]"
+                }`}
                 style={{ backgroundImage: gradient, zIndex: idx + 1 }}
               />
             ))}

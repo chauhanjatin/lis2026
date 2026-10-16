@@ -61,7 +61,7 @@ function ServiceArtwork({
     <div className="relative aspect-[1.25] sm:aspect-[1.15] overflow-hidden rounded-2xl border border-white/10 shadow-lg">
       <Image
         src={src}
-        alt={title}
+        alt={`${title} services by Liberty Info Science`}
         fill
         sizes="(max-width: 640px) 80vw, 20rem"
         className="object-cover"

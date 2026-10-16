@@ -5,10 +5,10 @@ import { Container } from "@/components/ui/Container";
 import { ScrollReveal, ScrollStagger, ScrollItem, fadeUp } from "@/components/ui/ScrollReveal";
 
 const partners = [
-  { src: "/partners/partner-1.svg", alt: "Partner logo", width: 140, height: 40 },
-  { src: "/partners/partner-2.svg", alt: "Logoipsum", width: 150, height: 40 },
-  { src: "/partners/partner-3.svg", alt: "Logoipsum", width: 168, height: 40 },
-  { src: "/partners/partner-4.svg", alt: "Partner mark", width: 56, height: 40 },
+  { src: "/partners/partner-1.svg", alt: "Liberty Info Science client logo", width: 140, height: 40 },
+  { src: "/partners/partner-2.svg", alt: "Liberty Info Science client logo", width: 150, height: 40 },
+  { src: "/partners/partner-3.svg", alt: "Liberty Info Science client logo", width: 168, height: 40 },
+  { src: "/partners/partner-4.svg", alt: "Liberty Info Science client logo", width: 56, height: 40 },
 ] as const;
 
 export function Partners() {

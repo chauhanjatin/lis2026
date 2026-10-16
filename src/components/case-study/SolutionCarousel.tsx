@@ -8,6 +8,7 @@ import type { CaseStudyGallery, CaseStudySlide } from "@/data/caseStudies";
 interface SolutionCarouselProps {
   slides: CaseStudySlide[];
   gallery?: CaseStudyGallery;
+  projectName?: string;
 }
 
 const SECONDS_PER_ITEM = 7;
@@ -66,7 +67,11 @@ function CardSlide({ slide }: { slide: CaseStudySlide }) {
   );
 }
 
-export function SolutionCarousel({ slides, gallery }: SolutionCarouselProps) {
+export function SolutionCarousel({
+  slides,
+  gallery,
+  projectName = "Project",
+}: SolutionCarouselProps) {
   const images = gallery?.images ?? [];
   const imageWidth = gallery?.width ?? 1;
   const imageHeight = gallery?.height ?? 1;
@@ -107,7 +112,11 @@ export function SolutionCarousel({ slides, gallery }: SolutionCarouselProps) {
                 <Image
                   key={`${src}-${idx}`}
                   src={src}
-                  alt={idx < images.length ? `Project screen ${idx + 1}` : ""}
+                  alt={
+                    idx < images.length
+                      ? `${projectName} ${isPortrait ? "mobile app" : "web app"} UI screen ${idx + 1}`
+                      : ""
+                  }
                   aria-hidden={idx >= images.length}
                   width={imageWidth}
                   height={imageHeight}

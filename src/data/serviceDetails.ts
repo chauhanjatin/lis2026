@@ -36,7 +36,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       "We craft intuitive interfaces, thoughtful user journeys, and impactful visual design systems that connect emotionally and drive business growth.",
     tags: ["UI/UX", "User Research", "Wireframing", "Design System"],
     heroImage: "/hero-uxdesign.png",
-    heroImageAlt: "UI UX Design visual preview",
+    heroImageAlt: "UI/UX design services by Liberty Info Science: UX research process map, UI color palette and wireframes",
     processSteps: [
       {
         step: "01",
@@ -92,7 +92,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       "Faster development velocity backed by modular, well-documented design systems.",
     ],
     midImage: "/project1.png",
-    midImageAlt: "UI/UX Design showcase preview",
+    midImageAlt: "Cinema UGC ad platform UI/UX design on laptop and mobile",
     conclusionTitle: "Conclusion",
     conclusionDescription:
       "Great UI/UX is the foundation of every successful digital product. Through our rigorous research, human-centric design, and scalable UI systems, we equip your brand with an experience that keeps users coming back.",
@@ -105,7 +105,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       "We build blazing-fast, scalable, and responsive web applications engineered for modern performance, reliability, and business impact.",
     tags: ["Full Stack", "Next.js", "TypeScript", "Performance"],
     heroImage: "/hero-webdevelopment.png",
-    heroImageAlt: "Web Development interface showcase",
+    heroImageAlt: "Web development services by Liberty Info Science: custom SaaS dashboards and web apps",
     processSteps: [
       {
         step: "01",
@@ -161,7 +161,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       "Intuitive content workflows empowering marketing teams without developer dependencies.",
     ],
     midImage: "/saaswebapp.png",
-    midImageAlt: "Web application development dashboard",
+    midImageAlt: "SaaS web application dashboards developed for UniqLearn, Overc360 and DTS Splint",
     conclusionTitle: "Conclusion",
     conclusionDescription:
       "Whether launching a new platform or re-architecting legacy software, our web development expertise guarantees clean code, superior speed, and lasting architectural value for your business.",
@@ -174,7 +174,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       "We design and develop high-performance iOS and Android mobile apps featuring native smoothness, fluid animations, and robust offline capabilities.",
     tags: ["iOS", "Android", "React Native", "Flutter"],
     heroImage: "/hero-mobiledevelopment.png",
-    heroImageAlt: "Mobile App Development preview",
+    heroImageAlt: "Mobile app development services by Liberty Info Science: iOS and Android app screens",
     processSteps: [
       {
         step: "01",
@@ -230,7 +230,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       "Frictionless user onboarding driving immediate conversion and subscription uptake.",
     ],
     midImage: "/project2.png",
-    midImageAlt: "Mobile application interface mockup",
+    midImageAlt: "Parasol Virtual Services responsive website on mobile and desktop",
     conclusionTitle: "Conclusion",
     conclusionDescription:
       "A great mobile app puts your brand directly into your customers' pockets. We help you build mobile experiences that feel effortless, engaging, and indispensable.",
@@ -243,7 +243,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       "We provide strategic digital consulting, brand positioning, technology modernization, and growth roadmaps that elevate modern enterprises.",
     tags: ["Strategy", "Consulting", "Branding", "Growth"],
     heroImage: "/hero-webdesign.png",
-    heroImageAlt: "Business Strategy and Consulting showcase",
+    heroImageAlt: "Business websites designed by Liberty Info Science for healthcare, pet care and SaaS brands",
     processSteps: [
       {
         step: "01",
@@ -298,8 +298,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       "Streamlined operations with lower software overhead and higher team efficiency.",
       "Measurable increase in customer lifetime value and revenue velocity.",
     ],
-    midImage: "/learnbudai.png",
-    midImageAlt: "Business consulting and brand identity preview",
+    midImage: "/learnbudai/learnbudai.png",
+    midImageAlt: "LearnBud AI brand identity and app design",
     conclusionTitle: "Conclusion",
     conclusionDescription:
       "In a fast-moving digital economy, having the right strategy makes all the difference. We empower your business with the clarity, tools, and execution required to thrive and lead.",

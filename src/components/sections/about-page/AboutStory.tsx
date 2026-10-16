@@ -2,9 +2,8 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { FaXTwitter, FaInstagram } from "react-icons/fa6";
-import { HiOutlineGlobeAlt } from "react-icons/hi2";
 import { SiUpwork } from "react-icons/si";
+import { socialLinks } from "@/data/socials";
 import { Container } from "@/components/ui/Container";
 import {
   ScrollReveal,
@@ -20,16 +19,16 @@ function RotatingBadge({ text }: { text: string }) {
   const reduceMotion = useReducedMotion();
 
   return (
-    <motion.div
-      animate={reduceMotion ? undefined : { rotate: 360 }}
-      transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
+    <div
       className="relative flex h-24 w-24 items-center justify-center rounded-full bg-[#181A1C]/90 text-white shadow-2xl backdrop-blur-md sm:h-28 sm:w-28 lg:h-32 lg:w-32 border border-white/20"
       aria-hidden="true"
     >
       {/* Curved circular text */}
-      <svg
+      <motion.svg
         viewBox="0 0 120 120"
         className="absolute inset-0 h-full w-full"
+        animate={reduceMotion ? undefined : { rotate: 360 }}
+        transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
       >
         <defs>
           <path
@@ -52,24 +51,13 @@ function RotatingBadge({ text }: { text: string }) {
             {text}
           </textPath>
         </text>
-      </svg>
+      </motion.svg>
 
       <div className="relative z-10 grid size-10 place-items-center rounded-full bg-gradient-to-br from-[#14A800] to-[#0E7A00] text-white shadow-lg sm:size-11">
         <SiUpwork className="size-5 sm:size-6" />
       </div>
-    </motion.div>
+    </div>
   );
-}
-
-function SocialIcon({ platform }: { platform: "x" | "website" | "instagram" }) {
-  switch (platform) {
-    case "x":
-      return <FaXTwitter size={15} />;
-    case "website":
-      return <HiOutlineGlobeAlt size={17} />;
-    case "instagram":
-      return <FaInstagram size={16} />;
-  }
 }
 
 export function AboutStorySection({
@@ -110,19 +98,19 @@ export function AboutStorySection({
                   </div>
 
                   {/* Frosted Social Action Buttons (Bottom Left of Image) */}
-                  <div className="absolute bottom-6 left-6 z-20 flex items-center gap-2.5">
-                    {data.socials.map((social) => (
+                  <div className="absolute bottom-5 left-4 z-20 flex items-center gap-2 sm:bottom-6 sm:left-6 sm:gap-2.5">
+                    {socialLinks.map(({ label, href, icon: Icon }) => (
                       <motion.a
-                        key={social.platform}
-                        href={social.href}
+                        key={label}
+                        href={href}
                         target="_blank"
                         rel="noopener noreferrer"
                         whileHover={reduceMotion ? undefined : { scale: 1.15, y: -2 }}
                         whileTap={reduceMotion ? undefined : { scale: 0.95 }}
-                        className="flex h-9 w-9 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-md border border-white/20 transition-colors hover:bg-black/80 sm:h-10 sm:w-10"
-                        aria-label={`Visit our ${social.platform}`}
+                        className="flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-md border border-white/20 transition-colors hover:bg-black/80 sm:h-10 sm:w-10"
+                        aria-label={`Visit our ${label}`}
                       >
-                        <SocialIcon platform={social.platform} />
+                        <Icon className="size-3.5 sm:size-4" aria-hidden="true" />
                       </motion.a>
                     ))}
                   </div>
@@ -134,6 +122,7 @@ export function AboutStorySection({
           {/* Right Column: 3 Content Blocks (Mission, Vision, Quality) */}
           <div className="lg:col-span-7">
             <ScrollReveal amount={0.3}>
+              
               <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#202224]">
                 <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5]" />
                 {data.eyebrow}
@@ -152,18 +141,20 @@ export function AboutStorySection({
 
               {/* 3 Pillars List with Smooth Animation */}
               <ScrollStagger className="space-y-6">
-                {data.pillars.map((pillar) => (
-                  <ScrollItem key={pillar.id} variants={fadeUp}>
+                {data.pillars.map((pillar) => (                  
+                  
+                  <ScrollItem key={pillar.id} variants={fadeUp}>                                       
                     <motion.article
                       whileHover={
                         reduceMotion
                           ? undefined
                           : { x: 4, transition: { duration: 0.25, ease } }
                       }
-                      className="group relative rounded-2xl border border-transparent p-4 transition-all duration-300 hover:border-[#E2E4E8] hover:bg-white hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)] sm:p-5"
-                    >
+                      className="group relative rounded-2xl border border-transparent p-4 transition-all duration-300 hover:border-[#E2E4E8] hover:bg-white hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)] sm:p-5">
+                      
                       <div className="flex items-start gap-4">
                         {/* Number Badge */}
+                        
                         <span className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#E8EAEF] font-mono text-xs font-bold text-[#1F2937] transition-colors group-hover:bg-gradient-to-r from-[#42BFA5] to-[#0D4FB8]  group-hover:text-white">
                           {pillar.number}
                         </span>
@@ -176,12 +167,14 @@ export function AboutStorySection({
                             {pillar.description}
                           </p>
                         </div>
+
                       </div>
                     </motion.article>
                   </ScrollItem>
+                  
                 ))}
               </ScrollStagger>
-            </ScrollReveal>
+            </ScrollReveal>            
           </div>
         </div>
       </Container>

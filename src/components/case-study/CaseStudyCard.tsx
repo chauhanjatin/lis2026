@@ -35,7 +35,7 @@ export function CaseStudyCard({
             <>
               <Image
                 src={study.image}
-                alt={study.cardTitle}
+                alt={`${study.cardTitle} case study – ${study.cardCategory.replace(/\s*•\s*/g, ", ")}`}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover opacity-0 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105 group-hover:opacity-100"

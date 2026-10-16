@@ -205,7 +205,7 @@ export function Header() {
             className="flex shrink-0 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#090a0c]">
             <Image
               src="/lis-logo.svg"
-              alt="LIS"
+              alt="Liberty Info Science (LIS) logo"
               width={151}
               height={51}
               priority

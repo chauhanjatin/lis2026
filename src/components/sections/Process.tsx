@@ -83,7 +83,7 @@ export function Process() {
               <div className="workflow-preview">
                 <Image
                   src={step.image}
-                  alt={step.title}
+                  alt={`${step.title} – step ${step.number} of the LIS UI/UX design and development process`}
                   fill
                   sizes="(max-width: 767px) 45vw, 22vw"
                   className="object-cover"

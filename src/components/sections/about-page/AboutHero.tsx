@@ -116,7 +116,7 @@ export function AboutHero({
                     className="flex shrink-0 items-center justify-center grayscale opacity-60 transition-all duration-300 hover:grayscale-0 hover:opacity-100 hover:scale-105">
                     <Image
                       src={partner.src}
-                      alt={partner.alt}
+                      alt=""
                       width={partner.width}
                       height={partner.height}
                       className="w-[200px] h-auto object-contain transition-all duration-300"

@@ -39,8 +39,7 @@ export function AboutCTASection({
               <div className="mt-8 flex justify-center sm:mt-10">
                 <Link
                   href={data.buttonHref}
-                  className="group inline-flex items-center gap-2.5 rounded-full bg-white px-7 py-3.5 text-sm font-semibold tracking-[-0.01em] text-[#111216] transition-all duration-300 hover:scale-[1.03] hover:bg-[#F3F4F6] shadow-[0_10px_25px_rgba(255,255,255,0.15)] active:scale-[0.98]"
-                >
+                  className="group inline-flex items-center gap-2.5 rounded-full bg-white px-7 py-3.5 text-sm font-semibold tracking-[-0.01em] text-[#111216] transition-all duration-300 hover:scale-[1.03] hover:bg-[#F3F4F6] shadow-[0_10px_25px_rgba(255,255,255,0.15)] active:scale-[0.98]">
                   <span>{data.buttonLabel}</span>
                   <ArrowRight
                     size={16}
@@ -50,6 +49,7 @@ export function AboutCTASection({
                   />
                 </Link>
               </div>
+              
             </div>
           </div>
         </ScrollReveal>

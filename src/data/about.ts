@@ -87,10 +87,6 @@ export type AboutStory = {
     alt: string;
     badgeText: string;
   };
-  socials: {
-    platform: "x" | "website" | "instagram";
-    href: string;
-  }[];
   pillars: AboutStoryPillar[];
 };
 
@@ -114,7 +110,7 @@ export const aboutHeroData: AboutHeroData = {
   brand: "Agero",
   pillBadge: {
     src: "/about/badge-building.svg",
-    alt: "Modern architecture headquarters badge",
+    alt: "",
     width: 66,
     height: 44,
   },
@@ -122,7 +118,7 @@ export const aboutHeroData: AboutHeroData = {
   line2Prefix: "Real Impact",
   roundBadge: {
     src: "/about/badge-column-plant.svg",
-    alt: "Sustainable design and growth badge",
+    alt: "",
     width: 44,
     height: 44,
   },
@@ -138,61 +134,61 @@ export const aboutHeroData: AboutHeroData = {
 export const aboutPartners: AboutPartner[] = [
   {
     src: "/partners/partner-1.webp",
-    alt: "Partner mark",
+    alt: "demysti5 logo - Liberty Info Science client",
     width: 200,
     height: 100,
   },
   {
     src: "/partners/partner-2.webp",
-    alt: "Partner mark",
+    alt: "Digital Twin logo - Liberty Info Science client",
     width: 200,
     height: 100,
   },
   {
     src: "/partners/partner-3.webp",
-    alt: "Partner mark",
+    alt: "Dploy Solutions logo - Liberty Info Science client",
     width: 200,
     height: 100,
   },
   {
     src: "/partners/partner-4.webp",
-    alt: "Partner mark",
+    alt: "Edumerge logo - Liberty Info Science client",
     width: 200,
     height: 100,
   },
   {
     src: "/partners/partner-5.webp",
-    alt: "Partner mark",
+    alt: "AnyPost logo - Liberty Info Science client",
     width: 200,
     height: 100,
   },
   {
     src: "/partners/partner-6.webp",
-    alt: "Partner mark",
+    alt: "Arouzed logo - Liberty Info Science client",
     width: 200,
     height: 100,
   },
   {
     src: "/partners/partner-7.webp",
-    alt: "Partner mark",
+    alt: "BrownMonster logo - Liberty Info Science client",
     width: 200,
     height: 100,
   },
   {
     src: "/partners/partner-8.webp",
-    alt: "Partner mark",
+    alt: "CogentShift logo - Liberty Info Science client",
     width: 200,
     height: 100,
   },
   {
     src: "/partners/partner-9.webp",
-    alt: "Partner mark",
+    alt: "Flatworld Solutions logo - Liberty Info Science client",
     width: 200,
     height: 100,
   },
   {
     src: "/partners/partner-10.webp",
-    alt: "Partner mark",
+    alt: "Flyerr logo - Liberty Info Science client",
     width: 200,
     height: 100,
   },
@@ -300,14 +296,9 @@ export const aboutStoryData: AboutStory = {
     "We partner with forward-thinking leaders to turn complex visions into world-class digital experiences that drive measurable outcomes.",
   image: {
     src: "/ourfoundation.png",
-    alt: "Creative Director & Studio Team",
+    alt: "Liberty Info Science design and development team collaborating on a client project",
     badgeText: "UPWORK TOP RATED  •  UPWORK TOP RATED • ",
   },
-  socials: [
-    { platform: "x", href: "https://x.com" },
-    { platform: "website", href: "https://agero.design" },
-    { platform: "instagram", href: "https://instagram.com" },
-  ],
   pillars: [
     {
       id: "mission",

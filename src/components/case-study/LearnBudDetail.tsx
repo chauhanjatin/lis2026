@@ -50,7 +50,7 @@ export function LearnBudDetail() {
 
           <div className="relative w-full h-full max-w-5xl rounded-2xl overflow-hidden shadow-2xl">
             <Image
-              src="/learnbudai.png"
+              src="/learnbudai/learnbudai.png"
               alt="LearnBud AI Isometric Mobile Showcase"
               fill
               priority

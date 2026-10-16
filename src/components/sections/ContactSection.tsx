@@ -2,9 +2,8 @@
 
 import { type FormEvent, useState } from "react";
 import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
-import { FaFacebookF, FaLinkedinIn } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
 import { Container } from "@/components/ui/Container";
+import { socialLinks } from "@/data/socials";
 import { GradientText } from "@/components/ui/SectionHero";
 import { cn } from "@/components/lib/cn";
 
@@ -23,20 +22,14 @@ const contactDetails = [
   },
   {
     icon: Phone,
-    label: "+1 (800) 456-256",
-    href: "tel:+1800456256",
+    label: "+91 70963 64801",
+    href: "tel:+917096364801",
   },
   {
     icon: Mail,
-    label: "hello@designstudio.com",
-    href: "mailto:hello@designstudio.com",
+    label: "info@libertyinfoscience.com",
+    href: "mailto:info@libertyinfoscience.com",
   },
-] as const;
-
-const socialLinks = [
-  { label: "Facebook", icon: FaFacebookF, href: "#" },
-  { label: "LinkedIn", icon: FaLinkedinIn, href: "#" },
-  { label: "X", icon: FaXTwitter, href: "#" },
 ] as const;
 
 const fieldClass =
@@ -97,6 +90,8 @@ export function ContactSection() {
                 <a
                   key={label}
                   href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className="inline-grid size-10 place-items-center rounded-full bg-[#ececee] text-[#151618] transition-[transform,background-color] hover:scale-[1.05] hover:bg-[#e2e4e8]"
                 >
