@@ -166,9 +166,27 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
 
+  const lenis = useLenis();
+
   useLenis(({ scroll }) => {
     setScrolled(scroll > 8);
   });
+
+  useEffect(() => {
+    if (!open) return;
+
+    const bodyOverflow = document.body.style.overflow;
+    const rootOverflow = document.documentElement.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+    lenis?.stop();
+
+    return () => {
+      document.body.style.overflow = bodyOverflow;
+      document.documentElement.style.overflow = rootOverflow;
+      lenis?.start();
+    };
+  }, [open, lenis]);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -179,6 +197,7 @@ export function Header() {
 
     function handleEscape(event: KeyboardEvent) {
       if (event.key === "Escape") {
+        setOpen(false);
         setOpenMenu(null);
         setMobileSubmenu(null);
       }
