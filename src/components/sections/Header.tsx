@@ -282,8 +282,7 @@ export function Header() {
           className={cn(
             "mt-2 overflow-hidden rounded-[1.4rem] bg-[#090a0c]/95 backdrop-blur-xl border border-white/10 text-white transition-[max-height,opacity] duration-300 lg:hidden shadow-2xl",
             open ? "max-h-[85vh] opacity-100 overflow-y-auto" : "max-h-0 opacity-0 pointer-events-none",
-          )}
-        >
+          )}>
           <ul className="px-6 py-5">
             <li>
               <Link
@@ -379,14 +378,12 @@ export function Header() {
               <Link
                 href="/"
                 onClick={() => setOpen(false)}
-                className="mt-5 inline-flex rounded-full bg-white px-5 py-3 text-sm font-medium text-[#101116]"
-              >
+                className="mt-5 inline-flex rounded-full bg-white px-5 py-3 text-sm font-medium text-[#101116]">
                 Send CV
               </Link>
             </li>
           </ul>
-        </nav>
-        
+        </nav>        
       </Container>
     </header>
   );

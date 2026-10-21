@@ -214,6 +214,7 @@ body {
   align-items: center;
   overflow: hidden;
   width: 100%;
+  padding-bottom: 5.5rem;
 }
 
 .showcase-track {

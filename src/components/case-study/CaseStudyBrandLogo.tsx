@@ -6,7 +6,17 @@ export function CaseStudyBrandLogo({
   type,
   className = "",
 }: {
-  type: "orion" | "meridian" | "apex" | "brightpath" | "skyline" | "wifter" | "uniqlearn" | "learnbud";
+  type:
+    | "orion"
+    | "meridian"
+    | "apex"
+    | "brightpath"
+    | "skyline"
+    | "wifter"
+    | "uniqlearn"
+    | "learnbud"
+    | "dermatology"
+    | "dtssplint";
   className?: string;
 }) {
   switch (type) {
@@ -65,6 +75,46 @@ export function CaseStudyBrandLogo({
             </span>
             <span className="text-[9.5px] font-bold tracking-[0.2em] uppercase opacity-65 group-hover:opacity-90">
               SMART TUTOR
+            </span>
+          </div>
+        </div>
+      );
+
+    case "dermatology":
+      return (
+        <div
+          className={`flex items-center gap-3 text-[#101116] transition-colors duration-300 group-hover:text-white select-none ${className}`}
+        >
+          <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-[#111111] font-serif text-lg font-semibold tracking-tight text-white shadow-md">
+            HD
+          </div>
+          <div className="flex flex-col text-left">
+            <span className="font-Sora text-xl font-bold tracking-tight">
+              Integrative
+            </span>
+            <span className="text-[9.5px] font-bold tracking-[0.2em] uppercase opacity-65 group-hover:opacity-90">
+              DERMATOLOGY
+            </span>
+          </div>
+        </div>
+      );
+
+    case "dtssplint":
+      return (
+        <div
+          className={`flex items-center gap-3 text-[#101116] transition-colors duration-300 group-hover:text-white select-none ${className}`}
+        >
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#111111] text-[#3DDC4E] shadow-md">
+            <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+              <path d="M7 4.5c.6 1.4 1.2 2.2 2.2 2.2S10.8 5.9 11.4 4.5c.3-.7 1.2-.7 1.5 0 .6 1.4 1.2 2.2 2.2 2.2s1.6-.8 2.2-2.2c.3-.7 1.2-.7 1.5 0-.2 2.2-.8 4.6-1.6 6.2-1.2 2.4-2.2 3.8-4.7 5.3-2.5-1.5-3.5-2.9-4.7-5.3C6.2 9.1 5.6 6.7 5.4 4.5c.3-.7 1.2-.7 1.6 0z" />
+            </svg>
+          </div>
+          <div className="flex flex-col text-left">
+            <span className="font-Sora text-2xl font-bold tracking-tight">
+              DTS <span className="text-[#3DDC4E] group-hover:text-white transition-colors">Splint</span>
+            </span>
+            <span className="text-[9.5px] font-bold tracking-[0.2em] uppercase opacity-65 group-hover:opacity-90">
+              DENTAL CAD
             </span>
           </div>
         </div>

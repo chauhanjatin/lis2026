@@ -23,31 +23,31 @@ export const homeServices: Service[] = [
     id: "ui-ux-design",
     title: "UI/UX Design",
     description:
-      "Our skilled designers produce the best aesthetics. Your users will be astounded by a UX/UI that is appealing, useful, and simple to use, and it will address their problems successfully.",
+      "Our skilled designers create visually appealing, intuitive, and user-friendly experiences that solve user problems and make every interaction seamless and engaging.",
   },
   {
     id: "Web-Design",
     title: "Web Design",
     description:
-      "We help design custom design that drives your business to success. Our success is the result of our actionable results.",
+      "We create custom, visually engaging website designs that strengthen your brand identity, enhance user experience, and help drive meaningful business growth.",
   },
   {
     id: "Web-Development",
     title: "Web Development",
     description:
-      "Develop fully-scalable web solutions to ensure your company's online presence with our web development services.",
+      "We develop scalable, high-performance web solutions that strengthen your online presence, streamline business operations, and support your company's growth.",
   },
   {
     id: "Mobile-Development",
-    title: "Mobile Design",
+    title: "Mobile Development",
     description:
-      "We provide significant business growth with responsive mobile development to expand beyond the global horizon with an intuitive user interface and high-quality features.",
+      "We build responsive, feature-rich mobile applications with intuitive interfaces and seamless functionality to help your business reach a wider global audience.",
   },
   {
     id: "Business-Services",
     title: "Business Services",
     description:
-      "We help design custom design that drives your business to success. Our success is the result of our actionable results.",
+      "We integrate business services with your application data to streamline workflows, improve efficiency, and help your business expand its global reach.",
   },
 ];
 

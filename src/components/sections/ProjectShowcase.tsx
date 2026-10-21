@@ -151,6 +151,15 @@ export function ProjectShowcase() {
           aria-label="Featured projects"
         >
           <div ref={viewportRef} className="showcase-sticky">
+            <Link
+              href="/projects"
+              className="absolute bottom-8 left-1/2 z-30 inline-flex -translate-x-1/2 items-center gap-3 rounded-full bg-[#101116] py-2.5 pl-6 pr-2.5 text-sm font-semibold text-white shadow-[0_12px_30px_-10px_rgba(16,17,22,0.45)] transition-transform hover:scale-[1.03] active:scale-[0.98]"
+            >
+              View All Projects
+              <span className="inline-grid size-8 place-items-center rounded-full bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] text-white">
+                <ArrowUpRight size={16} strokeWidth={2.4} />
+              </span>
+            </Link>
             <motion.div ref={trackRef} className="showcase-track" style={{ x }}>
               {projects.map((project, index) => (
                 <div key={project.title} className="showcase-step">
@@ -251,15 +260,12 @@ export function ProjectShowcase() {
           {projects.map((project, index) => (
             <div
               key={project.title}
-              className="w-[85vw] max-w-[380px] shrink-0 snap-center"
-            >
+              className="w-[85vw] max-w-[380px] shrink-0 snap-center">
               <article className="group flex flex-col rounded-2xl bg-[#cbc9c93d] p-3.5 sm:p-4 shadow-sm border border-black/5 transition-all">
-                <a
-                  href={project.websiteUrl || project.figmaUrl}
+                <a href={project.websiteUrl || project.figmaUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#e4e4e4] group/mobileArt block"
-                >
+                  className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#e4e4e4] group/mobileArt block">
                   <Image
                     src={project.image}
                     alt={project.alt}
@@ -345,6 +351,7 @@ export function ProjectShowcase() {
             >
               <ArrowLeft size={14} strokeWidth={2.2} />
             </button>
+
             <button
               onClick={handleMobileNext}
               disabled={mobileActive === projects.length - 1}
@@ -358,7 +365,7 @@ export function ProjectShowcase() {
         </div>
       </div>
 
-      <Container className="px-4 sm:px-6 mt-10 sm:mt-14 flex justify-center">
+      <Container className="px-4 sm:px-6 mt-8 flex justify-center md:hidden">
         <Link
           href="/projects"
           className="group inline-flex items-center gap-3 rounded-full bg-[#101116] py-2.5 pl-6 pr-2.5 text-sm sm:text-[15px] font-semibold text-white shadow-[0_12px_30px_-10px_rgba(16,17,22,0.45)] transition-transform hover:scale-[1.03] active:scale-[0.98]">

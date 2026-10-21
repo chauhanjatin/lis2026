@@ -6,7 +6,7 @@ import { CaseStudyCard } from "./CaseStudyCard";
 import { caseStudiesList, type CaseStudyItem } from "@/data/caseStudies";
 
 export function CaseStudyGrid({
-  items = caseStudiesList.slice(0, 2),
+  items = caseStudiesList.filter((study) => study.heroImage),
   showHeader = true,
 }: {
   items?: CaseStudyItem[];

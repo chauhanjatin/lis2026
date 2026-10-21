@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   AnimatePresence,
   motion,
@@ -129,11 +129,13 @@ function ValuePillCard({
   isOpen,
   onToggle,
   index,
+  allowToggle,
 }: {
   value: AboutCoreValue;
   isOpen: boolean;
   onToggle: () => void;
   index: number;
+  allowToggle: boolean;
 }) {
   const reduceMotion = useReducedMotion();
 
@@ -148,17 +150,25 @@ function ValuePillCard({
       className="w-full"
     >
       <div
-        onClick={onToggle}
-        role="button"
-        tabIndex={0}
-        aria-expanded={isOpen}
-        onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            onToggle();
-          }
-        }}
-        className="group relative cursor-pointer overflow-hidden rounded-[1.4rem] bg-[#EDEDF0] p-5 sm:p-6 transition-all duration-300 hover:bg-[#E6E8EB] hover:shadow-[0_10px_26px_rgba(0,0,0,0.06)] active:scale-[0.99]"
+        onClick={allowToggle ? onToggle : undefined}
+        role={allowToggle ? "button" : undefined}
+        tabIndex={allowToggle ? 0 : undefined}
+        aria-expanded={allowToggle ? isOpen : undefined}
+        onKeyDown={
+          allowToggle
+            ? (e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  onToggle();
+                }
+              }
+            : undefined
+        }
+        className={`group relative overflow-hidden rounded-[1.4rem] bg-[#EDEDF0] p-5 sm:p-6 transition-all duration-300 ${
+          allowToggle
+            ? "cursor-pointer hover:bg-[#E6E8EB] hover:shadow-[0_10px_26px_rgba(0,0,0,0.06)] active:scale-[0.99]"
+            : ""
+        }`}
       >
         {/* Card Header: Icon + Title on left, Plus button on right */}
 
@@ -172,7 +182,7 @@ function ValuePillCard({
             </h3>
           </div>
 
-          {/* Plus / Minus Circular Toggle Button matching reference image */}
+          {allowToggle && (
           <span
             className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#181A1C] text-white shadow-sm transition-transform duration-300 group-hover:scale-110"
             aria-hidden="true"
@@ -185,6 +195,7 @@ function ValuePillCard({
               +
             </motion.span>
           </span>
+          )}
         </div>
 
         {/* Expandable Description Content */}
@@ -217,6 +228,19 @@ export function AboutCoreValues({
   const containerRef = useRef<HTMLElement>(null);
   const [openIds, setOpenIds] = useState<string[]>(["commitment"]);
   const [userInteracted, setUserInteracted] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const isDesktopRef = useRef(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 1024px)");
+    const update = () => {
+      isDesktopRef.current = media.matches;
+      setIsDesktop(media.matches);
+    };
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
 
   // Scroll observer for scroll up/down opening animation
   const { scrollYProgress } = useScroll({
@@ -226,7 +250,7 @@ export function AboutCoreValues({
 
   useMotionValueEvent(scrollYProgress, "change", (progress) => {
     // If the user hasn't manually overridden cards, scroll drives sequential opening
-    if (!userInteracted) {
+    if (isDesktopRef.current || !userInteracted) {
       if (progress > 0.6) {
         setOpenIds(["commitment", "clarity", "excellence", "passion"]);
       } else if (progress > 0.4) {
@@ -264,7 +288,10 @@ export function AboutCoreValues({
               Values
             </span>
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-balance text-sm leading-relaxed text-[#52575D] sm:text-base">
+          <p
+            suppressHydrationWarning
+            className="mx-auto mt-5 max-w-2xl text-balance text-sm leading-relaxed text-[#52575D] sm:text-base"
+          >
             {data.subtitle}
           </p>
         </ScrollReveal>
@@ -278,10 +305,11 @@ export function AboutCoreValues({
               isOpen={openIds.includes(val.id)}
               onToggle={() => toggleCard(val.id)}
               index={index}
+              allowToggle={!isDesktop}
             />
           ))}
         </div>
-      </Container>
+      </Container>      
     </section>
   );
 }

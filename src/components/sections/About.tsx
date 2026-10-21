@@ -146,26 +146,23 @@ export function About({ hideHeader = false }: { hideHeader?: boolean }) {
               {/* Left Column: Headline with formatted line breaks and italic serif emphasis */}
               <div className="lg:col-span-8">
                 <h2 className="font-Sora text-3xl font-medium leading-[1.2] tracking-[-0.035em] text-[#101116] sm:text-4xl md:text-5xl lg:text-[3.25rem] max-w-3xl">
-                  We help brands grow through creative strategy, thoughtful design, and impactful digital experiences that inspire{" "}
-                  <span className="font-serif italic font-normal text-[#101116]">
-                    connections and lasting value.
-                  </span>
+                We build digital solutions that move businesses <span className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">forward.</span>
                 </h2>
               </div>
 
               {/* Right Column: Paragraph and Link */}
               <div className="flex flex-col justify-end space-y-5 lg:col-span-4 lg:pb-1">
                 <p className="text-sm leading-relaxed text-[#606468] sm:text-[0.95rem] max-w-[22rem]">
-                  We deliver innovative creative solutions, combining design,
-                  strategy, and technology to elevate brands and drive
-                  meaningful business growth.
+                We combine innovative technology, thoughtful design, and
+  strategic development to create secure, scalable digital
+  experiences that drive meaningful business growth.
                 </p>
                 <div>
                   <Link
                     href="/contact"
                     className="group inline-flex items-center gap-1.5 text-sm font-semibold text-[#101116] underline underline-offset-4 decoration-1 transition-colors hover:text-[#0D4FB8]"
                   >
-                    <span>Get Quick Answer</span>
+                    <span>Let’s Talk</span>
                     <ArrowRight
                       size={15}
                       strokeWidth={2.2}

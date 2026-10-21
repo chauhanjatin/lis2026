@@ -25,8 +25,14 @@ export type CaseStudyStyleGuide = {
   gradients: string[];
 };
 
+export type CaseStudyGalleryImage = {
+  src: string;
+  width: number;
+  height: number;
+};
+
 export type CaseStudyGallery = {
-  images: string[];
+  images: Array<string | CaseStudyGalleryImage>;
   width: number;
   height: number;
 };
@@ -35,7 +41,17 @@ export type CaseStudyItem = {
   slug: string;
   cardCategory: string;
   cardTitle: string;
-  logoType: "orion" | "meridian" | "apex" | "brightpath" | "skyline" | "wifter" | "uniqlearn" | "learnbud";
+  logoType:
+    | "orion"
+    | "meridian"
+    | "apex"
+    | "brightpath"
+    | "skyline"
+    | "wifter"
+    | "uniqlearn"
+    | "learnbud"
+    | "dermatology"
+    | "dtssplint";
   image?: string;
   eyebrow: string;
   title: string;
@@ -97,18 +113,29 @@ export const caseStudiesList: CaseStudyItem[] = [
   {
     slug: "uniqlearn",
     cardCategory: "EDTECH • WEB PLATFORM",
-    cardTitle: "UniqLearn: Classroom management platform connecting teachers & students.",
+    cardTitle:
+      "UniqLearn: Classroom management platform connecting teachers & students.",
     logoType: "uniqlearn",
     image: "/uniqlearn/uniqlearn.png",
-    tags: ["UX Research", "UI Design", "Design System", "Web App", "Prototyping", "EdTech"],
+    tags: [
+      "UX Research",
+      "UI Design",
+      "Design System",
+      "Web App",
+      "Prototyping",
+      "EdTech",
+    ],
     gallery: {
-      images: Array.from({ length: 9 }, (_, i) => `/uniqlearn/uniqlearn${i + 1}.png`),
+      images: Array.from(
+        { length: 9 },
+        (_, i) => `/uniqlearn/uniqlearn${i + 1}.png`,
+      ),
       width: 732,
       height: 420,
     },
     heroImage: "/uniqlearn/uniqlearn.png",
     eyebrow: "EDTECH & CLASSROOM MANAGEMENT",
-    title: "UniqLearn: Interactive Workspace for Teachers & Students",
+    title: "UniqLearn: A Classroom Workspace",
     meta: {
       company: {
         name: "UniqLearn",
@@ -124,11 +151,13 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "Timeline",
-          content: "From conception to final design system: 8-10 weeks working collaboratively with educators and school administrators.",
+          content:
+            "From conception to final design system: 8-10 weeks working collaboratively with educators and school administrators.",
         },
         {
           label: "Background",
-          content: "Schools struggled with fragmented learning management software, lost homework submissions, and slow grading feedback loops. UniqLearn consolidates curriculum scheduling, live student submissions, gradebook analytics, and real-time parent updates into one cohesive interface.",
+          content:
+            "Schools struggled with fragmented learning management software, lost homework submissions, and slow grading feedback loops. UniqLearn consolidates curriculum scheduling, live student submissions, gradebook analytics, and real-time parent updates into one cohesive interface.",
         },
       ],
     },
@@ -137,19 +166,23 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "Research & Planning",
-          content: "Conducted ethnographic interviews with 120+ K-12 educators and students to pinpoint friction in grading and assignment handoffs. Defined core personas and high-priority feature sets.",
+          content:
+            "Conducted ethnographic interviews with 120+ K-12 educators and students to pinpoint friction in grading and assignment handoffs. Defined core personas and high-priority feature sets.",
         },
         {
           label: "Design & Prototyping",
-          content: "Engineered responsive dashboard wireframes, accessible typography hierarchies, and tactile interaction flows for fast grading. Iterated through teacher feedback sessions.",
+          content:
+            "Engineered responsive dashboard wireframes, accessible typography hierarchies, and tactile interaction flows for fast grading. Iterated through teacher feedback sessions.",
         },
         {
           label: "Development & Implementation",
-          content: "Built production-ready design tokens and React UI component libraries. Partnered with engineering to optimize real-time roster sync and calendar integrations.",
+          content:
+            "Built production-ready design tokens and React UI component libraries. Partnered with engineering to optimize real-time roster sync and calendar integrations.",
         },
         {
           label: "Testing & Optimization",
-          content: "Ran closed beta trials across 18 classrooms, measuring assignment turnaround time, cognitive load, and accessibility compliance (WCAG 2.1 AA).",
+          content:
+            "Ran closed beta trials across 18 classrooms, measuring assignment turnaround time, cognitive load, and accessibility compliance (WCAG 2.1 AA).",
         },
       ],
     },
@@ -158,15 +191,18 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "Unified Classroom OS",
-          content: "Automated student gradebooks, curriculum scheduling, and centralized assignment tracking with zero visual clutter.",
+          content:
+            "Automated student gradebooks, curriculum scheduling, and centralized assignment tracking with zero visual clutter.",
         },
         {
           label: "Intelligent Scheduling",
-          content: "Syncs teacher lesson plans directly with student deadlines and automated push reminders across devices.",
+          content:
+            "Syncs teacher lesson plans directly with student deadlines and automated push reminders across devices.",
         },
         {
           label: "Real-Time Feedback Hub",
-          content: "Interactive rubric-based grading and audio/text student feedback channels to foster active classroom engagement.",
+          content:
+            "Interactive rubric-based grading and audio/text student feedback channels to foster active classroom engagement.",
         },
       ],
     },
@@ -174,28 +210,32 @@ export const caseStudiesList: CaseStudyItem[] = [
       {
         tag: "UNIFIED WORKSPACE",
         title: "All-in-One Dashboard",
-        description: "Centralized tracking for attendance, grades, assignments, and course modules.",
+        description:
+          "Centralized tracking for attendance, grades, assignments, and course modules.",
         screenType: "dashboard",
         image: { src: "/uniqlearn-screen2.png", orientation: "landscape" },
       },
       {
         tag: "SMART SCHEDULING",
         title: "Curriculum Calendar Sync",
-        description: "Seamless schedule management syncing teacher lesson plans and student project deadlines.",
+        description:
+          "Seamless schedule management syncing teacher lesson plans and student project deadlines.",
         screenType: "calendar",
         image: { src: "/uniqlearn-screen1.png", orientation: "landscape" },
       },
       {
         tag: "REAL-TIME FEEDBACK",
         title: "Instant Grading Hub",
-        description: "Customizable rubric evaluations and automated gradebook calculations for educators.",
+        description:
+          "Customizable rubric evaluations and automated gradebook calculations for educators.",
         screenType: "schedule",
         image: { src: "/uniqlearn-screen3.png", orientation: "landscape" },
       },
       {
         tag: "ENGAGEMENT TRACKING",
         title: "Student Progress Telemetry",
-        description: "Visual milestone trackers and streak incentives to boost student deadline adherence.",
+        description:
+          "Visual milestone trackers and streak incentives to boost student deadline adherence.",
         screenType: "personalization",
         image: { src: "/uniqlearn-screen1.png", orientation: "landscape" },
       },
@@ -205,15 +245,18 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "Increased Efficiency",
-          content: "Teachers saved over 12 hours weekly on administrative overhead and grading turnaround times.",
+          content:
+            "Teachers saved over 12 hours weekly on administrative overhead and grading turnaround times.",
         },
         {
           label: "Positive User Feedback",
-          content: "Over 96% positive satisfaction score from school administrators and faculty in the first semester.",
+          content:
+            "Over 96% positive satisfaction score from school administrators and faculty in the first semester.",
         },
         {
           label: "Deadline Adherence",
-          content: "Student on-time submission rate climbed to 94%, with zero reported lost homework files.",
+          content:
+            "Student on-time submission rate climbed to 94%, with zero reported lost homework files.",
         },
       ],
     },
@@ -233,18 +276,29 @@ export const caseStudiesList: CaseStudyItem[] = [
   {
     slug: "learnbud-ai",
     cardCategory: "AI & MOBILE APP • EDTECH",
-    cardTitle: "LearnBud AI: Smart AI mobile learning companion & personalized tutor.",
+    cardTitle:
+      "LearnBud AI: Smart AI mobile learning companion & personalized tutor.",
     logoType: "learnbud",
     image: "/learnbudai/learnbudai.png",
-    tags: ["Mobile App", "AI UX", "UI Design", "iOS & Android", "Prototyping", "EdTech"],
+    tags: [
+      "Mobile App",
+      "AI UX",
+      "UI Design",
+      "iOS & Android",
+      "Prototyping",
+      "EdTech",
+    ],
     gallery: {
-      images: Array.from({ length: 16 }, (_, i) => `/learnbudai/learnbudai${i + 1}.png`),
+      images: Array.from(
+        { length: 16 },
+        (_, i) => `/learnbudai/learnbudai${i + 1}.png`,
+      ),
       width: 322,
       height: 650,
     },
     heroImage: "/learnbudai/learnbudai.png",
     eyebrow: "AI COMPANION & MOBILE LEARNING",
-    title: "LearnBud AI: 24/7 AI-Powered Personalized Student Tutor",
+    title: "LearnBud AI: A Personal AI Tutor",
     meta: {
       company: {
         name: "LearnBud AI",
@@ -260,11 +314,13 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "Timeline",
-          content: "From conception to final App Store release: 6-8 weeks with rapid agile prototyping sprints.",
+          content:
+            "From conception to final App Store release: 6-8 weeks with rapid agile prototyping sprints.",
         },
         {
           label: "Background",
-          content: "Students face overwhelming exam pressure and lack affordable 24/7 tutoring support. LearnBud AI leverages bespoke multimodal AI to break down complex STEM concepts, generate interactive quiz flashcards, and keep learners motivated with streak milestones.",
+          content:
+            "Students face overwhelming exam pressure and lack affordable 24/7 tutoring support. LearnBud AI leverages bespoke multimodal AI to break down complex STEM concepts, generate interactive quiz flashcards, and keep learners motivated with streak milestones.",
         },
       ],
     },
@@ -273,19 +329,23 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "Research & Planning",
-          content: "Surveyed 250+ university students to understand revision pain points, late-night study habits, and AI assistant prompt fatigue.",
+          content:
+            "Surveyed 250+ university students to understand revision pain points, late-night study habits, and AI assistant prompt fatigue.",
         },
         {
           label: "Design & Prototyping",
-          content: "Crafted over 30 dark-mode mobile screens featuring high-contrast typography, interactive formula breakdowns, and tactile flashcard gestures.",
+          content:
+            "Crafted over 30 dark-mode mobile screens featuring high-contrast typography, interactive formula breakdowns, and tactile flashcard gestures.",
         },
         {
           label: "Development & Implementation",
-          content: "Collaborated with AI engineers to implement low-latency streaming chat responses, LaTeX math rendering, and audio transcription feeds.",
+          content:
+            "Collaborated with AI engineers to implement low-latency streaming chat responses, LaTeX math rendering, and audio transcription feeds.",
         },
         {
           label: "Testing & Optimization",
-          content: "Tested onboarding comprehension and streak retention across 500 beta students, fine-tuning response tone for empathetic academic coaching.",
+          content:
+            "Tested onboarding comprehension and streak retention across 500 beta students, fine-tuning response tone for empathetic academic coaching.",
         },
       ],
     },
@@ -294,15 +354,18 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "24/7 Live AI Tutor",
-          content: "Contextual step-by-step explanations, math formula solving, and adaptive practice quizzes tailored to learner pace.",
+          content:
+            "Contextual step-by-step explanations, math formula solving, and adaptive practice quizzes tailored to learner pace.",
         },
         {
           label: "Automated AI Notes",
-          content: "Converts lecture audio recordings, textbook PDFs, and web links into concise structured study guides.",
+          content:
+            "Converts lecture audio recordings, textbook PDFs, and web links into concise structured study guides.",
         },
         {
           label: "Adaptive Study Planner",
-          content: "Customizable study schedules and spaced-repetition flashcards aligned with upcoming exam dates.",
+          content:
+            "Customizable study schedules and spaced-repetition flashcards aligned with upcoming exam dates.",
         },
       ],
     },
@@ -310,30 +373,50 @@ export const caseStudiesList: CaseStudyItem[] = [
       {
         tag: "24/7 AI TUTOR",
         title: "Conversational Problem Solver",
-        description: "Step-by-step STEM breakdowns and contextual explanations tailored to student comprehension levels.",
+        description:
+          "Step-by-step STEM breakdowns and contextual explanations tailored to student comprehension levels.",
         screenType: "dashboard",
-        image: { src: "/learnbud-screens.png", orientation: "portrait", position: "9% 50%" },
+        image: {
+          src: "/learnbud-screens.png",
+          orientation: "portrait",
+          position: "9% 50%",
+        },
       },
       {
         tag: "EXAM SCHEDULE",
         title: "Automated Study Timetable",
-        description: "Synchronized study blocks with calendar integration to maximize focus and avoid last-minute cramming.",
+        description:
+          "Synchronized study blocks with calendar integration to maximize focus and avoid last-minute cramming.",
         screenType: "calendar",
-        image: { src: "/learnbud-screens.png", orientation: "portrait", position: "45% 50%" },
+        image: {
+          src: "/learnbud-screens.png",
+          orientation: "portrait",
+          position: "45% 50%",
+        },
       },
       {
         tag: "SMART FLASHCARDS",
         title: "Spaced Repetition Engine",
-        description: "Algorithmically timed flashcard decks that optimize long-term memory retention and exam readiness.",
+        description:
+          "Algorithmically timed flashcard decks that optimize long-term memory retention and exam readiness.",
         screenType: "schedule",
-        image: { src: "/learnbud-screens.png", orientation: "portrait", position: "82% 50%" },
+        image: {
+          src: "/learnbud-screens.png",
+          orientation: "portrait",
+          position: "82% 50%",
+        },
       },
       {
         tag: "PERSONALIZED PACING",
         title: "Adaptive Learning Metrics",
-        description: "Visual knowledge gap heatmaps identifying weak topics before high-stakes midterm exams.",
+        description:
+          "Visual knowledge gap heatmaps identifying weak topics before high-stakes midterm exams.",
         screenType: "personalization",
-        image: { src: "/learnbud-screens.png", orientation: "portrait", position: "100% 50%" },
+        image: {
+          src: "/learnbud-screens.png",
+          orientation: "portrait",
+          position: "100% 50%",
+        },
       },
     ],
     results: {
@@ -341,15 +424,18 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "4.9 App Store Rating",
-          content: "Achieved a 4.9-star rating with over 50,000 active students within the first beta semester.",
+          content:
+            "Achieved a 4.9-star rating with over 50,000 active students within the first beta semester.",
         },
         {
           label: "3.2x Study Retention",
-          content: "Students maintained daily study streaks 3.2x longer compared to traditional study and flashcard apps.",
+          content:
+            "Students maintained daily study streaks 3.2x longer compared to traditional study and flashcard apps.",
         },
         {
           label: "Grade Improvements",
-          content: "87% of surveyed students reported an average letter grade increase on subsequent midterm examinations.",
+          content:
+            "87% of surveyed students reported an average letter grade increase on subsequent midterm examinations.",
         },
       ],
     },
@@ -362,13 +448,314 @@ export const caseStudiesList: CaseStudyItem[] = [
     },
   },
   {
+    slug: "integrative-dermatology",
+    cardCategory: "HEALTHCARE • WEB DESIGN",
+    cardTitle:
+      "Integrative Dermatology: A calm clinic website for medical and aesthetic care.",
+    logoType: "dermatology",
+    image: "/dermatology/dermatology.png",
+    tags: [
+      "Web Design",
+      "UI/UX",
+      "Healthcare",
+      "Responsive",
+      "Booking",
+      "Brand",
+    ],
+    gallery: {
+      images: Array.from({ length: 14 }, (_, i) => {
+        const wide = (i + 1) % 2 === 1;
+        return {
+          src: `/dermatology/dermatology${i + 1}.png`,
+          width: wide ? 550 : 208,
+          height: wide ? 421 : 420,
+        };
+      }),
+      width: 550,
+      height: 421,
+    },
+    heroImage: "/dermatology/dermatology.png",
+    eyebrow: "HEALTHCARE WEBSITE",
+    title: "Integrative Dermatology: A Clear Clinic Website",
+    meta: {
+      company: { name: "Integrative Dermatology" },
+      role: "UI/UX Designer & Web Designer",
+      expertise: "Healthcare Website & Responsive Design",
+      year: "2025",
+    },
+    heroScreens: ["dashboard", "schedule", "calendar"],
+    projectDescription: {
+      lead: "We designed a responsive website for Integrative Dermatology so patients can understand medical, surgical, and aesthetic care, then book a consultation without getting lost.",
+      items: [
+        {
+          label: "Timeline",
+          content:
+            "Discovery through final responsive screens: 6 weeks, working with the clinic on services, tone, and the booking path.",
+        },
+        {
+          label: "Background",
+          content:
+            "The clinic offers dermatology, surgical dermatology, aesthetics, and wellness in Yakima, Washington. The previous presence did not explain those paths clearly, and booking a visit competed with long menus and dense copy.",
+        },
+      ],
+    },
+    process: {
+      lead: "We mapped how a new patient decides between medical care and aesthetics, then designed one site that stays calm on both desktop and mobile.",
+      items: [
+        {
+          label: "Research & Planning",
+          content:
+            "Reviewed the service mix, insurance and payment questions, and the steps from first visit to a booked consultation. Grouped pages into Dermatology, Surgical Dermatology, Aesthetics, and Wellness.",
+        },
+        {
+          label: "Design & Prototyping",
+          content:
+            "Built a dark, quiet visual system around photography, short headlines, and one clear booking action. Prototyped the homepage, service pages, about section, and mobile menu.",
+        },
+        {
+          label: "Development & Implementation",
+          content:
+            "Prepared desktop and mobile layouts for the homepage, service navigation, payment and insurance notes, and the consultation form so engineering could build them directly.",
+        },
+        {
+          label: "Testing & Optimization",
+          content:
+            "Checked the booking path on phone and laptop, tightened navigation labels, and made sure medical and aesthetic services stayed easy to tell apart.",
+        },
+      ],
+    },
+    solution: {
+      lead: "The site leads with a single promise, Healthy Skin, Confident You, then opens into the clinic’s real services and a short path to book.",
+      items: [
+        {
+          label: "Clear First Screen",
+          content:
+            "A full-width welcome, two actions (Book a Consultation and Explore Our Services), and a short patient quote so the page feels clinical and human at once.",
+        },
+        {
+          label: "Service Navigation",
+          content:
+            "Dermatology, surgical care, aesthetics, and wellness each have their own place in the menu, with payment plans, insurance, and safety information kept nearby.",
+        },
+        {
+          label: "Phone and Desktop Together",
+          content:
+            "The same story, photography, and booking button hold up on a laptop and on a phone, so patients can start a visit from either.",
+        },
+      ],
+    },
+    solutionSlides: [
+      {
+        tag: "HOMEPAGE",
+        title: "Healthy Skin, Confident You",
+        description:
+          "A quiet hero with booking and service exploration on one screen.",
+        screenType: "dashboard",
+        image: {
+          src: "/dermatology/dermatology1.png",
+          orientation: "landscape",
+        },
+      },
+      {
+        tag: "MOBILE",
+        title: "The Same Visit on a Phone",
+        description:
+          "Navigation, photography, and the consultation button stacked for a small screen.",
+        screenType: "schedule",
+        image: {
+          src: "/dermatology/dermatology2.png",
+          orientation: "portrait",
+        },
+      },
+    ],
+    keyFindings: [
+      "Patients could not tell medical dermatology, surgery, and aesthetics apart on the old site",
+      "Booking a consultation was buried under long menus and dense copy",
+      "Most new visitors arrived on a phone and left before reaching services",
+      "The clinic needed a calmer first impression that still felt medically serious",
+    ],
+    results: {
+      lead: "The new website gives the clinic one place to explain care, answer practical questions, and turn interest into a booked visit.",
+      items: [
+        {
+          label: "A Clear Path to Book",
+          content:
+            "Book a Consultation stays visible on the homepage for both desktop and mobile, instead of sitting at the end of a long page.",
+        },
+        {
+          label: "Services Patients Can Scan",
+          content:
+            "Dermatology, surgical dermatology, aesthetics, and wellness are separated in the navigation so people land on the care they came for.",
+        },
+        {
+          label: "A More Trustworthy First Look",
+          content:
+            "Photography, a patient quote, and a restrained black-and-white system replace a generic template and match a medical clinic.",
+        },
+      ],
+    },
+    styleGuide: {
+      fontFamily: "Cormorant Garamond",
+      accent: "#111111",
+      typeScale: defaultTypeScale,
+      colors: ["#111111", "#FFFFFF", "#F3EFE8", "#6E6258"],
+      gradients: ["linear-gradient(180deg, #2A2420 0%, #111111 100%)"],
+    },
+  },
+  {
+    slug: "dts-splint",
+    cardCategory: "HEALTHTECH • DESKTOP SOFTWARE",
+    cardTitle:
+      "DTS Splint: AI-assisted dental splint design, from jaw scan to trim.",
+    logoType: "dtssplint",
+    image: "/dts-splint.png",
+    tags: ["UI/UX", "Healthtech", "Desktop App", "3D", "CAD", "AI"],
+    gallery: {
+      images: Array.from(
+        { length: 7 },
+        (_, i) => `/dtssplint/dtssplint${i + 1}.png`,
+      ),
+      width: 774,
+      height: 408,
+    },
+    heroImage: "/dts-splint.png",
+    eyebrow: "DENTAL CAD SOFTWARE",
+    title: "DTS Splint: Splints from Jaw Scans",
+    meta: {
+      company: { name: "DTS Splint" },
+      role: "Product Designer",
+      expertise: "Desktop Software & 3D Workflow",
+      year: "2025",
+    },
+    heroScreens: ["dashboard", "schedule", "calendar"],
+    projectDescription: {
+      lead: "We designed the DTS Splint desktop app so a clinician can sign in, upload upper and lower jaw scans, and trim a splint in one dark, focused workspace.",
+      items: [
+        {
+          label: "Timeline",
+          content:
+            "Workflow mapping through final interface screens: 8 weeks with the product team, covering login, scan upload, trim tools, and the 3D preview.",
+        },
+        {
+          label: "Background",
+          content:
+            "Designing a splint meant jumping between scan files and a general CAD tool. Clinicians needed the upper jaw, lower jaw, and the trim result in front of them, with the risky manual steps made obvious.",
+        },
+      ],
+    },
+    process: {
+      lead: "We followed the real job: open a project, bring in the scans, trim what should not be in the splint, and review the result before it leaves the screen.",
+      items: [
+        {
+          label: "Research & Planning",
+          content:
+            "Mapped the path from login to a finished trim. Separated automatic and manual sign-in, project setup, scan upload, and the trim tools clinicians already expect.",
+        },
+        {
+          label: "Design & Prototyping",
+          content:
+            "Prototyped a dark workspace with the 3D model as the focus, green for the primary action, and side-by-side upper and lower jaw panels.",
+        },
+        {
+          label: "Development & Implementation",
+          content:
+            "Specified the login screen, scan upload, trim controls (brush size, undo, redo, clear), and the highlighted region that will be removed.",
+        },
+        {
+          label: "Testing & Optimization",
+          content:
+            "Walked the flow with the product team to confirm a new user can tell which jaw is loaded and which part of the model the trim will remove.",
+        },
+      ],
+    },
+    solution: {
+      lead: "DTS Splint keeps the clinical job on one screen instead of hiding it inside a general CAD interface.",
+      items: [
+        {
+          label: "A Login that Sets the Mode",
+          content:
+            "Automatic or manual sign-in sits next to the product itself, so the first screen already explains what the software is for.",
+        },
+        {
+          label: "Jaw Scans Side by Side",
+          content:
+            "Upper and lower jaw uploads share one project view, with a clear drop area when a scan is still missing.",
+        },
+        {
+          label: "Trim You Can See",
+          content:
+            "The region that will be removed is marked in green on the model, with brush size and the usual edit tools kept in reach.",
+        },
+      ],
+    },
+    solutionSlides: [
+      {
+        tag: "SIGN IN",
+        title: "Login beside the Product",
+        description:
+          "Automatic or manual sign-in, with the splint model on the same screen.",
+        screenType: "dashboard",
+        image: { src: "/dtssplint/dtssplint1.png", orientation: "landscape" },
+      },
+      {
+        tag: "SCANS",
+        title: "Upper and Lower Jaw",
+        description:
+          "Both scans upload into one project before the trim begins.",
+        screenType: "schedule",
+        image: { src: "/dtssplint/dtssplint2.png", orientation: "landscape" },
+      },
+      {
+        tag: "TRIM",
+        title: "See What Will Be Removed",
+        description:
+          "The trim region is highlighted on the model, with brush size and edit tools alongside.",
+        screenType: "calendar",
+        image: { src: "/dtssplint/dtssplint3.png", orientation: "landscape" },
+      },
+    ],
+    keyFindings: [
+      "Clinicians were leaving the scan and opening a separate CAD tool to design one splint",
+      "Upper and lower jaw files were easy to mix up when they lived in different windows",
+      "The trim step did not show which part of the model would actually be removed",
+      "A generic CAD toolbar made the first session slower than the clinical task itself",
+    ],
+    results: {
+      lead: "The interface turns splint design into a short project: sign in, load both jaws, trim what is marked, and review the model.",
+      items: [
+        {
+          label: "One Project, Both Jaws",
+          content:
+            "Upper and lower scans sit in the same project, so the case stays together from upload to trim.",
+        },
+        {
+          label: "A Visible Trim",
+          content:
+            "Green on the model marks the region that will be removed, which replaces guessing at a brush stroke.",
+        },
+        {
+          label: "A Shorter First Session",
+          content:
+            "Login, upload, and trim follow one path, so a new user is not dropped into a full CAD toolbox.",
+        },
+      ],
+    },
+    styleGuide: {
+      fontFamily: "Manrope",
+      accent: "#3DDC4E",
+      typeScale: defaultTypeScale,
+      colors: ["#3DDC4E", "#0E1116", "#FFFFFF", "#1C2430"],
+      gradients: ["linear-gradient(135deg, #052E16 0%, #3DDC4E 100%)"],
+    },
+  },
+  {
     slug: "orion-ventures",
     cardCategory: "VENTURE CAPITAL • ENTERPRISE",
     cardTitle: "How Orion Ventures unified 14 portfolio companies.",
     logoType: "orion",
     image: "/businessservices.png",
     eyebrow: "VENTURE CAPITAL & PORTFOLIO GOVERNANCE",
-    title: "Unified Multi-Entity Portfolio Operating System",
+    title: "Orion Ventures: One Portfolio View",
     meta: {
       company: {
         name: "Orion Ventures",
@@ -388,7 +775,8 @@ export const caseStudiesList: CaseStudyItem[] = [
         },
         {
           label: "Background",
-          content: "Managing 14 separate seed and Series-A companies previously required manual monthly CSV consolidation. Our unified platform delivers automated burn-rate tracking, KPI dashboards, and governance approvals in a single unified interface.",
+          content:
+            "Managing 14 separate seed and Series-A companies previously required manual monthly CSV consolidation. Our unified platform delivers automated burn-rate tracking, KPI dashboards, and governance approvals in a single unified interface.",
         },
       ],
     },
@@ -397,19 +785,23 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "Discovery & Research",
-          content: "Audited financial workflows, identifying over 45 hours lost weekly in fragmented spreadsheet communication.",
+          content:
+            "Audited financial workflows, identifying over 45 hours lost weekly in fragmented spreadsheet communication.",
         },
         {
           label: "Information Architecture",
-          content: "Constructed a multi-tenant role-based data hierarchy with instant portfolio roll-up views.",
+          content:
+            "Constructed a multi-tenant role-based data hierarchy with instant portfolio roll-up views.",
         },
         {
           label: "High-Fidelity Prototyping",
-          content: "Built interactive prototypes tested directly with C-level operators and venture partners.",
+          content:
+            "Built interactive prototypes tested directly with C-level operators and venture partners.",
         },
         {
           label: "Design System & Handoff",
-          content: "Created a comprehensive enterprise component library with dark-mode analytics widgets.",
+          content:
+            "Created a comprehensive enterprise component library with dark-mode analytics widgets.",
         },
       ],
     },
@@ -418,15 +810,18 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "Consolidated Metrics",
-          content: "Automated ARR, runway, and headcount visualizations updated in real-time.",
+          content:
+            "Automated ARR, runway, and headcount visualizations updated in real-time.",
         },
         {
           label: "Board Deck Automation",
-          content: "One-click export of quarterly performance summaries formatted for LP presentations.",
+          content:
+            "One-click export of quarterly performance summaries formatted for LP presentations.",
         },
         {
           label: "Role-Based Access",
-          content: "Granular permissions ensuring each founder sees only their metrics while partners view the full portfolio.",
+          content:
+            "Granular permissions ensuring each founder sees only their metrics while partners view the full portfolio.",
         },
       ],
     },
@@ -434,19 +829,22 @@ export const caseStudiesList: CaseStudyItem[] = [
       {
         tag: "PORTFOLIO OVERVIEW",
         title: "Real-Time Fund Health",
-        description: "Aggregate cash runway, net burn, and headcount metrics across all 14 active investments.",
+        description:
+          "Aggregate cash runway, net burn, and headcount metrics across all 14 active investments.",
         screenType: "dashboard",
       },
       {
         tag: "BOARD GOVERNANCE",
         title: "Automated Reporting",
-        description: "Scheduled data ingestion from QuickBooks, Stripe, and HR platforms with anomaly detection.",
+        description:
+          "Scheduled data ingestion from QuickBooks, Stripe, and HR platforms with anomaly detection.",
         screenType: "calendar",
       },
       {
         tag: "LP BENCHMARKING",
         title: "Executive Summaries",
-        description: "Comparative cohort analysis highlighting top performers and capital efficiency vectors.",
+        description:
+          "Comparative cohort analysis highlighting top performers and capital efficiency vectors.",
         screenType: "personalization",
       },
     ],
@@ -455,15 +853,18 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "Time Saved",
-          content: "Saved 80+ monthly partner hours previously spent on manual reporting reconciliations.",
+          content:
+            "Saved 80+ monthly partner hours previously spent on manual reporting reconciliations.",
         },
         {
           label: "Founder Adoption",
-          content: "100% adoption across all 14 portfolio leadership teams within 30 days of launch.",
+          content:
+            "100% adoption across all 14 portfolio leadership teams within 30 days of launch.",
         },
         {
           label: "Decision Speed",
-          content: "Reduced follow-on investment review cycles from 3 weeks to under 48 hours.",
+          content:
+            "Reduced follow-on investment review cycles from 3 weeks to under 48 hours.",
         },
       ],
     },
@@ -475,7 +876,7 @@ export const caseStudiesList: CaseStudyItem[] = [
     logoType: "meridian",
     image: "/integrative-dermatology.png",
     eyebrow: "CLINICAL UX & REGULATORY COMPLIANCE",
-    title: "Zero-Defect Protocol & Compliance Tracking Suite",
+    title: "Meridian Health: Compliance in One Place",
     meta: {
       company: {
         name: "Meridian Healthcare",
@@ -491,11 +892,13 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "Timeline",
-          content: "12 weeks from discovery, contextual inquiries, to final design system delivery.",
+          content:
+            "12 weeks from discovery, contextual inquiries, to final design system delivery.",
         },
         {
           label: "Background",
-          content: "Shifting regulatory mandates caused accidental compliance oversights during busy shifts. The new mobile-first platform provides nurses and clinicians with real-time checklist verification and shift handoff protocols.",
+          content:
+            "Shifting regulatory mandates caused accidental compliance oversights during busy shifts. The new mobile-first platform provides nurses and clinicians with real-time checklist verification and shift handoff protocols.",
         },
       ],
     },
@@ -504,19 +907,23 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "Clinical Shadowing",
-          content: "Identified high-stress friction points where protocol steps were historically missed or delayed.",
+          content:
+            "Identified high-stress friction points where protocol steps were historically missed or delayed.",
         },
         {
           label: "Simplified Interaction Design",
-          content: "Designed high-contrast, one-tap validation UI usable while wearing medical gloves.",
+          content:
+            "Designed high-contrast, one-tap validation UI usable while wearing medical gloves.",
         },
         {
           label: "Shift Handoff Matrix",
-          content: "Engineered seamless peer-to-peer verification protocols that ensure continuity of care.",
+          content:
+            "Engineered seamless peer-to-peer verification protocols that ensure continuity of care.",
         },
         {
           label: "HIPAA & ADA Auditing",
-          content: "Ensured 100% compliance with strict accessibility and healthcare data security protocols.",
+          content:
+            "Ensured 100% compliance with strict accessibility and healthcare data security protocols.",
         },
       ],
     },
@@ -525,15 +932,18 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "Smart Checklists",
-          content: "Dynamic shift checklists that automatically adjust based on patient acuity and procedure requirements.",
+          content:
+            "Dynamic shift checklists that automatically adjust based on patient acuity and procedure requirements.",
         },
         {
           label: "Real-Time Alerts",
-          content: "Urgent protocol reminders delivered precisely when shift transitions occur.",
+          content:
+            "Urgent protocol reminders delivered precisely when shift transitions occur.",
         },
         {
           label: "Automated Audit Trail",
-          content: "Eliminated paper records with cryptographically signed, timestamped digital compliance logs.",
+          content:
+            "Eliminated paper records with cryptographically signed, timestamped digital compliance logs.",
         },
       ],
     },
@@ -541,19 +951,22 @@ export const caseStudiesList: CaseStudyItem[] = [
       {
         tag: "CLINICAL PROTOCOLS",
         title: "Contextual Guidance",
-        description: "Zero-latency patient checklist verification designed specifically for fast-paced clinical workflows.",
+        description:
+          "Zero-latency patient checklist verification designed specifically for fast-paced clinical workflows.",
         screenType: "dashboard",
       },
       {
         tag: "SHIFT HANDOFF",
         title: "Continuous Verification",
-        description: "Synchronized digital handoff notes ensuring vital care instructions are never overlooked.",
+        description:
+          "Synchronized digital handoff notes ensuring vital care instructions are never overlooked.",
         screenType: "schedule",
       },
       {
         tag: "AUDIT READINESS",
         title: "Live Compliance Dashboard",
-        description: "Executive and nursing supervisor views showing real-time unit adherence scores.",
+        description:
+          "Executive and nursing supervisor views showing real-time unit adherence scores.",
         screenType: "calendar",
       },
     ],
@@ -562,15 +975,18 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "Policy Violations",
-          content: "Reduced clinical protocol violations by 98.4% across 42 regional healthcare facilities.",
+          content:
+            "Reduced clinical protocol violations by 98.4% across 42 regional healthcare facilities.",
         },
         {
           label: "Nurse Satisfaction",
-          content: "94% positive rating from nursing staff citing drastic reductions in administrative stress.",
+          content:
+            "94% positive rating from nursing staff citing drastic reductions in administrative stress.",
         },
         {
           label: "Audit Preparation",
-          content: "Joint Commission regulatory audit prep time decreased from 2 weeks to 15 minutes.",
+          content:
+            "Joint Commission regulatory audit prep time decreased from 2 weeks to 15 minutes.",
         },
       ],
     },
@@ -582,7 +998,7 @@ export const caseStudiesList: CaseStudyItem[] = [
     logoType: "apex",
     image: "/project3.png",
     eyebrow: "FINANCIAL SAAS & RESOURCE OPTIMIZATION",
-    title: "Predictive Resource Allocation & Margin Controller",
+    title: "Apex Digital: Margin and Capacity",
     meta: {
       company: {
         name: "Apex Digital",
@@ -598,11 +1014,13 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "Timeline",
-          content: "8-week agile design sprint from requirements mapping to high-fidelity clickable prototype.",
+          content:
+            "8-week agile design sprint from requirements mapping to high-fidelity clickable prototype.",
         },
         {
           label: "Background",
-          content: "Projects routinely suffered 15-20% budget overruns due to delayed timesheet submissions and unexpected scope creep. We engineered an intelligent budget forecasting and alerting interface.",
+          content:
+            "Projects routinely suffered 15-20% budget overruns due to delayed timesheet submissions and unexpected scope creep. We engineered an intelligent budget forecasting and alerting interface.",
         },
       ],
     },
@@ -611,19 +1029,23 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "Spend Journey Mapping",
-          content: "Identified blind spots between planned project timelines and actual logged contractor hours.",
+          content:
+            "Identified blind spots between planned project timelines and actual logged contractor hours.",
         },
         {
           label: "Predictive Budget Visualizations",
-          content: "Created color-coded trajectory graphs showing projected final margins weeks before milestones.",
+          content:
+            "Created color-coded trajectory graphs showing projected final margins weeks before milestones.",
         },
         {
           label: "Micro-Interaction Design",
-          content: "Crafted frictionless 5-second time logging for engineers and designers.",
+          content:
+            "Crafted frictionless 5-second time logging for engineers and designers.",
         },
         {
           label: "Multi-Currency Architecture",
-          content: "Supported global offshore teams with automated live currency conversions and tax handling.",
+          content:
+            "Supported global offshore teams with automated live currency conversions and tax handling.",
         },
       ],
     },
@@ -632,15 +1054,18 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "Early Warning Radar",
-          content: "Automated notifications when project pace exceeds 80% of budget prior to milestone delivery.",
+          content:
+            "Automated notifications when project pace exceeds 80% of budget prior to milestone delivery.",
         },
         {
           label: "Capacity Heatmaps",
-          content: "Visual scheduling grid balancing team utilization and preventing employee burnout.",
+          content:
+            "Visual scheduling grid balancing team utilization and preventing employee burnout.",
         },
         {
           label: "Instant Invoicing",
-          content: "Direct one-click sync with Stripe and Xero for automated milestone milestone billing.",
+          content:
+            "Direct one-click sync with Stripe and Xero for automated milestone milestone billing.",
         },
       ],
     },
@@ -648,19 +1073,22 @@ export const caseStudiesList: CaseStudyItem[] = [
       {
         tag: "BUDGET TELEMETRY",
         title: "Margin Prediction Engine",
-        description: "Visual trajectory modeling forecasting client profitability and staffing efficiency in real time.",
+        description:
+          "Visual trajectory modeling forecasting client profitability and staffing efficiency in real time.",
         screenType: "dashboard",
       },
       {
         tag: "RESOURCE PLANNING",
         title: "Team Capacity Grid",
-        description: "Drag-and-drop consultant assignment preventing under-utilization and overtime overages.",
+        description:
+          "Drag-and-drop consultant assignment preventing under-utilization and overtime overages.",
         screenType: "calendar",
       },
       {
         tag: "CLIENT TRANSPARENCY",
         title: "Shared Milestone Portals",
-        description: "Client-facing budget trackers establishing trust and eliminating billing disputes.",
+        description:
+          "Client-facing budget trackers establishing trust and eliminating billing disputes.",
         screenType: "personalization",
       },
     ],
@@ -669,15 +1097,18 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "Margin Improvement",
-          content: "Average project gross margin increased by 22% within two operating quarters.",
+          content:
+            "Average project gross margin increased by 22% within two operating quarters.",
         },
         {
           label: "Overrun Prevention",
-          content: "Budget overruns plummeted from 24% of all active projects to zero.",
+          content:
+            "Budget overruns plummeted from 24% of all active projects to zero.",
         },
         {
           label: "Client Retention",
-          content: "Achieved a 96% client contract renewal rate backed by billing clarity.",
+          content:
+            "Achieved a 96% client contract renewal rate backed by billing clarity.",
         },
       ],
     },
@@ -689,7 +1120,7 @@ export const caseStudiesList: CaseStudyItem[] = [
     logoType: "brightpath",
     image: "/deliver.png",
     eyebrow: "WORKFLOW AUTOMATION & ENTERPRISE DESIGN",
-    title: "Frictionless Multi-Tier Approval & Contract Engine",
+    title: "BrightPath: Faster Contract Approvals",
     meta: {
       company: {
         name: "BrightPath Consulting",
@@ -705,11 +1136,13 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "Timeline",
-          content: "9 weeks from research to production-ready design tokens and prototype.",
+          content:
+            "9 weeks from research to production-ready design tokens and prototype.",
         },
         {
           label: "Background",
-          content: "Cross-border consulting engagements required compliance, legal, and risk sign-offs across 4 executive tiers. We streamlined the pipeline with smart conditional routing and mobile approval cards.",
+          content:
+            "Cross-border consulting engagements required compliance, legal, and risk sign-offs across 4 executive tiers. We streamlined the pipeline with smart conditional routing and mobile approval cards.",
         },
       ],
     },
@@ -718,15 +1151,18 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "Workflow Decomposition",
-          content: "Consolidated 18 disconnected email steps into a unified parallel review pipeline.",
+          content:
+            "Consolidated 18 disconnected email steps into a unified parallel review pipeline.",
         },
         {
           label: "Mobile-First Decision Cards",
-          content: "Designed condensed briefing cards allowing executives to approve contracts from their phones in seconds.",
+          content:
+            "Designed condensed briefing cards allowing executives to approve contracts from their phones in seconds.",
         },
         {
           label: "Audit-Grade Versioning",
-          content: "Built visual diff viewers highlighting clause modifications across contract drafts.",
+          content:
+            "Built visual diff viewers highlighting clause modifications across contract drafts.",
         },
       ],
     },
@@ -735,15 +1171,18 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "Smart Parallel Routing",
-          content: "Simultaneous stakeholder reviews eliminating serial waiting queues.",
+          content:
+            "Simultaneous stakeholder reviews eliminating serial waiting queues.",
         },
         {
           label: "Executive Summary Cards",
-          content: "AI-generated summaries of key commercial terms, liability caps, and risk flags.",
+          content:
+            "AI-generated summaries of key commercial terms, liability caps, and risk flags.",
         },
         {
           label: "Instant DocuSign Integration",
-          content: "Automated signature dispatch once internal compliance conditions are verified.",
+          content:
+            "Automated signature dispatch once internal compliance conditions are verified.",
         },
       ],
     },
@@ -751,19 +1190,22 @@ export const caseStudiesList: CaseStudyItem[] = [
       {
         tag: "APPROVAL PIPELINE",
         title: "Parallel Routing Engine",
-        description: "Multi-tier commercial reviews orchestrated with automated fallback escalations.",
+        description:
+          "Multi-tier commercial reviews orchestrated with automated fallback escalations.",
         screenType: "dashboard",
       },
       {
         tag: "EXECUTIVE BRIEFING",
         title: "AI Term Summarizer",
-        description: "Extracting critical commercial terms so executives approve with complete confidence.",
+        description:
+          "Extracting critical commercial terms so executives approve with complete confidence.",
         screenType: "schedule",
       },
       {
         tag: "COMPLIANCE LOGS",
         title: "Full Audit Readiness",
-        description: "Immutable digital signature verification logs ready for instant compliance review.",
+        description:
+          "Immutable digital signature verification logs ready for instant compliance review.",
         screenType: "personalization",
       },
     ],
@@ -772,15 +1214,18 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "Turnaround Time",
-          content: "Contract approval cycle dropped from an average of 14 days to just 3.2 days.",
+          content:
+            "Contract approval cycle dropped from an average of 14 days to just 3.2 days.",
         },
         {
           label: "Review Bottlenecks",
-          content: "Eliminated 100% of lost approval emails and administrative stalled deals.",
+          content:
+            "Eliminated 100% of lost approval emails and administrative stalled deals.",
         },
         {
           label: "Revenue Acceleration",
-          content: "Helped close \$18M in consulting engagements ahead of quarterly forecast deadlines.",
+          content:
+            "Helped close \$18M in consulting engagements ahead of quarterly forecast deadlines.",
         },
       ],
     },
@@ -792,7 +1237,7 @@ export const caseStudiesList: CaseStudyItem[] = [
     logoType: "skyline",
     image: "/saaswebapp.png",
     eyebrow: "B2B SALES VELOCITY & PRODUCT-LED GROWTH",
-    title: "Interactive Sandbox & Deal Acceleration Platform",
+    title: "Skyline Labs: A Live Product Sandbox",
     meta: {
       company: {
         name: "Skyline Tech Labs",
@@ -808,11 +1253,13 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "Timeline",
-          content: "8 weeks from user interviews to interactive sandbox experience deployment.",
+          content:
+            "8 weeks from user interviews to interactive sandbox experience deployment.",
         },
         {
           label: "Background",
-          content: "Enterprise sales previously stalled in 30-day proof-of-concept setups. Our instant-sandbox design allowed technical decision-makers to test live product features with pre-populated dummy data immediately.",
+          content:
+            "Enterprise sales previously stalled in 30-day proof-of-concept setups. Our instant-sandbox design allowed technical decision-makers to test live product features with pre-populated dummy data immediately.",
         },
       ],
     },
@@ -821,15 +1268,18 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "Sandbox Experience Design",
-          content: "Architected a zero-setup sandbox environment pre-configured with realistic enterprise datasets.",
+          content:
+            "Architected a zero-setup sandbox environment pre-configured with realistic enterprise datasets.",
         },
         {
           label: "Value Demonstration Flows",
-          content: "Guided buyers through their top 3 critical use cases within 4 minutes of landing in the demo.",
+          content:
+            "Guided buyers through their top 3 critical use cases within 4 minutes of landing in the demo.",
         },
         {
           label: "Collaborative Deal Rooms",
-          content: "Shared decision-maker portals with custom pricing calculators and security whitepapers.",
+          content:
+            "Shared decision-maker portals with custom pricing calculators and security whitepapers.",
         },
       ],
     },
@@ -838,15 +1288,18 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "Instant Live Sandbox",
-          content: "Zero-installation test environments ready in under 10 seconds.",
+          content:
+            "Zero-installation test environments ready in under 10 seconds.",
         },
         {
           label: "Interactive ROI Calculator",
-          content: "Custom cost-savings model configured for buyer company headcount and infrastructure.",
+          content:
+            "Custom cost-savings model configured for buyer company headcount and infrastructure.",
         },
         {
           label: "Automated Security Packet",
-          content: "Instant SOC2, GDPR, and ISO27001 self-serve security verification for IT gatekeepers.",
+          content:
+            "Instant SOC2, GDPR, and ISO27001 self-serve security verification for IT gatekeepers.",
         },
       ],
     },
@@ -854,19 +1307,22 @@ export const caseStudiesList: CaseStudyItem[] = [
       {
         tag: "DEAL ACCELERATION",
         title: "Live Product Sandbox",
-        description: "Zero-friction technical evaluation pre-loaded with high-value enterprise testing scenarios.",
+        description:
+          "Zero-friction technical evaluation pre-loaded with high-value enterprise testing scenarios.",
         screenType: "dashboard",
       },
       {
         tag: "SECURITY CLEARANCE",
         title: "One-Click Compliance",
-        description: "Instant self-serve security certifications satisfying enterprise IT vetting in minutes.",
+        description:
+          "Instant self-serve security certifications satisfying enterprise IT vetting in minutes.",
         screenType: "schedule",
       },
       {
         tag: "VALUE VALIDATION",
         title: "Dynamic ROI Modeling",
-        description: "Real-time cost savings projections mapped directly to prospect business metrics.",
+        description:
+          "Real-time cost savings projections mapped directly to prospect business metrics.",
         screenType: "personalization",
       },
     ],
@@ -875,15 +1331,18 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "Sales Cycle",
-          content: "Shortened average sales cycle from 28 days to a record-breaking 11 hours.",
+          content:
+            "Shortened average sales cycle from 28 days to a record-breaking 11 hours.",
         },
         {
           label: "Deal Conversion",
-          content: "Demo-to-contract conversion rate increased from 18% to 64%.",
+          content:
+            "Demo-to-contract conversion rate increased from 18% to 64%.",
         },
         {
           label: "ARR Growth",
-          content: "Generated \$4.2M in net-new annual recurring revenue within the first 90 days.",
+          content:
+            "Generated \$4.2M in net-new annual recurring revenue within the first 90 days.",
         },
       ],
     },
@@ -895,7 +1354,7 @@ export const caseStudiesList: CaseStudyItem[] = [
     logoType: "wifter",
     image: "/project2.png",
     eyebrow: "AI-POWERED SCHEDULING",
-    title: "World's first AI-powered scheduling app",
+    title: "Wifter: An AI Scheduling App",
     meta: {
       company: {
         name: "Wifter",
@@ -911,11 +1370,13 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "Timeline",
-          content: "From conception to final designs: 6-8 weeks with working on multiple projects at the same time",
+          content:
+            "From conception to final designs: 6-8 weeks with working on multiple projects at the same time",
         },
         {
           label: "Background",
-          content: "With bespoke artificial intelligence optimize your daily schedule, ensuring maximum productivity and work-life balance. The app seamlessly integrates with your existing calendar and task management tools, using advanced algorithms to prioritize tasks, suggest optimal times for meetings, and provide smart reminders.",
+          content:
+            "With bespoke artificial intelligence optimize your daily schedule, ensuring maximum productivity and work-life balance. The app seamlessly integrates with your existing calendar and task management tools, using advanced algorithms to prioritize tasks, suggest optimal times for meetings, and provide smart reminders.",
         },
       ],
     },
@@ -924,19 +1385,23 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "Research & Planning",
-          content: "Conducted market research to identify existing scheduling challenges and user preferences. Defined target audience segments and outlined key features based on user needs and market trends.",
+          content:
+            "Conducted market research to identify existing scheduling challenges and user preferences. Defined target audience segments and outlined key features based on user needs and market trends.",
         },
         {
           label: "Design & Prototyping",
-          content: "Collaborated with designers to create intuitive user interfaces and interactive prototypes. Iteratively refined designs based on user feedback to enhance usability and visual appeal.",
+          content:
+            "Collaborated with designers to create intuitive user interfaces and interactive prototypes. Iteratively refined designs based on user feedback to enhance usability and visual appeal.",
         },
         {
           label: "Development & Implementation",
-          content: "Leveraged agile development methodologies to build the scheduling app from the ground up. Prioritized feature development based on user feedback and technical feasibility. Implemented AI algorithms to analyze user behavior and optimize scheduling recommendations.",
+          content:
+            "Leveraged agile development methodologies to build the scheduling app from the ground up. Prioritized feature development based on user feedback and technical feasibility. Implemented AI algorithms to analyze user behavior and optimize scheduling recommendations.",
         },
         {
           label: "Testing & Optimization",
-          content: "Conducted rigorous testing across various devices and platforms to ensure compatibility and performance. Gathered user feedback through beta testing and iteratively optimized the app based on usability metrics and user satisfaction.",
+          content:
+            "Conducted rigorous testing across various devices and platforms to ensure compatibility and performance. Gathered user feedback through beta testing and iteratively optimized the app based on usability metrics and user satisfaction.",
         },
       ],
     },
@@ -945,15 +1410,18 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "Intelligent Scheduling",
-          content: "AI algorithms analyze user preferences, availability, and priorities to generate optimized schedules.",
+          content:
+            "AI algorithms analyze user preferences, availability, and priorities to generate optimized schedules.",
         },
         {
           label: "Calendar Integration",
-          content: "Seamlessly integrates with popular calendar platforms such as Google Calendar and Outlook, ensuring synchronized scheduling across devices.",
+          content:
+            "Seamlessly integrates with popular calendar platforms such as Google Calendar and Outlook, ensuring synchronized scheduling across devices.",
         },
         {
           label: "Personalization",
-          content: "Customizable settings allow users to tailor scheduling preferences and priorities to their unique needs.",
+          content:
+            "Customizable settings allow users to tailor scheduling preferences and priorities to their unique needs.",
         },
       ],
     },
@@ -961,25 +1429,29 @@ export const caseStudiesList: CaseStudyItem[] = [
       {
         tag: "INTELLIGENT SCHEDULING",
         title: "Intelligent Scheduling Engine",
-        description: "AI algorithms analyze user preferences, availability, and priorities to generate optimized schedules.",
+        description:
+          "AI algorithms analyze user preferences, availability, and priorities to generate optimized schedules.",
         screenType: "dashboard",
       },
       {
         tag: "CALENDAR INTEGRATION",
         title: "Universal Calendar Sync",
-        description: "Seamless integration with popular calendar platforms such as Google Calendar and Outlook, ensuring synchronized scheduling across devices.",
+        description:
+          "Seamless integration with popular calendar platforms such as Google Calendar and Outlook, ensuring synchronized scheduling across devices.",
         screenType: "calendar",
       },
       {
         tag: "PERSONALIZATION",
         title: "Tailored Focus Workflows",
-        description: "Customizable settings allow users to tailor scheduling preferences and priorities to their unique needs.",
+        description:
+          "Customizable settings allow users to tailor scheduling preferences and priorities to their unique needs.",
         screenType: "schedule",
       },
       {
         tag: "AI AUTOMATION",
         title: "Predictive Task Optimizer",
-        description: "With bespoke artificial intelligence optimize your daily schedule, ensuring maximum productivity and work-life balance.",
+        description:
+          "With bespoke artificial intelligence optimize your daily schedule, ensuring maximum productivity and work-life balance.",
         screenType: "personalization",
       },
     ],
@@ -988,30 +1460,34 @@ export const caseStudiesList: CaseStudyItem[] = [
       items: [
         {
           label: "Increased Efficiency",
-          content: "Users report significant time savings and improved productivity through automated scheduling recommendations.",
+          content:
+            "Users report significant time savings and improved productivity through automated scheduling recommendations.",
         },
         {
           label: "Positive User Feedback",
-          content: "High user satisfaction ratings and positive reviews highlight the app's intuitive interface and powerful AI capabilities.",
+          content:
+            "High user satisfaction ratings and positive reviews highlight the app's intuitive interface and powerful AI capabilities.",
         },
         {
           label: "Growing User Base",
-          content: "The app quickly gained traction among individuals and businesses worldwide, with a steady increase in user adoption and engagement.",
+          content:
+            "The app quickly gained traction among individuals and businesses worldwide, with a steady increase in user adoption and engagement.",
         },
-      ],  
+      ],
     },
   },
 ];
 
 export const defaultCaseStudy: CaseStudyData = caseStudiesList[5];
 
-export const caseStudies: Record<string, CaseStudyData> = caseStudiesList.reduce(
-  (acc, study) => {
-    acc[study.slug] = study;
-    return acc;
-  },
-  {} as Record<string, CaseStudyData>,
-);
+export const caseStudies: Record<string, CaseStudyData> =
+  caseStudiesList.reduce(
+    (acc, study) => {
+      acc[study.slug] = study;
+      return acc;
+    },
+    {} as Record<string, CaseStudyData>,
+  );
 
 if (caseStudies["ai-scheduling"]) {
   caseStudies["wifter"] = {
@@ -1019,4 +1495,3 @@ if (caseStudies["ai-scheduling"]) {
     slug: "wifter",
   };
 }
-

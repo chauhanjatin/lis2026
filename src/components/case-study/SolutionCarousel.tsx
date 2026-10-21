@@ -72,22 +72,23 @@ export function SolutionCarousel({
   gallery,
   projectName = "Project",
 }: SolutionCarouselProps) {
-  const images = gallery?.images ?? [];
-  const imageWidth = gallery?.width ?? 1;
-  const imageHeight = gallery?.height ?? 1;
-  const hasGallery = images.length > 0;
-  const isPortrait = imageHeight > imageWidth;
-  const desktopHeight = isPortrait ? 380 : 260;
+  const frames = (gallery?.images ?? []).map((image) =>
+    typeof image === "string"
+      ? { src: image, width: gallery?.width ?? 1, height: gallery?.height ?? 1 }
+      : image,
+  );
+  const hasGallery = frames.length > 0;
   const durationSeconds = hasGallery
     ? Math.round(
-        (images.length *
-          (desktopHeight * (imageWidth / imageHeight) + GAP_PX)) /
-          SCROLL_PX_PER_SECOND,
+        frames.reduce((total, frame) => {
+          const height = frame.height > frame.width ? 380 : 260;
+          return total + height * (frame.width / frame.height) + GAP_PX;
+        }, 0) / SCROLL_PX_PER_SECOND,
       )
     : slides.length * SECONDS_PER_ITEM;
   // Duplicate items to create seamless infinite loop for marquee
   const marqueeSlides = [...slides, ...slides];
-  const marqueeImages = [...images, ...images];
+  const marqueeImages = [...frames, ...frames];
 
   return (
     <div className="relative my-12 sm:my-16 overflow-hidden py-4">
@@ -108,18 +109,20 @@ export function SolutionCarousel({
           style={{ animationDuration: `${durationSeconds}s` }}
         >
           {hasGallery
-            ? marqueeImages.map((src, idx) => (
+            ? marqueeImages.map((frame, idx) => {
+                const isPortrait = frame.height > frame.width;
+                return (
                 <Image
-                  key={`${src}-${idx}`}
-                  src={src}
+                  key={`${frame.src}-${idx}`}
+                  src={frame.src}
                   alt={
-                    idx < images.length
-                      ? `${projectName} ${isPortrait ? "mobile app" : "web app"} UI screen ${idx + 1}`
+                    idx < frames.length
+                      ? `${projectName} ${isPortrait ? "mobile" : "website"} UI screen ${idx + 1}`
                       : ""
                   }
-                  aria-hidden={idx >= images.length}
-                  width={imageWidth}
-                  height={imageHeight}
+                  aria-hidden={idx >= frames.length}
+                  width={frame.width}
+                  height={frame.height}
                   sizes={
                     isPortrait ? "200px" : "(max-width: 640px) 320px, 460px"
                   }
@@ -130,7 +133,8 @@ export function SolutionCarousel({
                       : "h-[180px] sm:h-[230px] md:h-[260px]"
                   } w-auto shrink-0 select-none`}
                 />
-              ))
+                );
+              })
             : marqueeSlides.map((slide, idx) => (
                 <div
                   key={`${slide.tag}-${idx}`}

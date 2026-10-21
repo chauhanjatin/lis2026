@@ -197,35 +197,35 @@ export const aboutPartners: AboutPartner[] = [
 export const aboutCoreValuesData: AboutCoreValuesSectionData = {
   title: "Our Core Values",
   subtitle:
-    "We are driven by our core values and philosophies that are deeply ingrained in each and every one of us. For us, helping our clients comes first!",
+    "At LIS, our core values guide every decision we make. We believe in building lasting partnerships through trust, innovation, collaboration, and a commitment to delivering exceptional digital solutions.",
   values: [
     {
       id: "commitment",
       title: "Commitment",
       icon: "commitment",
       description:
-        "Our employees are empowered and inspired. Only those who are content and connected can provide a truly excellent service. Our dedication to our staff translates into a dedication to our clients",
+        "We are dedicated to understanding our clients' goals and delivering reliable software solutions. From initial planning to ongoing support, we focus on building lasting relationships and ensuring client success.",
     },
     {
       id: "clarity",
       title: "Clarity",
       icon: "clarity",
       description:
-        "Everything we promise and deliver is precise and straightforward. We always make sure that our clients are treated with transparency. With our employees, we are upfront and sincere while putting the most important things first.",
+        "We believe in transparent communication, clear processes, and honest collaboration. By keeping our clients informed at every stage, we ensure projects stay aligned with their vision, expectations, and business goals.",
     },
     {
       id: "excellence",
       title: "Excellence",
       icon: "excellence",
       description:
-        "We aim for the best quality in all we do, including our overall service, communication, and decision-making. We push engineering excellence. Instead of following trends, we start them.",
+        "We strive for excellence in every aspect of our work, from UI/UX design to web and mobile app development. We focus on quality, performance, security, and scalable technology to create impactful digital experiences.",
     },
     {
       id: "passion",
       title: "Passion",
       icon: "passion",
       description:
-        "Passion leads to commitment. Responsibility comes with commitment. LIS's success was fueled by dedicated individuals in every way. We wouldn't be the business we are today without them.",
+        "Our passion for technology and innovation drives us to turn ideas into meaningful digital products. We embrace challenges, explore new possibilities, and help businesses grow through creative thinking and smart technology.",
     },
   ],
 };
@@ -291,13 +291,13 @@ export const aboutStats: AboutStat[] = [
 
 export const aboutStoryData: AboutStory = {
   eyebrow: "Our Foundation",
-  heading: "Empowering innovation through clarity & craft.",
+  heading: "Building digital solutions with purpose & innovation.",
   leadParagraph:
-    "We partner with forward-thinking leaders to turn complex visions into world-class digital experiences that drive measurable outcomes.",
+    "At LIS, we combine technology, creativity, and industry expertise to transform business ideas into reliable digital solutions that create lasting value.",
   image: {
     src: "/ourfoundation.png",
-    alt: "Liberty Info Science design and development team collaborating on a client project",
-    badgeText: "UPWORK TOP RATED  •  UPWORK TOP RATED • ",
+    alt: "LIS software development team collaborating on innovative digital solutions",
+    badgeText: "INNOVATION • QUALITY • TRUST • ",
   },
   pillars: [
     {
@@ -305,21 +305,21 @@ export const aboutStoryData: AboutStory = {
       number: "01",
       title: "Our Mission",
       description:
-        "We think that digital is the way of the future. We also think that companies' expansion is delayed if new technology is not embraced.",
+        "Our mission is to empower businesses through innovative software, intuitive UI/UX design, and reliable digital solutions that simplify processes, solve real-world challenges, and accelerate business growth.",
     },
     {
       id: "vision",
       number: "02",
       title: "Our Vision",
-      description:  
-        "Our vision is to become the world’s best IT solutions partner and global leader who provides the best IT services to people all around the world.",
+      description:
+        "Our vision is to become a trusted global technology partner, helping businesses worldwide achieve their goals through creative thinking, advanced technology, and exceptional digital experiences.",
     },
     {
       id: "quality",
       number: "03",
       title: "Quality Management",
       description:
-        "We are a quality-focused software development business, developing software while complying with legal criteria for quality and data security.",
+        "We are committed to delivering high-quality software solutions through thoughtful planning, rigorous testing, secure development practices, and continuous improvement to ensure reliable, scalable, and user-focused products.",
     },
   ],
 };

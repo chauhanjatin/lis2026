@@ -11,6 +11,7 @@ const fontVars: Record<string, string> = {
   Manrope: "var(--font-manrope)",
   "Instrument Sans": "var(--font-instrument-sans)",
   Nunito: "var(--font-nunito)",
+  "Cormorant Garamond": "var(--font-cormorant)",
 };
 
 const tilts = ["-rotate-[4deg]", "rotate-[3deg]", "-rotate-[3deg]", "rotate-[4deg]"];
