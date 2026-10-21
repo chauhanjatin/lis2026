@@ -47,6 +47,7 @@ export function Process() {
       className="bg-[#0a0b0b] py-20 text-[#f4f2ed] sm:py-28 lg:py-36"
     >
       <Container className="max-w-[1360px]">
+        
         <ScrollReveal className="max-w-5xl" amount={0.4}>
           <p className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.12em] text-[#b7b8b5]">
             <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] shadow-[0_0_12px_#a9f66f]" />{" "}
