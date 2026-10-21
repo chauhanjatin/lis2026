@@ -1,6 +1,35 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
+
+function BrandLogoImage({
+  src,
+  alt,
+  width,
+  height,
+  className = "",
+}: {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  className?: string;
+}) {
+  return (
+    <div
+      className={`rounded-2xl px-3 py-2 transition-colors duration-300 group-hover:bg-white ${className}`}
+    >
+      <Image
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        className="h-12 w-auto sm:h-14"
+      />
+    </div>
+  );
+}
 
 export function CaseStudyBrandLogo({
   type,
@@ -22,62 +51,24 @@ export function CaseStudyBrandLogo({
   switch (type) {
     case "uniqlearn":
       return (
-        <div
-          className={`flex items-center gap-3 text-[#101116] transition-colors duration-300 group-hover:text-white select-none ${className}`}
-        >
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-tr from-[#FF5516] to-[#FFA84A] text-white shadow-md">
-            <svg
-              className="h-6 w-6"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-              <path d="M6 12v5c3 3 9 3 12 0v-5" />
-            </svg>
-          </div>
-          <div className="flex flex-col text-left">
-            <span className="font-Sora text-2xl font-bold tracking-tight">
-              Uniq<span className="text-[#FF5516] group-hover:text-white transition-colors">Learn</span>
-            </span>
-            <span className="text-[9.5px] font-bold tracking-[0.2em] uppercase opacity-65 group-hover:opacity-90">
-              CLASSROOM OS
-            </span>
-          </div>
-        </div>
+        <BrandLogoImage
+          src="/uniqlearn.png"
+          alt="UniqLearn logo"
+          width={285}
+          height={70}
+          className={className}
+        />
       );
 
     case "learnbud":
       return (
-        <div
-          className={`flex items-center gap-3 text-[#101116] transition-colors duration-300 group-hover:text-white select-none ${className}`}
-        >
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-tr from-[#00B2FE] to-[#2D8CFF] text-white shadow-md">
-            <svg
-              className="h-6 w-6"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M12 2a8 8 0 0 0-8 8c0 3.3 2 6.1 4.9 7.3.3.1.5.4.5.7v1.5a1.5 1.5 0 0 0 1.5 1.5h2.2a1.5 1.5 0 0 0 1.5-1.5v-1.5c0-.3.2-.6.5-.7A8 8 0 0 0 20 10a8 8 0 0 0-8-8z" />
-              <path d="M9 22h6" />
-            </svg>
-          </div>
-          <div className="flex flex-col text-left">
-            <span className="font-Sora text-2xl font-bold tracking-tight">
-              LearnBud <span className="bg-gradient-to-r from-[#00B2FE] to-[#2D8CFF] bg-clip-text text-transparent group-hover:text-white transition-colors">AI</span>
-            </span>
-            <span className="text-[9.5px] font-bold tracking-[0.2em] uppercase opacity-65 group-hover:opacity-90">
-              SMART TUTOR
-            </span>
-          </div>
-        </div>
+        <BrandLogoImage
+          src="/learnbudai.png"
+          alt="LearnBud AI logo"
+          width={360}
+          height={70}
+          className={className}
+        />
       );
 
     case "dermatology":
@@ -101,23 +92,13 @@ export function CaseStudyBrandLogo({
 
     case "dtssplint":
       return (
-        <div
-          className={`flex items-center gap-3 text-[#101116] transition-colors duration-300 group-hover:text-white select-none ${className}`}
-        >
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#111111] text-[#3DDC4E] shadow-md">
-            <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-              <path d="M7 4.5c.6 1.4 1.2 2.2 2.2 2.2S10.8 5.9 11.4 4.5c.3-.7 1.2-.7 1.5 0 .6 1.4 1.2 2.2 2.2 2.2s1.6-.8 2.2-2.2c.3-.7 1.2-.7 1.5 0-.2 2.2-.8 4.6-1.6 6.2-1.2 2.4-2.2 3.8-4.7 5.3-2.5-1.5-3.5-2.9-4.7-5.3C6.2 9.1 5.6 6.7 5.4 4.5c.3-.7 1.2-.7 1.6 0z" />
-            </svg>
-          </div>
-          <div className="flex flex-col text-left">
-            <span className="font-Sora text-2xl font-bold tracking-tight">
-              DTS <span className="text-[#3DDC4E] group-hover:text-white transition-colors">Splint</span>
-            </span>
-            <span className="text-[9.5px] font-bold tracking-[0.2em] uppercase opacity-65 group-hover:opacity-90">
-              DENTAL CAD
-            </span>
-          </div>
-        </div>
+        <BrandLogoImage
+          src="/dtssplint.png"
+          alt="DTS Splint logo"
+          width={164}
+          height={70}
+          className={className}
+        />
       );
 
     case "orion":

@@ -22,28 +22,29 @@ const projects = [
     alt: "UniqLearn education dashboard – teacher analytics web app UI/UX design case study",
     image: "/uniqlearn/uniqlearn.png",
     figmaUrl: "https://www.figma.com/design/uniqlearn",
-    websiteUrl: "https://uniqlearn.example.com",
+    caseStudyUrl: "/work/uniqlearn",
   },
   {
     title: "Integrative Dermatology",
     alt: "Integrative Dermatology clinic website design case study – desktop and mobile",
     image: "/integrative-dermatology.png",
     figmaUrl: "https://www.figma.com/design/integrative-dermatology",
-    websiteUrl: "https://integrativedermatology.example.com",
+    caseStudyUrl: "/work/integrative-dermatology",
+    websiteUrl: "https://integrativedermatology.co/",
   },
   {
     title: "LearnBud AI",
     alt: "LearnBud AI tutoring mobile app UI/UX design case study",
     image: "/learnbudai/learnbudai.png",
     figmaUrl: "https://www.figma.com/design/learnbud-ai",
-    websiteUrl: "https://learnbudai.example.com",
+    caseStudyUrl: "/work/learnbud-ai",
   },
   {
     title: "DTS Splint",
     alt: "DTS Splint AI-powered dental splint design software UI case study",
     image: "/dts-splint.png",
     figmaUrl: "https://www.figma.com/design/dts-splint",
-    websiteUrl: "https://dtssplint.example.com",
+    caseStudyUrl: "/work/dts-splint",
   },
 ];
 
@@ -168,8 +169,7 @@ export function ProjectShowcase() {
                   >
                     {/* Clickable Image with Hover Arrow View Button */}
                     <a
-                      href={project.websiteUrl || project.figmaUrl}
-                      target="_blank"
+                      href={project.caseStudyUrl}
                       rel="noopener noreferrer"
                       className="showcase-art group/art block relative overflow-hidden">
                       <Image
@@ -224,25 +224,28 @@ export function ProjectShowcase() {
                           />
                         </a>
                         
-                        <a
-                          href={project.websiteUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="showcase-link group/link"
-                        >
-                          <span className="showcase-link-icon showcase-link-icon--web">
-                            <HiOutlineGlobeAlt aria-hidden />
-                          </span>
-                          <span className="showcase-link-label">
-                            Visit Website
-                          </span>
-                          <ArrowUpRight
-                            size={12}
-                            className="text-[#145a7a] opacity-50 transition-opacity group-hover/link:opacity-100"
-                          />
-                        </a>
+                        {project.websiteUrl ? (
+                          <a
+                            href={project.websiteUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="showcase-link group/link"
+                          >
+                            <span className="showcase-link-icon showcase-link-icon--web">
+                              <HiOutlineGlobeAlt aria-hidden />
+                            </span>
+                            <span className="showcase-link-label">
+                              Visit Website
+                            </span>
+                            <ArrowUpRight
+                              size={12}
+                              className="text-[#145a7a] opacity-50 transition-opacity group-hover/link:opacity-100"
+                            />
+                          </a>
+                        ) : null}
                       </div>
                     </div>
+                    
                   </article>
                 </div>
               ))}
@@ -262,8 +265,7 @@ export function ProjectShowcase() {
               key={project.title}
               className="w-[85vw] max-w-[380px] shrink-0 snap-center">
               <article className="group flex flex-col rounded-2xl bg-[#cbc9c93d] p-3.5 sm:p-4 shadow-sm border border-black/5 transition-all">
-                <a href={project.websiteUrl || project.figmaUrl}
-                  target="_blank"
+                <a href={project.caseStudyUrl}
                   rel="noopener noreferrer"
                   className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#e4e4e4] group/mobileArt block">
                   <Image
@@ -303,23 +305,25 @@ export function ProjectShowcase() {
                         className="text-[#145a7a] opacity-60"
                       />
                     </a>
-                    <a
-                      href={project.websiteUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="showcase-link !py-1 !px-2.5 !gap-1.5"
-                    >
-                      <span className="showcase-link-icon showcase-link-icon--web !size-6 !text-[0.8rem]">
-                        <HiOutlineGlobeAlt aria-hidden />
-                      </span>
-                      <span className="showcase-link-label !text-[0.75rem]">
-                        Visit Website
-                      </span>
-                      <ArrowUpRight
-                        size={11}
-                        className="text-[#145a7a] opacity-60"
-                      />
-                    </a>
+                    {project.websiteUrl ? (
+                      <a
+                        href={project.websiteUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="showcase-link !py-1 !px-2.5 !gap-1.5"
+                      >
+                        <span className="showcase-link-icon showcase-link-icon--web !size-6 !text-[0.8rem]">
+                          <HiOutlineGlobeAlt aria-hidden />
+                        </span>
+                        <span className="showcase-link-label !text-[0.75rem]">
+                          Visit Website
+                        </span>
+                        <ArrowUpRight
+                          size={11}
+                          className="text-[#145a7a] opacity-60"
+                        />
+                      </a>
+                    ) : null}
                   </div>
                 </div>
               </article>

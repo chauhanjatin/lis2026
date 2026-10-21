@@ -12,28 +12,28 @@ const steps = [
     number: "01",
     title: "Discover",
     description:
-      "We shape brands through exploration, applying in-depth research to challenge assumptions at every turn.",
+      "We understand your business goals, research your audience, and identify key challenges to define a clear strategy for your digital solution.",
     image: "/discover.png",
   },
   {
     number: "02",
     title: "Design",
     description:
-      "Our design approach is to simplify. We embrace the joy in creating something unique that is easy for end users.",
+      "We create intuitive UI/UX designs and thoughtful user journeys that combine visual appeal, usability, and functionality to deliver exceptional digital experiences.",
     image: "/design.png",
   },
   {
     number: "03",
     title: "Build",
     description:
-      "Using modern technologies, we build efficiency and skill, creating flexible and scalable business-driven solutions.",
+      "We transform designs into powerful digital products using modern technologies, clean code, and scalable development practices tailored to your business needs.",
     image: "/build.png",
   },
   {
     number: "04",
     title: "Deliver",
     description:
-      "We take iterative approach to both our work and our practice, always looking for ways to improve what we do.",
+      "We rigorously test, optimize, and launch your solution to ensure quality, security, and performance, with ongoing support to help your business grow.",
     image: "/deliver.png",
   },
 ];
