@@ -148,13 +148,13 @@ export function Testimonials() {
     <>
       {/* ============ TESTIMONIALS — START ============ */}
       <Section id="testimonials">
-        <Eyebrow>What clients say</Eyebrow>
-        <Heading size="lg" className="max-w-2xl">
-          Social proof.
-        </Heading>
-        <p className="mt-5 max-w-xl text-muted">
-          A few words from the people we have had the pleasure of working with.
+        <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#202224]">
+          <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5]" />
+          What clients say
         </p>
+        <h2 className="mt-4 font-Sora text-balance text-3xl sm:text-5xl md:text-6xl lg:text-6xl font-medium leading-[1.1] sm:leading-[1.02] tracking-[-0.035em] sm:tracking-[-0.055em] text-[#151618]">
+          Social <span className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">proof.</span>
+        </h2>
         <div
           className="testimonial-deck mt-12"
           tabIndex={0}

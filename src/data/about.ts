@@ -291,7 +291,7 @@ export const aboutStats: AboutStat[] = [
 
 export const aboutStoryData: AboutStory = {
   eyebrow: "Our Foundation",
-  heading: "Building digital solutions with purpose & innovation.",
+  heading: "Turning Ideas Into Powerful Digital",
   leadParagraph:
     "At LIS, we combine technology, creativity, and industry expertise to transform business ideas into reliable digital solutions that create lasting value.",
   image: {

@@ -75,7 +75,7 @@ export function TechStack() {
             <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5]" />{" "}
             Technologies
           </p>
-          <h2 className="mt-4 sm:mt-7 font-Sora text-balance text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-medium leading-[1.1] sm:leading-[1.02] tracking-[-0.035em] sm:tracking-[-0.055em] text-[#151618]">
+          <h2 className="mt-4 sm:mt-7 font-Sora text-balance text-3xl sm:text-5xl md:text-6xl lg:text-6xl font-medium leading-[1.1] sm:leading-[1.02] tracking-[-0.035em] sm:tracking-[-0.055em] text-[#151618]">
             Works with the{" "}
             <span className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">
               tools

@@ -101,7 +101,7 @@ export function AboutStatsSection({
             <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5]" />
             Proven Track Record
           </p>
-          <h2 className="mt-4 font-Sora text-3xl font-semibold tracking-[-0.03em] text-[#101010] sm:text-4xl md:text-5xl">
+          <h2 className="mt-4 font-Sora text-3xl font-semibold tracking-[-0.03em] text-[#101010] sm:text-4xl md:text-6xl">
             Numbers that validate our{" "}
             <span className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">
               craft.

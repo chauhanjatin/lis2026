@@ -381,7 +381,7 @@ export function CaseStudyView({ data }: CaseStudyViewProps) {
             </div>
           </motion.div>
         </section>
-      </Container>
+      </Container>  
     </article>
   );
 }

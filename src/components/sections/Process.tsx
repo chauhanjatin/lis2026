@@ -52,7 +52,7 @@ export function Process() {
             <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] shadow-[0_0_12px_#a9f66f]" />{" "}
             Workflow
           </p>
-          <h2 className="font-Sora mt-7 text-balance text-5xl font-medium leading-[1.02] tracking-[-0.055em] sm:text-6xl md:text-7xl">
+          <h2 className="font-Sora mt-7 text-balance text-3xl font-medium leading-[1.02] tracking-[-0.055em] sm:text-5xl md:text-6xl">
             Our Simple &amp; Fast
             <br />
             <span className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">

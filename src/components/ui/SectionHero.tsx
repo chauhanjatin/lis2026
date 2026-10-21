@@ -30,7 +30,7 @@ export function SectionHero({
         />
         {eyebrow}
       </p>
-      <Tag className="mt-4 sm:mt-7 font-Sora text-balance text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-medium leading-[1.08] sm:leading-[1.02] tracking-[-0.035em] sm:tracking-[-0.055em] text-[#151618]">
+      <Tag className="mt-4 sm:mt-7 font-Sora text-balance text-3xl sm:text-5xl md:text-6xl lg:text-6xl font-medium leading-[1.08] sm:leading-[1.02] tracking-[-0.035em] sm:tracking-[-0.055em] text-[#151618]">
         {children}
       </Tag>
     </div>

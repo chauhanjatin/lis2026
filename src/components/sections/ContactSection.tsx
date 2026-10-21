@@ -56,7 +56,7 @@ export function ContactSection() {
               Contact
             </p>
 
-            <h1 className="mt-7 font-Sora text-[clamp(2.5rem,5vw,4.25rem)] font-semibold  leading-[0.98] tracking-[-0.04em] text-[#151618]">
+            <h1 className="mt-7 font-Sora text-[clamp(2.5rem,5vw,4.25rem)] font-semibold  leading-[0.98] tracking-[-0.04em] text-[#151618] sm:text-4xl md:text-6xl">
               Let&apos;s work
               <br />
               <GradientText>together.</GradientText>

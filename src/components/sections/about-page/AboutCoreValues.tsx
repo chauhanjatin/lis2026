@@ -282,7 +282,7 @@ export function AboutCoreValues({
       <Container className="relative z-10">
         {/* Header */}
         <ScrollReveal className="mx-auto max-w-3xl text-center" amount={0.35}>
-          <h2 className="mt-4 font-Sora text-3xl font-semibold tracking-[-0.03em] text-[#101010] sm:text-4xl md:text-5xl">
+          <h2 className="mt-4 font-Sora text-3xl font-semibold tracking-[-0.03em] text-[#101010] sm:text-4xl md:text-6xl">
             Our Core{" "}
             <span className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">
               Values

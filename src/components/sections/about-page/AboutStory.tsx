@@ -105,12 +105,17 @@ export function AboutStorySection({
                         href={href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        whileHover={reduceMotion ? undefined : { scale: 1.15, y: -2 }}
+                        whileHover={
+                          reduceMotion ? undefined : { scale: 1.15, y: -2 }
+                        }
                         whileTap={reduceMotion ? undefined : { scale: 0.95 }}
                         className="flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-md border border-white/20 transition-colors hover:bg-black/80 sm:h-10 sm:w-10"
                         aria-label={`Visit our ${label}`}
                       >
-                        <Icon className="size-3.5 sm:size-4" aria-hidden="true" />
+                        <Icon
+                          className="size-3.5 sm:size-4"
+                          aria-hidden="true"
+                        />
                       </motion.a>
                     ))}
                   </div>
@@ -122,14 +127,16 @@ export function AboutStorySection({
           {/* Right Column: 3 Content Blocks (Mission, Vision, Quality) */}
           <div className="lg:col-span-7">
             <ScrollReveal amount={0.3}>
-              
               <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#202224]">
                 <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5]" />
                 {data.eyebrow}
               </p>
 
-              <h2 className="mt-4 font-Sora text-3xl font-bold tracking-[-0.035em] text-[#111827] sm:text-4xl md:text-5xl">
-                {data.heading}
+              <h2 className="mt-4 font-Sora text-3xl font-bold tracking-[-0.035em] text-[#111827] sm:text-4xl md:text-6xl">
+                {data.heading}{" "}
+                <span className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] text-transparent bg-clip-text">
+                  Solutions.
+                </span>
               </h2>
 
               <p className="mt-4 text-sm leading-relaxed text-[#55585D] sm:text-base md:text-lg">
@@ -141,20 +148,19 @@ export function AboutStorySection({
 
               {/* 3 Pillars List with Smooth Animation */}
               <ScrollStagger className="space-y-6">
-                {data.pillars.map((pillar) => (                  
-                  
-                  <ScrollItem key={pillar.id} variants={fadeUp}>                                       
+                {data.pillars.map((pillar) => (
+                  <ScrollItem key={pillar.id} variants={fadeUp}>
                     <motion.article
                       whileHover={
                         reduceMotion
                           ? undefined
                           : { x: 4, transition: { duration: 0.25, ease } }
                       }
-                      className="group relative rounded-2xl border border-transparent p-4 transition-all duration-300 hover:border-[#E2E4E8] hover:bg-white hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)] sm:p-5">
-                      
+                      className="group relative rounded-2xl border border-transparent p-4 transition-all duration-300 hover:border-[#E2E4E8] hover:bg-white hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)] sm:p-5"
+                    >
                       <div className="flex items-start gap-4">
                         {/* Number Badge */}
-                        
+
                         <span className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#E8EAEF] font-mono text-xs font-bold text-[#1F2937] transition-colors group-hover:bg-gradient-to-r from-[#42BFA5] to-[#0D4FB8]  group-hover:text-white">
                           {pillar.number}
                         </span>
@@ -167,14 +173,12 @@ export function AboutStorySection({
                             {pillar.description}
                           </p>
                         </div>
-
                       </div>
                     </motion.article>
                   </ScrollItem>
-                  
                 ))}
               </ScrollStagger>
-            </ScrollReveal>            
+            </ScrollReveal>
           </div>
         </div>
       </Container>
