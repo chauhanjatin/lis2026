@@ -4,9 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 
-const MIN_VISIBLE_MS = 700;
-const MAX_VISIBLE_MS = 4000;
-const FADE_MS = 450;
+const MIN_VISIBLE_MS = 280;
+const MAX_VISIBLE_MS = 2500;
+const FADE_MS = 200;
 
 type Phase = "shown" | "hiding" | "hidden";
 
@@ -40,9 +40,9 @@ export function PageLoader() {
     setPhase(next);
   };
 
-  const hide = () => {
+  const hide = (minVisible = MIN_VISIBLE_MS) => {
     clearTimers();
-    const wait = Math.max(0, MIN_VISIBLE_MS - (performance.now() - shownAt.current));
+    const wait = Math.max(0, minVisible - (performance.now() - shownAt.current));
     timers.current.push(
       setTimeout(() => {
         setLoaderPhase("hiding");
@@ -65,7 +65,7 @@ export function PageLoader() {
 
   useEffect(() => {
     shownAt.current = performance.now();
-    const finishFirstLoad = () => hideRef.current();
+    const finishFirstLoad = () => hideRef.current(120);
     if (document.readyState === "complete") finishFirstLoad();
     else window.addEventListener("load", finishFirstLoad, { once: true });
     const fallback = setTimeout(finishFirstLoad, MAX_VISIBLE_MS);

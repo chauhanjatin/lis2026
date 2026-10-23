@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { GeistMono } from "geist/font/mono";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
 import { SkipLink } from "@/components/ui/SkipLink";
-import { PageLoader } from "@/components/ui/PageLoader";
 import { fontVariables } from "./fonts";
 import "lenis/dist/lenis.css";
 import "./globals.css";
@@ -20,16 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${fontVariables} ${GeistMono.variable}`}>
-      <head>
-        <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://cdn.fontshare.com" crossOrigin="anonymous" />
-        <link
-          rel="stylesheet"
-          href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap"
-        />
-      </head>
       <body className="font-sans antialiased">
-        <PageLoader />
         <SmoothScroll>
           <SkipLink />
           {children}

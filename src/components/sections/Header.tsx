@@ -169,10 +169,11 @@ export function Header() {
   const lenis = useLenis();
 
   useLenis(({ scroll }) => {
-    setScrolled(scroll > 8);
+    const isScrolled = scroll > 8;
+    setScrolled((prev) => (prev !== isScrolled ? isScrolled : prev));
   });
 
-  useEffect(() => {
+  useEffect(() => {  
     if (!open) return;
 
     const bodyOverflow = document.body.style.overflow;

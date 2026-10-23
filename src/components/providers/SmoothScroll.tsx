@@ -7,9 +7,11 @@ import { ReactLenis, useLenis } from "lenis/react";
 
 const lenisOptions: LenisOptions = {
   autoRaf: true,
-  lerp: 0.1,
-  duration: 1.2,
+  lerp: 0.14,
+  duration: 0.75,
   smoothWheel: true,
+  wheelMultiplier: 1.0,
+  touchMultiplier: 1.5,
   anchors: true,
   respectReducedMotion: true,
 };

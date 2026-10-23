@@ -22,6 +22,7 @@ export const sora = Sora({
 export const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
   display: "swap",
+  preload: false,
   variable: "--font-instrument-sans",
 });
 

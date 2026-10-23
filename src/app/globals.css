@@ -149,12 +149,12 @@ body {
     transform: translate3d(0, 0, 0);
   }
   to {
-    transform: translate3d(0, -33.333%, 0);
+    transform: translate3d(0, -50%, 0);
   }
 }
 @keyframes hero-marquee-up {
   from {
-    transform: translate3d(0, -33.333%, 0);
+    transform: translate3d(0, -50%, 0);
   }
   to {
     transform: translate3d(0, 0, 0);
@@ -1077,7 +1077,7 @@ body {
   aspect-ratio: 1 / 0.65;
   position: absolute;
   left: 50%;
-  top: 10rem;
+  top: 12rem;
   border-radius: 50%;
   background: linear-gradient(
     to right,
@@ -1090,39 +1090,26 @@ body {
   );
   filter: blur(80px);
   opacity: 0.6;
-  transform: translate(-50%, -50%);
+  transform: translate3d(-50%, -50%, 0);
+  will-change: transform;
   animation: gradientMove 18s ease-in-out infinite alternate;
 }
 
 @keyframes gradientMove {
   0% {
-    left: 15%;
-    top: 25%;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate3d(-80%, -40%, 0) scale(1);
   }
-
   25% {
-    left: 25%;
-    top: 60%;
-    transform: translate(-50%, -50%) scale(1.15);
+    transform: translate3d(-60%, 10%, 0) scale(1.15);
   }
-
   50% {
-    left: 85%;
-    top: 50%;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate3d(20%, -10%, 0) scale(1);
   }
-
   75% {
-    left: 75%;
-    top: 20%;
-    transform: translate(-50%, -50%) scale(1.12);
+    transform: translate3d(0%, -50%, 0) scale(1.12);
   }
-
   100% {
-    left: 15%;
-    top: 25%;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate3d(-80%, -40%, 0) scale(1);
   }
 }
 
@@ -1281,4 +1268,27 @@ body {
   .loader-bar {
     animation: none;
   }
+}
+
+/* Performance & GPU Rendering Optimizations */
+.hero-marquee-track.is-paused,
+.animate-solution-marquee.is-paused {
+  animation-play-state: paused !important;
+}
+
+.hero-marquee-stage,
+.hero-marquee-track,
+.hero-marquee-card,
+.showcase-track {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+#featured-work,
+#process,
+#services,
+#tech-stack,
+#testimonials {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 700px;
 }

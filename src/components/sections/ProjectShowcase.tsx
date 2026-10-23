@@ -65,9 +65,11 @@ export function ProjectShowcase() {
   const x = useTransform(scrollYProgress, [0, 1], [0, -travel]);
 
   useMotionValueEvent(scrollYProgress, "change", (progress) => {
-    setActive(
-      Math.min(projects.length - 1, Math.floor(progress * projects.length)),
+    const nextActive = Math.min(
+      projects.length - 1,
+      Math.floor(progress * projects.length),
     );
+    setActive((prev) => (prev !== nextActive ? nextActive : prev));
   });
 
   useEffect(() => {
