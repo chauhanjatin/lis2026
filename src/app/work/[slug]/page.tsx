@@ -3,14 +3,10 @@ import type { Metadata } from "next";
 import { Header } from "@/components/sections/Header";
 import { Footer } from "@/components/sections/Footer";
 import { CaseStudyView } from "@/components/case-study/CaseStudyView";
-import { projects } from "@/data/projects";
-import { caseStudies, caseStudiesList, defaultCaseStudy } from "@/data/caseStudies";
+import { caseStudies, caseStudiesList } from "@/data/caseStudies";
 
 export function generateStaticParams() {
-  const projectSlugs = projects.map((project) => project.slug);
-  const caseStudySlugs = caseStudiesList.map((study) => study.slug);
-  const allSlugs = Array.from(new Set([...projectSlugs, ...caseStudySlugs, "wifter", "ai-scheduling"]));
-  return allSlugs.map((slug) => ({ slug }));
+  return caseStudiesList.map((study) => ({ slug: study.slug }));
 }
 
 export async function generateMetadata({
@@ -19,10 +15,9 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const project = projects.find((p) => p.slug === slug);
-  const study = caseStudies[slug] || defaultCaseStudy;
+  const study = caseStudies[slug];
 
-  if (!project && !caseStudies[slug]) {
+  if (!study) {
     return {
       title: "Case Study — Design Studio",
     };
@@ -40,18 +35,11 @@ export default async function CaseStudyPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const project = projects.find((p) => p.slug === slug);
+  const caseStudyData = caseStudies[slug];
 
-  if (!project && !caseStudies[slug]) {
+  if (!caseStudyData) {
     notFound();
   }
-
-  const caseStudyData = caseStudies[slug] || {
-    ...defaultCaseStudy,
-    slug,
-    title: project ? project.title : defaultCaseStudy.title,
-    eyebrow: project ? project.category.toUpperCase() : defaultCaseStudy.eyebrow,
-  };
 
   return (
     <>
