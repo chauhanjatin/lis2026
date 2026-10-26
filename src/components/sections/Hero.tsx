@@ -9,7 +9,6 @@ import {
   useTransform,
 } from "framer-motion";
 import { Container } from "@/components/ui/Container";
-import { ScrollReveal, fadeUp } from "@/components/ui/ScrollReveal";
 
 const projectImages = [
   { src: "/project1.png", alt: "Cinema UGC ad platform – creator marketplace web app and mobile UI design" },
@@ -23,7 +22,6 @@ const projectImages = [
   { src: "/project9.png", alt: "Talk2Hope online counselling and mental health website design" },
 ];
 
-// Distribute distinct 5-item subsets per column to keep DOM light & varied
 const col1 = [projectImages[0]!, projectImages[1]!, projectImages[2]!, projectImages[3]!, projectImages[4]!];
 const col2 = [projectImages[5]!, projectImages[6]!, projectImages[7]!, projectImages[8]!, projectImages[0]!];
 const col3 = [projectImages[4]!, projectImages[3]!, projectImages[2]!, projectImages[1]!, projectImages[8]!];
@@ -35,39 +33,6 @@ const columns = [
   { items: col3, direction: "down" as const, duration: "34s" },
   { items: col4, direction: "up" as const, duration: "38s" },
 ];
-
-const ease = [0.22, 1, 0.36, 1] as const;
-
-function AnimatedWords({
-  text,
-  className,
-  delayOffset = 0,
-}: {
-  text: string;
-  className?: string;
-  delayOffset?: number;
-}) {
-  const words = text.split(" ");
-  return (
-    <>
-      {words.map((word, i) => (
-        <motion.span
-          key={`${word}-${i}`}
-          initial={{ opacity: 0, y: 22 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.6,
-            delay: delayOffset + i * 0.05,
-            ease,
-          }}
-          className={`inline-block mr-[0.26em] ${className ?? ""}`}
-        >
-          {word}
-        </motion.span>
-      ))}
-    </>
-  );
-}
 
 function MarqueeColumn({
   items,
@@ -161,70 +126,40 @@ export function Hero() {
             aria-label="Transforming Ideas Into Powerful Digital Experiences"
             className="font-Sora text-balance text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.22] sm:leading-[1.28] tracking-[-0.03em] text-foreground"
           >
-            {reduceMotion ? (
-              <>
-                Transforming Ideas
-                <br />
-                Into <span className="text-[#3391B1]">Powerful Digital</span>
-                <br />
-                Experiences
-              </>
-            ) : (
-              <>
-                <AnimatedWords text="Transforming Ideas" delayOffset={0.06} />
-                <br />
-                <AnimatedWords text="Into" delayOffset={0.2} />
-                <AnimatedWords
-                  text="Powerful Digital"
-                  delayOffset={0.25}
-                  className="text-[#3391B1]"
-                />
-                <br />
-                <AnimatedWords text="Experiences" delayOffset={0.4} />
-              </>
-            )}
+            Transforming Ideas
+            <br />
+            Into <span className="text-[#3391B1]">Powerful Digital</span>
+            <br />
+            Experiences
           </h1>
 
-          <motion.p
-            variants={fadeUp}
-            initial={reduceMotion ? false : "hidden"}
-            animate="visible"
-            transition={{ duration: 0.7, delay: 0.35, ease }}
-            className="mx-auto mt-8 max-w-3xl text-pretty text-base leading-relaxed text-muted md:text-lg"
-          >
+          <p className="mx-auto mt-8 max-w-3xl text-pretty text-base leading-relaxed text-muted md:text-lg">
             We help businesses grow with modern websites, intuitive UI/UX
             design, scalable software solutions, and strategic digital
             innovation tailored for the future.
-          </motion.p>
+          </p>
         </div>
 
-        <ScrollReveal
-          className="mt-16 md:mt-24"
-          delay={0.15}
-          duration={0.8}
-          amount={0.15}
+        <motion.div
+          ref={marqueeRef}
+          className="hero-marquee mt-16 md:mt-24"
+          aria-label="Featured project gallery"
+          style={reduceMotion ? undefined : { scale, opacity }}
         >
-          <motion.div
-            ref={marqueeRef}
-            className="hero-marquee"
-            aria-label="Featured project gallery"
-            style={reduceMotion ? undefined : { scale, opacity }}
-          >
-            <div className="hero-marquee-stage">
-              {columns.map((column, index) => (
-                <MarqueeColumn
-                  key={index}
-                  items={column.items}
-                  direction={column.direction}
-                  duration={column.duration}
-                  decorative={index > 0}
-                  eager={index === 0}
-                  isPaused={!isInView}
-                />
-              ))}
-            </div>
-          </motion.div>
-        </ScrollReveal>
+          <div className="hero-marquee-stage">
+            {columns.map((column, index) => (
+              <MarqueeColumn
+                key={index}
+                items={column.items}
+                direction={column.direction}
+                duration={column.duration}
+                decorative={index > 0}
+                eager={index <= 1}
+                isPaused={!isInView}
+              />
+            ))}
+          </div>
+        </motion.div>
       </Container>
     </section>
   );

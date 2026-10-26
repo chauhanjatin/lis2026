@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { GeistMono } from "geist/font/mono";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
 import { SkipLink } from "@/components/ui/SkipLink";
 import { fontVariables } from "./fonts";
@@ -18,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${fontVariables} ${GeistMono.variable}`}>
+    <html lang="en" className={fontVariables}>
       <body className="font-sans antialiased">
         <SmoothScroll>
           <SkipLink />
