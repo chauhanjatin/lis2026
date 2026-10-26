@@ -312,4 +312,15 @@ export const projects: Project[] = [
     figmaUrl:
       "https://www.figma.com/design/PblRGy0s0NUSJc9fHYdC70/Fitsole-E-Commerce-website?node-id=23-105&t=SOPsiByfIHuJNLhn-1",
   },
+  {
+    slug: "duxtonwatch",
+    title: "Duxton Watch",  
+    category: "UI/UX",
+    summary: "Watch store website for luxury watches, high-end watches, and classic watches.",
+    image: "/projects/duxtonwatch.png",
+    alt: "Duxton Watch watch store website",
+    tags: ["ui-ux"],
+    figmaUrl:
+      "https://www.figma.com/proto/pNyHdHFbdxltuyxP0LsukR/Watche-E-Commerce-Website?node-id=5-4&viewport=-160%2C535%2C0.13&t=u2Byb2LvgermlhJd-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1",
+  },
 ];
