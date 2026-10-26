@@ -9,6 +9,7 @@ import {
   useTransform,
 } from "framer-motion";
 import { Container } from "@/components/ui/Container";
+import { fadeUp } from "@/components/ui/ScrollReveal";
 
 const projectImages = [
   { src: "/project1.png", alt: "Cinema UGC ad platform – creator marketplace web app and mobile UI design" },
@@ -33,6 +34,40 @@ const columns = [
   { items: col3, direction: "down" as const, duration: "34s" },
   { items: col4, direction: "up" as const, duration: "38s" },
 ];
+
+const ease = [0.22, 1, 0.36, 1] as const;
+
+function BlurLetters({
+  text,
+  className,
+  startIndex = 0,
+}: {
+  text: string;
+  className?: string;
+  startIndex?: number;
+}) {
+  return (
+    <>
+      {text.split("").map((char, index) => (
+        <motion.span
+          key={`${startIndex + index}-${char}`}
+          initial={{ opacity: 0, filter: "blur(16px)", x: -22 }}
+          animate={{ opacity: 1, filter: "blur(0px)", x: 0 }}
+          transition={{
+            duration: 0.7,
+            delay: 0.12 + (startIndex + index) * 0.032,
+            ease,
+          }}
+          className={`inline-block will-change-[filter,opacity,transform] ${
+            char === " " ? "w-[0.28em]" : ""
+          } ${className ?? ""}`}
+        >
+          {char === " " ? "\u00A0" : char}
+        </motion.span>
+      ))}
+    </>
+  );
+}
 
 function MarqueeColumn({
   items,
@@ -126,18 +161,41 @@ export function Hero() {
             aria-label="Transforming Ideas Into Powerful Digital Experiences"
             className="font-Sora text-balance text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.22] sm:leading-[1.28] tracking-[-0.03em] text-foreground"
           >
-            Transforming Ideas
-            <br />
-            Into <span className="text-[#3391B1]">Powerful Digital</span>
-            <br />
-            Experiences
+            {reduceMotion ? (
+              <>
+                Transforming Ideas
+                <br />
+                Into <span className="text-[#3391B1]">Powerful Digital</span>
+                <br />
+                Experiences
+              </>
+            ) : (
+              <>
+                <BlurLetters text="Transforming Ideas" startIndex={0} />
+                <br />
+                <BlurLetters text="Into " startIndex={18} />
+                <BlurLetters
+                  text="Powerful Digital"
+                  startIndex={23}
+                  className="text-[#3391B1]"
+                />
+                <br />
+                <BlurLetters text="Experiences" startIndex={39} />
+              </>
+            )}
           </h1>
 
-          <p className="mx-auto mt-8 max-w-3xl text-pretty text-base leading-relaxed text-muted md:text-lg">
+          <motion.p
+            variants={fadeUp}
+            initial={reduceMotion ? false : "hidden"}
+            animate="visible"
+            transition={{ duration: 0.75, ease }}
+            className="mx-auto mt-8 max-w-3xl text-pretty text-base leading-relaxed text-muted md:text-lg"
+          >
             We help businesses grow with modern websites, intuitive UI/UX
             design, scalable software solutions, and strategic digital
             innovation tailored for the future.
-          </p>
+          </motion.p>
         </div>
 
         <motion.div
