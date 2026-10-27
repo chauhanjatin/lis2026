@@ -50,6 +50,7 @@ function IntegrationCard({
         alt={`${item.name} logo`}
         width={48}
         height={48}
+        loading="eager"
         className="h-[52%] w-[52%] object-contain"
       />
     </motion.div>

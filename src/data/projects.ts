@@ -122,7 +122,7 @@ export const projects: Project[] = [
     alt: "CogentShift consulting website design",
     tags: ["web-design"],
     figmaUrl:
-      "https://www.figma.com/proto/Lrp1hSDeAewZpTGx8YF9cM/Cogent-Shift?page-id=0%3A1&node-id=259-7420&node-type=frame&t=gAQCSi0oZHcoA0Mx-0&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=259%3A7420&hide-ui=1",
+      "https://www.figma.com/proto/Lrp1hSDeAewZpTGx8YF9cM/Cogent-Shift?node-id=1974-15581&t=VkeDgrtaAHXPrnfk-1&scaling=min-zoom&content-scaling=fixed&page-id=175%3A2&starting-point-node-id=1974%3A15581",
     websiteUrl: "https://cogentshift.com/",
   },
   {
@@ -168,7 +168,8 @@ export const projects: Project[] = [
     image: "/projects/parvati.png",
     alt: "Parvati Jewels jewelry ecommerce website on a laptop",
     tags: ["web-design"],
-    figmaUrl:"https://www.figma.com/proto/7iz09eEvdHcXc9MEwsLc9e/Parvati-Jewels?node-id=45-342&viewport=351%2C398%2C0.08&t=RfDHGDpWpjw9tTJN-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=45%3A342&page-id=0%3A1"
+    figmaUrl:
+      "https://www.figma.com/proto/7iz09eEvdHcXc9MEwsLc9e/Parvati-Jewels?node-id=45-342&viewport=730%2C583%2C0.07&t=KlLgOnrUKa7cupqd-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=45%3A342&page-id=0%3A1",
   },
   {
     slug: "holidayy",
@@ -178,7 +179,8 @@ export const projects: Project[] = [
     image: "/projects/holidayy.png",
     alt: "Holidayy hotel booking app interface",
     tags: ["ui-ux"],
-    figmaUrl:"https://www.figma.com/proto/SQyDNOwEGSsLybt5KCvWFJ/Holidayyy?node-id=76-14267&viewport=357%2C247%2C0.07&t=EVoNKUNBjQvTX8zf-1&scaling=scale-down&content-scaling=fixed&page-id=76%3A10663"
+    figmaUrl:
+      "https://www.figma.com/proto/SQyDNOwEGSsLybt5KCvWFJ/Holidayyy?node-id=73-5373&viewport=2888%2C-127%2C0.11&t=F79dOylaYdpQVLqh-1&scaling=min-zoom&content-scaling=fixed&page-id=7%3A2",
   },
   {
     slug: "cinema",
@@ -188,7 +190,8 @@ export const projects: Project[] = [
     image: "/projects/cinema.png",
     alt: "Cinema UGC creator marketplace web and mobile UI",
     tags: ["ui-ux"],
-    figmaUrl:"https://www.figma.com/proto/EifV7kNQbv4yXqNSvDJpEV/Cinema?node-id=1-835&viewport=109%2C203%2C0.2&t=eDQwCVPelFCQVnip-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A2771&page-id=0%3A1"
+    figmaUrl:
+      "https://www.figma.com/proto/EifV7kNQbv4yXqNSvDJpEV/Cinema?node-id=1-11334&viewport=345%2C-100%2C0.11&t=TLzGdghsn5KaUMpb-1&scaling=min-zoom&content-scaling=fixed&page-id=1%3A2",
   },
   {
     slug: "instant-smile",
@@ -220,6 +223,8 @@ export const projects: Project[] = [
     image: "/projects/workista.png",
     alt: "Workista work management app interface",
     tags: ["ui-ux"],
+    figmaUrl:
+      "https://www.figma.com/proto/oc2IcbgfPd55Q6yntMc2vE/Workiesta?node-id=246-782&viewport=-636%2C375%2C0.1&t=47TSd1laYFSNu8hl-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1",
   },
   {
     slug: "tripify",
@@ -250,7 +255,8 @@ export const projects: Project[] = [
     image: "/projects/zaroorihai.png",
     alt: "Zaroorihai home services booking app on a phone",
     tags: ["ui-ux"],
-    figmaUrl:"https://www.figma.com/proto/QlgkeF3UoeMUsFcYp87KzP/Zaroori-hai?node-id=939-9639&viewport=234%2C-855%2C0.25&t=shVp2rFG01zeCUxz-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1"
+    figmaUrl:
+      "https://www.figma.com/proto/QlgkeF3UoeMUsFcYp87KzP/Zaroori-hai?node-id=939-9639&viewport=340%2C-655%2C0.23&t=CW91OjQZUjDGb0mX-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1",
   },
   {
     slug: "linkshub",
@@ -271,6 +277,8 @@ export const projects: Project[] = [
     image: "/projects/anypost.png",
     alt: "AnyPost social publishing app interface",
     tags: ["ui-ux"],
+    figmaUrl:
+      "https://www.figma.com/proto/m3zUOUQ45XNcTSlOyUdnNN/Anypost_Job-Portal?node-id=108-346&viewport=-117%2C-1312%2C0.14&t=z1WEwx1q57tSL7uL-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=26%3A770&page-id=0%3A1",
   },
   {
     slug: "edusama",
@@ -299,7 +307,7 @@ export const projects: Project[] = [
     alt: "Nestly Home Decoration home decoration store website",
     tags: ["ui-ux"],
     figmaUrl:
-      "https://www.figma.com/design/6YBkp7icmTR4m2TyFDJG8d/Home-Decoration-e-Commerce?node-id=106-487&t=yCFITX2T178JGA7N-1",
+      "https://www.figma.com/proto/6YBkp7icmTR4m2TyFDJG8d/NESTLY-Home-Decoration-e-Commerce?node-id=106-487&viewport=48%2C225%2C0.07&t=oWxQOCy6UqLnNo6o-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1",
   },
   {
     slug: "fitsolewebsite",
@@ -310,7 +318,7 @@ export const projects: Project[] = [
     alt: "FitSole shoe store website",
     tags: ["ui-ux"],
     figmaUrl:
-      "https://www.figma.com/design/PblRGy0s0NUSJc9fHYdC70/Fitsole-E-Commerce-website?node-id=23-105&t=SOPsiByfIHuJNLhn-1",
+      "https://www.figma.com/proto/PblRGy0s0NUSJc9fHYdC70/Fitsole-E-Commerce-website?page-id=0%3A1&node-id=23-105&viewport=190%2C305%2C0.06&t=7DU22pZ041appb3N-1&scaling=min-zoom&content-scaling=fixed",
   },
   {
     slug: "duxtonwatch",
@@ -321,6 +329,6 @@ export const projects: Project[] = [
     alt: "Duxton Watch watch store website",
     tags: ["ui-ux"],
     figmaUrl:
-      "https://www.figma.com/proto/pNyHdHFbdxltuyxP0LsukR/Watche-E-Commerce-Website?node-id=5-4&viewport=-160%2C535%2C0.13&t=u2Byb2LvgermlhJd-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1",
+      "https://www.figma.com/proto/pNyHdHFbdxltuyxP0LsukR/DUXTON-Watch-E-Commerce-Website?node-id=5-4&viewport=215%2C235%2C0.08&t=DzwYhSHE2NGNgY7B-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1",
   },
 ];

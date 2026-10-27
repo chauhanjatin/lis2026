@@ -36,11 +36,40 @@ const fieldClass =
   "contact-field w-full rounded-xl bg-[#ececee] px-4 py-3.5 text-sm text-[#151618] placeholder:text-[#8f9194] outline-none transition-[box-shadow,background-color] focus:bg-white focus:shadow-[0_0_0_2px_rgba(13,79,184,0.18)]";
 
 export function ContactSection() {
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [error, setError] = useState("");
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setSubmitted(true);
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const payload = {
+      firstName: String(data.get("firstName") ?? "").trim(),
+      lastName: String(data.get("lastName") ?? "").trim(),
+      email: String(data.get("email") ?? "").trim(),
+      phone: String(data.get("phone") ?? "").trim(),
+      message: String(data.get("message") ?? "").trim(),
+    };
+
+    setStatus("sending");
+    setError("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const result = (await response.json().catch(() => null)) as { error?: string } | null;
+      if (!response.ok) {
+        throw new Error(result?.error || "Could not send your message.");
+      }
+      form.reset();
+      setStatus("sent");
+    } catch (err) {
+      setStatus("error");
+      setError(err instanceof Error ? err.message : "Could not send your message.");
+    }
   }
 
   return (
@@ -113,7 +142,7 @@ export function ContactSection() {
           </div>
 
           <div className="flex flex-col rounded-[1.75rem] bg-white p-6 shadow-[0_16px_48px_rgba(12,14,18,0.06)] sm:p-8 lg:p-10">
-            <form className="contact-form flex flex-1 flex-col" onSubmit={handleSubmit} noValidate>
+            <form className="contact-form flex flex-1 flex-col" onSubmit={handleSubmit}>
               <div className="grid gap-5 sm:grid-cols-2">
                 <label className="contact-label">
                   First Name
@@ -173,11 +202,18 @@ export function ContactSection() {
                 />
               </label>
 
+              {error ? (
+                <p role="alert" className="mt-5 text-sm font-medium text-[#b42318]">
+                  {error}
+                </p>
+              ) : null}
+
               <button
                 type="submit"
-                className="group mt-6 inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#101116] px-6 py-4 text-sm font-semibold text-white transition-transform hover:scale-[1.02]"
+                disabled={status === "sending"}
+                className="group mt-6 inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#101116] px-6 py-4 text-sm font-semibold text-white transition-transform hover:scale-[1.02] disabled:cursor-wait disabled:opacity-70"
               >
-                {submitted ? "Message sent" : "Send Message"}
+                {status === "sending" ? "Sending..." : status === "sent" ? "Message sent" : "Send Message"}
                 <span
                   aria-hidden="true"
                   className="inline-grid size-8 place-items-center rounded-full bg-white text-[#101116] transition-transform group-hover:translate-x-0.5"

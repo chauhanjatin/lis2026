@@ -104,7 +104,8 @@ function MarqueeColumn({
               height={340}
               sizes="(max-width: 640px) 40vw, (max-width: 768px) 30vw, 22vw"
               className="hero-marquee-img"
-              loading={eager && index === 0 ? "eager" : "lazy"}
+              loading="eager"
+              decoding="async"
               priority={eager && index === 0}
             />
           </article>

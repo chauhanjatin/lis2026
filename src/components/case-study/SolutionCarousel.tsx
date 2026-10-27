@@ -27,6 +27,7 @@ function ImageSlide({ slide }: { slide: CaseStudySlide }) {
           fill
           sizes="200px"
           draggable={false}
+          loading="eager"
           className="object-cover"
           style={{ objectPosition: slide.image.position ?? "50% 50%" }}
         />
@@ -42,6 +43,7 @@ function ImageSlide({ slide }: { slide: CaseStudySlide }) {
       height={0}
       sizes="480px"
       draggable={false}
+      loading="eager"
       className="h-[180px] sm:h-[230px] md:h-[260px] w-auto shrink-0 select-none"
     />
   );
@@ -127,6 +129,7 @@ export function SolutionCarousel({
                     isPortrait ? "200px" : "(max-width: 640px) 320px, 460px"
                   }
                   draggable={false}
+                  loading="eager"
                   className={`${
                     isPortrait
                       ? "h-[300px] sm:h-[340px] md:h-[380px] rounded-[1.75rem]"

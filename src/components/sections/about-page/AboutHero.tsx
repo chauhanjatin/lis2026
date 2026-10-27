@@ -101,6 +101,7 @@ export function AboutHero({
                       alt={partner.alt}
                       width={partner.width}
                       height={partner.height}
+                      loading="eager"
                       className="w-[200px] h-auto object-contain transition-all duration-300"
                     />
                   </div>
@@ -119,6 +120,7 @@ export function AboutHero({
                       alt=""
                       width={partner.width}
                       height={partner.height}
+                      loading="eager"
                       className="w-[200px] h-auto object-contain transition-all duration-300"
                     />
                   </div>

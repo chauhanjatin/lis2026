@@ -52,7 +52,7 @@ export function CaseStudyBrandLogo({
     case "uniqlearn":
       return (
         <BrandLogoImage
-          src="/uniqlearn.png"
+          src="/uniqlearn-logo.png"
           alt="UniqLearn logo"
           width={285}
           height={70}
