@@ -899,25 +899,46 @@ body {
 }
 
 .studio-footer-socials a {
+  position: relative;
   display: grid;
   width: 2.75rem;
   height: 2.75rem;
   place-items: center;
   border: 1px solid rgba(244, 245, 239, 0.2);
   border-radius: 50%;
-  color: inherit;
+  color: rgba(244, 245, 239, 0.8);
+  overflow: hidden;
+  isolation: isolate;
+  background: transparent;
   transition:
-    color 200ms ease,
-    background-color 200ms ease,
-    border-color 200ms ease,
-    transform 200ms ease;
+    color 250ms ease,
+    border-color 250ms ease,
+    transform 250ms ease,
+    box-shadow 250ms ease;
+}
+
+.studio-footer-socials a::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #0d4fb8, #42bfa5);
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 250ms ease;
+}
+
+.studio-footer-socials a:hover::before {
+  opacity: 1;
 }
 
 .studio-footer-socials a:hover {
-  background: linear-gradient(90deg, #0d4fb8, #42bfa5);
   color: #ffffff;
   border-color: transparent;
   transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(13, 79, 184, 0.35);
 }
 
 .studio-footer-nav,

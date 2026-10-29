@@ -1,9 +1,9 @@
 import type { NextConfig } from "next";
 
-// basePath is configured for cPanel subpath: https://libertyinfoscience.com/projects/newlis2026
-const basePath =
-  process.env.NEXT_PUBLIC_BASE_PATH ??
-  (process.env.NODE_ENV === "production" ? "/projects/newlis2026" : "");
+// basePath is configured for cPanel subpath when running scripts/export.js.
+// On Vercel, Netlify, or default root hosting, basePath must be empty ("") so the root domain does not 404.
+const isVercel = Boolean(process.env.VERCEL);
+const basePath = isVercel ? "" : (process.env.NEXT_PUBLIC_BASE_PATH || "");
 
 const isExport = process.env.NEXT_EXPORT === "true";
 
