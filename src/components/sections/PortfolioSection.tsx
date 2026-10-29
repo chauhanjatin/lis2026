@@ -59,12 +59,12 @@ export function PortfolioSection() {
   return (
     <section className="portfolio-section pb-16 md:pb-24">
       <Container className="relative z-[1]">
-        <div className="flex lg:flex-row lg:items-start lg:justify-center lg:gap-16 justify-center items-center mt-20">
+        <div className="flex justify-center items-center mt-10 sm:mt-12 md:mt-14">
           <motion.div
-            initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.08, ease }}
-            className="flex flex-wrap items-center gap-6 sm:gap-8"
+            transition={{ duration: 0.5, delay: 0.08, ease }}
+            className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3.5"
             role="tablist"
             aria-label="Filter projects"
           >
@@ -78,19 +78,24 @@ export function PortfolioSection() {
                   aria-selected={isActive}
                   onClick={() => setActiveFilter(filter.id)}
                   className={cn(
-                    "relative pb-1 text-sm font-semibold tracking-[-0.01em] transition-colors",
+                    "relative inline-flex items-center justify-center rounded-full px-5 py-2 sm:px-6 sm:py-2.5 text-xs sm:text-sm font-medium tracking-tight transition-all duration-200 select-none outline-none focus-visible:ring-2 focus-visible:ring-[#0D4FB8]/50 active:scale-95",
                     isActive
-                      ? "text-[#151618]"
-                      : "text-[#8f9194] hover:text-[#606468]",
-                  )}>
-                  {filter.label}
+                      ? "text-white font-semibold shadow-md shadow-[#0D4FB8]/25 border border-transparent"
+                      : "border border-[#E5E7EB] bg-[#FAFBFD] text-[#606468] hover:border-[#101116]/30 hover:text-[#101116] hover:bg-white shadow-sm",
+                  )}
+                >
                   {isActive && (
                     <motion.span
-                      layoutId="portfolio-filter"
-                      className="absolute inset-x-0 -bottom-0.5 h-px bg-[#151618]"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      layoutId="portfolio-filter-pill"
+                      className="absolute inset-0 rounded-full bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5]"
+                      transition={
+                        reduceMotion
+                          ? { duration: 0 }
+                          : { type: "spring", stiffness: 380, damping: 30 }
+                      }
                     />
                   )}
+                  <span className="relative z-10">{filter.label}</span>
                 </button>
               );
             })}

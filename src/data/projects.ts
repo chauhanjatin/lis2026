@@ -149,7 +149,7 @@ export const projects: Project[] = [
   },
   {
     slug: "integrative-dermatology",
-    title: "Integrative Dermatology",
+    title: "Integrative Dermatology", 
     category: "Web Design",
     summary: "Clinic website for medical and aesthetic skin care, with booking up front.",
     image: "/projects/integrativedermatology.png",

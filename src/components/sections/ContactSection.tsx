@@ -55,14 +55,31 @@ export function ContactSection() {
     setError("");
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("https://formsubmit.co/ajax/lisharsh2002@gmail.com", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          "First Name": payload.firstName,
+          "Last Name": payload.lastName,
+          Email: payload.email,
+          Phone: payload.phone || "Not provided",
+          Message: payload.message,
+          _replyto: payload.email,
+          _subject: `New contact from ${payload.firstName} ${payload.lastName}`,
+          _template: "table",
+          _captcha: "false",
+        }),
       });
-      const result = (await response.json().catch(() => null)) as { error?: string } | null;
-      if (!response.ok) {
-        throw new Error(result?.error || "Could not send your message.");
+      const result = (await response.json().catch(() => null)) as {
+        success?: boolean | string;
+        message?: string;
+      } | null;
+      const delivered = result?.success === true || result?.success === "true";
+      if (!response.ok || !delivered) {
+        throw new Error(result?.message || "Could not send your message.");
       }
       form.reset();
       setStatus("sent");

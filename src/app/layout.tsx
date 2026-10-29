@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
 import { SkipLink } from "@/components/ui/SkipLink";
+import { PageLoader } from "@/components/ui/PageLoader";
 import { fontVariables } from "./fonts";
 import "lenis/dist/lenis.css";
 import "./globals.css";
@@ -19,6 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={fontVariables}>
       <body className="font-sans antialiased">
+        <Suspense fallback={null}>
+          <PageLoader />
+        </Suspense>
         <SmoothScroll>
           <SkipLink />
           {children}
