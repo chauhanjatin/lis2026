@@ -1,199 +1,209 @@
 "use client";
 
-import type { CSSProperties } from "react";
-import { Section } from "@/components/ui/Section";
-import { Heading } from "@/components/ui/Heading";
-import { Eyebrow } from "@/components/ui/Eyebrow";
-import { testimonials } from "@/data/testimonials";
+import Image from "next/image";
+import Link from "next/link";
+import { Star } from "lucide-react";
+import { Container } from "@/components/ui/Container";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import {
+  testimonials,
+  ratingSummary,
+  testimonialMetrics,
+  type Testimonial,
+} from "@/data/testimonials";
 
-const deckPalette = [
-  `#d8dadc`,
+function RatingSummaryCard() {
+  return (
+    <div className="flex flex-col justify-between rounded-[1.35rem] border border-[#E5E7EB] bg-white p-6 shadow-[0_2px_12px_rgba(0,0,0,0.03)] transition-all duration-300 hover:border-[#CBD5E1] hover:shadow-[0_12px_30px_rgba(13,79,184,0.08)]">
+      <div>
+        <div className="flex items-center justify-between">
+          <div className="flex items-baseline">
+            <span className="font-Sora text-3xl font-bold tracking-tight text-[#111827] sm:text-4xl">
+              {ratingSummary.rating}
+            </span>
+            <span className="ml-1.5 text-base font-semibold text-[#6B7280] sm:text-lg">
+              {ratingSummary.scale}
+            </span>
+          </div>
+          <div
+            className="flex items-center gap-1 text-[#F59E0B]"
+            role="img"
+            aria-label="5 out of 5 stars rating"
+          >
+            {[...Array(ratingSummary.stars)].map((_, i) => (
+              <Star
+                key={i}
+                className="size-4 fill-current sm:size-[1.15rem]"
+                aria-hidden="true"
+              />
+            ))}
+          </div>
+        </div>
 
-  `#ececee`,
-] as const;
+        <div className="mt-6 flex items-center gap-3">
+          <div className="flex -space-x-2.5 overflow-hidden" aria-hidden="true">
+            {ratingSummary.avatarStack.map((src, i) => (
+              <div
+                key={i}
+                className="relative size-9 shrink-0 overflow-hidden rounded-full ring-2 ring-white"
+              >
+                <Image
+                  src={src}
+                  alt=""
+                  fill
+                  sizes="36px"
+                  className="object-cover"
+                />
+              </div>
+            ))}
+            <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-[#111827] text-xs font-semibold text-white ring-2 ring-white">
+              {ratingSummary.countBadge}
+            </span>
+          </div>
 
-type DeckSpot = { top: string; left: string; rotate: number; zIndex: number };
+          <div className="leading-tight">
+            <p className="text-xs font-semibold text-[#111827]">
+              {ratingSummary.title}
+            </p>
+            <p className="text-[11px] text-[#6B7280]">
+              {ratingSummary.subtitle}
+            </p>
+          </div>
+        </div>
+      </div>
 
-/** Scatter (default) + tidy grid (hover) — left-only so size/align stay consistent. */
-function getDeckLayout(
-  index: number,
-  total: number,
-): { scatter: DeckSpot; hover: DeckSpot } {
-  const rotations = [-9, 3, 10, -16, 14, -6, 8];
+      <Link
+        href={ratingSummary.buttonHref}
+        aria-label="Leave a review for Liberty Info Science"
+        className="mt-6 flex w-full items-center justify-center rounded-xl bg-[#111827] px-4 py-2.5 text-center text-xs font-semibold text-white transition-all duration-200 hover:bg-[#0D4FB8] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0D4FB8] active:scale-[0.98]"
+      >
+        {ratingSummary.buttonText}
+      </Link>
+    </div>
+  );
+}
 
-  if (total === 7) {
-    const scatter: DeckSpot[] = [
-      { top: "4.5rem", left: "2%", rotate: -9, zIndex: 1 },
-      { top: "0.5rem", left: "24%", rotate: 2, zIndex: 2 },
-      { top: "3rem", left: "46%", rotate: 9, zIndex: 1 },
-      { top: "1rem", left: "68%", rotate: -4, zIndex: 2 },
-      { top: "17rem", left: "10%", rotate: -18, zIndex: 4 },
-      { top: "15rem", left: "36%", rotate: 12, zIndex: 5 },
-      { top: "16.5rem", left: "62%", rotate: 16, zIndex: 3 },
-    ];
-    const hover: DeckSpot[] = [
-      { top: "0", left: "0", rotate: 0, zIndex: 1 },
-      {
-        top: "0",
-        left: "calc((100% - var(--deck-card-w)) / 3)",
-        rotate: 0,
-        zIndex: 2,
-      },
-      {
-        top: "0",
-        left: "calc(2 * ((100% - var(--deck-card-w)) / 3))",
-        rotate: 0,
-        zIndex: 3,
-      },
-      {
-        top: "0",
-        left: "calc(100% - var(--deck-card-w))",
-        rotate: 0,
-        zIndex: 4,
-      },
-      // Same gap as top row, centered under the four cards
-      {
-        top: "22.5rem",
-        left: "calc((100% - var(--deck-card-w)) / 6)",
-        rotate: 0,
-        zIndex: 5,
-      },
-      {
-        top: "22.5rem",
-        left: "calc((100% - var(--deck-card-w)) / 2)",
-        rotate: 0,
-        zIndex: 6,
-      },
-      {
-        top: "22.5rem",
-        left: "calc(5 * (100% - var(--deck-card-w)) / 6)",
-        rotate: 0,
-        zIndex: 7,
-      },
-    ];
-    return { scatter: scatter[index], hover: hover[index] };
-  }
+function TestimonialCard({ item }: { item: Testimonial }) {
+  return (
+    <figure className="group flex flex-col justify-between rounded-[1.35rem] border border-[#E5E7EB] bg-white p-6 shadow-[0_2px_12px_rgba(0,0,0,0.03)] transition-all duration-300 hover:border-[#0D4FB8]/40 hover:shadow-[0_12px_30px_rgba(13,79,184,0.08)]">
+      <blockquote className="text-sm leading-relaxed text-[#374151] sm:text-[0.95rem]">
+        &ldquo;{item.quote}&rdquo;
+      </blockquote>
 
-  if (total <= 5) {
-    const scatter: DeckSpot[] = [
-      { top: "4.5rem", left: "4%", rotate: -9, zIndex: 1 },
-      { top: "0", left: "33%", rotate: 0, zIndex: 2 },
-      { top: "4.5rem", left: "66%", rotate: 9, zIndex: 1 },
-      { top: "17rem", left: "18%", rotate: -20, zIndex: 4 },
-      { top: "14rem", left: "52%", rotate: 18, zIndex: 3 },
-    ];
-    const hover: DeckSpot[] = [
-      { top: "0", left: "0", rotate: 0, zIndex: 1 },
-      {
-        top: "0",
-        left: "calc((100% - var(--deck-card-w)) / 2)",
-        rotate: 0,
-        zIndex: 2,
-      },
-      {
-        top: "0",
-        left: "calc(100% - var(--deck-card-w))",
-        rotate: 0,
-        zIndex: 3,
-      },
-      {
-        top: "22.5rem",
-        left: "calc((100% - var(--deck-card-w)) / 4)",
-        rotate: 0,
-        zIndex: 4,
-      },
-      {
-        top: "22.5rem",
-        left: "calc(3 * (100% - var(--deck-card-w)) / 4)",
-        rotate: 0,
-        zIndex: 5,
-      },
-    ];
-    return { scatter: scatter[index], hover: hover[index] };
-  }
+      <figcaption className="mt-6 flex items-center justify-between gap-3 pt-2">
+        <div className="min-w-0">
+          <p className="truncate font-Sora text-sm font-semibold tracking-[-0.01em] text-[#111827]">
+            {item.name}
+          </p>
+          <p className="truncate text-xs text-[#6B7280]">{item.company}</p>
+        </div>
 
-  const cols = Math.min(total, 4);
-  const row = Math.floor(index / cols);
-  const col = index % cols;
-  const step = cols === 1 ? 0 : 75 / (cols - 1);
-  const hoverLeft = col * step;
-  const scatterLeft = hoverLeft + (row % 2 === 0 ? 2 : 6);
-  const itemsInRow =
-    row === Math.floor((total - 1) / cols) ? total - row * cols : cols;
-  const hoverOffset =
-    cols === itemsInRow ? 0 : ((cols - itemsInRow) * step) / 2;
+        <div className="relative size-10 shrink-0 overflow-hidden rounded-full ring-2 ring-black/5 transition-transform duration-300 group-hover:scale-105">
+          <Image
+            src={item.avatar}
+            alt={`${item.name} portrait`}
+            fill
+            sizes="40px"
+            className="object-cover"
+          />
+        </div>
+      </figcaption>
+    </figure>
+  );
+}
 
-  return {
-    scatter: {
-      top: `${row === 0 ? (col % 2 === 0 ? 3.5 : 0.5) : 16 + row}rem`,
-      left: `${scatterLeft}%`,
-      rotate: rotations[index % rotations.length],
-      zIndex: index + 1,
-    },
-    hover: {
-      top: `${row * 22.5}rem`,
-      left: `${hoverOffset + hoverLeft}%`,
-      rotate: 0,
-      zIndex: index + 1,
-    },
-  };
+function MetricsRow() {
+  const [metric1, metric2] = testimonialMetrics;
+  return (
+    <div className="grid grid-cols-2 gap-3 sm:gap-4">
+      {/* Metric 1: Brand Gradient Card */}
+      <div className="flex flex-col justify-between rounded-[1.35rem] bg-gradient-to-br from-[#0D4FB8] to-[#42BFA5] p-5 text-white shadow-[0_10px_24px_rgba(13,79,184,0.2)] transition-transform duration-300 hover:scale-[1.02]">
+        <div>
+          <span className="font-Sora text-2xl font-bold tracking-tight sm:text-3xl">
+            {metric1.value}
+          </span>
+          <p className="mt-1.5 text-xs font-medium leading-snug text-white/95">
+            {metric1.label}
+          </p>
+        </div>
+        <p className="mt-5 flex items-center gap-1.5 text-[11px] font-semibold text-white/85">
+          <span aria-hidden="true">{metric1.icon}</span> {metric1.brand}
+        </p>
+      </div>
+
+      {/* Metric 2: Dark Contrast Card */}
+      <div className="flex flex-col justify-between rounded-[1.35rem] bg-[#0F172A] p-5 text-white shadow-[0_10px_24px_rgba(15,23,42,0.15)] transition-transform duration-300 hover:scale-[1.02]">
+        <div>
+          <span className="font-Sora text-2xl font-bold tracking-tight sm:text-3xl">
+            {metric2.value}
+          </span>
+          <p className="mt-1.5 text-xs font-medium leading-snug text-white/80">
+            {metric2.label}
+          </p>
+        </div>
+        <p className="mt-5 flex items-center gap-1.5 text-[11px] font-semibold text-white/75">
+          <span aria-hidden="true">{metric2.icon}</span> {metric2.brand}
+        </p>
+      </div>
+    </div>
+  );
 }
 
 export function Testimonials() {
-  const cards = testimonials;
-  const cols = Math.min(cards.length, 4);
-  const rows = Math.ceil(cards.length / cols);
+  const col1 = [testimonials[0], testimonials[1]]; // ALVA Design Studio, Shailendra Singh
+  const col2 = [testimonials[2], testimonials[3], testimonials[4]]; // Haris Beha, Vipul Sharma, Andrija Bosnjak
+  const col3 = [testimonials[5], testimonials[6], testimonials[7]]; // Aidan McDowell, Ravi Manwani, Dev Monnappa
+  const col4 = [testimonials[8], testimonials[9]]; // Nikhil Toy, Able Joseph
 
   return (
-    <>
-      {/* ============ TESTIMONIALS — START ============ */}
-      <Section id="testimonials">
-        <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#202224]">
-          <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5]" />
-          What clients say
-        </p>
-        <h2 className="mt-4 font-Sora text-balance text-3xl sm:text-5xl md:text-6xl lg:text-6xl font-medium leading-[1.1] sm:leading-[1.02] tracking-[-0.035em] sm:tracking-[-0.055em] text-[#151618]">
-          Social <span className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">proof.</span>
-        </h2>
-        <div
-          className="testimonial-deck mt-12"
-          tabIndex={0}
-          style={{ "--deck-rows": rows } as CSSProperties}
-        >
-          {cards.map((t, index) => {
-            const layout = getDeckLayout(index, cards.length);
-            return (
-              <blockquote
-                key={`${t.name}-${index}`}
-                className="testimonial-deck-card"
-                style={
-                  {
-                    "--card-top": layout.scatter.top,
-                    "--card-left": layout.scatter.left,
-                    "--card-hover-top": layout.hover.top,
-                    "--card-hover-left": layout.hover.left,
-                    "--card-rotate": `${layout.scatter.rotate}deg`,
-                    "--card-z": layout.scatter.zIndex,
-                    "--card-hover-z": layout.hover.zIndex,
-                    background: deckPalette[index % deckPalette.length],
-                  } as CSSProperties
-                }
-              >
-                <span className="testimonial-deck-quote" aria-hidden="true">
-                  &ldquo;
-                </span>
-                <p>{t.quote}</p>
-                <footer>
-                  <span />
-                  <strong>{t.name}</strong>
-                  <small>{t.role}</small>
-                </footer>
-              </blockquote>
-            );
-          })}
+    <section
+      id="testimonials"
+      className="relative overflow-hidden bg-white py-20 sm:py-28 lg:py-36 border-t border-[#EAECEF]"
+    >
+      <Container className="max-w-[1360px]">
+        <ScrollReveal amount={0.3}>
+          <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#202224]">
+            <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5]" />
+            What clients say
+          </p>
+          <h2 className="mt-4 font-Sora text-3xl font-medium leading-[1.1] tracking-[-0.035em] text-[#151618] sm:text-5xl md:text-6xl sm:tracking-[-0.055em]">
+            Social{" "}
+            <span className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">
+              proof.
+            </span>
+          </h2>
+        </ScrollReveal>
+
+        <div className="mt-12 sm:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 items-start">
+          {/* Column 1 */}
+          <div className="flex flex-col gap-4 sm:gap-5">
+            <RatingSummaryCard />
+            <TestimonialCard item={col1[0]} />
+            <TestimonialCard item={col1[1]} />
+          </div>
+
+          {/* Column 2 */}
+          <div className="flex flex-col gap-4 sm:gap-5">
+            <TestimonialCard item={col2[0]} />
+            <TestimonialCard item={col2[1]} />
+            <TestimonialCard item={col2[2]} />
+          </div>
+
+          {/* Column 3 */}
+          <div className="flex flex-col gap-4 sm:gap-5">
+            <TestimonialCard item={col3[0]} />
+            <TestimonialCard item={col3[1]} />
+            <TestimonialCard item={col3[2]} />
+          </div>
+
+          {/* Column 4 */}
+          <div className="flex flex-col gap-4 sm:gap-5">
+            <TestimonialCard item={col4[0]} />
+            <MetricsRow />
+            <TestimonialCard item={col4[1]} />
+          </div>
         </div>
-      </Section>
-      {/* ============ TESTIMONIALS — END ============ */}
-    </>
+      </Container>
+    </section>
   );
 }

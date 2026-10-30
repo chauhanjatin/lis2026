@@ -19,13 +19,50 @@ export async function generateMetadata({
 
   if (!study) {
     return {
-      title: "Case Study — Design Studio",
+      title: "Case Study",
     };
   }
 
+  const pageUrl = `/work/${slug}/`;
+  const image = study.image || "/hero-uxdesign.png";
+  const desc =
+    study.projectDescription?.lead ||
+    `${study.cardTitle} — UX/UI research and product engineering case study by Liberty Info Science.`;
+
   return {
     title: `${study.title} — Case Study`,
-    description: study.projectDescription.lead,
+    description: desc,
+    keywords: [
+      study.title,
+      ...(study.tags || []),
+      "Case Study",
+      "UI/UX Design",
+      "Product Design",
+      "Liberty Info Science",
+    ],
+    alternates: {
+      canonical: pageUrl,
+    },
+    openGraph: {
+      title: `${study.title} — Case Study | Liberty Info Science`,
+      description: desc,
+      url: pageUrl,
+      type: "article",
+      images: [
+        {
+          url: image,
+          width: 1200,
+          height: 630,
+          alt: study.cardTitle || study.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${study.title} — Case Study | Liberty Info Science`,
+      description: desc,
+      images: [image],
+    },
   };
 }
 
@@ -41,8 +78,42 @@ export default async function CaseStudyPage({
     notFound();
   }
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: `${caseStudyData.title} — Digital Product Case Study`,
+    description:
+      caseStudyData.projectDescription?.lead || caseStudyData.cardTitle,
+    image: caseStudyData.image
+      ? `https://libertyinfoscience.com${caseStudyData.image}`
+      : "https://libertyinfoscience.com/hero-uxdesign.png",
+    author: {
+      "@type": "Organization",
+      name: "Liberty Info Science",
+      url: "https://libertyinfoscience.com",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Liberty Info Science",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://libertyinfoscience.com/lis-logo.svg",
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://libertyinfoscience.com/work/${slug}/`,
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(articleJsonLd),
+        }}
+      />
       <Header />
       <main id="main">
         <CaseStudyView data={caseStudyData} />

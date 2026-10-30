@@ -2,6 +2,7 @@ import {
   Cormorant_Garamond,
   Instrument_Sans,
   Manrope,
+  Poppins,
   Sora,
 } from "next/font/google";
 
@@ -27,6 +28,15 @@ export const instrumentSans = Instrument_Sans({
   fallback: ["system-ui", "-apple-system", "sans-serif"],
 });
 
+export const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  preload: false,
+  variable: "--font-poppins",
+  fallback: ["system-ui", "-apple-system", "sans-serif"],
+});
+
 export const cormorantGaramond = Cormorant_Garamond({
   subsets: ["latin"],
   style: ["normal", "italic"],
@@ -40,5 +50,6 @@ export const fontVariables = [
   manrope.variable,
   sora.variable,
   instrumentSans.variable,
+  poppins.variable,
   cormorantGaramond.variable,
 ].join(" ");

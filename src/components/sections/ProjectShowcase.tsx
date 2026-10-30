@@ -16,7 +16,16 @@ import { Container } from "@/components/ui/Container";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { GradientText, SectionHero } from "@/components/ui/SectionHero";
 
-const projects = [
+type ProjectShowcaseItem = {
+  title: string;
+  alt: string;
+  image: string;
+  figmaUrl?: string;
+  caseStudyUrl?: string;
+  websiteUrl?: string;
+};
+
+const projects: ProjectShowcaseItem[] = [
   {
     title: "UniqLearn",
     alt: "UniqLearn education dashboard – teacher analytics web app UI/UX design case study",
@@ -25,12 +34,12 @@ const projects = [
     caseStudyUrl: "/work/uniqlearn",
   },
   {
-    title: "Integrative Dermatology",
-    alt: "Integrative Dermatology clinic website design case study – desktop and mobile",
-    image: "/integrative-dermatology.png",
-    figmaUrl: "https://www.figma.com/design/integrative-dermatology",
-    caseStudyUrl: "/work/integrative-dermatology",
-    websiteUrl: "https://integrativedermatology.co/",
+    title: "KidLoop",
+    alt: "KidLoop kids clothing marketplace mobile app UI/UX design case study",
+    image: "/projects/kidloop.png",
+    figmaUrl:
+      "https://www.figma.com/proto/cfryUDmCQEQcL1pC3XkgW5/KidLoop---Children-s-clothing?node-id=161-11666&viewport=-8893%2C216%2C0.46&t=sZai0b6E09Yf1weU-1&scaling=scale-down&content-scaling=fixed&page-id=161%3A11084",
+    caseStudyUrl: "/work/kidloop",
   },
   {
     title: "LearnBud AI",
@@ -172,8 +181,8 @@ export function ProjectShowcase() {
                     {/* Clickable Image with Hover Arrow View Button */}
                     <a
                       href={project.caseStudyUrl}
-                      rel="noopener noreferrer"
-                      className="showcase-art group/art block relative overflow-hidden">
+                      aria-label={`View ${project.title} case study`}
+                      className="showcase-art group/art block relative overflow-hidden focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#0D4FB8] rounded-[1.35rem]">
                       <Image
                         src={project.image}
                         alt={project.alt}
@@ -212,10 +221,11 @@ export function ProjectShowcase() {
                           href={project.figmaUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="showcase-link group/link"
+                          aria-label={`View ${project.title} design on Figma (opens in new tab)`}
+                          className="showcase-link group/link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0D4FB8]"
                         >
                           <span className="showcase-link-icon showcase-link-icon--figma">
-                            <FaFigma aria-hidden />
+                            <FaFigma aria-hidden="true" />
                           </span>
                           <span className="showcase-link-label">
                             View Design
@@ -231,10 +241,11 @@ export function ProjectShowcase() {
                             href={project.websiteUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="showcase-link group/link"
+                            aria-label={`Visit ${project.title} live website (opens in new tab)`}
+                            className="showcase-link group/link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0D4FB8]"
                           >
                             <span className="showcase-link-icon showcase-link-icon--web">
-                              <HiOutlineGlobeAlt aria-hidden />
+                              <HiOutlineGlobeAlt aria-hidden="true" />
                             </span>
                             <span className="showcase-link-label">
                               Visit Website
@@ -267,9 +278,10 @@ export function ProjectShowcase() {
               key={project.title}
               className="w-[85vw] max-w-[380px] shrink-0 snap-center">
               <article className="group flex flex-col rounded-2xl bg-[#cbc9c93d] p-3.5 sm:p-4 shadow-sm border border-black/5 transition-all">
-                <a href={project.caseStudyUrl}
-                  rel="noopener noreferrer"
-                  className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#e4e4e4] group/mobileArt block">
+                <a
+                  href={project.caseStudyUrl}
+                  aria-label={`View ${project.title} case study`}
+                  className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#e4e4e4] group/mobileArt block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0D4FB8]">
                   <Image
                     src={project.image}
                     alt={project.alt}
@@ -280,7 +292,7 @@ export function ProjectShowcase() {
                   />
 
                   {/* Top-Right Arrow Indicator on Mobile */}
-                  <div className="absolute top-3 right-3 z-10 size-9 rounded-full bg-white/95 text-[#0c0d10] border border-white/40 grid place-items-center shadow-lg">
+                  <div className="absolute top-3 right-3 z-10 size-9 rounded-full bg-white/95 text-[#0c0d10] border border-white/40 grid place-items-center shadow-lg" aria-hidden="true">
                     <ArrowUpRight size={15} strokeWidth={2.4} />
                   </div>
                 </a>
@@ -294,10 +306,11 @@ export function ProjectShowcase() {
                       href={project.figmaUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="showcase-link !py-1 !px-2.5 !gap-1.5"
+                      aria-label={`View ${project.title} design on Figma (opens in new tab)`}
+                      className="showcase-link !py-1 !px-2.5 !gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0D4FB8]"
                     >
                       <span className="showcase-link-icon showcase-link-icon--figma !size-6 !text-[0.7rem]">
-                        <FaFigma aria-hidden />
+                        <FaFigma aria-hidden="true" />
                       </span>
                       <span className="showcase-link-label !text-[0.75rem]">
                         View Design
@@ -305,6 +318,7 @@ export function ProjectShowcase() {
                       <ArrowUpRight
                         size={11}
                         className="text-[#145a7a] opacity-60"
+                        aria-hidden="true"
                       />
                     </a>
                     {project.websiteUrl ? (
@@ -312,10 +326,11 @@ export function ProjectShowcase() {
                         href={project.websiteUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="showcase-link !py-1 !px-2.5 !gap-1.5"
+                        aria-label={`Visit ${project.title} live website (opens in new tab)`}
+                        className="showcase-link !py-1 !px-2.5 !gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0D4FB8]"
                       >
                         <span className="showcase-link-icon showcase-link-icon--web !size-6 !text-[0.8rem]">
-                          <HiOutlineGlobeAlt aria-hidden />
+                          <HiOutlineGlobeAlt aria-hidden="true" />
                         </span>
                         <span className="showcase-link-label !text-[0.75rem]">
                           Visit Website
@@ -323,6 +338,7 @@ export function ProjectShowcase() {
                         <ArrowUpRight
                           size={11}
                           className="text-[#145a7a] opacity-60"
+                          aria-hidden="true"
                         />
                       </a>
                     ) : null}

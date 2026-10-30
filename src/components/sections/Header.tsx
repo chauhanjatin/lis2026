@@ -8,8 +8,6 @@ import {
   Briefcase,
   ChevronDown,
   Code2,
-  FileSearch,
-  Info,
   Menu,
   PenLine,
   Smartphone,
@@ -19,15 +17,11 @@ import { useLenis } from "lenis/react";
 import { Container } from "@/components/ui/Container";
 import { cn } from "@/components/lib/cn";
 import {
-  companyMenuItems,
   navLinks,
   servicesMenuItems,
   type NavDropdownItem,
 } from "@/data/navigation";
 
-type OpenMenu = "company" | "services" | null;
-
-const companyIcons = [Info, FileSearch];
 const serviceIcons = [PenLine, Code2, Smartphone, Briefcase];
 
 function DropdownPointer() {
@@ -55,10 +49,12 @@ function DropdownItem({
   return (
     <Link
       href={item.href}
+      role="menuitem"
       onClick={onClick}
-      className="group flex min-w-[9.5rem] items-center gap-3 rounded-xl p-2 transition-colors hover:bg-white/10"
+      className="group flex min-w-[9.5rem] items-center gap-3 rounded-xl p-2 transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
     >
       <span
+        aria-hidden="true"
         className={cn(
           "inline-grid size-10 shrink-0 place-items-center rounded-xl",
           item.iconBg,
@@ -74,32 +70,28 @@ function DropdownItem({
   );
 }
 
-function CompanyDropdown({ onClose }: { onClose: () => void }) {
+function ServicesDropdown({
+  id = "services-dropdown-menu",
+  onClose,
+}: {
+  id?: string;
+  onClose: () => void;
+}) {
   return (
-    <div className="absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3">
-      <div className="relative rounded-[1.25rem] backdrop-blur-md transition-colors duration-300 bg-[#090a0c]/95 border border-white/15 px-3 sm:px-4 py-3 sm:py-4 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-        <DropdownPointer />
-        <div className="flex items-center gap-2">
-          {companyMenuItems.map((item, index) => (
-            <DropdownItem
-              key={item.href}
-              item={item}
-              icon={companyIcons[index]!}
-              onClick={onClose}
-            />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function ServicesDropdown({ onClose }: { onClose: () => void }) {
-  return (
-    <div className="absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3">
+    <div
+      id={id}
+      role="menu"
+      aria-label="Services submenu"
+      className="absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3"
+      onKeyDown={(e) => {
+        if (e.key === "Escape") {
+          onClose();
+        }
+      }}
+    >
       <div className="relative w-[22rem] rounded-[1.25rem] backdrop-blur-md transition-colors duration-300 bg-[#090a0c]/95 border border-white/15 p-4 shadow-[0_20px_50px_rgba(0,0,0,0.5)] sm:w-[28rem]">
         <DropdownPointer />
-        <div className="grid grid-cols-2 gap-1">
+        <div className="grid grid-cols-2 gap-1" role="none">
           {servicesMenuItems.map((item, index) => (
             <DropdownItem
               key={item.href}
@@ -111,8 +103,9 @@ function ServicesDropdown({ onClose }: { onClose: () => void }) {
         </div>
         <Link
           href="/services"
+          role="menuitem"
           onClick={onClose}
-          className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl bg-white/10 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/20"
+          className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl bg-white/10 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
         >
           View all services
           <ArrowRight size={15} strokeWidth={2} aria-hidden="true" />
@@ -122,15 +115,13 @@ function ServicesDropdown({ onClose }: { onClose: () => void }) {
   );
 }
 
-function NavDropdown({
+function ServicesNavDropdown({
   label,
-  menu,
   isOpen,
   onOpen,
   onClose,
 }: {
   label: string;
-  menu: OpenMenu;
   isOpen: boolean;
   onOpen: () => void;
   onClose: () => void;
@@ -139,10 +130,17 @@ function NavDropdown({
     <li className="relative" onMouseEnter={onOpen} onMouseLeave={onClose}>
       <button
         type="button"
+        id="services-menu-trigger"
         aria-expanded={isOpen}
-        aria-haspopup="true"
+        aria-haspopup="menu"
+        aria-controls="services-dropdown-menu"
         onClick={() => (isOpen ? onClose() : onOpen())}
-        className="inline-flex items-center gap-1 text-sm font-medium text-white transition-opacity hover:opacity-65">
+        onKeyDown={(e) => {
+          if (e.key === "Escape" && isOpen) {
+            onClose();
+          }
+        }}
+        className="inline-flex items-center gap-1 rounded-md px-1.5 py-1 text-sm font-medium text-white transition-opacity hover:opacity-65 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
         {label}
         <ChevronDown
           size={13}
@@ -153,16 +151,15 @@ function NavDropdown({
             isOpen && "rotate-180",
           )}/>
       </button>
-      {isOpen && menu === "company" && <CompanyDropdown onClose={onClose} />}
-      {isOpen && menu === "services" && <ServicesDropdown onClose={onClose} />}
+      {isOpen && <ServicesDropdown id="services-dropdown-menu" onClose={onClose} />}
     </li>
   );
 }
 
 export function Header() {
   const [open, setOpen] = useState(false);
-  const [openMenu, setOpenMenu] = useState<OpenMenu>(null);
-  const [mobileSubmenu, setMobileSubmenu] = useState<OpenMenu>(null);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
 
@@ -192,15 +189,15 @@ export function Header() {
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (!headerRef.current?.contains(event.target as Node)) {
-        setOpenMenu(null);
+        setServicesOpen(false);
       }
     }
 
     function handleEscape(event: KeyboardEvent) {
       if (event.key === "Escape") {
         setOpen(false);
-        setOpenMenu(null);
-        setMobileSubmenu(null);
+        setServicesOpen(false);
+        setMobileServicesOpen(false);
       }
     }
 
@@ -214,14 +211,15 @@ export function Header() {
 
   return (
     <header ref={headerRef} className="fixed inset-x-0 top-3 sm:top-4 z-40">
-      <Container className="max-w-[1120px] px-3 sm:px-6">
+      <Container className="max-w-[1240px] px-3 sm:px-6">
         <div
           className={cn(
-            "mx-auto flex h-14 w-full max-w-[1000px] items-center justify-between rounded-full px-3.5 backdrop-blur-md transition-colors duration-300 sm:px-5",
+            "mx-auto flex h-14 w-full max-w-[1140px] items-center justify-between rounded-full px-4 sm:px-6 backdrop-blur-md transition-colors duration-300",
             scrolled ? "bg-[#00000080]" : "bg-[#0000009c]",
           )}>
           <Link
             href="/"
+            aria-label="Liberty Info Science home page"
             className="flex shrink-0 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#090a0c]">
             <Image
               src="/lis-logo.svg"
@@ -234,37 +232,29 @@ export function Header() {
           </Link>
 
           <nav aria-label="Primary" className="mx-auto hidden lg:block">
-            <ul className="flex items-center gap-6 xl:gap-8">
+            <ul className="flex items-center gap-5 xl:gap-8">
               <li>
                 <Link
                   href="/"
-                  className="text-sm font-medium text-white transition-opacity hover:opacity-65"
+                  className="rounded-md px-1.5 py-1 text-sm font-medium text-white transition-opacity hover:opacity-65 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                 >
                   Home
                 </Link>
               </li>
               {navLinks.map((link) =>
                 link.submenu ? (
-                  <NavDropdown
+                  <ServicesNavDropdown
                     key={link.href}
                     label={link.label}
-                    menu={link.label === "Company" ? "company" : "services"}
-                    isOpen={
-                      openMenu ===
-                      (link.label === "Company" ? "company" : "services")
-                    }
-                    onOpen={() =>
-                      setOpenMenu(
-                        link.label === "Company" ? "company" : "services",
-                      )
-                    }
-                    onClose={() => setOpenMenu(null)}
+                    isOpen={servicesOpen}
+                    onOpen={() => setServicesOpen(true)}
+                    onClose={() => setServicesOpen(false)}
                   />
                 ) : (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="inline-flex items-center gap-1 text-sm font-medium text-white transition-opacity hover:opacity-65"
+                      className="inline-flex items-center gap-1 rounded-md px-1.5 py-1 text-sm font-medium text-white transition-opacity hover:opacity-65 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                     >
                       {link.label}
                     </Link>
@@ -272,11 +262,12 @@ export function Header() {
                 ),
               )}
             </ul>
-          </nav>  
+          </nav>
 
           <Link
             href="mailto:info@libertyinfoscience.com"
-            className="hidden rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#101116] transition-transform hover:scale-[1.03] active:scale-[0.98] lg:inline-flex">
+            aria-label="Send CV to info@libertyinfoscience.com"
+            className="hidden rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#101116] transition-transform hover:scale-[1.03] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#090a0c] lg:inline-flex">
             Send CV
           </Link>
 
@@ -285,7 +276,7 @@ export function Header() {
             className="ml-auto inline-flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full text-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-nav"
-            aria-label={open ? "Close menu" : "Open menu"}
+            aria-label={open ? "Close navigation menu" : "Open navigation menu"}
             onClick={() => setOpen((value) => !value)}
           >
             {open ? (
@@ -298,7 +289,7 @@ export function Header() {
 
         <nav
           id="mobile-nav"
-          aria-label="Primary"
+          aria-label="Mobile Navigation"
           className={cn(
             "mt-2 overflow-hidden rounded-[1.4rem] bg-[#090a0c]/95 backdrop-blur-xl border border-white/10 text-white transition-[max-height,opacity] duration-300 lg:hidden shadow-2xl",
             open ? "max-h-[85vh] opacity-100 overflow-y-auto" : "max-h-0 opacity-0 pointer-events-none",
@@ -308,7 +299,7 @@ export function Header() {
               <Link
                 href="/"
                 onClick={() => setOpen(false)}
-                className="block border-b border-white/10 py-3 text-base font-medium"
+                className="block border-b border-white/10 py-3 text-base font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-md"
               >
                 Home
               </Link>
@@ -318,67 +309,49 @@ export function Header() {
                 <li key={link.href} className="border-b border-white/10 py-3">
                   <button
                     type="button"
-                    className="flex w-full items-center justify-between text-base"
-                    aria-expanded={
-                      mobileSubmenu ===
-                      (link.label === "Company" ? "company" : "services")
-                    }
-                    onClick={() =>
-                      setMobileSubmenu((current) =>
-                        current ===
-                        (link.label === "Company" ? "company" : "services")
-                          ? null
-                          : link.label === "Company"
-                            ? "company"
-                            : "services",
-                      )
-                    }
+                    className="flex w-full items-center justify-between text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-md py-1"
+                    aria-expanded={mobileServicesOpen}
+                    aria-controls="mobile-services-menu"
+                    onClick={() => setMobileServicesOpen((prev) => !prev)}
                   >
                     {link.label}
                     <ChevronDown
                       size={16}
+                      aria-hidden="true"
                       className={cn(
                         "transition-transform",
-                        mobileSubmenu ===
-                          (link.label === "Company" ? "company" : "services") &&
-                          "rotate-180",
+                        mobileServicesOpen && "rotate-180",
                       )}
                     />
                   </button>
-                  {mobileSubmenu ===
-                    (link.label === "Company" ? "company" : "services") && (
-                    <ul className="mt-2 space-y-1 pl-2">
-                      {(link.label === "Company"
-                        ? companyMenuItems
-                        : servicesMenuItems
-                      ).map((item) => (
+                  {mobileServicesOpen && (
+                    <ul id="mobile-services-menu" className="mt-2 space-y-1 pl-2">
+                      {servicesMenuItems.map((item) => (
                         <li key={item.href}>
                           <Link
                             href={item.href}
                             onClick={() => {
                               setOpen(false);
-                              setMobileSubmenu(null);
+                              setMobileServicesOpen(false);
                             }}
-                            className="block rounded-lg px-3 py-2 text-sm text-white/80 hover:bg-white/5 hover:text-white"
+                            className="block rounded-lg px-3 py-2 text-sm text-white/80 hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                           >
                             {item.label}
                           </Link>
                         </li>
                       ))}
-                      {link.label === "Services" && (
-                        <li>
-                          <Link
-                            href="/services"
-                            onClick={() => {
-                              setOpen(false);
-                              setMobileSubmenu(null);
-                            }}
-                            className="block rounded-lg px-3 py-2 text-sm font-semibold text-white/90 hover:bg-white/5"
-                          >
-                            View all services
-                          </Link>
-                        </li>
-                      )}
+                      <li>
+                        <Link
+                          href="/services"
+                          onClick={() => {
+                            setOpen(false);
+                            setMobileServicesOpen(false);
+                          }}
+                          className="block rounded-lg px-3 py-2 text-sm font-semibold text-white/90 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                        >
+                          View all services
+                        </Link>
+                      </li>
                     </ul>
                   )}
                 </li>
@@ -387,7 +360,7 @@ export function Header() {
                   <Link
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className="block border-b border-white/10 py-3 text-base"
+                    className="block border-b border-white/10 py-3 text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-md"
                   >
                     {link.label}
                   </Link>
@@ -396,7 +369,7 @@ export function Header() {
             )}
             <li>
               <Link
-                href="/"
+                href="mailto:info@libertyinfoscience.com"
                 onClick={() => setOpen(false)}
                 className="mt-5 inline-flex rounded-full bg-white px-5 py-3 text-sm font-medium text-[#101116]">
                 Send CV

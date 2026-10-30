@@ -1,7 +1,8 @@
 "use client";
 
-import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { Pause, Play } from "lucide-react";
 import { SiUpwork } from "react-icons/si";
 import { socialLinks } from "@/data/socials";
 import { Container } from "@/components/ui/Container";
@@ -66,6 +67,49 @@ export function AboutStorySection({
   data?: AboutStory;
 }) {
   const reduceMotion = useReducedMotion();
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
+  const rawVideoSrc = data.video?.src || "/about.mp4";
+  const videoSrc =
+    rawVideoSrc.startsWith("http") || (basePath && rawVideoSrc.startsWith(basePath))
+      ? rawVideoSrc
+      : `${basePath}${rawVideoSrc.startsWith("/") ? rawVideoSrc : `/${rawVideoSrc}`}`;
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (reduceMotion) {
+      video.pause();
+      setIsPlaying(false);
+      return;
+    }
+    video.defaultMuted = true;
+    video.muted = true;
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => setIsPlaying(true))
+        .catch(() => {
+          setIsPlaying(false);
+        });
+    }
+  }, [reduceMotion]);
+
+  const togglePlay = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.paused) {
+      video
+        .play()
+        .then(() => setIsPlaying(true))
+        .catch(() => {});
+    } else {
+      video.pause();
+      setIsPlaying(false);
+    }
+  };
 
   return (
     <section className="relative overflow-hidden bg-[#F7F8FA] py-20 sm:py-28 lg:py-32 border-t border-[#EAECEF]">
@@ -75,26 +119,52 @@ export function AboutStorySection({
           <div className="lg:col-span-5">
             <ScrollReveal amount={0.3}>
               <div className="relative mx-auto max-w-md lg:max-w-none">
-                {/* Image Container with rounded corners and shadow */}
+                {/* Media Container with rounded corners and shadow */}
                 <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[2.25rem] bg-[#1c1d21] shadow-[0_20px_50px_rgba(0,0,0,0.14)]">
-                  <Image
-                    src={data.image.src}
-                    alt={data.image.alt}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 42vw"
-                    preload
-                    className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-105"
-                  />
+                  <video
+                    ref={videoRef}
+                    autoPlay={!reduceMotion}
+                    muted
+                    loop
+                    playsInline
+                    preload="auto"
+                    title="LIS software development team collaboration video (ambient background)"
+                    aria-label="LIS software development team ambient video"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-105"
+                  >
+                    <source src={videoSrc} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+
+                  {/* Accessible Pause/Play Button (WCAG 2.2.2 Pause, Stop, Hide) */}
+                  <button
+                    type="button"
+                    onClick={togglePlay}
+                    aria-label={isPlaying ? "Pause ambient video" : "Play ambient video"}
+                    className="absolute top-4 right-4 z-30 flex size-9 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-md border border-white/20 transition-all hover:bg-black/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                  >
+                    {isPlaying ? (
+                      <Pause size={14} aria-hidden="true" />
+                    ) : (
+                      <Play size={14} className="ml-0.5" aria-hidden="true" />
+                    )}
+                  </button>
 
                   {/* Gradient overlay for contrast */}
                   <div
                     aria-hidden="true"
-                    className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"
+                    className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"
                   />
 
-                  {/* Rotating Circular Badge (Bottom Right of Image) */}
+                  {/* Rotating Circular Badge (Bottom Right of Media) */}
                   <div className="absolute bottom-4 right-4 z-20 sm:bottom-5 sm:right-5">
-                    <RotatingBadge text={data.image.badgeText} />
+                    <RotatingBadge
+                      text={
+                        data.video?.badgeText ||
+                        data.image?.badgeText ||
+                        "INNOVATION • QUALITY • TRUST • "
+                      }
+                    />
                   </div>
 
                   {/* Frosted Social Action Buttons (Bottom Left of Image) */}

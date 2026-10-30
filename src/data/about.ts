@@ -82,7 +82,11 @@ export type AboutStory = {
   eyebrow: string;
   heading: string;
   leadParagraph: string;
-  image: {
+  video?: {
+    src: string;
+    badgeText?: string;
+  };
+  image?: {
     src: string;
     alt: string;
     badgeText: string;
@@ -294,6 +298,10 @@ export const aboutStoryData: AboutStory = {
   heading: "Turning Ideas Into Powerful Digital",
   leadParagraph:
     "At LIS, we combine technology, creativity, and industry expertise to transform business ideas into reliable digital solutions that create lasting value.",
+  video: {
+    src: "/about.mp4",
+    badgeText: "INNOVATION • QUALITY • TRUST • ",
+  },
   image: {
     src: "/ourfoundation.png",
     alt: "LIS software development team collaborating on innovative digital solutions",

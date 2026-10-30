@@ -22,7 +22,7 @@ const navigation = [
 
 export function Footer() {
   return (
-    <footer className="studio-footer">
+    <footer className="studio-footer" role="contentinfo">
       <Container className="studio-footer-frame">
         <ContactCTA />
 
@@ -32,7 +32,7 @@ export function Footer() {
           amount={0.2}
         >
           <ScrollItem variants={fadeUp} className="studio-footer-brand">
-            <Link href="/" aria-label="Liberty Info Science home">
+            <Link href="/" aria-label="Liberty Info Science home page">
               <Image
                 src="/lis-logo.svg"
                 alt="Liberty Info Science (LIS) logo"
@@ -44,14 +44,14 @@ export function Footer() {
             <p className="studio-footer-tagline">
               Pioneering digital experiences through cutting-edge strategy, design, and engineering.
             </p>
-            <div className="studio-footer-socials" aria-label="Social links">
+            <div className="studio-footer-socials" role="group" aria-label="Social media profiles">
               {socialLinks.map(({ label, href, icon: Icon }) => (
                 <a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={label}
+                  aria-label={`Visit our ${label} profile (opens in new tab)`}
                 >
                   <Icon size={16} aria-hidden="true" />
                 </a>
@@ -73,14 +73,22 @@ export function Footer() {
           </ScrollItem>
 
           <ScrollItem variants={fadeUp}>
-            <address className="studio-footer-contact">
+            <address className="studio-footer-contact not-italic">
               <p className="studio-footer-section-title">[ Contact ]</p>
               <div>
                 <span>Available worldwide</span>
-                <a href="mailto:info@libertyinfoscience.com">
+                <a
+                  href="mailto:info@libertyinfoscience.com"
+                  aria-label="Send email to info@libertyinfoscience.com"
+                >
                   info@libertyinfoscience.com
                 </a>
-                <a href="tel:+917096364801">+91 70963 64801</a>
+                <a
+                  href="tel:+917096364801"
+                  aria-label="Call +91 70963 64801"
+                >
+                  +91 70963 64801
+                </a>
               </div>
             </address>
           </ScrollItem>
@@ -96,7 +104,7 @@ export function Footer() {
           delay={0.2}
           duration={0.9}
           amount={0.15}
-          aria-label="libertyinfoscience"
+          aria-hidden="true"
         >
           <div className="studio-footer-marquee-track">
             <p className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">

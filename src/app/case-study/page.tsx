@@ -6,7 +6,10 @@ import { CaseStudyGrid } from "@/components/case-study/CaseStudyGrid";
 export const metadata: Metadata = {
   title: "Case Studies — Proven Impact & Client Stories",
   description:
-    "Explore how our design studio unifies platforms, eliminates compliance violations, and drives high-velocity growth for enterprise and startup leaders.",
+    "Explore how Liberty Info Science unifies platforms, eliminates UX friction, and drives high-velocity growth for enterprise and startup leaders.",
+  alternates: {
+    canonical: "/case-studies/",
+  },
 };
 
 export default function CaseStudyPage() {

@@ -22,7 +22,36 @@ export async function generateMetadata({
   const { slug } = await params;
   const meta = pageMeta[slug as PageSlug];
   if (!meta) return {};
-  return { title: meta.title, description: meta.description };
+
+  const pageUrl = `/${slug}/`;
+
+  return {
+    title: meta.title,
+    description: meta.description,
+    alternates: {
+      canonical: pageUrl,
+    },
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: pageUrl,
+      type: "website",
+      images: [
+        {
+          url: "/hero-uxdesign.png",
+          width: 1200,
+          height: 630,
+          alt: meta.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: meta.title,
+      description: meta.description,
+      images: ["/hero-uxdesign.png"],
+    },
+  };
 }
 
 export default async function DynamicPage({

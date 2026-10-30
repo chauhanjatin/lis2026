@@ -161,74 +161,106 @@ export function ContactSection() {
           <div className="flex flex-col rounded-[1.75rem] bg-white p-6 shadow-[0_16px_48px_rgba(12,14,18,0.06)] sm:p-8 lg:p-10">
             <form className="contact-form flex flex-1 flex-col" onSubmit={handleSubmit}>
               <div className="grid gap-5 sm:grid-cols-2">
-                <label className="contact-label">
-                  First Name
+                <div>
+                  <label htmlFor="contact-first-name" className="contact-label block mb-2">
+                    First Name <span className="text-[#0D4FB8]" aria-hidden="true">*</span>
+                  </label>
                   <input
+                    id="contact-first-name"
                     type="text"
                     name="firstName"
                     autoComplete="given-name"
                     placeholder="First Name"
                     className={fieldClass}
                     required
+                    aria-required="true"
                   />
-                </label>
-                <label className="contact-label">
-                  Last Name
+                </div>
+                <div>
+                  <label htmlFor="contact-last-name" className="contact-label block mb-2">
+                    Last Name <span className="text-[#0D4FB8]" aria-hidden="true">*</span>
+                  </label>
                   <input
+                    id="contact-last-name"
                     type="text"
                     name="lastName"
                     autoComplete="family-name"
                     placeholder="Last Name"
                     className={fieldClass}
                     required
+                    aria-required="true"
                   />
-                </label>
+                </div>
               </div>
 
-              <label className="contact-label mt-5 block">
-                Email
+              <div className="mt-5">
+                <label htmlFor="contact-email" className="contact-label block mb-2">
+                  Email <span className="text-[#0D4FB8]" aria-hidden="true">*</span>
+                </label>
                 <input
+                  id="contact-email"
                   type="email"
                   name="email"
                   autoComplete="email"
                   placeholder="you@example.com"
-                  className={cn(fieldClass, "mt-2")}
+                  className={fieldClass}
                   required
+                  aria-required="true"
                 />
-              </label>
+              </div>
 
-              <label className="contact-label mt-5 block">
-                Phone
+              <div className="mt-5">
+                <label htmlFor="contact-phone" className="contact-label block mb-2">
+                  Phone <span className="text-xs font-normal text-[#606468]">(Optional)</span>
+                </label>
                 <input
+                  id="contact-phone"
                   type="tel"
                   name="phone"
                   autoComplete="tel"
                   placeholder="Phone"
-                  className={cn(fieldClass, "mt-2")}
+                  className={fieldClass}
                 />
-              </label>
+              </div>
 
-              <label className="contact-label mt-5 !flex flex-1 flex-col">
-                Message
+              <div className="mt-5 !flex flex-1 flex-col">
+                <label htmlFor="contact-message" className="contact-label block mb-2">
+                  Message <span className="text-[#0D4FB8]" aria-hidden="true">*</span>
+                </label>
                 <textarea
+                  id="contact-message"
                   name="message"
                   rows={5}
                   placeholder="Type your message here..."
-                  className={cn(fieldClass, "mt-2 min-h-[140px] flex-1 resize-none")}
+                  className={cn(fieldClass, "min-h-[140px] flex-1 resize-none")}
                   required
+                  aria-required="true"
                 />
-              </label>
+              </div>
+
+              {/* Accessible Live Region for Form Status */}
+              <div role="status" aria-live="polite" className="sr-only">
+                {status === "sending" && "Sending your message..."}
+                {status === "sent" && "Thank you! Your message has been sent successfully."}
+              </div>
+
+              {status === "sent" && (
+                <div role="status" className="mt-5 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm font-medium text-emerald-800">
+                  ✓ Thank you! Your message has been sent successfully. We will get in touch shortly.
+                </div>
+              )}
 
               {error ? (
-                <p role="alert" className="mt-5 text-sm font-medium text-[#b42318]">
+                <div role="alert" aria-live="assertive" className="mt-5 rounded-xl border border-red-200 bg-red-50 p-4 text-sm font-medium text-[#b42318]">
                   {error}
-                </p>
+                </div>
               ) : null}
 
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="group mt-6 inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#101116] px-6 py-4 text-sm font-semibold text-white transition-transform hover:scale-[1.02] disabled:cursor-wait disabled:opacity-70"
+                aria-busy={status === "sending"}
+                className="group mt-6 inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#101116] px-6 py-4 text-sm font-semibold text-white transition-transform hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0D4FB8] focus-visible:ring-offset-2 disabled:cursor-wait disabled:opacity-70"
               >
                 {status === "sending" ? "Sending..." : status === "sent" ? "Message sent" : "Send Message"}
                 <span

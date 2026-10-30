@@ -42,6 +42,7 @@ export const projects: Project[] = [
     tags: ["ui-ux"],
     figmaUrl:
       "https://www.figma.com/proto/cfryUDmCQEQcL1pC3XkgW5/KidLoop---Children-s-clothing?node-id=161-11666&viewport=-8893%2C216%2C0.46&t=sZai0b6E09Yf1weU-1&scaling=scale-down&content-scaling=fixed&page-id=161%3A11084",
+    caseStudyUrl: "/work/kidloop",
   },
   {
     slug: "learnbud-ai",
@@ -158,7 +159,6 @@ export const projects: Project[] = [
     figmaUrl:
       "https://www.figma.com/proto/QCOAQX1eFi13NUGxoJERwV/INTEGRATIVE-DERMATOLOGY?page-id=0%3A1&node-id=1003-418&viewport=-12070%2C-2050%2C0.26&t=nb4HHeETsdKbCV0a-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=1003%3A418",
     websiteUrl: "https://integrativedermatology.co/",
-    caseStudyUrl: "/work/integrative-dermatology",
   },
   {
     slug: "parvati-jewels",

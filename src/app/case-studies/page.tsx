@@ -6,7 +6,32 @@ import { CaseStudyGrid } from "@/components/case-study/CaseStudyGrid";
 export const metadata: Metadata = {
   title: "Case Studies — Proven Impact & Client Stories",
   description:
-    "Explore how our design studio unifies platforms, eliminates compliance violations, and drives high-velocity growth for enterprise and startup leaders.",
+    "Explore how Liberty Info Science unifies digital platforms, eliminates UX friction, and drives high-velocity growth for enterprise and startup leaders.",
+  alternates: {
+    canonical: "/case-studies/",
+  },
+  openGraph: {
+    title: "Case Studies — Proven Impact & Client Stories | Liberty Info Science",
+    description:
+      "Explore how Liberty Info Science unifies digital platforms, eliminates UX friction, and drives high-velocity growth for enterprise and startup leaders.",
+    url: "/case-studies/",
+    type: "website",
+    images: [
+      {
+        url: "/hero-uxdesign.png",
+        width: 1200,
+        height: 630,
+        alt: "Liberty Info Science Case Studies",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Case Studies — Proven Impact & Client Stories | Liberty Info Science",
+    description:
+      "Explore how Liberty Info Science unifies digital platforms, eliminates UX friction, and drives high-velocity growth for enterprise and startup leaders.",
+    images: ["/hero-uxdesign.png"],
+  },
 };
 
 export default function CaseStudiesListingPage() {

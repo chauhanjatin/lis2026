@@ -91,8 +91,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       "Seamless consistency across all platforms and digital touchpoints.",
       "Faster development velocity backed by modular, well-documented design systems.",
     ],
-    midImage: "/project1.png",
-    midImageAlt: "Cinema UGC ad platform UI/UX design on laptop and mobile",
+    midImage: "/ui-ux.png",
+    midImageAlt: "UI/UX design system, wireframing, color palette and user flow",
     conclusionTitle: "Conclusion",
     conclusionDescription:
       "Great UI/UX is the foundation of every successful digital product. Through our rigorous research, human-centric design, and scalable UI systems, we equip your brand with an experience that keeps users coming back.",
@@ -160,8 +160,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       "Reliable, crash-resistant infrastructure handling high concurrent traffic.",
       "Intuitive content workflows empowering marketing teams without developer dependencies.",
     ],
-    midImage: "/saaswebapp.png",
-    midImageAlt: "SaaS web application dashboards developed for UniqLearn, Overc360 and DTS Splint",
+    midImage: "/web-development.png",
+    midImageAlt: "Full-stack web development with modern technologies, CMS, and clean code",
     conclusionTitle: "Conclusion",
     conclusionDescription:
       "Whether launching a new platform or re-architecting legacy software, our web development expertise guarantees clean code, superior speed, and lasting architectural value for your business.",
@@ -229,8 +229,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       "Zero crash rates backed by automated crash reporting and observability.",
       "Frictionless user onboarding driving immediate conversion and subscription uptake.",
     ],
-    midImage: "/project2.png",
-    midImageAlt: "Parasol Virtual Services responsive website on mobile and desktop",
+    midImage: "/mobile-development.png",
+    midImageAlt: "Mobile app development setup across physical devices and responsive codebases",
     conclusionTitle: "Conclusion",
     conclusionDescription:
       "A great mobile app puts your brand directly into your customers' pockets. We help you build mobile experiences that feel effortless, engaging, and indispensable.",
@@ -298,8 +298,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       "Streamlined operations with lower software overhead and higher team efficiency.",
       "Measurable increase in customer lifetime value and revenue velocity.",
     ],
-    midImage: "/learnbudai/learnbudai.png",
-    midImageAlt: "LearnBud AI brand identity and app design",
+    midImage: "/businessservices.png",
+    midImageAlt: "Strategic business consulting, enterprise analytics, and operational planning",
     conclusionTitle: "Conclusion",
     conclusionDescription:
       "In a fast-moving digital economy, having the right strategy makes all the difference. We empower your business with the clarity, tools, and execution required to thrive and lead.",

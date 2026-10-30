@@ -1318,3 +1318,47 @@ body {
   content-visibility: auto;
   contain-intrinsic-size: 1px 700px;
 }
+
+/* ==========================================================================
+   WCAG 2.1 / 2.2 Accessibility (Level AA) Global Standards
+   ========================================================================== */
+
+/* Criterion 2.4.7 Focus Visible & 2.4.11 Focus Appearance: High-contrast visible focus indicator */
+:focus-visible {
+  outline: 2px solid #0D4FB8;
+  outline-offset: 3px;
+}
+
+/* Ensure mouse clicks don't show default browser outline */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Criterion 2.2.2 Pause, Stop, Hide: Pause marquee animations on hover and keyboard focus */
+.hero-marquee:hover .hero-marquee-track,
+.hero-marquee:focus-within .hero-marquee-track,
+.animate-solution-marquee:hover,
+.animate-solution-marquee:focus-within,
+.animate-logo-marquee:hover,
+.animate-logo-marquee:focus-within,
+.animate-screens-marquee:hover,
+.animate-screens-marquee:focus-within,
+.integration-network:hover .integration-rail-track,
+.integration-network:focus-within .integration-rail-track {
+  animation-play-state: paused !important;
+}
+
+/* Criterion 2.3.3 Animation from Interactions: Strict reduced motion compliance */
+@media (prefers-reduced-motion: reduce) {
+  .hero-marquee-track,
+  .hero-marquee-track--up,
+  .hero-marquee-track--down,
+  .animate-solution-marquee,
+  .animate-logo-marquee,
+  .animate-screens-marquee,
+  .studio-footer-marquee-track {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+

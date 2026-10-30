@@ -54,10 +54,10 @@ export const servicesMenuItems: NavDropdownItem[] = [
 ];
 
 export const navLinks: NavLink[] = [
-  { href: "/company", label: "Company", submenu: true },
+  { href: "/company", label: "About Us" },
   { href: "/services", label: "Services", submenu: true },
+  { href: "/case-studies", label: "Case Studies" },
   { href: "/projects", label: "Projects" },
-  // { href: "/career", label: "Career" },
   { href: "/contact", label: "Contact Us" },
 ];
 
@@ -85,44 +85,39 @@ export const pageMeta: Record<
   { title: string; description: string; eyebrow: string }
 > = {
   company: {
-    title: "Company — Design Studio",
+    title: "About Us — Digital Product Design & Engineering Studio",
     description:
-      "Learn about our global consulting studio dedicated to building smarter, more adaptive digital products.",
-    eyebrow: "About us",
+      "Discover Liberty Info Science — an agile team of product researchers, Figma UI/UX specialists, and full-stack software engineers transforming digital vision into reality.",
+    eyebrow: "About Us",
   },
   about: {
-    title: "About Us — Design Studio",
+    title: "About Us — Digital Product Design & Engineering Studio",
     description:
-      "Learn about our global consulting studio dedicated to building smarter, more adaptive digital products.",
-    eyebrow: "About us",
+      "Discover Liberty Info Science — an agile team of product researchers, Figma UI/UX specialists, and full-stack software engineers transforming digital vision into reality.",
+    eyebrow: "About Us",
   },
   "about-us": {
-    title: "About Us — Design Studio",
+    title: "About Us — Digital Product Design & Engineering Studio",
     description:
-      "Learn about our global consulting studio dedicated to building smarter, more adaptive digital products.",
-    eyebrow: "About us",
+      "Discover Liberty Info Science — an agile team of product researchers, Figma UI/UX specialists, and full-stack software engineers transforming digital vision into reality.",
+    eyebrow: "About Us",
   },
   services: {
-    title: "Services — Design Studio",
+    title: "Services — UI/UX Design, Web & Mobile Engineering",
     description:
-      "UI/UX design, web development, and digital strategy for startups and growing companies.",
-    eyebrow: "Our services",
+      "Explore our full spectrum of digital services: end-to-end UI/UX design, high-velocity Next.js web development, native mobile apps, and enterprise consulting.",
+    eyebrow: "Our Services",
   },
-  // career: {
-  //   title: "Career — Design Studio",
-  //   description:
-  //     "Join our team of designers, researchers, and engineers building products that matter.",
-  //   eyebrow: "Careers",
-  // },
   contact: {
-    title: "Contact — Design Studio",
-    description: "Start a project or say hello — we'd love to hear from you.",
-    eyebrow: "Contact",
+    title: "Contact Us — Start Your Next Digital Project",
+    description:
+      "Partner with Liberty Info Science. Connect with our senior product architects and designers in Surat, India. Inquire about custom UI/UX design or engineering.",
+    eyebrow: "Contact Us",
   },
   projects: {
-    title: "Projects — Design Studio",
+    title: "Portfolio & Featured Work — Client Success Stories",
     description:
-      "Featured projects and case studies from our design and development studio.",
+      "Explore our award-winning work across EdTech, FinTech, healthcare, AI tools, and eCommerce. See how Liberty Info Science delivers high-ROI digital solutions.",
     eyebrow: "Case Studies",
   },
 };

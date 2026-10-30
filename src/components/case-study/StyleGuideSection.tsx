@@ -10,6 +10,7 @@ const fontVars: Record<string, string> = {
   Sora: "var(--font-sora)",
   Manrope: "var(--font-manrope)",
   "Instrument Sans": "var(--font-instrument-sans)",
+  Poppins: "var(--font-poppins)",
   Nunito: "var(--font-nunito)",
   "Cormorant Garamond": "var(--font-cormorant)",
 };
@@ -99,7 +100,7 @@ export function StyleGuideSection({ guide }: { guide: CaseStudyStyleGuide }) {
       <motion.div {...reveal}>
         <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-8 max-w-2xl mx-auto px-2">
           <div className="flex flex-col">
-            {guide.colors.map((hex, idx) => (
+            {(guide.colors.length > 5 ? guide.colors.slice(0, 5) : guide.colors).map((hex, idx) => (
               <div
                 key={hex}
                 className={`${tilts[idx % tilts.length]} ${idx > 0 ? "-mt-3" : ""} relative flex h-16 sm:h-[4.5rem] items-center justify-center rounded-xl shadow-[0_10px_25px_-12px_rgba(0,0,0,0.35)] ${
@@ -113,15 +114,29 @@ export function StyleGuideSection({ guide }: { guide: CaseStudyStyleGuide }) {
           </div>
 
           <div className="flex flex-col">
-            {guide.gradients.map((gradient, idx) => (
-              <div
-                key={gradient}
-                className={`${tilts[(idx + 1) % tilts.length]} ${idx > 0 ? "-mt-3" : ""} relative rounded-xl shadow-[0_10px_25px_-12px_rgba(0,0,0,0.35)] ${
-                  guide.gradients.length === 1 ? "flex-1 min-h-[12rem]" : "h-16 sm:h-[4.5rem]"
-                }`}
-                style={{ backgroundImage: gradient, zIndex: idx + 1 }}
-              />
-            ))}
+            {guide.colors.length > 5 ? (
+              guide.colors.slice(5).map((hex, idx) => (
+                <div
+                  key={hex}
+                  className={`${tilts[(idx + 1) % tilts.length]} ${idx > 0 ? "-mt-3" : ""} relative flex h-16 sm:h-[4.5rem] items-center justify-center rounded-xl shadow-[0_10px_25px_-12px_rgba(0,0,0,0.35)] ${
+                    isLight(hex) ? "border border-[#eceeed] text-[#101116]" : "text-white"
+                  }`}
+                  style={{ backgroundColor: hex, zIndex: idx + 1 }}
+                >
+                  <span className="text-xs sm:text-sm font-medium tracking-wide">{hex}</span>
+                </div>
+              ))
+            ) : (
+              guide.gradients.map((gradient, idx) => (
+                <div
+                  key={gradient}
+                  className={`${tilts[(idx + 1) % tilts.length]} ${idx > 0 ? "-mt-3" : ""} relative rounded-xl shadow-[0_10px_25px_-12px_rgba(0,0,0,0.35)] ${
+                    guide.gradients.length === 1 ? "flex-1 min-h-[12rem]" : "h-16 sm:h-[4.5rem]"
+                  }`}
+                  style={{ backgroundImage: gradient, zIndex: idx + 1 }}
+                />
+              ))
+            )}
           </div>          
         </div>
       </motion.div>

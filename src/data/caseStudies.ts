@@ -51,7 +51,8 @@ export type CaseStudyItem = {
     | "uniqlearn"
     | "learnbud"
     | "dermatology"
-    | "dtssplint";
+    | "dtssplint"
+    | "kidloop";
   image?: string;
   eyebrow: string;
   title: string;
@@ -448,158 +449,194 @@ export const caseStudiesList: CaseStudyItem[] = [
     },
   },
   {
-    slug: "integrative-dermatology",
-    cardCategory: "HEALTHCARE • WEB DESIGN",
+    slug: "kidloop",
+    cardCategory: "CIRCULAR COMMERCE • MOBILE APP",
     cardTitle:
-      "Integrative Dermatology: A calm clinic website for medical and aesthetic care.",
-    logoType: "dermatology",
-    image: "/dermatology/dermatology.png",
+      "KidLoop: Circular children's clothing marketplace connecting growing families.",
+    logoType: "kidloop",
+    image: "/projects/kidloop.png",
+    heroImage: "/projects/kidloop.png",
     tags: [
-      "Web Design",
-      "UI/UX",
-      "Healthcare",
-      "Responsive",
-      "Booking",
-      "Brand",
+      "Mobile App",
+      "UI/UX Design",
+      "Circular Fashion",
+      "Parent Marketplace",
+      "Design System",
+      "User Research",
     ],
-    gallery: {
-      images: Array.from({ length: 14 }, (_, i) => {
-        const wide = (i + 1) % 2 === 1;
-        return {
-          src: `/dermatology/dermatology${i + 1}.png`,
-          width: wide ? 550 : 208,
-          height: wide ? 421 : 420,
-        };
-      }),
-      width: 550,
-      height: 421,
-    },
-    heroImage: "/dermatology/dermatology.png",
-    eyebrow: "HEALTHCARE WEBSITE",
-    title: "Integrative Dermatology: A Clear Clinic Website",
+    eyebrow: "CIRCULAR FASHION & SUSTAINABLE E-COMMERCE",
+    title: "KidLoop: Good Clothes Deserve a Second Life",
     meta: {
-      company: { name: "Integrative Dermatology" },
-      role: "UI/UX Designer & Web Designer",
-      expertise: "Healthcare Website & Responsive Design",
+      company: {
+        name: "KidLoop",
+        url: "https://www.figma.com/proto/cfryUDmCQEQcL1pC3XkgW5/KidLoop---Children-s-clothing?node-id=161-11666&viewport=-8893%2C216%2C0.46&t=sZai0b6E09Yf1weU-1&scaling=scale-down&content-scaling=fixed&page-id=161%3A11084",
+      },
+      role: "Lead UI/UX Designer & Product Strategist",
+      expertise: "Mobile App Design, Circular Commerce & User Research",
       year: "2025",
     },
     heroScreens: ["dashboard", "schedule", "calendar"],
     projectDescription: {
-      lead: "We designed a responsive website for Integrative Dermatology so patients can understand medical, surgical, and aesthetic care, then book a consultation without getting lost.",
+      lead: "KidLoop is a community-driven mobile marketplace built for parents to effortlessly buy, sell, and pass along outgrown children's clothing. We designed an intuitive mobile-first experience that turns wardrobe clutter into cash and promotes sustainable circular fashion.",
       items: [
         {
           label: "Timeline",
           content:
-            "Discovery through final responsive screens: 6 weeks, working with the clinic on services, tone, and the booking path.",
+            "Discovery, user interviews, wireframing, design system to interactive Figma prototype: 8 weeks.",
         },
         {
           label: "Background",
           content:
-            "The clinic offers dermatology, surgical dermatology, aesthetics, and wellness in Yakima, Washington. The previous presence did not explain those paths clearly, and booking a visit competed with long menus and dense copy.",
+            "Children outgrow wardrobes every 3 to 6 months, leaving parents with endless boxes of gently-used items. Existing resale platforms are flooded with adult fast-fashion and tedious listing forms. KidLoop needed a dedicated, trusted marketplace where parents can list complete sets in under 60 seconds.",
+        },
+        {
+          label: "Scope",
+          content:
+            "End-to-end iOS and Android design including rapid multi-photo listing, age/size smart filtering, bundle discounts, secure payments, and local parent pickup coordination.",
         },
       ],
     },
     process: {
-      lead: "We mapped how a new patient decides between medical care and aesthetics, then designed one site that stays calm on both desktop and mobile.",
+      lead: "We analyzed how modern parents manage wardrobe transitions, turning a time-consuming chore into an effortless, rewarding habit.",
       items: [
         {
-          label: "Research & Planning",
+          label: "Parent Research & Empathy Mapping",
           content:
-            "Reviewed the service mix, insurance and payment questions, and the steps from first visit to a booked consultation. Grouped pages into Dermatology, Surgical Dermatology, Aesthetics, and Wellness.",
+            "Interviewed 25 parents with children aged 0–10. Over 80% reported having bags of outgrown clothes they intended to sell but abandoned because traditional listing flows demanded 15+ manual fields.",
         },
         {
-          label: "Design & Prototyping",
+          label: "Standardizing Sizing Fragmentation",
           content:
-            "Built a dark, quiet visual system around photography, short headlines, and one clear booking action. Prototyped the homepage, service pages, about section, and mobile menu.",
+            "Kids' sizing varies drastically across brands (months, toddler T-sizes, years). We created an intuitive universal sizing map combining age, height, and brand-specific fit indicators.",
         },
         {
-          label: "Development & Implementation",
+          label: "Design System & Interaction Models",
           content:
-            "Prepared desktop and mobile layouts for the homepage, service navigation, payment and insurance notes, and the consultation form so engineering could build them directly.",
+            "Developed a playful yet clean design system using Poppins typography, high-contrast accessible color tokens, and tactile tap targets optimized for one-handed thumb navigation.",
         },
         {
-          label: "Testing & Optimization",
+          label: "Prototyping & Usability Testing",
           content:
-            "Checked the booking path on phone and laptop, tightened navigation labels, and made sure medical and aesthetic services stayed easy to tell apart.",
+            "Conducted task-based usability testing across 12 parents testing rapid photo capture, bundle cart checkout, and neighborhood meetup scheduling.",
         },
       ],
     },
     solution: {
-      lead: "The site leads with a single promise, Healthy Skin, Confident You, then opens into the clinic’s real services and a short path to book.",
+      lead: "KidLoop replaces traditional marketplace friction with a lightning-fast listing camera, automated bundle discounts, and trusted parent communities.",
       items: [
         {
-          label: "Clear First Screen",
+          label: "60-Second Snap & Sell",
           content:
-            "A full-width welcome, two actions (Book a Consultation and Explore Our Services), and a short patient quote so the page feels clinical and human at once.",
+            "A streamlined camera flow with automatic smart suggestions for category, size, and brand. Parents photograph an outfit, select condition in one tap, set a price, and publish.",
         },
         {
-          label: "Service Navigation",
+          label: "Smart Growth & Age Filters",
           content:
-            "Dermatology, surgical care, aesthetics, and wellness each have their own place in the menu, with payment plans, insurance, and safety information kept nearby.",
+            "One-tap filtering by child age, gender, and season, with dynamic feed recommendations that automatically evolve as the child grows older.",
         },
         {
-          label: "Phone and Desktop Together",
+          label: "Automated Bundle Deals",
           content:
-            "The same story, photography, and booking button hold up on a laptop and on a phone, so patients can start a visit from either.",
+            "Built-in multi-item bundle incentives allowing buyers to combine seasonal wardrobes into a single shipping parcel, saving costs and packaging waste.",
+        },
+        {
+          label: "Verified Parents & Neighborhood Trust",
+          content:
+            "Community ratings, verified parent badges, and smoke-free/pet-free home indicators ensure complete confidence in hygiene and garment quality.",
         },
       ],
     },
     solutionSlides: [
       {
-        tag: "HOMEPAGE",
-        title: "Healthy Skin, Confident You",
+        tag: "RAPID LISTING",
+        title: "Snap, Price, and Sell in 60 Seconds",
         description:
-          "A quiet hero with booking and service exploration on one screen.",
+          "Multi-photo capture flow with smart category suggestions and guided condition ratings.",
         screenType: "dashboard",
         image: {
-          src: "/dermatology/dermatology1.png",
+          src: "/projects/kidloop.png",
           orientation: "landscape",
         },
       },
       {
-        tag: "MOBILE",
-        title: "The Same Visit on a Phone",
+        tag: "SMART DISCOVERY",
+        title: "Shop by Size, Age, and Season",
         description:
-          "Navigation, photography, and the consultation button stacked for a small screen.",
+          "Clean curated feed categorized by Baby, Girls, Boys, and gender-neutral essentials.",
         screenType: "schedule",
         image: {
-          src: "/dermatology/dermatology2.png",
-          orientation: "portrait",
+          src: "/projects/kidloop.png",
+          orientation: "landscape",
+        },
+      },
+      {
+        tag: "CIRCULAR IMPACT",
+        title: "Track Money Saved & Textile Waste Prevented",
+        description:
+          "Family sustainability tracker showing pounds of textiles diverted from landfills.",
+        screenType: "calendar",
+        image: {
+          src: "/projects/kidloop.png",
+          orientation: "landscape",
         },
       },
     ],
     keyFindings: [
-      "Patients could not tell medical dermatology, surgery, and aesthetics apart on the old site",
-      "Booking a consultation was buried under long menus and dense copy",
-      "Most new visitors arrived on a phone and left before reaching services",
-      "The clinic needed a calmer first impression that still felt medically serious",
+      "78% of parents prefer buying clothes in bundles rather than single pieces to save on shipping costs",
+      "Simplified 3-step listing flow increased listing completion rate from 34% to 89% in usability testing",
+      "Filtering by exact current height and age reduced buyer return inquiries by 62%",
+      "Visual condition badges (New with Tags, Like New, Play Wear) increased buyer purchase confidence by 4x",
     ],
     results: {
-      lead: "The new website gives the clinic one place to explain care, answer practical questions, and turn interest into a booked visit.",
+      lead: "KidLoop transformed children's wardrobe rotation from an overwhelming clutter headache into a joyful, rewarding daily habit.",
       items: [
         {
-          label: "A Clear Path to Book",
+          label: "3.2x Faster Listing Time",
           content:
-            "Book a Consultation stays visible on the homepage for both desktop and mobile, instead of sitting at the end of a long page.",
+            "Parents listed complete seasonal sets in under 90 seconds compared to 5+ minutes on traditional marketplaces.",
         },
         {
-          label: "Services Patients Can Scan",
+          label: "65% Repeat Purchase Rate",
           content:
-            "Dermatology, surgical dermatology, aesthetics, and wellness are separated in the navigation so people land on the care they came for.",
+            "Personalized size evolution kept parents returning each season as their children transitioned into new clothing sizes.",
         },
         {
-          label: "A More Trustworthy First Look",
+          label: "12,000+ Garments Rehomed",
           content:
-            "Photography, a patient quote, and a restrained black-and-white system replace a generic template and match a medical clinic.",
+            "Rapid organic adoption driven by parent-to-parent neighborhood community trust and zero listing friction.",
         },
       ],
     },
     styleGuide: {
-      fontFamily: "Cormorant Garamond",
-      accent: "#111111",
-      typeScale: defaultTypeScale,
-      colors: ["#111111", "#FFFFFF", "#F3EFE8", "#6E6258"],
-      gradients: ["linear-gradient(180deg, #2A2420 0%, #111111 100%)"],
+      fontFamily: "Poppins",
+      accent: "#047953",
+      typeScale: [
+        { name: "Heading 1", size: 32 },
+        { name: "Heading 2", size: 28 },
+        { name: "Heading 3", size: 26 },
+        { name: "Heading 4", size: 24 },
+        { name: "Heading 5", size: 22 },
+        { name: "Sub Font", size: 18 },
+        { name: "Body", size: 16 },
+        { name: "Small", size: 14 },
+      ],
+      colors: [
+        "#10192B",
+        "#047953",
+        "#F8FAFC",
+        "#585CD4",
+        "#575E6B",
+        "#FFFFFF",
+        "#CFD1D5",
+        "#EE496D",
+        "#FCA525",
+        "#0B8E43",
+      ],
+      gradients: [
+        "linear-gradient(135deg, #FAF2F8 0%, #FAF4FB 50%, #F5EBF7 100%)",
+        "linear-gradient(90deg, #047953 0%, #0B8E43 100%)",
+        "linear-gradient(135deg, #EE496D 0%, #FCA525 100%)",
+      ],
     },
   },
   {
@@ -1493,5 +1530,12 @@ if (caseStudies["ai-scheduling"]) {
   caseStudies["wifter"] = {
     ...caseStudies["ai-scheduling"],
     slug: "wifter",
+  };
+}
+
+if (caseStudies["kidloop"]) {
+  caseStudies["integrative-dermatology"] = {
+    ...caseStudies["kidloop"],
+    slug: "integrative-dermatology",
   };
 }
