@@ -27,7 +27,7 @@ function isLight(hex: string) {
 
 function SectionHeading({ label }: { label: string }) {
   return (
-    <h2 className="font-Sora text-3xl sm:text-4xl font-bold tracking-[-0.03em] text-[#101116] pb-5 ">
+    <h2 className="font-Sora text-[30px] xl:text-[36px] font-bold tracking-[-0.03em] text-[#101116] pb-5 ">
       {label}
     </h2>
   );
@@ -47,11 +47,11 @@ export function StyleGuideSection({ guide }: { guide: CaseStudyStyleGuide }) {
   } as const;
 
   return (
-    <section className="mt-16 sm:mt-24 space-y-12 sm:space-y-16">
+    <section className="mt-16 md:mt-20 xl:mt-24 space-y-12 md:space-y-16">
       <motion.div {...reveal}>
         <SectionHeading label="Design System" />
 
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-[minmax(0,15rem)_1fr] gap-8 md:gap-12">
+        <div className="md:mt-10 mt-5 grid grid-cols-1 md:grid-cols-[minmax(0,15rem)_1fr] gap-8 md:gap-12">
           <div className="grid grid-cols-2 md:grid-cols-1 gap-3 content-start">
             <div className="flex items-center justify-center rounded-2xl border border-[#eceeed] bg-white px-4 py-6 shadow-[0_6px_20px_-12px_rgba(0,0,0,0.12)]">
               <span style={fontStyle} className="text-center text-lg sm:text-xl font-medium text-[#101116]">

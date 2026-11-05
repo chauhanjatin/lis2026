@@ -275,14 +275,14 @@ export function AboutCoreValues({
   return (
     <section
       ref={containerRef}
-      className="relative overflow-hidden bg-[#FAFAFA] py-20 sm:py-28 lg:py-32"
+      className="relative overflow-hidden bg-[#FAFAFA] py-16 xl:py-20 2xl:py-24"
     >
       {/* Decorative Pastel Blue Orb (Bottom Right) */}
 
       <Container className="relative z-10">
         {/* Header */}
         <ScrollReveal className="mx-auto max-w-3xl text-center" amount={0.35}>
-          <h2 className="mt-4 font-Sora text-3xl font-semibold tracking-[-0.03em] text-[#101010] sm:text-4xl md:text-6xl">
+          <h2 className="mt-4 font-Sora font-semibold tracking-[-0.03em] text-[#101010] text-3xl md:text-5xl lg:text-6xl">
             Our Core{" "}
             <span className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">
               Values

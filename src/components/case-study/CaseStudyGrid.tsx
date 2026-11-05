@@ -13,7 +13,7 @@ export function CaseStudyGrid({
   showHeader?: boolean;
 }) {
   return (
-    <section className="py-12 sm:py-16 md:py-20 bg-white">
+    <section className="py-12 md:py-14 xl:py-20 bg-white">
       <Container className="max-w-6xl">
         {showHeader && (
           <div className="mx-auto max-w-3xl text-center mb-12 sm:mb-16">

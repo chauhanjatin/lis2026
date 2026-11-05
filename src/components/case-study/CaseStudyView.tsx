@@ -54,7 +54,7 @@ export function CaseStudyView({ data }: CaseStudyViewProps) {
           <span className="text-sm sm:text-[15px] font-semibold tracking-wider text-[#606468] uppercase">
             {data.eyebrow}
           </span>
-          <h1 className="font-Sora w-full text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold tracking-[-0.035em] text-[#101116] leading-[1.08] mt-2 sm:mt-3">
+          <h1 className="font-Sora w-full text-[22px] md:text-4xl lg:text-[42px] xl:text-[52px] font-bold tracking-[-0.035em] text-[#101116] leading-[1.08] mt-2 sm:mt-3">
             {data.title}
           </h1>
         </motion.div>
@@ -123,9 +123,9 @@ export function CaseStudyView({ data }: CaseStudyViewProps) {
                 initial={reduceMotion ? false : { opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.65, delay: 0.45, ease }}
-                className="absolute inset-x-0 bottom-0 z-30 grid grid-cols-2 md:grid-cols-[1fr_1.4fr_1.4fr_0.6fr] lg:grid-cols-2 gap-x-6 gap-y-5 md:gap-x-10 lg:gap-x-6 px-6 pb-6 sm:px-10 sm:pb-8 md:px-14 md:pb-10 lg:px-8 lg:pb-8"
+                className="absolute inset-x-0 bottom-0 z-30 grid md:grid-cols-[1fr_1.4fr_1.4fr_0.6fr] lg:grid-cols-2 gap-x-2 gap-y-5 md:gap-x-4 lg:gap-x-6 px-3 md:px-6 lg:px-8 pb-5 md:pb-6 lg:pb-8"
               >
-                <div className="flex flex-col gap-2 min-w-0 border-l border-white/25 pl-3 sm:pl-4">
+                <div className="flex flex-col gap-2 min-w-0 border-l border-white/25 pl-3 md:pl-4">
                   <span className="text-xs sm:text-[13px] font-semibold tracking-[0.12em] leading-none text-white/60 uppercase">
                     Company
                   </span>
@@ -134,7 +134,7 @@ export function CaseStudyView({ data }: CaseStudyViewProps) {
                       href={data.meta.company.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex w-fit items-center gap-1 font-Sora text-[15px] sm:text-base font-semibold leading-snug text-white hover:text-white/75 transition-colors"
+                      className="inline-flex w-fit items-center gap-1 font-Sora text-[13px] md:text-[14px] lg:text-[15px] font-semibold leading-snug text-white hover:text-white/75 transition-colors"
                     >
                       <span>{data.meta.company.name}</span>
                       <ArrowUpRight
@@ -143,7 +143,7 @@ export function CaseStudyView({ data }: CaseStudyViewProps) {
                       />
                     </a>
                   ) : (
-                    <span className="font-Sora text-[15px] sm:text-base font-semibold leading-snug text-white">
+                    <span className="font-Sora text-[15px] md:text-base font-semibold leading-snug text-white">
                       {data.meta.company.name}
                     </span>
                   )}
@@ -161,7 +161,7 @@ export function CaseStudyView({ data }: CaseStudyViewProps) {
                     <span className="text-xs sm:text-[13px] font-semibold tracking-[0.12em] leading-none text-white/60 uppercase">
                       {item.label}
                     </span>
-                    <span className="font-Sora text-[15px] sm:text-base font-semibold leading-snug text-white text-pretty">
+                    <span className="font-Sora text-[13px] md:text-[14px] lg:text-[15px] font-semibold leading-snug text-white text-pretty">
                       {item.value}
                     </span>
                   </div>
@@ -197,21 +197,21 @@ export function CaseStudyView({ data }: CaseStudyViewProps) {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, ease }}
             >
-              <h2 className="font-Sora text-3xl sm:text-4xl font-bold tracking-[-0.03em] text-[#101116]">
+              <h2 className="font-Sora text-[24px] md:text-[30px] xl:text-[36px] font-bold tracking-[-0.03em] text-[#101116]">
                 Project description
               </h2>
-              <p className="mt-4 text-base sm:text-lg leading-relaxed text-[#404347] max-w-3xl">
+              <p className="md:mt-4 mt-2 text-[14px] md:text-[16px] xl:text-[18px] leading-relaxed text-[#404347] max-w-3xl">
                 {data.projectDescription.lead}
               </p>
 
-              <div className="mt-8 sm:mt-10 space-y-6 sm:space-y-8">
+              <div className="mt-8 md:mt-10 space-y-4 md:space-y-6 xl:space-y-8">
                 {data.projectDescription.items.map((item) => (
                   <div
                     key={item.label}
                     className="flex flex-col sm:flex-row lg:flex-col sm:items-start gap-2 sm:gap-10 lg:gap-2 pt-5 border-t border-[#f0f2f3]"
                   >
                     <div className="sm:w-48 lg:w-auto shrink-0">
-                      <span className="text-sm sm:text-[15px] font-semibold text-[#151618] sm:text-[#8f9194]">
+                      <span className="text-[16px] md:text-[15px] font-semibold text-[#8f9194]">
                         {item.label}
                       </span>
                     </div>
@@ -227,7 +227,7 @@ export function CaseStudyView({ data }: CaseStudyViewProps) {
           </section>
         </div>
 
-        <div className="mt-16 sm:mt-24 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-12">
+        <div className="mt-16 lg:mt-24 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-12">
           {/* Section 2: Process */}
           <section>
             <motion.div
@@ -236,21 +236,21 @@ export function CaseStudyView({ data }: CaseStudyViewProps) {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, ease }}
             >
-              <h2 className="font-Sora text-3xl sm:text-4xl font-bold tracking-[-0.03em] text-[#101116]">
+              <h2 className="font-Sora text-[30px] xl:text-[36px] font-bold tracking-[-0.03em] text-[#101116]">
                 Problem statement
               </h2>
-              <p className="mt-4 text-base sm:text-lg leading-relaxed text-[#404347] max-w-3xl">
+              <p className="mt-4 text-[14px] md:text-[16px] xl:text-[18px] leading-relaxed text-[#404347] max-w-3xl">
                 {data.process.lead}
               </p>
 
-              <div className="mt-8 sm:mt-10 space-y-6 sm:space-y-8">
+              <div className="mt-8 md:mt-10 space-y-4 md:space-y-6 xl:space-y-8">
                 {data.process.items.map((item) => (
                   <div
                     key={item.label}
                     className="flex flex-col sm:flex-row lg:flex-col sm:items-start gap-2 sm:gap-10 lg:gap-2 pt-5 border-t border-[#f0f2f3]"
                   >
                     <div className="sm:w-48 lg:w-auto shrink-0">
-                      <span className="text-sm sm:text-[15px] font-semibold text-[#151618] sm:text-[#8f9194]">
+                      <span className="text-[16px] md:text-[15px] font-semibold text-[#8f9194]">
                         {item.label}
                       </span>
                     </div>
@@ -273,21 +273,21 @@ export function CaseStudyView({ data }: CaseStudyViewProps) {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, ease }}
             >
-              <h2 className="font-Sora text-3xl sm:text-4xl font-bold tracking-[-0.03em] text-[#101116]">
+              <h2 className="font-Sora text-[30px] xl:text-[36px] font-bold tracking-[-0.03em] text-[#101116]">
                 Challenge
               </h2>
-              <p className="mt-4 text-base sm:text-lg leading-relaxed text-[#404347] max-w-3xl">
+              <p className="mt-4 text-[14px] md:text-[16px] xl:text-[18px] leading-relaxed text-[#404347] max-w-3xl">
                 {data.solution.lead}
               </p>
 
-              <div className="mt-8 sm:mt-10 space-y-6 sm:space-y-8">
+              <div className="mt-8 md:mt-10 space-y-4 md:space-y-6 xl:space-y-8">
                 {data.solution.items.map((item) => (
                   <div
                     key={item.label}
                     className="flex flex-col sm:flex-row lg:flex-col sm:items-start gap-2 sm:gap-10 lg:gap-2 pt-5 border-t border-[#f0f2f3]"
                   >
                     <div className="sm:w-48 lg:w-auto shrink-0">
-                      <span className="text-sm sm:text-[15px] font-semibold text-[#151618] sm:text-[#8f9194]">
+                      <span className="text-[16px] md:text-[15px] font-semibold text-[#8f9194]">
                         {item.label}
                       </span>
                     </div>
@@ -317,18 +317,18 @@ export function CaseStudyView({ data }: CaseStudyViewProps) {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, ease }}
           >
-            <h2 className="font-Sora text-3xl sm:text-4xl font-bold tracking-[-0.03em] text-[#101116]">
+            <h2 className="font-Sora text-[30px] xl:text-[36px] font-bold tracking-[-0.03em] text-[#101116]">
               Key Findings
             </h2>
 
-            <div className="mt-8 sm:mt-10 space-y-6 sm:space-y-8">
+            <div className="mt-8 md:mt-10 space-y-4 md:space-y-6 xl:space-y-8">
               {(data.keyFindings ?? defaultKeyFindings).map((finding, idx) => (
                 <div
                   key={finding}
-                  className="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-10 pt-5 border-t border-[#f0f2f3]"
+                  className="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-10 pt-3 md:pt-5 border-t border-[#f0f2f3]"
                 >
                   <div className="sm:w-48 lg:w-56 shrink-0">
-                    <span className="text-sm sm:text-[15px] font-semibold text-[#151618] sm:text-[#8f9194]">
+                    <span className="text-[16px] md:text-[15px] font-semibold text-[#8f9194]">
                       {String(idx + 1).padStart(2, "0")}
                     </span>
                   </div>
@@ -353,21 +353,21 @@ export function CaseStudyView({ data }: CaseStudyViewProps) {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, ease }}
           >
-            <h2 className="font-Sora text-3xl sm:text-4xl font-bold tracking-[-0.03em] text-[#101116]">
+            <h2 className="font-Sora text-[30px] xl:text-[36px] font-bold tracking-[-0.03em] text-[#101116]">
               Result
             </h2>
-            <p className="mt-4 text-base sm:text-lg leading-relaxed text-[#404347] max-w-3xl">
+            <p className="mt-4 text-[14px] md:text-[16px] xl:text-[18px] leading-relaxed text-[#404347] max-w-3xl">
               {data.results.lead}
             </p>
 
-            <div className="mt-8 sm:mt-10 space-y-6 sm:space-y-8">
+            <div className="mt-8 md:mt-10 space-y-4 md:space-y-6 xl:space-y-8">
               {data.results.items.map((item) => (
                 <div
                   key={item.label}
                   className="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-10 pt-5 border-t border-[#f0f2f3]"
                 >
                   <div className="sm:w-48 lg:w-56 shrink-0">
-                    <span className="text-sm sm:text-[15px] font-semibold text-[#151618] sm:text-[#8f9194]">
+                    <span className="text-[16px] md:text-[15px] font-semibold text-[#8f9194]">
                       {item.label}
                     </span>
                   </div>
@@ -381,7 +381,7 @@ export function CaseStudyView({ data }: CaseStudyViewProps) {
             </div>
           </motion.div>
         </section>
-      </Container>  
+      </Container>
     </article>
   );
 }

@@ -112,7 +112,7 @@ export function AboutStorySection({
   };
 
   return (
-    <section className="relative overflow-hidden bg-[#F7F8FA] py-20 sm:py-28 lg:py-32 border-t border-[#EAECEF]">
+    <section className="relative overflow-hidden bg-[#F7F8FA] py-16 xl:py-20 2xl:py-24 border-t border-[#EAECEF]">
       <Container>
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
           {/* Left Column: Portrait Card matching Image 1 */}
@@ -202,22 +202,22 @@ export function AboutStorySection({
                 {data.eyebrow}
               </p>
 
-              <h2 className="mt-4 font-Sora text-3xl font-bold tracking-[-0.035em] text-[#111827] sm:text-4xl md:text-6xl">
+              <h2 className="mt-4 font-Sora font-bold tracking-[-0.035em] text-[#111827] text-3xl md:text-5xl lg:text-6xl">
                 {data.heading}{" "}
                 <span className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] text-transparent bg-clip-text">
                   Solutions.
                 </span>
               </h2>
 
-              <p className="mt-4 text-sm leading-relaxed text-[#55585D] sm:text-base md:text-lg">
+              <p className="mt-4 leading-relaxed text-[#55585D] text-[14px] md:text-[16px] lg:text-[18px]">
                 {data.leadParagraph}
               </p>
 
               {/* Divider */}
-              <div className="my-8 h-px w-full bg-[#E2E4E8]" />
+              <div className="lg:my-8 my-6 h-px w-full bg-[#E2E4E8]" />
 
               {/* 3 Pillars List with Smooth Animation */}
-              <ScrollStagger className="space-y-6">
+              <ScrollStagger className="lg:space-y-6 space-y-3">
                 {data.pillars.map((pillar) => (
                   <ScrollItem key={pillar.id} variants={fadeUp}>
                     <motion.article

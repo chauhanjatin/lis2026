@@ -48,7 +48,7 @@ function ProcessCard({
         delay: index * 0.1,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="group relative flex flex-col justify-between rounded-2xl border border-[#ECEEF2] bg-[#FAFBFD] p-6 sm:p-7 transition-all duration-300 hover:border-[#101116]/20 hover:bg-white hover:shadow-[0_12px_32px_rgba(0,0,0,0.06)]"
+      className="group relative flex flex-col justify-between rounded-2xl border border-[#ECEEF2] bg-[#FAFBFD] p-5 xl:p-7 transition-all duration-300 hover:border-[#101116]/20 hover:bg-white hover:shadow-[0_12px_32px_rgba(0,0,0,0.06)]"
     >
       <div>
         <div className="flex items-center justify-between">
@@ -124,14 +124,14 @@ export function ServiceDetailPage({ service }: { service: ServiceDetail }) {
         </motion.div>
 
         {/* 4 Process Step Cards */}
-        <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
           {service.processSteps.map((step, index) => (
             <ProcessCard key={step.title} step={step} index={index} />
           ))}
         </div>
 
         {/* Main Content Body */}
-        <div className="mt-16 sm:mt-24 max-w-3xl mx-auto space-y-12 sm:space-y-16">
+        <div className="mt-16 md:mt-20 xl:mt-24 max-w-3xl mx-auto space-y-12 xl:space-y-16">
           {/* About The Service */}
           <motion.section
             initial={reduceMotion ? false : { opacity: 0, y: 20 }}

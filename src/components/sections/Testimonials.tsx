@@ -158,7 +158,7 @@ export function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="relative overflow-hidden bg-white py-20 sm:py-28 lg:py-36 border-t border-[#EAECEF]"
+      className="relative overflow-hidden bg-white py-16 md:py-28 lg:py-36 border-t border-[#EAECEF]"
     >
       <Container className="max-w-[1360px]">
         <ScrollReveal amount={0.3}>

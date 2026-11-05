@@ -51,41 +51,42 @@ export function ContactSection() {
       message: String(data.get("message") ?? "").trim(),
     };
 
+    if (String(data.get("_gotcha") ?? "").trim()) {
+      form.reset();
+      setError("");
+      setStatus("sent");
+      return;
+    }
+
     setStatus("sending");
     setError("");
 
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+    const endpoint = basePath ? `${basePath}/contact.php` : "/api/contact/";
+
     try {
-      const response = await fetch("https://formsubmit.co/ajax/lisharsh2002@gmail.com", {
+      const response = await fetch(endpoint, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify({
-          "First Name": payload.firstName,
-          "Last Name": payload.lastName,
-          Email: payload.email,
-          Phone: payload.phone || "Not provided",
-          Message: payload.message,
-          _replyto: payload.email,
-          _subject: `New contact from ${payload.firstName} ${payload.lastName}`,
-          _template: "table",
-          _captcha: "false",
-        }),
+        body: JSON.stringify({ ...payload, _gotcha: "" }),
       });
       const result = (await response.json().catch(() => null)) as {
-        success?: boolean | string;
-        message?: string;
+        ok?: boolean;
+        error?: string;
       } | null;
-      const delivered = result?.success === true || result?.success === "true";
-      if (!response.ok || !delivered) {
-        throw new Error(result?.message || "Could not send your message.");
+      if (result?.ok === true) {
+        form.reset();
+        setStatus("sent");
+        return;
       }
-      form.reset();
-      setStatus("sent");
-    } catch (err) {
       setStatus("error");
-      setError(err instanceof Error ? err.message : "Could not send your message.");
+      setError(result?.error || "Could not send your message. Please try again.");
+    } catch {
+      setStatus("error");
+      setError("Could not send your message. Please try again.");
     }
   }
 
@@ -102,13 +103,13 @@ export function ContactSection() {
               Contact
             </p>
 
-            <h1 className="mt-7 font-Sora text-[clamp(2.5rem,5vw,4.25rem)] font-semibold  leading-[0.98] tracking-[-0.04em] text-[#151618] sm:text-4xl md:text-6xl">
+            <h1 className="xl:mt-7 mt-5 font-Sora text-[clamp(2.5rem,5vw,4.25rem)] font-semibold leading-[0.98] tracking-[-0.04em] text-[#151618] md:text-5xl xl:text-6xl">
               Let&apos;s work
               <br />
               <GradientText>together.</GradientText>
             </h1>
 
-            <p className="mt-6 max-w-md text-base leading-relaxed text-[#606468]">
+            <p className="xl:mt-6 mt-4 max-w-md text-base leading-relaxed text-[#606468]">
               Let&apos;s craft intuitive, beautiful, and results-driven user
               experiences together.
             </p>
@@ -129,7 +130,7 @@ export function ContactSection() {
             </ul>
 
             <div
-              className="mt-10 flex items-center gap-3"
+              className="xl:mt-10 mt-8 flex items-center gap-3"
               aria-label="Social links"
             >
               {socialLinks.map(({ label, icon: Icon, href }) => (
@@ -146,7 +147,7 @@ export function ContactSection() {
               ))}
             </div>
 
-            <div className="relative mt-10 self-stretch min-h-[240px] sm:min-h-[280px] lg:min-h-[220px] flex-1 overflow-hidden rounded-[1.75rem] border border-black/5 bg-[#ececee] shadow-[0_16px_48px_rgba(12,14,18,0.06)]">
+            <div className="relative xl:mt-10 mt-8 self-stretch min-h-[240px] sm:min-h-[280px] lg:min-h-[220px] flex-1 overflow-hidden rounded-[1.75rem] border border-black/5 bg-[#ececee] shadow-[0_16px_48px_rgba(12,14,18,0.06)]">
               <iframe
                 title="Office location on Google Maps"
                 src={mapEmbedUrl}
@@ -158,8 +159,17 @@ export function ContactSection() {
             </div>
           </div>
 
-          <div className="flex flex-col rounded-[1.75rem] bg-white p-6 shadow-[0_16px_48px_rgba(12,14,18,0.06)] sm:p-8 lg:p-10">
+          <div className="flex flex-col rounded-[1.75rem] bg-white shadow-[0_16px_48px_rgba(12,14,18,0.06)] p-5 md:p-8 xl:p-10">
             <form className="contact-form flex flex-1 flex-col" onSubmit={handleSubmit}>
+              <input
+                type="text"
+                name="_gotcha"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="hidden"
+                defaultValue=""
+              />
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
                   <label htmlFor="contact-first-name" className="contact-label block mb-2">
@@ -241,11 +251,10 @@ export function ContactSection() {
               {/* Accessible Live Region for Form Status */}
               <div role="status" aria-live="polite" className="sr-only">
                 {status === "sending" && "Sending your message..."}
-                {status === "sent" && "Thank you! Your message has been sent successfully."}
               </div>
 
               {status === "sent" && (
-                <div role="status" className="mt-5 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm font-medium text-emerald-800">
+                <div role="status" aria-live="polite" className="mt-5 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm font-medium text-emerald-800">
                   ✓ Thank you! Your message has been sent successfully. We will get in touch shortly.
                 </div>
               )}

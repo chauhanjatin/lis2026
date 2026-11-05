@@ -15,7 +15,7 @@ export function AboutValuesSection({
   values?: AboutValue[];
 }) {
   return (
-    <section className="bg-white py-20 sm:py-24 lg:py-28">
+    <section className="bg-white py-18 md:py-24 lg:py-28">
       <Container>
         <ScrollReveal className="mx-auto max-w-3xl text-center" amount={0.35}>
           <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#202224]">

@@ -59,7 +59,7 @@ export function PortfolioSection() {
   return (
     <section className="portfolio-section pb-16 md:pb-24">
       <Container className="relative z-[1]">
-        <div className="flex justify-center items-center mt-10 sm:mt-12 md:mt-14">
+        <div className="flex justify-center items-center mt-8 md:mt-10 lg:mt-12 xl:mt-14">
           <motion.div
             initial={reduceMotion ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -78,7 +78,7 @@ export function PortfolioSection() {
                   aria-selected={isActive}
                   onClick={() => setActiveFilter(filter.id)}
                   className={cn(
-                    "relative inline-flex items-center justify-center rounded-full px-5 py-2 sm:px-6 sm:py-2.5 text-xs sm:text-sm font-medium tracking-tight transition-all duration-200 select-none outline-none focus-visible:ring-2 focus-visible:ring-[#0D4FB8]/50 active:scale-95",
+                    "relative inline-flex items-center justify-center rounded-full px-5 py-2 md:px-6 md:py-2.5 text-xs sm:text-sm font-medium tracking-tight transition-all duration-200 select-none outline-none focus-visible:ring-2 focus-visible:ring-[#0D4FB8]/50 active:scale-95",
                     isActive
                       ? "text-white font-semibold shadow-md shadow-[#0D4FB8]/25 border border-transparent"
                       : "border border-[#E5E7EB] bg-[#FAFBFD] text-[#606468] hover:border-[#101116]/30 hover:text-[#101116] hover:bg-white shadow-sm",
@@ -105,7 +105,7 @@ export function PortfolioSection() {
         <ul
           key={activeFilter}
           role="tabpanel"
-          className="mt-12 grid gap-5 sm:gap-6 md:grid-cols-2 lg:mt-16 lg:gap-8"
+          className="mt-10 md:mt-12 lg:mt-16 grid gap-5 sm:gap-6 md:grid-cols-2 lg:gap-8"
         >
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project, index) => (

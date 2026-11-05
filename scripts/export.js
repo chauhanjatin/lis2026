@@ -15,6 +15,20 @@ const path = require("path");
 const ROOT_DIR = path.resolve(__dirname, "..");
 const OUT_DIR = path.join(ROOT_DIR, "out");
 const PUBLIC_DIR = path.join(ROOT_DIR, "public");
+const API_DIR = path.join(ROOT_DIR, "src", "app", "api");
+const API_HOLD = path.join(ROOT_DIR, ".contact-api-hold");
+
+// Static export cannot run the localhost mail route, which reads the request.
+function parkApiRoute() {
+  if (!fs.existsSync(API_DIR)) return;
+  if (fs.existsSync(API_HOLD)) fs.rmSync(API_HOLD, { recursive: true, force: true });
+  fs.renameSync(API_DIR, API_HOLD);
+}
+
+function restoreApiRoute() {
+  if (!fs.existsSync(API_HOLD)) return;
+  if (!fs.existsSync(API_DIR)) fs.renameSync(API_HOLD, API_DIR);
+}
 
 console.log("🚀 Building Next.js Static Export for cPanel...");
 console.log("📍 Base Path: /projects/newlis2026");
@@ -27,16 +41,22 @@ if (fs.existsSync(OUT_DIR)) {
 }
 
 const npxCmd = process.platform === "win32" ? "npx.cmd" : "npx";
-const result = spawnSync(npxCmd, ["next", "build"], {
-  cwd: ROOT_DIR,
-  stdio: "inherit",
-  shell: true,
-  env: process.env,
-});
+parkApiRoute();
+let result;
+try {
+  result = spawnSync(npxCmd, ["next", "build"], {
+    cwd: ROOT_DIR,
+    stdio: "inherit",
+    shell: true,
+    env: process.env,
+  });
+} finally {
+  restoreApiRoute();
+}
 
-if (result.status !== 0) {
-  console.error("\n❌ Build failed with exit code:", result.status);
-  process.exit(result.status ?? 1);
+if (!result || result.status !== 0) {
+  console.error("\n❌ Build failed with exit code:", result?.status);
+  process.exit(result?.status ?? 1);
 }
 
 // Ensure .htaccess is in out/

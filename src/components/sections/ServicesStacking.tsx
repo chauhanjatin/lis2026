@@ -134,7 +134,7 @@ export function ServicesStacking({
   return (
     <section
       id="services-stacking"
-      className="relative bg-[#F8F9FB] text-[#101116] py-16 sm:py-24 lg:py-28 min-h-screen"
+      className="relative bg-[#F8F9FB] text-[#101116] py-20 sm:py-24 lg:py-28 min-h-screen"
     >
       <Container className="max-w-6xl">
         {/* Optional Section Header */}
@@ -144,7 +144,7 @@ export function ServicesStacking({
               <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5]" />
               Our Services
             </span>
-            <h1 className="font-Sora text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.035em] text-[#101116] mt-3">
+            <h1 className="font-Sora text-3xl text-3xl md:text-5xl lg:text-6xl font-bold tracking-[-0.035em] text-[#101116] mt-3">
               Crafted for impact and{" "}
               <span className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">
                 growth.

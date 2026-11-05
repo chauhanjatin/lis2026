@@ -94,14 +94,14 @@ export function AboutStatsSection({
   stats?: AboutStat[];
 }) {
   return (
-    <section className="bg-white py-16 sm:py-20 lg:py-24">
+    <section className="bg-white py-16 lg:py-20 2xl:py-24">
       <Container>
         <ScrollReveal className="mx-auto max-w-3xl text-center" amount={0.35}>
           <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#202224]">
             <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5]" />
             Proven Track Record
           </p>
-          <h2 className="mt-4 font-Sora text-3xl font-semibold tracking-[-0.03em] text-[#101010] sm:text-4xl md:text-6xl">
+          <h2 className="mt-4 font-Sora font-semibold tracking-[-0.03em] text-[#101010] text-3xl md:text-5xl lg:text-[50px] xl:text-6xl">
             Numbers that validate our{" "}
             <span className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">
               craft.
@@ -109,7 +109,7 @@ export function AboutStatsSection({
           </h2>
         </ScrollReveal>
 
-        <ScrollStagger className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+        <ScrollStagger className="md:mt-12 mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {stats.map((stat) => (
             <StatCard key={stat.label} {...stat} />
           ))}

@@ -27,19 +27,19 @@ type ProjectShowcaseItem = {
 
 const projects: ProjectShowcaseItem[] = [
   {
-    title: "UniqLearn",
-    alt: "UniqLearn education dashboard – teacher analytics web app UI/UX design case study",
-    image: "/uniqlearn/uniqlearn.png",
-    figmaUrl: "https://www.figma.com/design/uniqlearn",
-    caseStudyUrl: "/work/uniqlearn",
-  },
-  {
     title: "KidLoop",
     alt: "KidLoop kids clothing marketplace mobile app UI/UX design case study",
     image: "/projects/kidloop.png",
     figmaUrl:
       "https://www.figma.com/proto/cfryUDmCQEQcL1pC3XkgW5/KidLoop---Children-s-clothing?node-id=161-11666&viewport=-8893%2C216%2C0.46&t=sZai0b6E09Yf1weU-1&scaling=scale-down&content-scaling=fixed&page-id=161%3A11084",
     caseStudyUrl: "/work/kidloop",
+  },
+  {
+    title: "UniqLearn",
+    alt: "UniqLearn education dashboard – teacher analytics web app UI/UX design case study",
+    image: "/uniqlearn/uniqlearn.png",
+    figmaUrl: "https://www.figma.com/design/uniqlearn",
+    caseStudyUrl: "/work/uniqlearn",
   },
   {
     title: "LearnBud AI",
@@ -182,7 +182,8 @@ export function ProjectShowcase() {
                     <a
                       href={project.caseStudyUrl}
                       aria-label={`View ${project.title} case study`}
-                      className="showcase-art group/art block relative overflow-hidden focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#0D4FB8] rounded-[1.35rem]">
+                      className="showcase-art group/art block relative overflow-hidden focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#0D4FB8] rounded-[1.35rem]"
+                    >
                       <Image
                         src={project.image}
                         alt={project.alt}
@@ -235,7 +236,7 @@ export function ProjectShowcase() {
                             className="text-[#145a7a] opacity-50 transition-opacity group-hover/link:opacity-100"
                           />
                         </a>
-                        
+
                         {project.websiteUrl ? (
                           <a
                             href={project.websiteUrl}
@@ -258,7 +259,6 @@ export function ProjectShowcase() {
                         ) : null}
                       </div>
                     </div>
-                    
                   </article>
                 </div>
               ))}
@@ -272,16 +272,19 @@ export function ProjectShowcase() {
         <div
           ref={mobileScrollRef}
           onScroll={handleMobileScroll}
-          className="flex gap-4 overflow-x-auto pb-4 pt-1 snap-x snap-mandatory scrollbar-none px-4 sm:px-6">
+          className="flex gap-4 overflow-x-auto pb-4 pt-1 snap-x snap-mandatory scrollbar-none px-4 sm:px-6"
+        >
           {projects.map((project, index) => (
             <div
               key={project.title}
-              className="w-[85vw] max-w-[380px] shrink-0 snap-center">
+              className="w-[85vw] max-w-[380px] shrink-0 snap-center"
+            >
               <article className="group flex flex-col rounded-2xl bg-[#cbc9c93d] p-3.5 sm:p-4 shadow-sm border border-black/5 transition-all">
                 <a
                   href={project.caseStudyUrl}
                   aria-label={`View ${project.title} case study`}
-                  className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#e4e4e4] group/mobileArt block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0D4FB8]">
+                  className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#e4e4e4] group/mobileArt block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0D4FB8]"
+                >
                   <Image
                     src={project.image}
                     alt={project.alt}
@@ -292,7 +295,10 @@ export function ProjectShowcase() {
                   />
 
                   {/* Top-Right Arrow Indicator on Mobile */}
-                  <div className="absolute top-3 right-3 z-10 size-9 rounded-full bg-white/95 text-[#0c0d10] border border-white/40 grid place-items-center shadow-lg" aria-hidden="true">
+                  <div
+                    className="absolute top-3 right-3 z-10 size-9 rounded-full bg-white/95 text-[#0c0d10] border border-white/40 grid place-items-center shadow-lg"
+                    aria-hidden="true"
+                  >
                     <ArrowUpRight size={15} strokeWidth={2.4} />
                   </div>
                 </a>
@@ -383,14 +389,14 @@ export function ProjectShowcase() {
               <ArrowRight size={14} strokeWidth={2.2} />
             </button>
           </div>
-
         </div>
       </div>
 
       <Container className="px-4 sm:px-6 mt-8 flex justify-center md:hidden">
         <Link
           href="/projects"
-          className="group inline-flex items-center gap-3 rounded-full bg-[#101116] py-2.5 pl-6 pr-2.5 text-sm sm:text-[15px] font-semibold text-white shadow-[0_12px_30px_-10px_rgba(16,17,22,0.45)] transition-transform hover:scale-[1.03] active:scale-[0.98]">
+          className="group inline-flex items-center gap-3 rounded-full bg-[#101116] py-2.5 pl-6 pr-2.5 text-sm sm:text-[15px] font-semibold text-white shadow-[0_12px_30px_-10px_rgba(16,17,22,0.45)] transition-transform hover:scale-[1.03] active:scale-[0.98]"
+        >
           View All Projects
           <span className="inline-grid size-8 place-items-center rounded-full bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] text-white">
             <ArrowUpRight
@@ -401,7 +407,6 @@ export function ProjectShowcase() {
           </span>
         </Link>
       </Container>
-
     </section>
   );
 }
