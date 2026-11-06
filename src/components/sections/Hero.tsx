@@ -302,7 +302,7 @@ export function Hero() {
           </motion.p>
         </div>
 
-        <div ref={marqueeRef} className="relative mt-20 lg:mt-36">
+        <div ref={marqueeRef} className="relative mt-20 lg:mt-22">
           <div className="diwali-banner" aria-hidden="true">
             <Image
               src="/diwali-banner.png"
