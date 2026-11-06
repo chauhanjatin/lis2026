@@ -15,8 +15,8 @@ export type Project = {
 
 export const portfolioFilters: { id: PortfolioFilter; label: string }[] = [
   { id: "all", label: "All" },
-  { id: "ui-ux", label: "UI/UX" },
-  { id: "web-design", label: "Web Design" },
+  { id: "ui-ux", label: "UI/UX Design" },
+  { id: "web-design", label: "Web Development" },
 ];
 
 export const projects: Project[] = [

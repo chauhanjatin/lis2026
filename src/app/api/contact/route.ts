@@ -4,7 +4,7 @@ import nodemailer from "nodemailer";
 
 export const runtime = "nodejs";
 
-const RECIPIENT = "libertyinfoscience@gmail.com";
+const RECIPIENT = "info@libertyinfoscience.com";
 
 function envValue(name: string) {
   const fromProcess = process.env[name]?.trim();
@@ -59,13 +59,13 @@ export async function POST(request: Request) {
   }
 
   const user = envValue("GMAIL_USER") || RECIPIENT;
-  const pass = envValue("GMAIL_APP_PASSWORD");
+  const pass = (envValue("GMAIL_APP_PASSWORD") || "").replace(/\s+/g, "");
   if (!pass) {
     return Response.json(
       {
         ok: false,
         error:
-          "Local email is not configured. Add GMAIL_APP_PASSWORD for libertyinfoscience@gmail.com to .env.local.",
+          "Local email is not configured. Add the mailbox password for info@libertyinfoscience.com to .env.local.",
       },
       { status: 500 },
     );
@@ -73,9 +73,9 @@ export async function POST(request: Request) {
 
   try {
     const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 465,
-      secure: true,
+      host: envValue("SMTP_HOST") || "mail.libertyinfoscience.com",
+      port: Number(envValue("SMTP_PORT") || 465),
+      secure: (envValue("SMTP_PORT") || "465") !== "587",
       auth: { user, pass },
     });
 
@@ -93,9 +93,17 @@ export async function POST(request: Request) {
         message,
       ].join("\n"),
     });
-  } catch {
+  } catch (error) {
+    const response = error instanceof Error ? error.message : "";
+    const rejected = /535|auth|invalid login|incorrect authentication/i.test(response);
+    console.error("Contact mail failed:", response.slice(0, 300));
     return Response.json(
-      { ok: false, error: "Could not send your message. Please try again." },
+      {
+        ok: false,
+        error: rejected
+          ? "The mailbox password was rejected. Update GMAIL_APP_PASSWORD in .env.local and try again."
+          : "Could not send your message. Please try again.",
+      },
       { status: 500 },
     );
   }

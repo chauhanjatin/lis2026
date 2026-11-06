@@ -45,8 +45,12 @@ function ServiceCard({
     >
       <motion.article
         style={reduceMotion ? undefined : { scale }}
-        className="group relative overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] bg-white p-6 sm:p-9 md:p-12 text-[#101116] shadow-[0_20px_50px_rgba(0,0,0,0.08),0_2px_8px_rgba(0,0,0,0.04)] border border-[#E5E7EB] transition-all duration-300"
+        className="group relative overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] bg-white text-[#101116] shadow-[0_20px_50px_rgba(0,0,0,0.08),0_2px_8px_rgba(0,0,0,0.04)] border border-[#E5E7EB] transition-all duration-300"
       >
+        <Link
+          href={service.ctaHref || "/services"}
+          className="block p-6 sm:p-9 md:p-12 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0D4FB8] focus-visible:ring-inset"
+        >
         {/* Top Header Row */}
         <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-6 md:gap-8 pb-6 sm:pb-8 border-b border-[#F0F1F3]">
           {/* Large Number */}
@@ -107,20 +111,17 @@ function ServiceCard({
             </p>
 
             <div>
-              <Link
-                href={service.ctaHref || "/contact"}
-                className="group/btn inline-flex items-center gap-1.5 font-Sora text-sm sm:text-base font-bold text-[#101116] transition-colors hover:text-[#0D4FB8]"
-              >
-                <span>{service.ctaText || "Get This Now"}</span>
+              <span className="inline-flex items-center gap-1.5 font-Sora text-sm sm:text-base font-bold text-[#101116] transition-colors group-hover:text-[#0D4FB8]">
+                <span>{service.ctaText || "Read More"}</span>
                 <ArrowUpRight
                   size={18}
-                  className="stroke-[2.5] transition-transform duration-200 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5"
+                  className="stroke-[2.5] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 />
-              </Link>
+              </span>
             </div>
           </div>
-          
         </div>
+        </Link>
       </motion.article>
     </div>
   );
@@ -151,8 +152,8 @@ export function ServicesStacking({
               </span>
             </h1>
             <p className="mt-4 text-sm sm:text-base text-[#606468] max-w-xl mx-auto leading-relaxed">
-              From mobile design to high-converting websites and scalable
-              software architecture, we engineer intuitive digital experiences.
+              UI/UX design, web development, mobile apps, and business services
+              built to help your product grow.
             </p>
           </div>
         )}

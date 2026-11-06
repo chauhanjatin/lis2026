@@ -3,6 +3,10 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import {
+  signalLoaderFinished,
+  signalLoaderShown,
+} from "@/lib/pageLoaderSignal";
 
 const INITIAL_MIN_VISIBLE_MS = 380;
 const ROUTE_MIN_VISIBLE_MS = 280;
@@ -48,6 +52,7 @@ export function PageLoader() {
 
       timers.current.push(
         setTimeout(() => {
+          signalLoaderFinished();
           setPhase("hiding");
           timers.current.push(
             setTimeout(() => {
@@ -62,6 +67,7 @@ export function PageLoader() {
 
   const show = useCallback(() => {
     clearTimers();
+    signalLoaderShown();
     shownAt.current = performance.now();
     setPhase("shown");
     // Hard safety timeout: unconditionally hide after MAX_SAFETY_MS

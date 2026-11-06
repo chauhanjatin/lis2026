@@ -60,7 +60,7 @@ export function CaseStudyCard({
             <span className="block text-[11px] sm:text-xs font-semibold tracking-wider text-[#8F9194] uppercase">
               {study.cardCategory}
             </span>
-            <h3 className="font-Sora text-lg sm:text-xl font-semibold leading-snug tracking-[-0.025em] text-[#101116] mt-2.5 transition-colors group-hover:text-[#0D4FB8]">
+            <h3 className="mt-2.5 bg-gradient-to-r from-[#101116] to-[#101116] bg-clip-text font-Sora text-lg font-semibold leading-snug tracking-[-0.025em] text-transparent transition-[background-image] duration-300 group-hover:from-[#0D4FB8] group-hover:to-[#42BFA5] sm:text-xl">
               {study.cardTitle}
             </h3>
           </div>

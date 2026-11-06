@@ -464,6 +464,14 @@ export const caseStudiesList: CaseStudyItem[] = [
       "Design System",
       "User Research",
     ],
+    gallery: {
+      images: [
+        "/kidloop/kidloop.png",
+        ...Array.from({ length: 15 }, (_, i) => `/kidloop/kidloop${i + 2}.png`),
+      ],
+      width: 322,
+      height: 650,
+    },
     eyebrow: "CIRCULAR FASHION & SUSTAINABLE E-COMMERCE",
     title: "KidLoop: Good Clothes Deserve a Second Life",
     meta: {

@@ -134,13 +134,6 @@ export function PortfolioSection() {
                       decoding="async"
                       className="pointer-events-none absolute inset-0 z-[1] h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
                     />
-                    {project.caseStudyUrl ? (
-                      <Link
-                        href={project.caseStudyUrl}
-                        className="absolute inset-0 z-[3]"
-                        aria-label={`View ${project.title} case study`}
-                      />
-                    ) : null}
                     <div
                       aria-hidden="true"
                       className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-2/5 bg-gradient-to-t from-black/75 to-transparent"

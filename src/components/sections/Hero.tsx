@@ -10,6 +10,10 @@ import {
   useTransform,
 } from "framer-motion";
 import { Container } from "@/components/ui/Container";
+import {
+  isLoaderFinished,
+  subscribeLoaderFinished,
+} from "@/lib/pageLoaderSignal";
 import { fadeUp } from "@/components/ui/ScrollReveal";
 import {
   DiwaliDecor,
@@ -100,10 +104,12 @@ function BlurLetters({
   text,
   className,
   startIndex = 0,
+  play,
 }: {
   text: string;
   className?: string;
   startIndex?: number;
+  play: boolean;
 }) {
   return (
     <>
@@ -111,10 +117,14 @@ function BlurLetters({
         <motion.span
           key={`${startIndex + index}-${char}`}
           initial={{ opacity: 0, filter: "blur(16px)", x: -22 }}
-          animate={{ opacity: 1, filter: "blur(0px)", x: 0 }}
+          animate={
+            play
+              ? { opacity: 1, filter: "blur(0px)", x: 0 }
+              : { opacity: 0, filter: "blur(16px)", x: -22 }
+          }
           transition={{
             duration: 0.7,
-            delay: 0.12 + (startIndex + index) * 0.032,
+            delay: play ? 0.12 + (startIndex + index) * 0.032 : 0,
             ease,
           }}
           className={`inline-block will-change-[filter,opacity,transform] ${
@@ -178,10 +188,19 @@ export function Hero() {
   const marqueeRef = useRef<HTMLDivElement>(null);
   const [isInView, setIsInView] = useState(true);
   const [toranReady, setToranReady] = useState(false);
+  const [textReady, setTextReady] = useState(false);
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     setToranReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (isLoaderFinished()) {
+      setTextReady(true);
+      return;
+    }
+    return subscribeLoaderFinished(() => setTextReady(true));
   }, []);
 
   // Pause marquee animations when hero is scrolled out of viewport
@@ -255,37 +274,38 @@ export function Hero() {
               </>
             ) : (
               <>
-                <BlurLetters text="Transforming Ideas" startIndex={0} />
+                <BlurLetters text="Transforming Ideas" startIndex={0} play={textReady} />
                 <br />
-                <BlurLetters text="Into " startIndex={18} />
+                <BlurLetters text="Into " startIndex={18} play={textReady} />
                 <BlurLetters
                   text="Powerful Digital"
                   startIndex={23}
                   className="text-[#3391B1]"
+                  play={textReady}
                 />
                 <br />
-                <BlurLetters text="Experiences" startIndex={39} />
+                <BlurLetters text="Experiences" startIndex={39} play={textReady} />
               </>
             )}
           </h1>
 
-          {/* <motion.p
+          <motion.p
             variants={fadeUp}
             initial={reduceMotion ? false : "hidden"}
-            animate="visible"
-            transition={{ duration: 0.75, ease }}
+            animate={reduceMotion || textReady ? "visible" : "hidden"}
+            transition={{ duration: 0.75, delay: textReady && !reduceMotion ? 0.4 : 0, ease }}
             className="mx-auto mt-8 max-w-3xl text-pretty text-base leading-relaxed text-muted md:text-lg"
           >
             We help businesses grow with modern websites, intuitive UI/UX
             design, scalable software solutions, and strategic digital
             innovation tailored for the future.
-          </motion.p> */}
+          </motion.p>
         </div>
 
         <div ref={marqueeRef} className="relative mt-20 lg:mt-36">
           <div className="diwali-banner" aria-hidden="true">
             <Image
-              src="/diwali-banner2.png"
+              src="/diwali-banner.png"
               alt=""
               width={2172}
               height={724}

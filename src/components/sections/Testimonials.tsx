@@ -71,14 +71,6 @@ function RatingSummaryCard() {
           </div>
         </div>
       </div>
-
-      <Link
-        href={ratingSummary.buttonHref}
-        aria-label="Leave a review for Liberty Info Science"
-        className="mt-6 flex w-full items-center justify-center rounded-xl bg-[#111827] px-4 py-2.5 text-center text-xs font-semibold text-white transition-all duration-200 hover:bg-[#0D4FB8] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0D4FB8] active:scale-[0.98]"
-      >
-        {ratingSummary.buttonText}
-      </Link>
     </div>
   );
 }
@@ -126,9 +118,6 @@ function MetricsRow() {
             {metric1.label}
           </p>
         </div>
-        <p className="mt-5 flex items-center gap-1.5 text-[11px] font-semibold text-white/85">
-          <span aria-hidden="true">{metric1.icon}</span> {metric1.brand}
-        </p>
       </div>
 
       {/* Metric 2: Dark Contrast Card */}
@@ -141,9 +130,6 @@ function MetricsRow() {
             {metric2.label}
           </p>
         </div>
-        <p className="mt-5 flex items-center gap-1.5 text-[11px] font-semibold text-white/75">
-          <span aria-hidden="true">{metric2.icon}</span> {metric2.brand}
-        </p>
       </div>
     </div>
   );

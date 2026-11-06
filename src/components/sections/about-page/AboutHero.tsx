@@ -94,7 +94,7 @@ export function AboutHero({
                 {partners.map((partner, index) => (
                   <div
                     key={`partner-a-${partner.src}-${index}`}
-                    className="flex shrink-0 items-center justify-center grayscale opacity-60 transition-all duration-300 hover:grayscale-0 hover:opacity-100 hover:scale-105"
+                    className="flex shrink-0 items-center justify-center grayscale opacity-90 transition-all duration-300 hover:grayscale-0 hover:opacity-100 hover:scale-105"
                   >
                     <Image
                       src={partner.src}
@@ -114,7 +114,7 @@ export function AboutHero({
                 {partners.map((partner, index) => (
                   <div
                     key={`partner-b-${partner.src}-${index}`}
-                    className="flex shrink-0 items-center justify-center grayscale opacity-60 transition-all duration-300 hover:grayscale-0 hover:opacity-100 hover:scale-105">
+                    className="flex shrink-0 items-center justify-center grayscale opacity-90 transition-all duration-300 hover:grayscale-0 hover:opacity-100 hover:scale-105">
                     <Image
                       src={partner.src}
                       alt=""

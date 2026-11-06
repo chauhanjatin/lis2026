@@ -36,13 +36,13 @@ export function Footer() {
               <Image
                 src="/lis-logo.svg"
                 alt="Liberty Info Science (LIS) logo"
-                width={151}
+                width={152}
                 height={51}
                 priority
               />
             </Link>
             <p className="studio-footer-tagline">
-              Pioneering digital experiences through cutting-edge strategy, design, and engineering.
+            Transforming Ideas Into Powerful Digital Experiences
             </p>
             <div className="studio-footer-socials" role="group" aria-label="Social media profiles">
               {socialLinks.map(({ label, href, icon: Icon }) => (
@@ -95,7 +95,7 @@ export function Footer() {
         </ScrollStagger>
 
         <ScrollReveal className="studio-footer-bottom" delay={0.15}>
-          <p>© {new Date().getFullYear()} Liberty Info Science. All Rights Reserved.</p>
+          <p>© {new Date().getFullYear()} LIS. All Rights Reserved.</p>
           <p className="studio-footer-credit">Designed & Engineered with Precision.</p>
         </ScrollReveal>
 

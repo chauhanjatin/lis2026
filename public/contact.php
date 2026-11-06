@@ -52,7 +52,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
-$to = "libertyinfoscience@gmail.com";
+$to = "info@libertyinfoscience.com";
 $subject = "=?UTF-8?B?" . base64_encode("New contact from {$firstName} {$lastName}") . "?=";
 $body = "First name: {$firstName}\n"
     . "Last name: {$lastName}\n"

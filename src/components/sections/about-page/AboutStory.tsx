@@ -13,6 +13,7 @@ import {
   fadeUp,
 } from "@/components/ui/ScrollReveal";
 import { aboutStoryData, type AboutStory } from "@/data/about";
+import Link from "next/link";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -73,7 +74,8 @@ export function AboutStorySection({
 
   const rawVideoSrc = data.video?.src || "/about.mp4";
   const videoSrc =
-    rawVideoSrc.startsWith("http") || (basePath && rawVideoSrc.startsWith(basePath))
+    rawVideoSrc.startsWith("http") ||
+    (basePath && rawVideoSrc.startsWith(basePath))
       ? rawVideoSrc
       : `${basePath}${rawVideoSrc.startsWith("/") ? rawVideoSrc : `/${rawVideoSrc}`}`;
 
@@ -140,7 +142,9 @@ export function AboutStorySection({
                   <button
                     type="button"
                     onClick={togglePlay}
-                    aria-label={isPlaying ? "Pause ambient video" : "Play ambient video"}
+                    aria-label={
+                      isPlaying ? "Pause ambient video" : "Play ambient video"
+                    }
                     className="absolute top-4 right-4 z-30 flex size-9 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-md border border-white/20 transition-all hover:bg-black/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                   >
                     {isPlaying ? (
@@ -157,15 +161,17 @@ export function AboutStorySection({
                   />
 
                   {/* Rotating Circular Badge (Bottom Right of Media) */}
-                  <div className="absolute bottom-4 right-4 z-20 sm:bottom-5 sm:right-5">
-                    <RotatingBadge
-                      text={
-                        data.video?.badgeText ||
-                        data.image?.badgeText ||
-                        "INNOVATION • QUALITY • TRUST • "
-                      }
-                    />
-                  </div>
+                  <Link href="https://www.upwork.com/freelancers/~01cb92ef9759e9d2a7" target="_blank">
+                    <div className="absolute bottom-4 right-4 z-20 sm:bottom-5 sm:right-5">
+                      <RotatingBadge
+                        text={
+                          data.video?.badgeText ||
+                          data.image?.badgeText ||
+                          "INNOVATION • QUALITY • TRUST • "
+                        }
+                      />
+                    </div>
+                  </Link>
 
                   {/* Frosted Social Action Buttons (Bottom Left of Image) */}
                   <div className="absolute bottom-5 left-4 z-20 flex items-center gap-2 sm:bottom-6 sm:left-6 sm:gap-2.5">
