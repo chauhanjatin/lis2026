@@ -3,6 +3,8 @@ import { Suspense } from "react";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
 import { SkipLink } from "@/components/ui/SkipLink";
 import { PageLoader } from "@/components/ui/PageLoader";
+import SplashCursor from "@/components/ui/SplashCursor";
+import { CursorDot } from "@/components/ui/CursorDot";
 import { SITE_URL, siteMetadata, organizationJsonLd } from "@/lib/seo";
 import { fontVariables } from "./fonts";
 import "lenis/dist/lenis.css";
@@ -68,7 +70,9 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
   },
 };
 
@@ -88,6 +92,8 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased">
+        <SplashCursor colors={["#0d4fb8", "#1a6fd4", "#0a3d8f"]} rainbow={false} size={1} force={1} swirl={3} trail={1} clickSplash />
+        <CursorDot />
         <Suspense fallback={null}>
           <PageLoader />
         </Suspense>

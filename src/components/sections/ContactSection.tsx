@@ -1,34 +1,52 @@
 "use client";
 
 import { type FormEvent, useState } from "react";
+import type { MouseEvent } from "react";
 import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { socialLinks } from "@/data/socials";
 import { GradientText } from "@/components/ui/SectionHero";
 import { cn } from "@/components/lib/cn";
 
+const EMAIL = "info@libertyinfoscience.com";
+
+function openEmailPopup(event: MouseEvent<HTMLAnchorElement>) {
+  event.preventDefault();
+  const compose = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(EMAIL)}`;
+  const popup = window.open(
+    compose,
+    "lis-email",
+    "popup=yes,width=860,height=720",
+  );
+  if (!popup) {
+    window.location.href = `mailto:${EMAIL}`;
+  }
+}
+
 const officeAddress =
   "424, Sumerru Business Corner, B/H Rajhans Multiplex, Pal Gam, Surat, Gujarat, India";
 
-const mapEmbedUrl = `https://maps.google.com/maps?width=100%25&height=600&hl=en&q=${encodeURIComponent(
-  officeAddress,
-)}&t=&z=14&ie=UTF8&iwloc=B&output=embed`;
+const mapEmbedUrl =
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.1276719918333!2d72.78587370000001!3d21.187086599999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04dab549599b7%3A0xc0b771444371cede!2sLIS!5e0!3m2!1sen!2sin!4v1793952918092!5m2!1sen!2sin";
 
 const contactDetails = [
   {
     icon: MapPin,
     label: officeAddress,
     href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(officeAddress)}`,
+    isEmail: false,
   },
   {
     icon: Phone,
     label: "+91 70963 64801",
     href: "tel:+917096364801",
+    isEmail: false,
   },
   {
     icon: Mail,
     label: "info@libertyinfoscience.com",
-    href: "mailto:info@libertyinfoscience.com",
+    href: `mailto:${EMAIL}`,
+    isEmail: true,
   },
 ] as const;
 
@@ -62,7 +80,10 @@ export function ContactSection() {
     setError("");
 
     const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-    const endpoint = basePath ? `${basePath}/contact.php` : "/api/contact/";
+    const contactPath =
+      process.env.NEXT_PUBLIC_CONTACT_ENDPOINT ||
+      (basePath ? "/contact.php" : "/api/contact/");
+    const endpoint = `${basePath}${contactPath}`;
 
     try {
       const response = await fetch(endpoint, {
@@ -115,16 +136,19 @@ export function ContactSection() {
             </p>
 
             <ul className="mt-10 space-y-4">
-              {contactDetails.map(({ icon: Icon, label, href }) => (
+              {contactDetails.map(({ icon: Icon, label, href, isEmail }) => (
                 <li key={label}>
                   <a
                     href={href}
                     {...(href.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
+                    {...(isEmail && { onClick: openEmailPopup })}
+                    aria-label={isEmail ? `Send email to ${label}` : undefined}
                     className="inline-flex items-start gap-3 max-w-md text-sm font-medium leading-relaxed text-[#151618] transition-opacity hover:opacity-70"
                   >
                     <Icon size={16} strokeWidth={1.8} aria-hidden="true" className="mt-[3px] shrink-0" />
                     {label}
                   </a>
+                  
                 </li>
               ))}
             </ul>

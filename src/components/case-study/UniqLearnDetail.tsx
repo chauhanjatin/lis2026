@@ -95,192 +95,146 @@ export function UniqLearnDetail() {
           </div>
         </motion.div>
 
-        {/* 2. Typography - Exact Figma Design */}
-        <SectionPill label="Typography" />
+        {/* ── Design System ──────────────────────────────────────────────────── */}
+        <SectionPill label="Design System" />
 
+        {/* DS-1  Colors */}
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, ease }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center"
         >
-          {/* Left Font Identification Cards */}
-          <div className="lg:col-span-5 flex flex-col gap-5 sm:gap-6">
-            {/* Top Card: Plus Jakarta Sans */}
-            <div className="rounded-3xl border border-black/10 bg-white p-7 sm:p-9 text-center shadow-sm">
-              <span className="text-2xl sm:text-3xl font-bold tracking-tight text-[#111]">
-                Plus Jakarta Sans
-              </span>
-            </div>
+          <p className="text-[22px] font-semibold uppercase tracking-widest text-[#999] mb-5">Colors</p>
 
-            {/* Bottom Card: "Aa" (Solid Orange A + Outlined Orange a) */}
-            <div className="rounded-3xl border border-black/10 bg-white p-7 sm:p-9 flex items-center justify-center shadow-sm min-h-[190px] sm:min-h-[220px]">
-              <div className="flex items-baseline select-none">
-                <span className="text-8xl sm:text-9xl font-bold text-[#FF5916] leading-none tracking-tight">
-                  A
-                </span>
-                <span
-                  className="text-7xl sm:text-8xl font-bold text-transparent leading-none ml-1"
-                  style={{
-                    WebkitTextStroke: "2.5px #FF5916",
-                  }}
-                >
-                  a
-                </span>
+          {/* Row 1 – 5 solid swatches */}
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-3">
+            {[
+              { bg: "#FF5916", text: "white", label: "#FF5916" },
+              { bg: "#FFFFFF", text: "#111", label: "#FFFFFF", border: true },
+              { bg: "#544741", text: "white", label: "#544741" },
+              { bg: "#111111", text: "white", label: "#111111" },
+            ].map(({ bg, text, label, border }) => (
+              <div
+                key={label}
+                className={`h-14 sm:h-16 rounded-2xl flex items-center justify-center shadow-sm ${border ? "border border-black/10" : ""}`}
+                style={{ background: bg, color: text }}
+              >
+                <span className="text-xs font-bold tracking-wide">{label}</span>
+              </div>
+            ))}
+            {/* Gradient swatch – pink to blue */}
+            <div
+              className="h-14 sm:h-16 rounded-2xl shadow-sm"
+              style={{ background: "linear-gradient(135deg,#FFCCE1,#FEDDC8,#ADC0F7)" }}
+            >
+              <div className="w-full h-full rounded-2xl flex items-center justify-center">
+                <span className="text-xs font-semibold text-white/70">Linear</span>
               </div>
             </div>
           </div>
 
-          {/* Right Typography Scale Table (No container, clean canvas) */}
-          <div className="lg:col-span-7 flex flex-col">
-            {/* Table Header: Name and Font Size in Orange */}
-            <div className="grid grid-cols-2 pb-2 mb-2 text-base sm:text-lg font-bold text-[#FF5916]">
-              <span>Name</span>
-              <span>Font Size</span>
+          {/* Row 2 – 3 gradient swatches */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {[
+              { from: "#FF4E18", via: "#FF7A1A", to: "#FFA726" },
+              { from: "#FEDAC5", via: "#FEEDBA", to: "#BEE5B6" },
+              { from: "#298EEA", via: "#1E88E5", to: "#1976D2" },
+            ].map(({ from, via, to }, i) => (
+              <div
+                key={i}
+                className="h-14 sm:h-16 rounded-2xl shadow-sm flex items-center justify-center"
+                style={{ background: `linear-gradient(135deg,${from},${via},${to})` }}
+              >
+                <span className="text-xs font-semibold text-white/80">Linear</span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* DS-2  Typography */}
+        <motion.div
+          initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease }}
+          className="mt-10"
+        >
+          <p className="text-[22px] font-semibold uppercase tracking-widest text-black mb-5">Typography</p>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+            {/* Left Font Identification Cards */}
+            <div className="lg:col-span-5 flex flex-col gap-5 sm:gap-6">
+              {/* Top Card: Plus Jakarta Sans */}
+              <div className="rounded-3xl border border-black/10 bg-white p-7 sm:p-9 text-center shadow-sm">
+                <span className="text-2xl sm:text-3xl font-bold tracking-tight text-[#111]">
+                  Plus Jakarta Sans
+                </span>
+              </div>
+
+              {/* Bottom Card: "Aa" (Solid Orange A + Outlined Orange a) */}
+              <div className="rounded-3xl border border-black/10 bg-white p-7 sm:p-9 flex items-center justify-center shadow-sm min-h-[190px] sm:min-h-[220px]">
+                <div className="flex items-baseline select-none">
+                  <span className="text-8xl sm:text-9xl font-bold text-[#FF5916] leading-none tracking-tight">
+                    A
+                  </span>
+                  <span
+                    className="text-7xl sm:text-8xl font-bold text-transparent leading-none ml-1"
+                    style={{ WebkitTextStroke: "2.5px #FF5916" }}
+                  >
+                    a
+                  </span>
+                </div>
+              </div>
             </div>
 
-            {/* Typography Scale Rows */}
-            <div className="flex flex-col gap-2.5 sm:gap-3 text-[#111]">
-              {/* Row 1: Heading 1 - 84 px */}
-              <div className="grid grid-cols-2 items-baseline">
-                <span className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
-                  Heading 1
-                </span>
-                <span className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
-                  84 px
-                </span>
+            {/* Right Typography Scale Table */}
+            <div className="lg:col-span-7 flex flex-col">
+              <div className="grid grid-cols-2 pb-2 mb-2 text-base sm:text-lg font-bold text-[#FF5916]">
+                <span>Name</span>
+                <span>Font Size</span>
               </div>
 
-              {/* Row 2: Heading 2 - 64 px */}
-              <div className="grid grid-cols-2 items-baseline">
-                <span className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
-                  Heading 2
-                </span>
-                <span className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
-                  64 px
-                </span>
-              </div>
-
-              {/* Row 3: Heading 3 - 48 px */}
-              <div className="grid grid-cols-2 items-baseline">
-                <span className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
-                  Heading 3
-                </span>
-                <span className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
-                  48 px
-                </span>
-              </div>
-
-              {/* Row 4: Heading 4 - 34 px */}
-              <div className="grid grid-cols-2 items-baseline">
-                <span className="text-lg sm:text-xl md:text-2xl font-bold">
-                  Heading 4
-                </span>
-                <span className="text-lg sm:text-xl md:text-2xl font-bold">
-                  34 px
-                </span>
-              </div>
-
-              {/* Row 5: Heading 5 - 24 px */}
-              <div className="grid grid-cols-2 items-baseline">
-                <span className="text-base sm:text-lg font-bold">
-                  Heading 5
-                </span>
-                <span className="text-base sm:text-lg font-bold">
-                  24 px
-                </span>
-              </div>
-
-              {/* Row 6: Sub Font - 18 px */}
-              <div className="grid grid-cols-2 items-baseline">
-                <span className="text-xs sm:text-sm font-medium">
-                  Sub Font
-                </span>
-                <span className="text-xs sm:text-sm font-medium">
-                  18 px
-                </span>
-              </div>
-
-              {/* Row 7: Sub Font - 16 px */}
-              <div className="grid grid-cols-2 items-baseline">
-                <span className="text-[11px] sm:text-xs font-normal">
-                  Sub Font
-                </span>
-                <span className="text-[11px] sm:text-xs font-normal">
-                  16 px
-                </span>
-              </div>
-
-              {/* Row 8: Small - 14 px */}
-              <div className="grid grid-cols-2 items-baseline">
-                <span className="text-[10px] sm:text-[11px] font-normal">
-                  Small
-                </span>
-                <span className="text-[10px] sm:text-[11px] font-normal">
-                  14 px
-                </span>
+              <div className="flex flex-col gap-2.5 sm:gap-3 text-[#111]">
+                {[
+                  ["Heading 1", "84 px", "text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight"],
+                  ["Heading 2", "64 px", "text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight"],
+                  ["Heading 3", "48 px", "text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight"],
+                  ["Heading 4", "34 px", "text-lg sm:text-xl md:text-2xl font-bold"],
+                  ["Heading 5", "24 px", "text-base sm:text-lg font-bold"],
+                  ["Sub Font",  "18 px", "text-xs sm:text-sm font-medium"],
+                  ["Sub Font",  "16 px", "text-[11px] sm:text-xs font-normal"],
+                  ["Small",     "14 px", "text-[10px] sm:text-[11px] font-normal"],
+                ].map(([name, size, cls], i) => (
+                  <div key={i} className="grid grid-cols-2 items-baseline">
+                    <span className={cls}>{name}</span>
+                    <span className={cls}>{size}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </motion.div>
 
-        {/* 3. Colors - Custom Designed Swatch Cards matching Figma */}
-        <SectionPill label="Colors" />
-
+        {/* DS-3  Buttons */}
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, ease }}
-          className="max-w-3xl mx-auto py-2 sm:py-6"
+          className="mt-10"
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-8 md:gap-10">
-            {/* Left Stack: 4 Solid Swatches with Centered Hex Codes */}
-            <div className="flex flex-col gap-3.5 sm:gap-4">
-              {/* Card 1: #FF5916 */}
-              <div className="relative h-16 sm:h-18 md:h-20 rounded-[1.3rem] sm:rounded-[1.6rem] bg-[#FF5916] text-white shadow-md flex items-center justify-center transform -rotate-1.5 hover:rotate-0 hover:scale-[1.03] hover:shadow-xl transition-all duration-300 cursor-pointer">
-                <span className="font-extrabold text-sm sm:text-base tracking-wider font-sans">
-                  #FF5916
-                </span>
-              </div>
-
-              {/* Card 2: #FFFFFF */}
-              <div className="relative h-16 sm:h-18 md:h-20 rounded-[1.3rem] sm:rounded-[1.6rem] bg-white text-[#111] shadow-[0_8px_24px_rgba(0,0,0,0.08)] border border-black/5 flex items-center justify-center transform rotate-1 hover:rotate-0 hover:scale-[1.03] hover:shadow-xl transition-all duration-300 cursor-pointer">
-                <span className="font-extrabold text-sm sm:text-base tracking-wider font-sans">
-                  #FFFFFF
-                </span>
-              </div>
-
-              {/* Card 3: #544741 */}
-              <div className="relative h-16 sm:h-18 md:h-20 rounded-[1.3rem] sm:rounded-[1.6rem] bg-[#544741] text-white shadow-md flex items-center justify-center transform -rotate-1 hover:rotate-0 hover:scale-[1.03] hover:shadow-xl transition-all duration-300 cursor-pointer">
-                <span className="font-extrabold text-sm sm:text-base tracking-wider font-sans">
-                  #544741
-                </span>
-              </div>
-
-              {/* Card 4: #111111 */}
-              <div className="relative h-16 sm:h-18 md:h-20 rounded-[1.3rem] sm:rounded-[1.6rem] bg-[#111111] text-white shadow-md flex items-center justify-center transform rotate-1.5 hover:rotate-0 hover:scale-[1.03] hover:shadow-xl transition-all duration-300 cursor-pointer">
-                <span className="font-extrabold text-sm sm:text-base tracking-wider font-sans">
-                  #111111
-                </span>
-              </div>
-            </div>
-
-            {/* Right Stack: 4 Gradient Swatches */}
-            <div className="flex flex-col gap-3.5 sm:gap-4">
-              {/* Card 1: Pastel Pink to Lavender/Blue */}
-              <div className="relative h-16 sm:h-18 md:h-20 rounded-[1.3rem] sm:rounded-[1.6rem] bg-gradient-to-r from-[#FFCCE1] via-[#FEDDC8] to-[#ADC0F7] shadow-sm transform -rotate-1.5 hover:rotate-0 hover:scale-[1.03] hover:shadow-xl transition-all duration-300 cursor-pointer" />
-
-              {/* Card 2: Fiery Warm Orange to Amber */}
-              <div className="relative h-16 sm:h-18 md:h-20 rounded-[1.3rem] sm:rounded-[1.6rem] bg-gradient-to-r from-[#FF4E18] via-[#FF7A1A] to-[#FFA726] shadow-sm transform rotate-1.5 hover:rotate-0 hover:scale-[1.03] hover:shadow-xl transition-all duration-300 cursor-pointer" />
-
-              {/* Card 3: Soft Peach to Mint Pastel */}
-              <div className="relative h-16 sm:h-18 md:h-20 rounded-[1.3rem] sm:rounded-[1.6rem] bg-gradient-to-r from-[#FEDAC5] via-[#FEEDBA] to-[#BEE5B6] shadow-sm transform -rotate-1 hover:rotate-0 hover:scale-[1.03] hover:shadow-xl transition-all duration-300 cursor-pointer" />
-
-              {/* Card 4: Royal Electric Blue */}
-              <div className="relative h-16 sm:h-18 md:h-20 rounded-[1.3rem] sm:rounded-[1.6rem] bg-gradient-to-r from-[#298EEA] via-[#1E88E5] to-[#1976D2] shadow-sm transform rotate-1.5 hover:rotate-0 hover:scale-[1.03] hover:shadow-xl transition-all duration-300 cursor-pointer" />
-            </div>
+          <p className="text-[22px] font-semibold uppercase tracking-widest text-black mb-5">Buttons</p>
+          <div className="flex flex-wrap items-center gap-4">
+            {/* Primary button */}
+            <button className="inline-flex items-center gap-2 rounded-full bg-[#FF5916] px-6 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-[#e04d10] transition-colors">
+              <span className="text-base leading-none">+</span>
+              Button
+            </button>
+            {/* Outline button */}
+            <button className="inline-flex items-center rounded-full border-2 border-[#FF5916] px-6 py-2 text-sm font-semibold text-[#FF5916] hover:bg-[#FF5916]/5 transition-colors">
+              Button
+            </button>
           </div>
         </motion.div>
 

@@ -58,8 +58,8 @@ export async function POST(request: Request) {
     return Response.json({ ok: false, error: "Enter a valid email address." }, { status: 422 });
   }
 
-  const user = envValue("GMAIL_USER") || RECIPIENT;
-  const pass = (envValue("GMAIL_APP_PASSWORD") || "").replace(/\s+/g, "");
+  const user = envValue("GMAIL_USER") || envValue("SMTP_USER") || RECIPIENT;
+  const pass = (envValue("GMAIL_APP_PASSWORD") || envValue("SMTP_PASS") || "").replace(/\s+/g, "");
   if (!pass) {
     return Response.json(
       {
@@ -71,12 +71,20 @@ export async function POST(request: Request) {
     );
   }
 
+  const host = envValue("SMTP_HOST") || "mail.libertyinfoscience.com";
+  const port = envValue("SMTP_PORT") || "465";
+  // GoDaddy's certificate is for *.prod.sin2.secureserver.net, not the mail domain.
+  const servername =
+    envValue("SMTP_TLS_SERVERNAME") ||
+    (host === "mail.libertyinfoscience.com" ? "prod.sin2.secureserver.net" : "");
+
   try {
     const transporter = nodemailer.createTransport({
-      host: envValue("SMTP_HOST") || "mail.libertyinfoscience.com",
-      port: Number(envValue("SMTP_PORT") || 465),
-      secure: (envValue("SMTP_PORT") || "465") !== "587",
+      host,
+      port: Number(port),
+      secure: port !== "587",
       auth: { user, pass },
+      ...(servername ? { tls: { servername } } : {}),
     });
 
     await transporter.sendMail({

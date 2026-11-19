@@ -98,7 +98,7 @@ function StatCard({
           <h3 className="text-[0.95rem] font-semibold tracking-[-0.02em] text-[#111111]">
             {label}
           </h3>
-          <p className="mt-3 font-Sora text-[clamp(3.4rem,6vw,4.75rem)] font-semibold leading-none tracking-[-0.07em] text-[#111111]">
+          <p className="mt-3 font-Sora text-[54px] font-semibold leading-none tracking-[-0.07em] text-[#111111]">
             <span>{display}</span>
             <span>{suffix}</span>
           </p>
@@ -124,7 +124,7 @@ export function About({ hideHeader = false }: { hideHeader?: boolean }) {
         "bg-white",
         hideHeader
           ? "pb-20 pt-14 sm:pb-24 sm:pt-16 lg:pb-28 lg:pt-20"
-          : "py-20 sm:py-24 lg:py-28",
+          : "py-20 md:py-24 lg:py-28",
       )}
     >
       <Container>

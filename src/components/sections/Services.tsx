@@ -142,7 +142,7 @@ export function Services({ hideHeader = false }: { hideHeader?: boolean }) {
               amount={0.35}
               variants={fadeUp}
             >
-              <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[.13em] text-[#676d70]">
+              <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[.13em] text-[#202224]">
                 <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5]" />{" "}
                 Our services
               </p>
@@ -200,22 +200,11 @@ export function Services({ hideHeader = false }: { hideHeader?: boolean }) {
                     </span>
                     <div className="flex items-center gap-3 shrink-0">
                       <span
-                        className={`text-xs sm:text-sm font-medium tabular-nums transition-colors duration-500 ${
+                        className={`text-xs md:text-[20px] font-medium tabular-nums transition-colors duration-500 ${
                           isActive ? "text-white/55" : "text-current/50"
                         }`}
                       >
                         {String(index + 1).padStart(2, "0")}
-                      </span>
-                      <span
-                        className={cn(
-                          "inline-grid size-7 place-items-center rounded-full transition-transform duration-300",
-                          isActive
-                            ? "bg-white/10 text-white rotate-45"
-                            : "bg-black/5 text-current/60 group-hover:bg-black/10"
-                        )}
-                        aria-hidden="true"
-                      >
-                        <Plus size={14} strokeWidth={2.5} />
                       </span>
                     </div>
                   </div>

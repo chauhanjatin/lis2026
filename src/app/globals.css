@@ -1144,29 +1144,7 @@ body {
 }
 
 #hero {
-  padding-top: calc(6.5rem + 16vw);
-  background:
-    radial-gradient(ellipse 32rem 20rem at 14% 24%, rgba(255, 214, 130, 0.55), transparent 72%),
-    radial-gradient(ellipse 28rem 18rem at 86% 20%, rgba(255, 196, 90, 0.42), transparent 70%),
-    radial-gradient(ellipse 46rem 24rem at 50% 36%, rgba(255, 246, 226, 0.95), transparent 72%),
-    #f6f1e6;
-}
-
-.diwali-toran {
-  position: fixed;
-  top: -1.05rem;
-  left: 50%;
-  z-index: 35;
-  width: 106vw;
-  transform: translateX(-50%);
-  pointer-events: none;
-}
-
-.diwali-toran-image {
-  display: block;
-  width: 188%;
-  height: auto;
-  transform: translateY(-26%);
+  padding-top: calc(3rem + 10vw);
 }
 
 .hero-gradient {
@@ -1191,22 +1169,6 @@ body {
   transform: translate3d(-50%, -50%, 0);
   will-change: transform;
   animation: gradientMove 18s ease-in-out infinite alternate;
-}
-
-.diwali-banner {
-  position: absolute;
-  left: 50%;
-  bottom: calc(100% - 1.5rem);
-  z-index: 4;
-  width: 100vw;
-  transform: translateX(-50%);
-  pointer-events: none;
-}
-
-.diwali-banner-image {
-  display: block;
-  width: 100%;
-  height: auto;
 }
 
 @keyframes gradientMove {
@@ -1468,42 +1430,7 @@ body {
   }
 }
 
-@media (max-width: 1440px) {
-  .diwali-toran {
-    position: fixed;
-    top: 0.05rem;
-    left: 50%;
-    z-index: 35;
-    width: 106vw;
-  }
-}
-
-@media (max-width: 1024px) {
-  .diwali-toran {
-    position: fixed;
-    top: 1.55rem;
-    left: 50%;
-    z-index: 35;
-    width: 106vw;
-  }
-}
-
 @media (max-width: 768px) {
-  .diwali-toran {
-    position: fixed;
-    top: 2.30rem;
-    left: 50%;
-    z-index: 35;
-    width: 106vw;
-  }
-
-  .diwali-banner {
-    position: absolute;
-    left: 50%;
-    bottom: calc(100% - 0.5rem);
-    z-index: 4;
-    width: 100vw;
-  }
   .process-flow {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1516,21 +1443,6 @@ body {
 }
 
 @media (max-width: 639px) {
-  .diwali-toran {
-    position: fixed;
-    top: 3.05rem;
-    left: 50%;
-    z-index: 35;
-    width: 106vw;
-  }
-
-  .diwali-banner {
-    position: absolute;
-    left: 50%;
-    bottom: calc(100% - 0.2rem);
-    z-index: 4;
-    width: 100vw;
-  }
   .process-flow {
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -1539,5 +1451,89 @@ body {
 
   .process-flow-arrow{
     display: none;
+  }
+}
+
+/* ─── Animated Custom Cursor ─────────────────────────────────────────────── */
+
+/*
+ * Hide the native cursor globally on non-touch devices.
+ * We re-show it on touch via media query so mobile users are unaffected.
+ */
+@media (pointer: fine) {
+  *,
+  *::before,
+  *::after {
+    cursor: none !important;
+  }
+}
+
+.cursor-dot,
+.cursor-ring {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  opacity: 0;
+  will-change: transform;
+  transition: opacity 300ms ease;
+}
+
+/* Inner dot */
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #0a82b5; /* matches --primary */
+  transition:
+    opacity 300ms ease,
+    transform 60ms linear,
+    width 200ms ease,
+    height 200ms ease,
+    background 200ms ease;
+}
+
+.cursor-dot--click {
+  width: 6px;
+  height: 6px;
+  background: #0d4fb8;
+}
+
+/* Outer trailing ring */
+.cursor-ring {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(10, 130, 181, 0.55);
+  background: rgba(10, 130, 181, 0.06);
+  transition:
+    opacity 300ms ease,
+    width 250ms cubic-bezier(0.22, 1, 0.36, 1),
+    height 250ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 250ms ease,
+    background 250ms ease;
+}
+
+/* Ring expands when hovering interactive elements */
+.cursor-ring--hover {
+  width: 56px;
+  height: 56px;
+  border-color: rgba(10, 130, 181, 0.35);
+  background: rgba(10, 130, 181, 0.08);
+}
+
+/* On touch devices, hide cursor elements entirely */
+@media (pointer: coarse) {
+  .cursor-dot,
+  .cursor-ring {
+    display: none !important;
+  }
+}
+
+/* Respect reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .cursor-ring {
+    display: none !important;
   }
 }

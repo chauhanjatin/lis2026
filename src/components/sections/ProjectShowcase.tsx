@@ -38,21 +38,24 @@ const projects: ProjectShowcaseItem[] = [
     title: "UniqLearn",
     alt: "UniqLearn education dashboard – teacher analytics web app UI/UX design case study",
     image: "/uniqlearn/uniqlearn.png",
-    figmaUrl: "https://www.figma.com/design/uniqlearn",
+    figmaUrl:
+      "https://www.figma.com/proto/Lpl14RL2PjUJ4d0zj1JK78/Uniqlearn?page-id=0%3A1&node-id=348-517&starting-point-node-id=348%3A517&t=7zHOPtYFpnOM5oZv-1",
     caseStudyUrl: "/work/uniqlearn",
   },
   {
     title: "LearnBud AI",
     alt: "LearnBud AI tutoring mobile app UI/UX design case study",
     image: "/learnbudai/learnbudai.png",
-    figmaUrl: "https://www.figma.com/design/learnbud-ai",
+    figmaUrl:
+      "https://www.figma.com/proto/g2R0K4VjNGVWrtIBE1HfTm/Tutor-Note-AI--Final-?page-id=0%3A1&node-id=20-86106&viewport=-1241%2C799%2C0.18&t=15Il487dsvCaB3Qi-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=20%3A86106",
     caseStudyUrl: "/work/learnbud-ai",
   },
   {
     title: "DTS Splint",
     alt: "DTS Splint AI-powered dental splint design software UI case study",
     image: "/dts-splint.png",
-    figmaUrl: "https://www.figma.com/design/dts-splint",
+    figmaUrl:
+      "https://www.figma.com/proto/5dkeIJSt6cSiKwKuSHJjnu/Instant-Smiles-DTS-SPLINT?node-id=853-6703&viewport=104%2C56%2C0.05&t=T3WuTflTt1kTXHYB-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1",
     caseStudyUrl: "/work/dts-splint",
   },
 ];
@@ -196,20 +199,11 @@ export function ProjectShowcase() {
                       {/* Hover Overlay with Centered View Button + Arrow */}
                       <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/25 opacity-0 backdrop-blur-[2px] transition-all duration-300 group-hover/art:opacity-100">
                         <div className="flex items-center gap-2.5 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#0c0d10] shadow-[0_16px_36px_rgba(0,0,0,0.3)] transition-all duration-300 transform scale-75 group-hover/art:scale-100">
-                          <span>View Project</span>
+                          <span>View Case Study</span>
                           <span className="inline-grid size-6 place-items-center rounded-full bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] text-white">
                             <ArrowUpRight size={14} strokeWidth={2.4} />
                           </span>
                         </div>
-                      </div>
-
-                      {/* Top-Right Corner Arrow Button */}
-                      <div className="pointer-events-none absolute top-4 right-4 z-10 size-11 rounded-full bg-white/95 text-[#0c0d10] border border-white/40 grid place-items-center opacity-0 group-hover/art:opacity-100 transform translate-y-2 group-hover/art:translate-y-0 transition-all duration-300 shadow-xl">
-                        <ArrowUpRight
-                          size={18}
-                          strokeWidth={2.4}
-                          className="transition-transform group-hover/art:translate-x-0.5 group-hover/art:-translate-y-0.5"
-                        />
                       </div>
                     </a>
 
@@ -218,24 +212,26 @@ export function ProjectShowcase() {
                         {project.title}
                       </h3>
                       <div className="showcase-actions">
-                        <a
-                          href={project.figmaUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`View ${project.title} design on Figma (opens in new tab)`}
-                          className="showcase-link group/link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0D4FB8]"
-                        >
-                          <span className="showcase-link-icon showcase-link-icon--figma">
-                            <FaFigma aria-hidden="true" />
-                          </span>
-                          <span className="showcase-link-label">
-                            View Design
-                          </span>
-                          <ArrowUpRight
-                            size={12}
-                            className="text-[#145a7a] opacity-50 transition-opacity group-hover/link:opacity-100"
-                          />
-                        </a>
+                        {project.figmaUrl && (
+                          <a
+                            href={project.figmaUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`View ${project.title} design on Figma (opens in new tab)`}
+                            className="showcase-link group/link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0D4FB8]"
+                          >
+                            <span className="showcase-link-icon showcase-link-icon--figma">
+                              <FaFigma aria-hidden="true" />
+                            </span>
+                            <span className="showcase-link-label">
+                              View Design
+                            </span>
+                            <ArrowUpRight
+                              size={12}
+                              className="text-[#145a7a] opacity-50 transition-opacity group-hover/link:opacity-100"
+                            />
+                          </a>
+                        )}
 
                         {project.websiteUrl ? (
                           <a
@@ -308,25 +304,27 @@ export function ProjectShowcase() {
                     {project.title}
                   </h3>
                   <div className="flex items-center gap-2 flex-wrap">
-                    <a
-                      href={project.figmaUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`View ${project.title} design on Figma (opens in new tab)`}
-                      className="showcase-link !py-1 !px-2.5 !gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0D4FB8]"
-                    >
-                      <span className="showcase-link-icon showcase-link-icon--figma !size-6 !text-[0.7rem]">
-                        <FaFigma aria-hidden="true" />
-                      </span>
-                      <span className="showcase-link-label !text-[0.75rem]">
-                        View Design
-                      </span>
-                      <ArrowUpRight
-                        size={11}
-                        className="text-[#145a7a] opacity-60"
-                        aria-hidden="true"
-                      />
-                    </a>
+                    {project.figmaUrl && (
+                      <a
+                        href={project.figmaUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`View ${project.title} design on Figma (opens in new tab)`}
+                        className="showcase-link !py-1 !px-2.5 !gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0D4FB8]"
+                      >
+                        <span className="showcase-link-icon showcase-link-icon--figma !size-6 !text-[0.7rem]">
+                          <FaFigma aria-hidden="true" />
+                        </span>
+                        <span className="showcase-link-label !text-[0.75rem]">
+                          View Design
+                        </span>
+                        <ArrowUpRight
+                          size={11}
+                          className="text-[#145a7a] opacity-60"
+                          aria-hidden="true"
+                        />
+                      </a>
+                    )}
                     {project.websiteUrl ? (
                       <a
                         href={project.websiteUrl}

@@ -1,129 +1,106 @@
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useReducedMotion,
-} from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { detailedServices, type ServiceItem } from "@/data/services";
 
-function ServiceCard({
-  service,
-  index,
-  total,
-}: {
-  service: ServiceItem;
-  index: number;
-  total: number;
-}) {
-  const cardRef = useRef<HTMLDivElement>(null);
+function ServiceCard({ service, index }: { service: ServiceItem; index: number }) {
   const reduceMotion = useReducedMotion();
 
-  const { scrollYProgress } = useScroll({
-    target: cardRef,
-    offset: ["start end", "start start"],
-  });
-
-  const scale = useTransform(scrollYProgress, [0, 1], [0.97, 1]);
-
-  // Calculate sticky stacking top offset
-  const stickyTop = 85 + index * 16;
-
   return (
-    <div
-      ref={cardRef}
-      style={{
-        top: `${stickyTop}px`,
+    <motion.div
+      className="mb-10 sm:mb-14 last:mb-0"
+      initial={reduceMotion ? false : { opacity: 0, y: 48 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.12 }}
+      transition={{
+        duration: 0.65,
+        delay: index * 0.08,
+        ease: [0.22, 1, 0.36, 1],
       }}
-      className="sticky mb-10 sm:mb-14 last:mb-0"
     >
-      <motion.article
-        style={reduceMotion ? undefined : { scale }}
-        className="group relative overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] bg-white text-[#101116] shadow-[0_20px_50px_rgba(0,0,0,0.08),0_2px_8px_rgba(0,0,0,0.04)] border border-[#E5E7EB] transition-all duration-300"
-      >
+      <div className="group relative overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] bg-white text-[#101116] shadow-[0_20px_50px_rgba(0,0,0,0.08),0_2px_8px_rgba(0,0,0,0.04)] border border-[#E5E7EB] transition-all duration-300">
         <Link
-          href={service.ctaHref || "/services"}
+          href={""}
           className="block p-6 sm:p-9 md:p-12 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0D4FB8] focus-visible:ring-inset"
         >
-        {/* Top Header Row */}
-        <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-6 md:gap-8 pb-6 sm:pb-8 border-b border-[#F0F1F3]">
-          {/* Large Number */}
-          <span className="font-serif text-4xl sm:text-5xl md:text-6xl font-normal leading-none tracking-tight text-[#101116] shrink-0 sm:w-20 md:w-24">
-            {service.number}
-          </span>
+          {/* Top Header Row */}
+          <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-6 md:gap-8 pb-6 sm:pb-8 border-b border-[#F0F1F3]">
+            {/* Large Number */}
+            <span className="font-serif text-4xl sm:text-5xl md:text-6xl font-normal leading-none tracking-tight text-[#101116] shrink-0 sm:w-20 md:w-24">
+              {service.number}
+            </span>
 
-          {/* Title and Tags */}
-          <div className="flex-1">
-            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-[2.65rem] font-medium tracking-tight text-[#101116] leading-tight">
-              {service.title}
-            </h2>
+            {/* Title and Tags */}
+            <div className="flex-1">
+              <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-[2.65rem] font-medium tracking-tight text-[#101116] leading-tight">
+                {service.title}
+              </h2>
 
-            {/* Tag Pills */}
-            <div className="mt-3 sm:mt-4 flex flex-wrap items-center gap-2 sm:gap-2.5">
-              {service.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-full border border-[#E5E7EB] bg-[#FAFBFD] px-3.5 py-1 text-xs font-medium text-[#606468] transition-colors hover:border-[#101116] hover:text-[#101116]"
-                >
-                  {tag}
-                </span>
-              ))}
+              {/* Tag Pills */}
+              <div className="mt-3 sm:mt-4 flex flex-wrap items-center gap-2 sm:gap-2.5">
+                {service.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="cursor-default rounded-full border border-[#E5E7EB] bg-[#FAFBFD] px-3.5 py-1 text-xs font-medium text-[#606468]"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Body Content Row */}
-        <div className="mt-6 sm:mt-8 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
-          {/* Left: 3 Preview Images Grid */}
-          <div className="lg:col-span-8">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-4 md:gap-5">
-              {service.images.map((img, imgIdx) => (
-                <div
-                  key={`${img.src}-${imgIdx}`}
-                  className="group/img relative aspect-[1.3] overflow-hidden rounded-xl sm:rounded-2xl bg-[#F5F6F8] border border-black/5 shadow-sm"
-                >
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 25vw"
-                    className="object-cover transition-transform duration-700 ease-out group-hover/img:scale-108"
-                  />
+          {/* Body Content Row */}
+          <div className="mt-6 sm:mt-8 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+            {/* Left: 3 Preview Images Grid */}
+            <div className="lg:col-span-8">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-4 md:gap-5">
+                {service.images.map((img, imgIdx) => (
                   <div
-                    aria-hidden="true"
-                    className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover/img:bg-black/5"
+                    key={`${img.src}-${imgIdx}`}
+                    className="group/img relative aspect-[1.3] overflow-hidden rounded-xl sm:rounded-2xl bg-[#F5F6F8] border border-black/5 shadow-sm"
+                  >
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 25vw"
+                      className="object-cover transition-transform duration-700 ease-out group-hover/img:scale-108"
+                    />
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover/img:bg-black/5"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right: Description & CTA */}
+            <div className="lg:col-span-4 flex flex-col justify-between space-y-5 lg:pl-4">
+              <p className="text-xs sm:text-sm md:text-[0.92rem] leading-relaxed text-[#606468]">
+                {service.description}
+              </p>
+
+              <div>
+                <span className="inline-flex items-center gap-1.5 font-Sora text-sm sm:text-base font-bold text-[#101116] transition-colors group-hover:text-[#0D4FB8]">
+                  <span>{service.ctaText || "Read More"}</span>
+                  <ArrowUpRight
+                    size={18}
+                    className="stroke-[2.5] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                   />
-                </div>
-              ))}
+                </span>
+              </div>
             </div>
           </div>
-
-          {/* Right: Description & CTA */}
-          <div className="lg:col-span-4 flex flex-col justify-between space-y-5 lg:pl-4">
-            <p className="text-xs sm:text-sm md:text-[0.92rem] leading-relaxed text-[#606468]">
-              {service.description}
-            </p>
-
-            <div>
-              <span className="inline-flex items-center gap-1.5 font-Sora text-sm sm:text-base font-bold text-[#101116] transition-colors group-hover:text-[#0D4FB8]">
-                <span>{service.ctaText || "Read More"}</span>
-                <ArrowUpRight
-                  size={18}
-                  className="stroke-[2.5] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                />
-              </span>
-            </div>
-          </div>
-        </div>
         </Link>
-      </motion.article>
-    </div>
+      </div>
+    </motion.div>
   );
 }
 
@@ -135,7 +112,7 @@ export function ServicesStacking({
   return (
     <section
       id="services-stacking"
-      className="relative bg-[#F8F9FB] text-[#101116] py-20 sm:py-24 lg:py-28 min-h-screen"
+      className="relative bg-[#F8F9FB] text-[#101116] py-20 sm:py-24 lg:py-28"
     >
       <Container className="max-w-6xl">
         {/* Optional Section Header */}
@@ -145,7 +122,7 @@ export function ServicesStacking({
               <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5]" />
               Our Services
             </span>
-            <h1 className="font-Sora text-3xl text-3xl md:text-5xl lg:text-6xl font-bold tracking-[-0.035em] text-[#101116] mt-3">
+            <h1 className="font-Sora text-3xl md:text-5xl lg:text-6xl font-bold tracking-[-0.035em] text-[#101116] mt-3">
               Crafted for impact and{" "}
               <span className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent">
                 growth.
@@ -158,15 +135,10 @@ export function ServicesStacking({
           </div>
         )}
 
-        {/* Stacking Service Cards */}
-        <div className="relative">
+        {/* Service Cards */}
+        <div>
           {detailedServices.map((service, index) => (
-            <ServiceCard
-              key={service.id}
-              service={service}
-              index={index}
-              total={detailedServices.length}
-            />
+            <ServiceCard key={service.id} service={service} index={index} />
           ))}
         </div>
       </Container>

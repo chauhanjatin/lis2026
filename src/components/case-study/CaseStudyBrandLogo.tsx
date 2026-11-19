@@ -53,12 +53,14 @@ export function CaseStudyBrandLogo({
     case "kidloop":
       return (
         <div
-          className={`flex items-center gap-1.5 text-[#101116] transition-colors duration-300 group-hover:text-white select-none ${className}`}
+          className={`rounded-2xl px-3 py-2 transition-colors duration-300 group-hover:bg-white ${className}`}
         >
-          <span className="font-Sora text-2xl sm:text-3xl font-extrabold tracking-tight">
-            Kid<span className="text-[#047953] group-hover:text-emerald-400">Loop</span>
-          </span>
-          <span className="inline-block h-2 w-2 rounded-full bg-[#047953] group-hover:bg-emerald-400 mb-2" />
+          <div className="flex items-center gap-1.5 text-[#101116] select-none">
+            <span className="font-Sora text-2xl sm:text-3xl font-extrabold tracking-tight">
+              Kid<span className="text-[#047953]">Loop</span>
+            </span>
+            <span className="inline-block h-2 w-2 rounded-full bg-[#047953] mb-2" />
+          </div>
         </div>
       );
 

@@ -1,6 +1,6 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteBase /projects/newlis2026/
+  RewriteBase /
 
   # If requested path is an existing file or directory, serve it directly
   RewriteCond %{REQUEST_FILENAME} -f [OR]
@@ -16,7 +16,7 @@
   RewriteRule ^(.*)/?$ $1.html [L]
 
   # Fallback
-  ErrorDocument 404 /projects/newlis2026/404.html
+  ErrorDocument 404 /404.html
 </IfModule>
 
 # Allow access to all web assets

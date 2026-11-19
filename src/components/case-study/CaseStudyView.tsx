@@ -181,7 +181,7 @@ export function CaseStudyView({ data }: CaseStudyViewProps) {
               ).map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full border border-[#E5E7EB] bg-[#FAFBFD] px-3.5 py-1 text-xs font-medium text-[#606468] transition-colors hover:border-[#101116] hover:text-[#101116]"
+                  className="rounded-full border border-[#E5E7EB] bg-[#FAFBFD] px-3.5 py-1 text-xs font-medium text-[#606468]"
                 >
                   {tag}
                 </span>

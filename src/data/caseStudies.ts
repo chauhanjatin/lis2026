@@ -17,12 +17,26 @@ export type CaseStudySlide = {
   };
 };
 
+export type CaseStudyButton = {
+  label: string;
+  filled?: boolean;
+  gradient?: string;
+  bg?: string;
+  textColor?: string;
+  outline?: boolean;
+  disabled?: boolean;
+  rounded?: "rounded-xl" | "rounded-2xl" | "rounded-full";
+};
+
 export type CaseStudyStyleGuide = {
   fontFamily: string;
   accent: string;
   typeScale: { name: string; size: number }[];
   colors: string[];
-  gradients: string[];
+  gradients: Array<string | { css: string; textColor?: "white" | "dark" }>;
+  /** If true, gradients are shown before solid colors in the swatch grid */
+  gradientFirst?: boolean;
+  buttons?: CaseStudyButton[];
 };
 
 export type CaseStudyGalleryImage = {
@@ -267,10 +281,14 @@ export const caseStudiesList: CaseStudyItem[] = [
       typeScale: defaultTypeScale,
       colors: ["#FF5916", "#FFFFFF", "#544741", "#111111"],
       gradients: [
-        "linear-gradient(135deg, #F9B4E4 0%, #F6D2B8 45%, #A9B8F5 100%)",
-        "linear-gradient(90deg, #FF5916 0%, #FFB13B 100%)",
-        "linear-gradient(90deg, #F9C6B8 0%, #F4E3A8 50%, #B8E6B0 100%)",
-        "linear-gradient(135deg, #3B9BF0 0%, #2B6FD8 100%)",
+        { css: "linear-gradient(135deg, #F9B4E4 0%, #F6D2B8 45%, #A9B8F5 100%)", textColor: "dark" },
+        { css: "linear-gradient(90deg, #FF5916 0%, #FFB13B 100%)", textColor: "white" },
+        { css: "linear-gradient(90deg, #F9C6B8 0%, #F4E3A8 50%, #B8E6B0 100%)", textColor: "dark" },
+        { css: "linear-gradient(135deg, #3B9BF0 0%, #2B6FD8 100%)", textColor: "white" },
+      ],
+      buttons: [
+        { label: "+ Button", filled: true, gradient: "linear-gradient(to right, #FF5816, #FFAE3A)", rounded: "rounded-xl" },
+        { label: "Button", outline: true, bg: "#FF5816", textColor: "#FF5816", rounded: "rounded-xl" },
       ],
     },
   },
@@ -443,9 +461,26 @@ export const caseStudiesList: CaseStudyItem[] = [
     styleGuide: {
       fontFamily: "Nunito",
       accent: "#2196E3",
-      typeScale: defaultTypeScale,
-      colors: ["#2196E3", "#737B81", "#FFFFFF", "#00111C"],
-      gradients: ["linear-gradient(180deg, #2196E3 0%, #01EBFC 143.33%)"],
+      typeScale: [
+        { name: "Heading 1", size: 34 },
+        { name: "Heading 2", size: 28 },
+        { name: "Heading 3", size: 24 },
+        { name: "Heading 4", size: 22 },
+        { name: "Heading 5", size: 20 },
+        { name: "Sub Font",  size: 16 },
+        { name: "Sub Font",  size: 14 },
+        { name: "Small",     size: 12 },
+      ],
+      /* Gradient shown first (before solid swatches) */
+      gradientFirst: true,
+      colors: ["#FFFFFF", "#737B81", "#00111C", "#2196E3"],
+      gradients: [
+        { css: "linear-gradient(180deg, #2196E3 0%, #01EBFC 143.33%)", textColor: "white" },
+      ],
+      buttons: [
+        { label: "Login", filled: true, gradient: "linear-gradient(90deg, #2196E3 0%, #01EBFC 100%)", rounded: "rounded-full" },
+        { label: "Login", filled: true, bg: "#00111C", textColor: "#FFFFFF", rounded: "rounded-full" },
+      ],
     },
   },
   {
@@ -624,26 +659,20 @@ export const caseStudiesList: CaseStudyItem[] = [
         { name: "Heading 3", size: 26 },
         { name: "Heading 4", size: 24 },
         { name: "Heading 5", size: 22 },
-        { name: "Sub Font", size: 18 },
-        { name: "Body", size: 16 },
-        { name: "Small", size: 14 },
+        { name: "Sub Font",  size: 18 },
+        { name: "Sub Font",  size: 16 },
+        { name: "Small",     size: 14 },
       ],
+      /* 10 solid colors, 2 rows of 5 — no gradients */
       colors: [
-        "#10192B",
-        "#047953",
-        "#F8FAFC",
-        "#585CD4",
-        "#575E6B",
-        "#FFFFFF",
-        "#CFD1D5",
-        "#EE496D",
-        "#FCA525",
-        "#0B8E43",
+        "#0E182B", "#047953", "#F7FAFF", "#5955D4", "#575E6B",
+        "#FFFFFF", "#CFD1D5", "#EE4368", "#FCAD25", "#0B8E43",
       ],
-      gradients: [
-        "linear-gradient(135deg, #FAF2F8 0%, #FAF4FB 50%, #F5EBF7 100%)",
-        "linear-gradient(90deg, #047953 0%, #0B8E43 100%)",
-        "linear-gradient(135deg, #EE496D 0%, #FCA525 100%)",
+      gradients: [],
+      buttons: [
+        { label: "Button", filled: true, bg: "#047953", textColor: "#FFFFFF", rounded: "rounded-2xl" },
+        { label: "Button", outline: true, bg: "#047953", textColor: "#047953", rounded: "rounded-2xl" },
+        { label: "Button", filled: true, bg: "#CFE5DC", textColor: "#357A64", rounded: "rounded-2xl" },
       ],
     },
   },
@@ -786,11 +815,27 @@ export const caseStudiesList: CaseStudyItem[] = [
       ],
     },
     styleGuide: {
-      fontFamily: "Manrope",
-      accent: "#3DDC4E",
-      typeScale: defaultTypeScale,
-      colors: ["#3DDC4E", "#0E1116", "#FFFFFF", "#1C2430"],
-      gradients: ["linear-gradient(135deg, #052E16 0%, #3DDC4E 100%)"],
+      fontFamily: "Inter",
+      accent: "#2FAD13",
+      typeScale: [
+        { name: "Heading 1", size: 28 },
+        { name: "Heading 2", size: 26 },
+        { name: "Heading 3", size: 24 },
+        { name: "Heading 4", size: 22 },
+        { name: "Heading 5", size: 18 },
+        { name: "Sub Font",  size: 16 },
+        { name: "Sub Font",  size: 14 },
+        { name: "Small",     size: 12 },
+      ],
+      /* 7 solid colors: 5 in Row 1, 2 in Row 2 — exactly matching Figma */
+      colors: ["#2FAD13", "#0C0D10", "#282B33", "#787C86", "#B7BAC2", "#15171C", "#F1F2F4"],
+      gradients: [],
+      buttons: [
+        { label: "Button", filled: true, bg: "#2FAD13", textColor: "#101116", rounded: "rounded-xl" },
+        { label: "Button", outline: true, bg: "#2FAD13", textColor: "#2FAD13", rounded: "rounded-xl" },
+        { label: "Button", filled: true, bg: "#282B33", textColor: "#FFFFFF", rounded: "rounded-xl" },
+        { label: "Button", filled: true, bg: "#15171C", textColor: "rgba(255,255,255,0.22)", disabled: true, rounded: "rounded-xl" },
+      ],
     },
   },
   {

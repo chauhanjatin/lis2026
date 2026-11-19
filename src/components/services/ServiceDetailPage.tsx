@@ -98,7 +98,7 @@ export function ServiceDetailPage({ service }: { service: ServiceDetail }) {
             {service.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-[#E5E7EB] bg-[#FAFBFD] px-4 py-1.5 text-xs font-medium text-[#606468] transition-colors hover:border-[#101116] hover:text-[#101116]"
+                className="rounded-full border border-[#E5E7EB] bg-[#FAFBFD] px-4 py-1.5 text-xs font-medium text-[#606468]"
               >
                 {tag}
               </span>

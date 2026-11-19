@@ -32,7 +32,7 @@ export function AboutHero({
           transition={{ duration: 0.75, ease }}
           className="mx-auto max-w-4xl text-center">
           {/* Main Headline with Inline Badges */}
-          <h1 className="font-Sora text-balance font-bold tracking-[-0.035em] text-[#101116] text-3xl md:text-5xl lg:text-[60px] xl:text-[68px] lg:leading-[1.12]">
+          <h1 className="font-Sora text-balance font-bold tracking-[-0.035em] text-[#101116] text-3xl md:text-5xl lg:text-[60px] lg:leading-[1.12]">
             {/* Line 1 */}
             <span className="inline-flex flex-wrap items-center justify-center gap-x-2.5 sm:gap-x-3.5">
               <span>{data.prefix} {data.brand}</span>
@@ -54,7 +54,7 @@ export function AboutHero({
             initial={reduceMotion ? false : { opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.15, ease }}
-            className="mx-auto mt-6 max-w-xl text-pretty leading-relaxed text-[#606468] sm:mt-8 text-[14px] md:text-[16px]"
+            className="mx-auto mt-6 max-w-[768px] text-pretty leading-relaxed text-[#606468] sm:mt-8 text-[14px] md:text-[16px]"
           >
             {data.description}
           </motion.p>

@@ -1,3 +1,6 @@
+"use client";
+
+import type { MouseEvent } from "react";
 import {
   AboutHero,
   AboutCoreValues,
@@ -12,6 +15,17 @@ import { ContactSection } from "@/components/sections/ContactSection";
 import { PortfolioSection } from "@/components/sections/PortfolioSection";
 import { Container } from "@/components/ui/Container";
 import type { PageSlug } from "@/data/navigation";
+
+const EMAIL = "info@libertyinfoscience.com";
+
+function openEmailPopup(event: MouseEvent<HTMLAnchorElement>) {
+  event.preventDefault();
+  const compose = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(EMAIL)}`;
+  const popup = window.open(compose, "lis-email", "popup=yes,width=860,height=720");
+  if (!popup) {
+    window.location.href = `mailto:${EMAIL}`;
+  }
+}
 
 const openings = [
   {
@@ -74,7 +88,9 @@ export function PageContent({ slug }: { slug: PageSlug }) {
           </ul>
           <div className="mt-12 text-center">
             <a
-              href="mailto:info@libertyinfoscience.com"
+              href={`mailto:${EMAIL}`}
+              aria-label="Send CV to info@libertyinfoscience.com"
+              onClick={openEmailPopup}
               className="inline-flex rounded-full bg-[#101116] px-6 py-3.5 text-sm font-semibold text-white transition-transform hover:scale-[1.03]"
             >
               Send your CV

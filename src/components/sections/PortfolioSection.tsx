@@ -32,7 +32,7 @@ function ProjectLinkIcon({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="inline-flex size-9 items-center justify-center rounded-full border border-white/80 bg-black transition-transform hover:scale-105 sm:size-10"
+      className="inline-flex items-center justify-center transition-transform hover:scale-105"
       onClick={(event) => event.stopPropagation()}
     >
       <img src={src} alt="" className="size-5 object-contain" />
@@ -136,7 +136,7 @@ export function PortfolioSection() {
                     />
                     <div
                       aria-hidden="true"
-                      className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-2/5 bg-gradient-to-t from-black/75 to-transparent"
+                      className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-2/5 bg-gradient-to-t from-black/100 to-transparent"
                     />
                     <div className="absolute inset-x-0 bottom-0 z-10 p-4 sm:p-8">
                       <div className="flex  gap-4  items-end justify-between">
@@ -144,22 +144,49 @@ export function PortfolioSection() {
                           <h2 className="font-Sora sm:text-2xl text-[18px] font-semibold tracking-[-0.03em] text-white sm:text-[1.75rem]">
                             {project.title}
                           </h2>
-                          <p className="mt-1 text-sm font-medium text-white/80">
+                          <p className="mt-2 text-sm font-medium text-white/80">
                             {project.category}
                           </p>
+                          {project.displayTags && project.displayTags.length > 0 && (
+                            <div className="mt-3 flex flex-wrap gap-1.5">
+                              {project.displayTags.map((tag) => (
+                                <span
+                                  key={tag}
+                                  className="rounded-full bg-[#00000080] opacity-[20px]  border border-white/20 px-3 py-1 text-[12px] text-white/90 tracking-wide"
+                                >
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
+                          )}
                         </div>
-                        <div className="flex shrink-0 items-center gap-2">
-                          <ProjectLinkIcon
-                            href={project.figmaUrl}
-                            src="/figma-link.png"
-                            label={`${project.title} Figma design`}
-                          />
-                          <ProjectLinkIcon
-                            href={project.websiteUrl}
-                            src="/link.png"
-                            label={`${project.title} website`}
-                          />
-                        </div>
+                        <div className="flex flex-col shrink-0 items-center gap-2">
+                          {project.figmaUrl && (
+                            <a
+                              href={project.figmaUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={`View ${project.title} design on Figma`}
+                              onClick={(e) => e.stopPropagation()}
+                              className="flex gap-2.5 items-center py-2 px-3.5 rounded-[40px] bg-black text-white border border-white transition-opacity hover:opacity-80"
+                            >
+                              <img src="/figma-link.png" alt="" className="size-5 object-contain" />
+                              <p>View Design</p>
+                            </a>
+                          )}
+                          {project.websiteUrl && (
+                            <a
+                              href={project.websiteUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={`Visit ${project.title} website`}
+                              onClick={(e) => e.stopPropagation()}
+                              className="flex gap-2.5 items-center py-2 px-3.5 rounded-[40px] bg-black text-white border border-white transition-opacity hover:opacity-80"
+                            >
+                              <img src="/link.png" alt="" className="size-5 object-contain" />
+                              <p>View Website</p>
+                            </a>
+                          )}                        </div>
                       </div>
                     </div>
                   </div>

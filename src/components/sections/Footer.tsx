@@ -1,5 +1,6 @@
 "use client";
 
+import type { MouseEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
@@ -12,11 +13,27 @@ import {
 } from "@/components/ui/ScrollReveal";
 import { ContactCTA } from "./ContactCTA";
 
+const EMAIL = "info@libertyinfoscience.com";
+
+function openEmailPopup(event: MouseEvent<HTMLAnchorElement>) {
+  event.preventDefault();
+  const compose = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(EMAIL)}`;
+  const popup = window.open(
+    compose,
+    "lis-email",
+    "popup=yes,width=860,height=720",
+  );
+  if (!popup) {
+    window.location.href = `mailto:${EMAIL}`;
+  }
+}
+
 const navigation = [
   { href: "/", label: "Home" },
   { href: "/company", label: "About" },
-  { href: "/projects", label: "Projects" },
   { href: "/services", label: "Services" },
+  { href: "/case-studies", label: "Case Studies" },
+  { href: "/projects", label: "Projects" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -78,10 +95,11 @@ export function Footer() {
               <div>
                 <span>Available worldwide</span>
                 <a
-                  href="mailto:info@libertyinfoscience.com"
+                  href={`mailto:${EMAIL}`}
                   aria-label="Send email to info@libertyinfoscience.com"
+                  onClick={openEmailPopup}
                 >
-                  info@libertyinfoscience.com
+                  {EMAIL}
                 </a>
                 <a
                   href="tel:+917096364801"

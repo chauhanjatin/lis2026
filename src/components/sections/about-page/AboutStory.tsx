@@ -208,7 +208,7 @@ export function AboutStorySection({
                 {data.eyebrow}
               </p>
 
-              <h2 className="mt-4 font-Sora font-bold tracking-[-0.035em] text-[#111827] text-3xl md:text-5xl lg:text-6xl">
+              <h2 className="mt-4 font-Sora font-bold tracking-[-0.035em] text-[#111827] text-3xl md:text-5xl lg:text-[58px] leading-[1]">
                 {data.heading}{" "}
                 <span className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] text-transparent bg-clip-text">
                   Solutions.
@@ -220,10 +220,10 @@ export function AboutStorySection({
               </p>
 
               {/* Divider */}
-              <div className="lg:my-8 my-6 h-px w-full bg-[#E2E4E8]" />
+              <div className="lg:my-5 my-4 h-px w-full bg-[#E2E4E8]" />
 
               {/* 3 Pillars List with Smooth Animation */}
-              <ScrollStagger className="lg:space-y-6 space-y-3">
+              <ScrollStagger className="lg:space-y-2 space-y-3">
                 {data.pillars.map((pillar) => (
                   <ScrollItem key={pillar.id} variants={fadeUp}>
                     <motion.article
@@ -232,7 +232,7 @@ export function AboutStorySection({
                           ? undefined
                           : { x: 4, transition: { duration: 0.25, ease } }
                       }
-                      className="group relative rounded-2xl border border-transparent p-4 transition-all duration-300 hover:border-[#E2E4E8] hover:bg-white hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)] sm:p-5"
+                      className="group relative rounded-2xl border border-transparent p-4 transition-all duration-300 hover:border-[#E2E4E8] hover:bg-white hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)]"
                     >
                       <div className="flex items-start gap-4">
                         {/* Number Badge */}

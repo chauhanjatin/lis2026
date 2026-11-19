@@ -32,7 +32,8 @@ export function ContactCTA() {
         >
           Let’s make something
           <br />
-          amazing together.
+          amazing
+          <span className="bg-gradient-to-r from-[#0D4FB8] to-[#42BFA5] bg-clip-text text-transparent"> together.</span>
         </motion.h2>
 
         <motion.div

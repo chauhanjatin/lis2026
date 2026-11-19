@@ -15,13 +15,6 @@ import {
   subscribeLoaderFinished,
 } from "@/lib/pageLoaderSignal";
 import { fadeUp } from "@/components/ui/ScrollReveal";
-import {
-  DiwaliDecor,
-  HeadlineSides,
-  MarqueeFireworks,
-} from "@/components/sections/DiwaliDecor";
-import DiwaliGreetings from "./DiwaliGreetings";
-import diwaliGreeting from "../../../public/happydiwali.png";
 
 const projectImages = [
   {
@@ -235,34 +228,16 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className={`relative overflow-hidden pb-16 xl:pb-24 ${
-        isInView ? "" : "diwali-paused"
-      }`}
+      className={`relative overflow-hidden pb-10 md:pb-16 xl:pb-24`}
     >
       <div className="hero-gradient" aria-hidden="true" />
-      {toranReady
-        ? createPortal(
-            <div className="diwali-toran" aria-hidden="true">
-              <Image
-                src="/diwali-toran.png"
-                alt=""
-                width={2171}
-                height={724}
-                priority
-                className="diwali-toran-image"
-              />
-            </div>,
-            document.body,
-          )
-        : null}
-      {/* <DiwaliDecor /> */}
 
       <Container className="relative z-10">
         <div className="relative mx-auto max-w-4xl text-center">
           {/* <HeadlineSides /> */}
           <h1
             aria-label="Transforming Ideas Into Powerful Digital Experiences"
-            className="font-Sora text-balance text-[25px] md:text-[45px] lg:text-[60px] xl:text-[68px] 2xl:text-[72px] font-bold leading-[1.22] sm:leading-[1.28] tracking-[-0.03em] text-foreground checking-text"
+            className="font-Sora text-balance text-[30px] md:text-[45px] lg:text-[60px] xl:text-[68px] 2xl:text-[72px] font-bold leading-[1.22] sm:leading-[1.28] tracking-[-0.03em] text-foreground checking-text"
           >
             {reduceMotion ? (
               <>
@@ -294,7 +269,7 @@ export function Hero() {
             initial={reduceMotion ? false : "hidden"}
             animate={reduceMotion || textReady ? "visible" : "hidden"}
             transition={{ duration: 0.75, delay: textReady && !reduceMotion ? 0.4 : 0, ease }}
-            className="mx-auto mt-8 max-w-3xl text-pretty text-base leading-relaxed text-muted md:text-lg"
+            className="mx-auto mt-8 max-w-3xl text-pretty leading-relaxed text-muted text-[14px] md:text-[18px] lg:text-[20px]"
           >
             We help businesses grow with modern websites, intuitive UI/UX
             design, scalable software solutions, and strategic digital
@@ -302,21 +277,7 @@ export function Hero() {
           </motion.p>
         </div>
 
-        <div ref={marqueeRef} className="relative mt-20 lg:mt-22">
-          <div className="diwali-banner" aria-hidden="true">
-            <Image
-              src="/diwali-banner.png"
-              alt=""
-              width={2172}
-              height={724}
-              priority
-              className="diwali-banner-image"
-            />
-          </div>
-          {/* Happy Diwali floral image */}
-          {/* <DiwaliGreetings /> */}
-
-          {/* <MarqueeFireworks /> */}
+        <div ref={marqueeRef} className="relative mt-10 md:mt-20 lg:mt-22">
           <motion.div style={reduceMotion ? undefined : { scale, opacity }}>
             <div className="hero-marquee" aria-label="Featured project gallery">
               <div className="hero-marquee-stage">

@@ -110,25 +110,25 @@ export type AboutCTA = {
 };
 
 export const aboutHeroData: AboutHeroData = {
-  prefix: "Meet",
-  brand: "Agero",
+  prefix: "We",
+  brand: "Turn",
   pillBadge: {
     src: "/about/badge-building.svg",
     alt: "",
     width: 66,
     height: 44,
   },
-  highlight: "Bold Ideas",
-  line2Prefix: "Real Impact",
+  highlight: "Creative Ideas",
+  line2Prefix: "Into Powerful",
   roundBadge: {
     src: "/about/badge-column-plant.svg",
     alt: "",
     width: 44,
     height: 44,
   },
-  line2Suffix: "Driven",
+  line2Suffix: "Digital Solutions",
   description:
-    "LIS is a leading UX design, mobile app, and custom software development company. Our diverse team of strategists and technologists combines expertise to create innovative digital solutions.",
+    "At Liberty InfoScience, we turn ideas into reality through innovative design and technology. Our team of creative thinkers, designers, and developers creates meaningful digital experiences. From intuitive UI/UX designs and modern websites to mobile apps and custom software, we help businesses overcome challenges and achieve growth through creativity, strategy, and technology.",
   cta: {
     label: "View Projects",
     href: "/projects",

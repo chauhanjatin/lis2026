@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import type { MouseEvent } from "react";
 import {
   ArrowRight,
   Briefcase,
@@ -22,6 +23,8 @@ import {
   type NavDropdownItem,
 } from "@/data/navigation";
 
+const EMAIL = "info@libertyinfoscience.com";
+
 const serviceIcons = [PenLine, Code2, Smartphone, Briefcase];
 
 function DropdownPointer() {
@@ -31,6 +34,19 @@ function DropdownPointer() {
       className="absolute -top-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 bg-[#0000006e]"
     />
   );
+}
+
+function openEmailPopup(event: MouseEvent<HTMLAnchorElement>) {
+  event.preventDefault();
+  const compose = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(EMAIL)}`;
+  const popup = window.open(
+    compose,
+    "lis-email",
+    "popup=yes,width=860,height=720",
+  );
+  if (!popup) {
+    window.location.href = `mailto:${EMAIL}`;
+  }
 }
 
 function DropdownItem({
@@ -187,7 +203,7 @@ export function Header() {
   }, [open, lenis]);
 
   useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
+    function handleClickOutside(event: globalThis.MouseEvent) {
       if (!headerRef.current?.contains(event.target as Node)) {
         setServicesOpen(false);
       }
@@ -265,9 +281,11 @@ export function Header() {
           </nav>
 
           <Link
-            href="mailto:info@libertyinfoscience.com"
+            href={`mailto:${EMAIL}`}
+            onClick={openEmailPopup}
             aria-label="Send CV to info@libertyinfoscience.com"
-            className="hidden rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#101116] transition-transform hover:scale-[1.03] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#090a0c] lg:inline-flex">
+            className="hidden rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#101116] transition-transform hover:scale-[1.03] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#090a0c] lg:inline-flex"
+          > 
             Send CV
           </Link>
 
@@ -368,12 +386,13 @@ export function Header() {
               ),
             )}
             <li>
-              <Link
-                href="mailto:info@libertyinfoscience.com"
-                onClick={() => setOpen(false)}
+              <a
+                href={`mailto:${EMAIL}`}
+                aria-label="Send CV to info@libertyinfoscience.com"
+                onClick={(e) => { openEmailPopup(e); setOpen(false); }}
                 className="mt-5 inline-flex rounded-full bg-white px-5 py-3 text-sm font-medium text-[#101116]">
                 Send CV
-              </Link>
+              </a>
             </li>
           </ul>
         </nav>        

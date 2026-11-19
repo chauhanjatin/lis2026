@@ -1,7 +1,10 @@
 import {
   Cormorant_Garamond,
   Instrument_Sans,
+  Inter,
   Manrope,
+  Nunito,
+  Plus_Jakarta_Sans,
   Poppins,
   Sora,
 } from "next/font/google";
@@ -37,6 +40,33 @@ export const poppins = Poppins({
   fallback: ["system-ui", "-apple-system", "sans-serif"],
 });
 
+export const nunito = Nunito({
+  subsets: ["latin"],
+  weight: ["400", "600", "700", "800"],
+  display: "swap",
+  preload: false,
+  variable: "--font-nunito",
+  fallback: ["system-ui", "-apple-system", "sans-serif"],
+});
+
+export const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+  preload: false,
+  variable: "--font-plus-jakarta",
+  fallback: ["system-ui", "-apple-system", "sans-serif"],
+});
+
+export const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  preload: false,
+  variable: "--font-inter",
+  fallback: ["system-ui", "-apple-system", "sans-serif"],
+});
+
 export const cormorantGaramond = Cormorant_Garamond({
   subsets: ["latin"],
   style: ["normal", "italic"],
@@ -51,5 +81,8 @@ export const fontVariables = [
   sora.variable,
   instrumentSans.variable,
   poppins.variable,
+  nunito.variable,
+  plusJakartaSans.variable,
+  inter.variable,
   cormorantGaramond.variable,
 ].join(" ");
